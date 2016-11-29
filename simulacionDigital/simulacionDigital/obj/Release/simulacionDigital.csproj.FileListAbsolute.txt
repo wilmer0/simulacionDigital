@@ -15,3 +15,6 @@ C:\Users\wilmer\documents\visual studio 2013\Projects\simulacionDigital\simulaci
 C:\Users\wilmer\documents\visual studio 2013\Projects\simulacionDigital\simulacionDigital\bin\Release\Microsoft.ReportViewer.WebForms.DLL
 C:\Users\wilmer\documents\visual studio 2013\Projects\simulacionDigital\simulacionDigital\obj\Release\simulacionDigital.exe
 C:\Users\wilmer\documents\visual studio 2013\Projects\simulacionDigital\simulacionDigital\obj\Release\simulacionDigital.pdb
+C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\simulacionDigital\bin\Release\simulacionDigital.exe.config
+C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\simulacionDigital\obj\Release\simulacionDigital.exe
+C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\simulacionDigital\obj\Release\simulacionDigital.pdb
