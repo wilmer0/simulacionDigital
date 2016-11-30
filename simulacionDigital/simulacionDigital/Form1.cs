@@ -24,5 +24,13 @@ namespace simulacionDigital
             ventana.Owner = this;
             ventana.ShowDialog();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ingenieriaSoftware.Form1 ventana1 = new ingenieriaSoftware.Form1();
+            ventana1.ShowDialog();
+            ingenieriaSoftware.Form2 ventana2 = new ingenieriaSoftware.Form2();
+            ventana2.ShowDialog();
+        }
     }
 }
