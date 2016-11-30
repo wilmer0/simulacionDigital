@@ -74,6 +74,18 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="ingenieriaSoftware\cobro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ingenieriaSoftware\cobro.Designer.cs">
+      <DependentUpon>cobro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ingenieriaSoftware\reclamo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ingenieriaSoftware\reclamo.Designer.cs">
+      <DependentUpon>reclamo.cs</DependentUpon>
+    </Compile>
     <Compile Include="problemas\ventana_becas_universitarias.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +108,12 @@
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ingenieriaSoftware\cobro.resx">
+      <DependentUpon>cobro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ingenieriaSoftware\reclamo.resx">
+      <DependentUpon>reclamo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="problemas\ventana_becas_universitarias.resx">
       <DependentUpon>ventana_becas_universitarias.cs</DependentUpon>
