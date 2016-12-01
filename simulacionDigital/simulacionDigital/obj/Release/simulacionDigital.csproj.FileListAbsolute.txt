@@ -37,3 +37,5 @@ C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\simulacionD
 C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\simulacionDigital\obj\Release\RdlCompile.cache
 C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\simulacionDigital\obj\Release\RdlCompile.compiled
 C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\simulacionDigital\obj\Release\simulacionDigital.ingenieriaSoftware.Form2.resources
+C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\simulacionDigital\obj\Release\simulacionDigital.seminario.menu.resources
+C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\simulacionDigital\obj\Release\simulacionDigital.seminario.login.resources

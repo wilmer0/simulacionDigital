@@ -83,10 +83,34 @@
     <Compile Include="ingenieriaSoftware\cobro.Designer.cs">
       <DependentUpon>cobro.cs</DependentUpon>
     </Compile>
-    <Compile Include="ingenieriaSoftware\Form1.cs">
+    <Compile Include="seminario\compartir.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ingenieriaSoftware\Form1.Designer.cs">
+    <Compile Include="seminario\compartir.Designer.cs">
+      <DependentUpon>compartir.cs</DependentUpon>
+    </Compile>
+    <Compile Include="seminario\compartir_avanzado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="seminario\compartir_avanzado.Designer.cs">
+      <DependentUpon>compartir_avanzado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="seminario\consultar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="seminario\consultar.Designer.cs">
+      <DependentUpon>consultar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="seminario\consultar_avanzado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="seminario\consultar_avanzado.Designer.cs">
+      <DependentUpon>consultar_avanzado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="seminario\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="seminario\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="ingenieriaSoftware\Form2.cs">
@@ -109,6 +133,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="seminario\login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="seminario\login.Designer.cs">
+      <DependentUpon>login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="seminario\menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="seminario\menu.Designer.cs">
+      <DependentUpon>menu.cs</DependentUpon>
+    </Compile>
     <Compile Include="VentanasComunes\VisorReporte.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,7 +163,19 @@
     <EmbeddedResource Include="ingenieriaSoftware\cobro.resx">
       <DependentUpon>cobro.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ingenieriaSoftware\Form1.resx">
+    <EmbeddedResource Include="seminario\compartir.resx">
+      <DependentUpon>compartir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="seminario\compartir_avanzado.resx">
+      <DependentUpon>compartir_avanzado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="seminario\consultar.resx">
+      <DependentUpon>consultar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="seminario\consultar_avanzado.resx">
+      <DependentUpon>consultar_avanzado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="seminario\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ingenieriaSoftware\Form2.resx">
@@ -147,8 +195,15 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="reportes\reporte_estudiantes.rdlc" />
+    <EmbeddedResource Include="seminario\login.resx">
+      <DependentUpon>login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="seminario\menu.resx">
+      <DependentUpon>menu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VentanasComunes\Report1.rdlc" />
     <EmbeddedResource Include="VentanasComunes\reporte_seccion_cuentas.rdlc" />
     <EmbeddedResource Include="VentanasComunes\VisorReporte.resx">
@@ -172,7 +227,33 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Excel-2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\12-iconos-fuera-de-moda-que-ya-no-deberiamos-usar-06.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buscar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Excel-21.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file-video-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folders_red_documents_10940.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PowerPoint2_35733.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\subir.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Word-2.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
