@@ -32,5 +32,10 @@ namespace simulacionDigital
             ingenieriaSoftware.Form2 ventana2 = new ingenieriaSoftware.Form2();
             ventana2.ShowDialog();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

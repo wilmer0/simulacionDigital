@@ -662,8 +662,11 @@ namespace simulacionDigital.problemas
         {
             try
             {
-                if (listaEstudiante != null)
+                if (listaEstudiante == null)
                 {
+                    MessageBox.Show("No se encontraron datos, primero debe simular", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
                     //Reporte.reporteCompraFanega ventanaReporteCompraFanegas = new Reporte.reporteCompraFanega(usuario, compra.id);
                     //ventanaReporteCompraFanegas.ShowDialog();
 
@@ -671,13 +674,7 @@ namespace simulacionDigital.problemas
                     String reporte = "simulacionDigital.reportes.reporte_estudiantes.rdlc";
                     List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
 
-                    ////empresa
-                    //empresa_reporte empresa = new empresa_reporte(usuario.empresa1);
-                    //List<empresa_reporte> ListaEmpresa = new List<empresa_reporte>();
-                    //ListaEmpresa.Add(empresa);
-
-                    //ReportDataSource reporteR = new ReportDataSource("Empresa", ListaEmpresa);
-                    //listaReportDataSource.Add(reporteR);
+                   
 
                     //reporte estudiante
                     reporte_estudiante reporteEstudiante = new reporte_estudiante();
@@ -708,11 +705,7 @@ namespace simulacionDigital.problemas
 
                     VisorReporteComun ventana=new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter, true, false, false);
                     ventana.ShowDialog();
-                }
-                else
-                {
-                    MessageBox.Show("No se encontraron datos, primero debe simular", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+               
             }
             catch (Exception ex)
             {

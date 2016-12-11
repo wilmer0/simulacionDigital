@@ -39,3 +39,7 @@ C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\simulacionD
 C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\simulacionDigital\obj\Release\simulacionDigital.ingenieriaSoftware.Form2.resources
 C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\simulacionDigital\obj\Release\simulacionDigital.seminario.menu.resources
 C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\simulacionDigital\obj\Release\simulacionDigital.seminario.login.resources
+C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\simulacionDigital\obj\Release\simulacionDigital.seminario.compartir.resources
+C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\simulacionDigital\obj\Release\simulacionDigital.seminario.compartir_avanzado.resources
+C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\simulacionDigital\obj\Release\simulacionDigital.seminario.consultar.resources
+C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\simulacionDigital\obj\Release\simulacionDigital.seminario.consultar_avanzado.resources

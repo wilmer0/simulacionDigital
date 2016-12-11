@@ -205,7 +205,6 @@
       <DependentUpon>menu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VentanasComunes\Report1.rdlc" />
-    <EmbeddedResource Include="VentanasComunes\reporte_seccion_cuentas.rdlc" />
     <EmbeddedResource Include="VentanasComunes\VisorReporte.resx">
       <DependentUpon>VisorReporte.cs</DependentUpon>
     </EmbeddedResource>
@@ -253,6 +252,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Word-2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="TrabajoFinalSimulacion\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
