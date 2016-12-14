@@ -49,6 +49,8 @@
     <Compile Include="clases\cliente.cs" />
     <Compile Include="clases\operaciones.cs" />
     <Compile Include="clases\problema.cs" />
+    <Compile Include="clases\tanda.cs" />
+    <Compile Include="clases\temporadaAno.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
