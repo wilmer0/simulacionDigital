@@ -91,9 +91,9 @@
             this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(759, 13);
+            this.button1.Location = new System.Drawing.Point(762, 11);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(113, 94);
+            this.button1.Size = new System.Drawing.Size(110, 85);
             this.button1.TabIndex = 4;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -198,9 +198,9 @@
             this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(640, 14);
+            this.button2.Location = new System.Drawing.Point(646, 11);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(113, 94);
+            this.button2.Size = new System.Drawing.Size(110, 85);
             this.button2.TabIndex = 12;
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
