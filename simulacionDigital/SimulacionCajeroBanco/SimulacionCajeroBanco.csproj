@@ -113,6 +113,11 @@
   <ItemGroup>
     <Folder Include="clases_reportes\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="recursos\Aha-Soft-Large-Seo-SEO.ico" />
+    <Content Include="recursos\banreservas2014.png" />
+    <Content Include="recursos\Play_button_next_stop_music_pause.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

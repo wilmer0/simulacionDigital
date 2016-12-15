@@ -147,7 +147,141 @@ namespace SimulacionCajeroBanco
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error imprimir: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Error imprimir1: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        public void imprimir2()
+        {
+            try
+            {
+                //if (listaCliente == null)
+                //{
+                //    MessageBox.Show("No se encontraron datos, primero debe simular", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //}
+
+
+
+                ////datos generales
+                //String reporte = "SimulacionCajeroBanco.clases_reportes.reporte_cliente.rdlc";
+                //List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
+
+
+
+                ////reporte estudiante
+                ////reporte_estudiante reporteEstudiante = new reporte_estudiante();
+                ////List<reporte_estudiante> ListaReporteEstudiante = new List<reporte_estudiante>();
+                ////int cont = 0;
+                ////listaEstudiante.ForEach(x =>
+                ////{
+                ////    reporteEstudiante = new reporte_estudiante();
+
+                ////    reporteEstudiante.estudiante = cont + 1;
+                ////    reporteEstudiante.indice = x.indice;
+                ////    reporteEstudiante.carrera = x.Nombrecarrera;
+                ////    reporteEstudiante.tipoCarrera = x.tipoCarrera;
+                ////    reporteEstudiante.beca = x.tieneBeca;
+                ////    reporteEstudiante.tiempoServicioBase = x.tiempoServicioBase;
+                ////    reporteEstudiante.tiempoServicioFinal = x.tiempoServicioFinal;
+                ////    reporteEstudiante.jugadas = x.jugadas;
+
+                ////    ListaReporteEstudiante.Add(reporteEstudiante);
+                ////    cont++;
+
+                ////});
+
+                ////ReportDataSource reporteF = new ReportDataSource("estudiante", ListaReporteEstudiante);
+                ////listaReportDataSource.Add(reporteF);
+
+                //List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
+
+                //VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter, true, false, false);
+                //ventana.ShowDialog();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error imprimir2: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        public void imprimir3()
+        {
+            try
+            {
+                //if (listaCliente == null)
+                //{
+                //    MessageBox.Show("No se encontraron datos, primero debe simular", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //}
+
+
+
+                ////datos generales
+                //String reporte = "SimulacionCajeroBanco.clases_reportes.reporte_cliente.rdlc";
+                //List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
+
+
+
+                ////reporte estudiante
+                ////reporte_estudiante reporteEstudiante = new reporte_estudiante();
+                ////List<reporte_estudiante> ListaReporteEstudiante = new List<reporte_estudiante>();
+                ////int cont = 0;
+                ////listaEstudiante.ForEach(x =>
+                ////{
+                ////    reporteEstudiante = new reporte_estudiante();
+
+                ////    reporteEstudiante.estudiante = cont + 1;
+                ////    reporteEstudiante.indice = x.indice;
+                ////    reporteEstudiante.carrera = x.Nombrecarrera;
+                ////    reporteEstudiante.tipoCarrera = x.tipoCarrera;
+                ////    reporteEstudiante.beca = x.tieneBeca;
+                ////    reporteEstudiante.tiempoServicioBase = x.tiempoServicioBase;
+                ////    reporteEstudiante.tiempoServicioFinal = x.tiempoServicioFinal;
+                ////    reporteEstudiante.jugadas = x.jugadas;
+
+                ////    ListaReporteEstudiante.Add(reporteEstudiante);
+                ////    cont++;
+
+                ////});
+
+                ////ReportDataSource reporteF = new ReportDataSource("estudiante", ListaReporteEstudiante);
+                ////listaReportDataSource.Add(reporteF);
+
+                //List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
+
+                //VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter, true, false, false);
+                //ventana.ShowDialog();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error imprimir3: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            getAction();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (listaCliente == null)
+                {
+                    MessageBox.Show("Debe haber simulado primero");
+                    return;
+                }
+
+
+                //imprimir reportes
+                imprimir1();
+                imprimir2();
+                imprimir3();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
