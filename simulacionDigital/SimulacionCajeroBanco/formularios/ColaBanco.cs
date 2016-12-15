@@ -97,7 +97,7 @@ namespace SimulacionCajeroBanco
             }
         }
 
-        public void imprimir()
+        public void imprimir1()
         {
             try
             {
@@ -109,7 +109,7 @@ namespace SimulacionCajeroBanco
                 
 
                 //datos generales
-                String reporte = "SimulacionCajeroBanco.reportes.reporte_estudiantes.rdlc";
+                String reporte = "SimulacionCajeroBanco.clases_reportes.reporte_cliente.rdlc";
                 List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
 
 
