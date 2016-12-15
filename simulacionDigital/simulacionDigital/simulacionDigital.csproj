@@ -125,10 +125,10 @@
     <Compile Include="ingenieriaSoftware\reclamo.Designer.cs">
       <DependentUpon>reclamo.cs</DependentUpon>
     </Compile>
-    <Compile Include="problemas\ventana_becas_universitarias.cs">
+    <Compile Include="ventana_becas_universitarias.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="problemas\ventana_becas_universitarias.Designer.cs">
+    <Compile Include="ventana_becas_universitarias.Designer.cs">
       <DependentUpon>ventana_becas_universitarias.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -144,12 +144,6 @@
     </Compile>
     <Compile Include="seminario\menu.Designer.cs">
       <DependentUpon>menu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="VentanasComunes\VisorReporte.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VentanasComunes\VisorReporte.Designer.cs">
-      <DependentUpon>VisorReporte.cs</DependentUpon>
     </Compile>
     <Compile Include="VentanasComunes\VisorReporteComun.cs">
       <SubType>Form</SubType>
@@ -184,7 +178,7 @@
     <EmbeddedResource Include="ingenieriaSoftware\reclamo.resx">
       <DependentUpon>reclamo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="problemas\ventana_becas_universitarias.resx">
+    <EmbeddedResource Include="ventana_becas_universitarias.resx">
       <DependentUpon>ventana_becas_universitarias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -203,10 +197,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="seminario\menu.resx">
       <DependentUpon>menu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VentanasComunes\Report1.rdlc" />
-    <EmbeddedResource Include="VentanasComunes\VisorReporte.resx">
-      <DependentUpon>VisorReporte.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VentanasComunes\VisorReporteComun.resx">
       <DependentUpon>VisorReporteComun.cs</DependentUpon>
@@ -254,6 +244,7 @@
     <None Include="Resources\Word-2.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="problemas\" />
     <Folder Include="TrabajoFinalSimulacion\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
