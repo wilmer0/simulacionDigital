@@ -8,6 +8,6 @@ namespace SimulacionCajeroBanco.clases
 {
     public class temporada
     {
-
+        public string nombre { get; set; }
     }
 }

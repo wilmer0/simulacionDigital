@@ -32,6 +32,12 @@ namespace SimulacionCajeroBanco
         //listas
         private List<cajero> listaCajero;
         private List<cliente> listaCliente;
+
+
+        //listas problemas
+        private List<problema> listaProblemaDeposito;
+        private List<problema> listaProblemaRetiro;
+        private List<problema> listaProblemaCambio;
        
 
         //variables para datos
@@ -58,11 +64,87 @@ namespace SimulacionCajeroBanco
 
         }
 
+        //get problemas
+        #region
         public void getProblemas()
         {
             try
             {
 
+                //instancia listas problemas
+                listaProblemaDeposito=new List<problema>();
+                listaProblemaRetiro=new List<problema>();
+                listaProblemaCambio=new List<problema>();
+
+                //instancia problemas
+                problema=new problema();
+
+
+
+                //problemas deposito
+                problema.nombre = "fallo sistema";
+                listaProblemaDeposito.Add(problema);
+
+                problema = new problema();
+                problema.nombre = "fallo electricidad";
+                listaProblemaDeposito.Add(problema);
+                
+                problema = new problema();
+                problema.nombre = "numero cuenta incorrecto";
+                listaProblemaDeposito.Add(problema);
+                
+                problema = new problema();
+                problema.nombre = "dinero insuficiente";
+                listaProblemaDeposito.Add(problema);
+                
+                problema = new problema();
+                problema.nombre = "falta cedula";
+                listaProblemaDeposito.Add(problema);
+
+
+                //problemas retiro
+                problema.nombre = "fallo sistema";
+                listaProblemaRetiro.Add(problema);
+
+                problema = new problema();
+                problema.nombre = "fallo electricidad";
+                listaProblemaRetiro.Add(problema);
+
+                problema = new problema();
+                problema.nombre = "numero cuenta incorrecto";
+                listaProblemaRetiro.Add(problema);
+
+                problema = new problema();
+                problema.nombre = "dinero insuficiente";
+                listaProblemaRetiro.Add(problema);
+
+                problema = new problema();
+                problema.nombre = "falta cedula";
+                listaProblemaRetiro.Add(problema);
+
+
+                //problemas cambio moneda
+                problema.nombre = "fallo sistema";
+                listaProblemaCambio.Add(problema);
+
+                problema = new problema();
+                problema.nombre = "fallo electricidad";
+                listaProblemaCambio.Add(problema);
+
+                //problema = new problema();
+                //problema.nombre = "falta cedula";
+                //listaProblemaCambio.Add(problema);
+
+                problema = new problema();
+                problema.nombre = "dinero insuficiente";
+                listaProblemaCambio.Add(problema);
+
+                problema = new problema();
+                problema.nombre = "moneda no es aceptada";
+                listaProblemaCambio.Add(problema);
+
+
+               
             }
             catch (Exception ex)
             {
@@ -70,7 +152,34 @@ namespace SimulacionCajeroBanco
                 MessageBox.Show("Error getProblemas.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        #endregion
 
+
+
+
+
+        //validar getAction
+        #region
+        public void validarGetAction()
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error validarGetAction.: " + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+        #endregion
+
+
+
+
+
+        //get action
+        #region
         public void getAction()
         {
             try
@@ -83,7 +192,13 @@ namespace SimulacionCajeroBanco
                 MessageBox.Show("Error getAction.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        #endregion
 
+
+
+
+        //load clientes
+        #region
         public void loadClientes()
         {
             try
@@ -96,7 +211,11 @@ namespace SimulacionCajeroBanco
                 MessageBox.Show("Error loadClientes.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        #endregion
 
+
+        //imprimir datos especificos
+        #region
         public void imprimir1()
         {
             try
@@ -150,6 +269,11 @@ namespace SimulacionCajeroBanco
                 MessageBox.Show("Error imprimir1: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+        #endregion
+
+
+        //imprimir la corrida
+        #region
         public void imprimir2()
         {
             try
@@ -203,6 +327,11 @@ namespace SimulacionCajeroBanco
                 MessageBox.Show("Error imprimir2: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+        #endregion
+
+
+        //imprimir reportes graficos
+        #region
         public void imprimir3()
         {
             try
@@ -256,6 +385,11 @@ namespace SimulacionCajeroBanco
                 MessageBox.Show("Error imprimir3: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+        #endregion
+
+
+
+
 
         private void button1_Click(object sender, EventArgs e)
         {
