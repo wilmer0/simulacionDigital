@@ -15,6 +15,8 @@ namespace SimulacionCajeroBanco.clases
         public string temporada { get; set; }
         public string tanda { get; set; }
         public string tipo_cuenta { get; set; }//cuenta corriente y cuenta ahorro
+        public string operacion_deseada { get; set; } // para saber la operacion que desea realizar
+        public bool operacion_completada { get; set; } //para saber si completo la operacion
 
     }
 }

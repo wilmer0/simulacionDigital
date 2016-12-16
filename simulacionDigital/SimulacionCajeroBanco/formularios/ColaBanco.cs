@@ -27,11 +27,15 @@ namespace SimulacionCajeroBanco
 
         //variables
         Random random;//para randoms
+        private int cantidadClientes = 0;
+        private int cantidadCajeros = 0;
 
 
         //listas
         private List<cajero> listaCajero;
         private List<cliente> listaCliente;
+        private List<temporada> listaTemporada;
+        private List<tanda> listaTanda; 
 
 
         //listas problemas
@@ -52,8 +56,23 @@ namespace SimulacionCajeroBanco
         public ColaBanco()
         {
             InitializeComponent();
+            loadVentana();
         }
 
+        public void loadVentana()
+        {
+            try
+            {
+                loadTemporada();
+                loadTanda();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadVentana.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            loadTemporada();
+            loadTanda();
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -160,22 +179,113 @@ namespace SimulacionCajeroBanco
 
         //validar getAction
         #region
-        public void validarGetAction()
+        public void loadTemporada()
         {
             try
             {
+                listaTemporada=new List<temporada>();
+                
+                temporada=new temporada();
+                temporada.nombre = "primavera";
+                listaTemporada.Add(temporada);
+
+
+                temporada = new temporada();
+                temporada.nombre = "invierno";
+                listaTemporada.Add(temporada);
+
+                temporadaAnoCombo.DataSource = listaTemporada;
+                temporadaAnoCombo.DisplayMember = "nombre";
+                temporadaAnoCombo.ValueMember = "nombre";
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error validarGetAction.: " + ex.ToString(), "", MessageBoxButtons.OK,
+                MessageBox.Show("Error loadTemporada.: " + ex.ToString(), "", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
+
             }
         }
         #endregion
 
 
+        //validar getAction
+        #region
+        public void loadTanda()
+        {
+            try
+            {
 
+                listaTanda=new List<tanda>();
+
+                tanda = new tanda();
+                tanda.nombre = "matutina";
+                listaTanda.Add(tanda);
+
+                tanda = new tanda();
+                tanda.nombre = "vespertina";
+                listaTanda.Add(tanda);
+
+
+                tandaCombo.DataSource = listaTanda;
+                tandaCombo.DisplayMember = "nombre";
+                tandaCombo.ValueMember = "nombre";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadTanda.: " + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                
+            }
+        }
+        #endregion
+
+        //validar getAction
+        #region
+        public bool validarGetAction()
+        {
+            try
+            {
+
+                if (cantidadCajeroText.Text == "")
+                {
+                    MessageBox.Show("Falta la cantidad de cajeros", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    cantidadCajeroText.Focus();
+                    cantidadCajeroText.SelectAll();
+                    return false;
+                }
+                if (cantidadClienteText.Text == "")
+                {
+                    MessageBox.Show("Falta la cantidad de clientes", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    cantidadClienteText.Focus();
+                    cantidadClienteText.SelectAll();
+                    return false;
+                }
+                if (temporadaAnoCombo.Text == "")
+                {
+                    MessageBox.Show("Falta la temporada del anio", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    temporadaAnoCombo.Focus();
+                    temporadaAnoCombo.SelectAll();
+                    return false;
+                }
+                if (tandaCombo.Text == "")
+                {
+                    MessageBox.Show("Falta la tanda", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tandaCombo.Focus();
+                    tandaCombo.SelectAll();
+                    return false;
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error validarGetAction.: " + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return false;
+            }
+        }
+        #endregion
 
 
         //get action
@@ -184,6 +294,20 @@ namespace SimulacionCajeroBanco
         {
             try
             {
+                if (!validarGetAction())
+                {
+                    return;
+                }
+
+                //cantidad de cajeros
+                cantidadCajeros = Convert.ToInt16(cantidadClienteText.Text.Trim());
+                //cantidad de clientes
+                cantidadClientes = Convert.ToInt16(cantidadCajeroText.Text.Trim());
+
+                loadTemporada();
+                loadTanda();
+
+
 
             }
             catch (Exception ex)

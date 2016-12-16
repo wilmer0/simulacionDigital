@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ColaBanco));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cantidadCajeroText = new System.Windows.Forms.TextBox();
@@ -38,13 +38,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.temporadaAnoCombo = new System.Windows.Forms.ComboBox();
             this.tandaCombo = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
             this.clientecolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label5 = new System.Windows.Forms.Label();
+            this.operacionGrid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -75,6 +76,7 @@
             // 
             // cantidadCajeroText
             // 
+            this.cantidadCajeroText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cantidadCajeroText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cantidadCajeroText.Location = new System.Drawing.Point(127, 19);
             this.cantidadCajeroText.Name = "cantidadCajeroText";
@@ -83,6 +85,7 @@
             // 
             // cantidadClienteText
             // 
+            this.cantidadClienteText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cantidadClienteText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cantidadClienteText.Location = new System.Drawing.Point(127, 49);
             this.cantidadClienteText.Name = "cantidadClienteText";
@@ -151,8 +154,47 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(659, 103);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(213, 37);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Pro-Simulator";
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(710, 11);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(78, 61);
+            this.button2.TabIndex = 12;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Location = new System.Drawing.Point(295, 19);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(219, 100);
+            this.panel1.TabIndex = 11;
+            // 
             // temporadaAnoCombo
             // 
+            this.temporadaAnoCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.temporadaAnoCombo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.temporadaAnoCombo.FormattingEnabled = true;
             this.temporadaAnoCombo.Location = new System.Drawing.Point(127, 78);
             this.temporadaAnoCombo.Name = "temporadaAnoCombo";
@@ -161,6 +203,8 @@
             // 
             // tandaCombo
             // 
+            this.tandaCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tandaCombo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tandaCombo.FormattingEnabled = true;
             this.tandaCombo.Location = new System.Drawing.Point(127, 105);
             this.tandaCombo.Name = "tandaCombo";
@@ -180,7 +224,8 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.clientecolumn});
+            this.clientecolumn,
+            this.operacionGrid});
             this.dataGridView1.Location = new System.Drawing.Point(12, 161);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
@@ -191,52 +236,21 @@
             this.dataGridView1.Size = new System.Drawing.Size(878, 428);
             this.dataGridView1.TabIndex = 11;
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Location = new System.Drawing.Point(295, 19);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(219, 100);
-            this.panel1.TabIndex = 11;
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(710, 11);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(78, 61);
-            this.button2.TabIndex = 12;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // clientecolumn
             // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            this.clientecolumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            this.clientecolumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.clientecolumn.HeaderText = "Cliente";
             this.clientecolumn.Name = "clientecolumn";
             this.clientecolumn.ReadOnly = true;
             // 
-            // label5
+            // operacionGrid
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(659, 103);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(213, 37);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Pro-Simulator";
+            this.operacionGrid.HeaderText = "Operacion";
+            this.operacionGrid.Name = "operacionGrid";
+            this.operacionGrid.ReadOnly = true;
             // 
             // ColaBanco
             // 
@@ -274,8 +288,9 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clientecolumn;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clientecolumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn operacionGrid;
     }
 }
 
