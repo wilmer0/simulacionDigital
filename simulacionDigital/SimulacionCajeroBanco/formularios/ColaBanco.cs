@@ -64,6 +64,9 @@ namespace SimulacionCajeroBanco
         {
             try
             {
+                this.dataGridView1.RowsDefaultCellStyle.BackColor = Color.Blue;
+                this.dataGridView1.AlternatingRowsDefaultCellStyle.BackColor =Color.DarkBlue;
+
                 loadTemporada();
                 loadTanda();
                 getClientesByTemporada();
@@ -101,68 +104,87 @@ namespace SimulacionCajeroBanco
                 lisaProblemaCheque=new List<problema>();
                 //instancia problemas
                
-
+                
                 //cuando la temporada sea primavera
                 if (temporada.nombre == "primavera")
                 {
                     #region
                     //problemas deposito
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "fallo sistema";
                     problema.probabilidad_ocurrencia_inicial = 0;
-                    problema.probabilidad_ocurrencia_final = 5.12;
+                    //problema.probabilidad_ocurrencia_final = 5.12;
+                    problema.probabilidad_ocurrencia_final = 30.40;
+                    numero = random.Next(1,15);
                     listaProblemaDeposito.Add(problema);
 
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "fallo electricidad";
                     problema.probabilidad_ocurrencia_inicial = 0;
-                    problema.probabilidad_ocurrencia_final = 9.85;
+                    //problema.probabilidad_ocurrencia_final = 9.85;
+                    problema.probabilidad_ocurrencia_final = 25.30;
+                    numero = random.Next(1, 5);
                     listaProblemaDeposito.Add(problema);
 
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "numero cuenta incorrecto";
                     problema.probabilidad_ocurrencia_inicial = 0;
-                    problema.probabilidad_ocurrencia_final = 20.33;
+                    //problema.probabilidad_ocurrencia_final = 20.33;
+                    problema.probabilidad_ocurrencia_final = 23.60;
                     listaProblemaDeposito.Add(problema);
 
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "dinero insuficiente";
                     problema.probabilidad_ocurrencia_inicial = 0;
-                    problema.probabilidad_ocurrencia_final = 15.66;
+                    //problema.probabilidad_ocurrencia_final = 15.66;
+                    problema.probabilidad_ocurrencia_final = 17.85;
                     listaProblemaDeposito.Add(problema);
 
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "falta cedula";
                     problema.probabilidad_ocurrencia_inicial = 0;
-                    problema.probabilidad_ocurrencia_final = 12.74;
+                    //problema.probabilidad_ocurrencia_final = 12.74;
+                    problema.probabilidad_ocurrencia_final = 35.90;
                     listaProblemaDeposito.Add(problema);
 
 
                     //problemas retiro
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "fallo sistema";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 5.12;
+                    numero = random.Next(1, 15);
                     listaProblemaRetiro.Add(problema);
 
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "fallo electricidad";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 9.85;
+                    numero = random.Next(1, 5);
                     listaProblemaRetiro.Add(problema);
 
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "numero cuenta incorrecto";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 14.69;
                     listaProblemaRetiro.Add(problema);
 
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "dinero insuficiente";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 11.80;
                     listaProblemaRetiro.Add(problema);
 
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "falta cedula";
                     problema.probabilidad_ocurrencia_inicial = 0;
@@ -171,28 +193,34 @@ namespace SimulacionCajeroBanco
 
 
                     //problemas cambio moneda
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "fallo sistema";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 5.12;
+                    numero = random.Next(1, 15);
                     listaProblemaCambio.Add(problema);
 
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "fallo electricidad";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 9.85;
+                    numero = random.Next(1, 5);
                     listaProblemaCambio.Add(problema);
 
                     //problema = new problema();
                     //problema.nombre = "falta cedula";
                     //listaProblemaCambio.Add(problema);
-
+                    
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "dinero insuficiente";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 5.45;
                     listaProblemaCambio.Add(problema);
 
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "moneda no es aceptada";
                     problema.probabilidad_ocurrencia_inicial = 0;
@@ -201,30 +229,37 @@ namespace SimulacionCajeroBanco
 
 
                     //problemas cheque
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "fallo sistema";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 5.12;
+                    numero = random.Next(1, 15);
                     lisaProblemaCheque.Add(problema);
 
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "fallo electricidad";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 9.85;
+                    numero = random.Next(1, 5);
                     lisaProblemaCheque.Add(problema);
 
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "falta cedula";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 14.42;
                     lisaProblemaCheque.Add(problema);
 
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "cheque mal endosado";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 22.12;
                     lisaProblemaCheque.Add(problema);
 
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "cheque sin fondos";
                     problema.probabilidad_ocurrencia_inicial = 0;
@@ -237,30 +272,37 @@ namespace SimulacionCajeroBanco
                 {
                     #region
                     //problemas deposito
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "fallo sistema";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 12.60;
+                    numero = random.Next(1, 15);
                     listaProblemaDeposito.Add(problema);
 
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "fallo electricidad";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 20.30;
+                    numero = random.Next(1, 5);
                     listaProblemaDeposito.Add(problema);
 
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "numero cuenta incorrecto";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 17.43;
                     listaProblemaDeposito.Add(problema);
 
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "dinero insuficiente";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 15.30;
                     listaProblemaDeposito.Add(problema);
 
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "falta cedula";
                     problema.probabilidad_ocurrencia_inicial = 0;
@@ -269,30 +311,37 @@ namespace SimulacionCajeroBanco
 
 
                     //problemas retiro
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "fallo sistema";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 12.60;
+                    numero = random.Next(1, 15);
                     listaProblemaRetiro.Add(problema);
 
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "fallo electricidad";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 20.30;
+                    numero = random.Next(1, 5);
                     listaProblemaRetiro.Add(problema);
 
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "numero cuenta incorrecto";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 9.60;
                     listaProblemaRetiro.Add(problema);
 
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "dinero insuficiente";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 14.39;
                     listaProblemaRetiro.Add(problema);
 
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "falta cedula";
                     problema.probabilidad_ocurrencia_inicial = 0;
@@ -301,28 +350,34 @@ namespace SimulacionCajeroBanco
 
 
                     //problemas cambio moneda
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "fallo sistema";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 12.60;
+                    numero = random.Next(1, 15);
                     listaProblemaCambio.Add(problema);
 
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "fallo electricidad";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 20.30;
+                    numero = random.Next(1, 5);
                     listaProblemaCambio.Add(problema);
 
                     //problema = new problema();
                     //problema.nombre = "falta cedula";
                     //listaProblemaCambio.Add(problema);
 
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "dinero insuficiente";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 10.45;
                     listaProblemaCambio.Add(problema);
 
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "moneda no es aceptada";
                     problema.probabilidad_ocurrencia_inicial = 0;
@@ -331,30 +386,37 @@ namespace SimulacionCajeroBanco
 
 
                     //problemas cheque
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "fallo sistema";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 12.60;
+                    numero = random.Next(1, 15);
                     lisaProblemaCheque.Add(problema);
 
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "fallo electricidad";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 20.30;
+                    numero = random.Next(1, 5);
                     lisaProblemaCheque.Add(problema);
 
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "falta cedula";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 23.41;
                     lisaProblemaCheque.Add(problema);
 
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "cheque mal endosado";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 19.42;
                     lisaProblemaCheque.Add(problema);
 
+                    random = new Random();
                     problema = new problema();
                     problema.nombre = "cheque sin fondos";
                     problema.probabilidad_ocurrencia_inicial = 0;
@@ -502,12 +564,61 @@ namespace SimulacionCajeroBanco
                     return;
                 }
 
+                //procesar
+
+                //cargar problemas
+                getProblemas();
+                
                 //cantidad de cajeros
                 cantidadCajeros = Convert.ToInt16(cantidadCajeroText.Text.Trim());
+                
+                
                 //cantidad de clientes
                 cantidadClientes = Convert.ToInt16(cantidadClienteText.Text.Trim());
-
                 getClientes();
+
+                //rrecorriendo los clientes
+                listaCliente.ForEach(x =>
+                {
+                    random=new Random();
+                    
+                    
+                    //verificando si ocurren problemas
+
+                    //deposito
+                    if (x.operacion_deseada == "deposito")
+                    {
+                        listaProblemaDeposito.ForEach(p =>
+                        {
+                            numero = random.NextDouble();
+                            numero = Math.Round(numero,2);
+                            numero*=100;
+                            if (numero >= p.probabilidad_ocurrencia_inicial && numero <= p.probabilidad_ocurrencia_final)
+                            {
+                                MessageBox.Show(numero.ToString() + "--" + p.probabilidad_ocurrencia_inicial + "-" + p.probabilidad_ocurrencia_final + "--");
+                                MessageBox.Show("cliente-> "+x.codigo+"-"+cliente.operacion_deseada+"->presento problema: " + p.nombre);
+                                MessageBox.Show("tiempo antes->" + cliente.tiempo_servicio_final + " tiempo ahora->" + ((cliente.tiempo_servicio_final + p.tiempo_aumenta)).ToString("N"));
+                                //cliente se presento este problema
+                                cliente.problemas.Add(p);
+                                cliente.tiempo_servicio_final += p.tiempo_aumenta;
+                            }
+                        });
+                    }
+
+                    //retiro
+
+
+                    //cambio moneda
+
+                    
+                    
+                });
+
+
+
+
+
+
                 loadClientes();
 
 
@@ -535,9 +646,16 @@ namespace SimulacionCajeroBanco
                 {
                     //llenando los datos de cada cliente
                     cliente=new cliente();
+                    cliente.problemas=new List<problema>();
+
+
+
+
                     cliente.codigo = f;
                     cliente.temporada = temporada.nombre;
-                    //operacion que realizara dependiendo de la temporada y la tanda
+                    cliente.tanda = tanda.nombre;
+                    //asignar operacion que realizara dependiendo de la temporada y la tanda
+                    //(deposito,retiro,cambio moneda,cheque)
                     #region
                     if (temporada.nombre == "primavera")
                     {
@@ -547,21 +665,36 @@ namespace SimulacionCajeroBanco
                             //asigar operacion
                             double numero = random.NextDouble();
                             numero = Math.Round(numero, 2);
-                            MessageBox.Show(numero.ToString());
+                            //MessageBox.Show(numero.ToString());
                             if (numero >= 0 && numero <= 0.44)
                             {
                                 //deposito
-                                cliente.operacion_deseada = "deposito";
+                                operacion=new operaciones();
+                                operacion.nombre = "deposito";
+                                operacion.tiempo_promedio = 3.5;
+                                cliente.operacion_deseada = operacion.nombre;
+                                cliente.tiempo_servicio_esperado = operacion.tiempo_promedio;
+                                cliente.tiempo_servicio_final = operacion.tiempo_promedio;
                             }
                             if (numero >= 0.45 && numero <= 0.79)
                             {
                                 //retiro
-                                cliente.operacion_deseada = "retiro";
+                                operacion = new operaciones();
+                                operacion.nombre = "retiro";
+                                operacion.tiempo_promedio = 2.7;
+                                cliente.operacion_deseada = operacion.nombre;
+                                cliente.tiempo_servicio_esperado = operacion.tiempo_promedio;
+                                cliente.tiempo_servicio_final = operacion.tiempo_promedio;
                             }
                             if (numero >= 0.79 && numero <= 1)
                             {
                                 //cambio moneda
-                                cliente.operacion_deseada = "cambio moneda";
+                                operacion = new operaciones();
+                                operacion.nombre = "cambio moneda";
+                                operacion.tiempo_promedio = 3.0;
+                                cliente.operacion_deseada = operacion.nombre;
+                                cliente.tiempo_servicio_esperado = operacion.tiempo_promedio;
+                                cliente.tiempo_servicio_final = operacion.tiempo_promedio;
                             }
                         }
                         else if (tanda.nombre == "vespertina")
@@ -569,21 +702,36 @@ namespace SimulacionCajeroBanco
                             //asigar operacion
                             double numero = random.NextDouble();
                             numero = Math.Round(numero, 2);
-                            MessageBox.Show(numero.ToString());
+                            //MessageBox.Show(numero.ToString());
                             if (numero >= 0 && numero <= 0.34)
                             {
                                 //deposito
-                                cliente.operacion_deseada = "deposito";
+                                operacion = new operaciones();
+                                operacion.nombre = "deposito";
+                                operacion.tiempo_promedio = 3.2;
+                                cliente.operacion_deseada = operacion.nombre;
+                                cliente.tiempo_servicio_esperado = operacion.tiempo_promedio;
+                                cliente.tiempo_servicio_final = operacion.tiempo_promedio;
                             }
                             if (numero >= 0.35 && numero <= 0.69)
                             {
                                 //retiro
-                                cliente.operacion_deseada = "retiro";
+                                operacion = new operaciones();
+                                operacion.nombre = "retiro";
+                                operacion.tiempo_promedio = 2.9;
+                                cliente.operacion_deseada = operacion.nombre;
+                                cliente.tiempo_servicio_esperado = operacion.tiempo_promedio;
+                                cliente.tiempo_servicio_final = operacion.tiempo_promedio;
                             }
                             if (numero >= 0.70 && numero <= 1)
                             {
                                 //cambio moneda
-                                cliente.operacion_deseada = "cambio moneda";
+                                operacion = new operaciones();
+                                operacion.nombre = "cambio monesa";
+                                operacion.tiempo_promedio = 3.1;
+                                cliente.operacion_deseada = operacion.nombre;
+                                cliente.tiempo_servicio_esperado = operacion.tiempo_promedio;
+                                cliente.tiempo_servicio_final = operacion.tiempo_promedio;
                             }
                         }
                     }
@@ -595,21 +743,36 @@ namespace SimulacionCajeroBanco
                             //asigar operacion
                             double numero = random.NextDouble();
                             numero = Math.Round(numero, 2);
-                            MessageBox.Show(numero.ToString());
+                            //MessageBox.Show(numero.ToString());
                             if (numero >= 0 && numero <= 0.26)
                             {
                                 //deposito
-                                cliente.operacion_deseada = "deposito";
+                                operacion = new operaciones();
+                                operacion.nombre = "deposito";
+                                operacion.tiempo_promedio = 3.0;
+                                cliente.operacion_deseada = operacion.nombre;
+                                cliente.tiempo_servicio_esperado = operacion.tiempo_promedio;
+                                cliente.tiempo_servicio_final = operacion.tiempo_promedio;
                             }
                             if (numero >= 0.25 && numero <= 0.63)
                             {
                                 //retiro
-                                cliente.operacion_deseada = "retiro";
+                                operacion = new operaciones();
+                                operacion.nombre = "retiro";
+                                operacion.tiempo_promedio = 3.2;
+                                cliente.operacion_deseada = operacion.nombre;
+                                cliente.tiempo_servicio_esperado = operacion.tiempo_promedio;
+                                cliente.tiempo_servicio_final = operacion.tiempo_promedio;
                             }
                             if (numero >= 0.64 && numero <= 1)
                             {
                                 //cambio moneda
-                                cliente.operacion_deseada = "cambio moneda";
+                                operacion = new operaciones();
+                                operacion.nombre = "cambio moneda";
+                                operacion.tiempo_promedio = 2.5;
+                                cliente.operacion_deseada = operacion.nombre;
+                                cliente.tiempo_servicio_esperado = operacion.tiempo_promedio;
+                                cliente.tiempo_servicio_final = operacion.tiempo_promedio;
                             }
                         }
                         else if (tanda.nombre == "vespertina")
@@ -617,26 +780,45 @@ namespace SimulacionCajeroBanco
                             //asigar operacion
                             double numero = random.NextDouble();
                             numero = Math.Round(numero, 2);
-                            MessageBox.Show(numero.ToString());
+                            //MessageBox.Show(numero.ToString());
                             if (numero >= 0 && numero <= 0.29)
                             {
                                 //deposito
-                                cliente.operacion_deseada = "deposito";
+                                operacion = new operaciones();
+                                operacion.nombre = "deposito";
+                                operacion.tiempo_promedio = 2.9;
+                                cliente.operacion_deseada = operacion.nombre;
+                                cliente.tiempo_servicio_esperado = operacion.tiempo_promedio;
+                                cliente.tiempo_servicio_final = operacion.tiempo_promedio;
                             }
                             if (numero >= 0.30 && numero <= 0.62)
                             {
                                 //retiro
-                                cliente.operacion_deseada = "retiro";
+                                operacion = new operaciones();
+                                operacion.nombre = "retiro";
+                                operacion.tiempo_promedio = 3.5;
+                                cliente.operacion_deseada = operacion.nombre;
+                                cliente.tiempo_servicio_esperado = operacion.tiempo_promedio;
+                                cliente.tiempo_servicio_final = operacion.tiempo_promedio;
                             }
                             if (numero >= 0.63 && numero <= 1)
                             {
                                 //cambio moneda
-                                cliente.operacion_deseada = "cambio moneda";
+                                operacion = new operaciones();
+                                operacion.nombre = "cambio moneda";
+                                operacion.tiempo_promedio = 2.7;
+                                cliente.operacion_deseada = operacion.nombre;
+                                cliente.tiempo_servicio_esperado = operacion.tiempo_promedio;
+                                cliente.tiempo_servicio_final = operacion.tiempo_promedio;
                             }
                         }
                     }
                     #endregion
 
+                    cliente.atendido = false;
+                    cliente.atendiendo = false;
+                    cliente.abandono = false;
+                    cliente.tiempo_servicio_base = 0;
 
                     listaCliente.Add(cliente);
                 }
@@ -695,17 +877,11 @@ namespace SimulacionCajeroBanco
                     dataGridView1.Rows.Clear();
                 }
 
-                for (int f = 1; f <= cantidadClientes; f++)
-                {
-                    //llenando los datos de cada cliente
-                    cliente = new cliente();
-                    cliente.codigo = f;
-                    cliente.temporada = temporadaAnoCombo.Text;
-                    cliente.temporada = temporada.nombre;
-
-
-                    dataGridView1.Rows.Add(cliente.codigo, cliente.temporada);
-                }
+               listaCliente.ForEach(x =>
+               {
+                   dataGridView1.Rows.Add(x.codigo, x.operacion_deseada,x.tanda,x.tiempo_servicio_esperado,x.problemas.Count.ToString(),x.tiempo_servicio_final);
+               });
+                  
             }
             catch (Exception ex)
             {
