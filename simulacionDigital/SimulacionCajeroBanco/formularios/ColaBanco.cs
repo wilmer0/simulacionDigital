@@ -110,161 +110,177 @@ namespace SimulacionCajeroBanco
                 {
                     #region
                     //problemas deposito
-                    random = new Random();
-                    problema = new problema();
+                   
+                    problema = new problema(); 
                     problema.nombre = "fallo sistema";
                     problema.probabilidad_ocurrencia_inicial = 0;
-                    //problema.probabilidad_ocurrencia_final = 5.12;
                     problema.probabilidad_ocurrencia_final = 30.40;
+                    random = new Random();
                     numero = random.Next(1,15);
+                    problema.tiempo_aumenta = numero;
                     listaProblemaDeposito.Add(problema);
 
-                    random = new Random();
                     problema = new problema();
                     problema.nombre = "fallo electricidad";
                     problema.probabilidad_ocurrencia_inicial = 0;
-                    //problema.probabilidad_ocurrencia_final = 9.85;
                     problema.probabilidad_ocurrencia_final = 25.30;
-                    numero = random.Next(1, 5);
+                    random = new Random();
+                    numero = random.Next(1, 20);
+                    problema.tiempo_aumenta = numero;
                     listaProblemaDeposito.Add(problema);
 
-                    random = new Random();
                     problema = new problema();
                     problema.nombre = "numero cuenta incorrecto";
                     problema.probabilidad_ocurrencia_inicial = 0;
-                    //problema.probabilidad_ocurrencia_final = 20.33;
                     problema.probabilidad_ocurrencia_final = 23.60;
+                    random = new Random();
+                    numero = random.Next(1, 3);
+                    problema.tiempo_aumenta = numero;
                     listaProblemaDeposito.Add(problema);
 
-                    random = new Random();
                     problema = new problema();
                     problema.nombre = "dinero insuficiente";
                     problema.probabilidad_ocurrencia_inicial = 0;
-                    //problema.probabilidad_ocurrencia_final = 15.66;
                     problema.probabilidad_ocurrencia_final = 17.85;
+                    random = new Random();
+                    numero = random.Next(1, 15);
+                    problema.tiempo_aumenta = numero;
                     listaProblemaDeposito.Add(problema);
 
-                    random = new Random();
                     problema = new problema();
                     problema.nombre = "falta cedula";
                     problema.probabilidad_ocurrencia_inicial = 0;
-                    //problema.probabilidad_ocurrencia_final = 12.74;
                     problema.probabilidad_ocurrencia_final = 35.90;
+                    random = new Random();
+                    numero = random.Next(1, 2);
+                    problema.tiempo_aumenta = numero;
                     listaProblemaDeposito.Add(problema);
 
 
                     //problemas retiro
-                    random = new Random();
                     problema = new problema();
                     problema.nombre = "fallo sistema";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 5.12;
+                    random = new Random();
                     numero = random.Next(1, 15);
+                    problema.tiempo_aumenta = numero;
                     listaProblemaRetiro.Add(problema);
 
-                    random = new Random();
-                    problema = new problema();
+                    problema = new problema(); 
                     problema.nombre = "fallo electricidad";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 9.85;
-                    numero = random.Next(1, 5);
+                    random = new Random();
+                    numero = random.Next(1, 20);
+                    problema.tiempo_aumenta = numero;
                     listaProblemaRetiro.Add(problema);
 
-                    random = new Random();
-                    problema = new problema();
+                    problema = new problema(); 
                     problema.nombre = "numero cuenta incorrecto";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 14.69;
+                    random = new Random();
+                    numero = random.Next(1, 2);
+                    problema.tiempo_aumenta = numero;
                     listaProblemaRetiro.Add(problema);
 
-                    random = new Random();
-                    problema = new problema();
+                    problema=new problema();
                     problema.nombre = "dinero insuficiente";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 11.80;
+                    random = new Random();
+                    numero = random.Next(1,3);
+                    problema.tiempo_aumenta = numero;
                     listaProblemaRetiro.Add(problema);
 
-                    random = new Random();
                     problema = new problema();
                     problema.nombre = "falta cedula";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 17.34;
+                    random = new Random();
+                    numero = random.Next(1, 2);
+                    problema.tiempo_aumenta = numero;
                     listaProblemaRetiro.Add(problema);
 
 
                     //problemas cambio moneda
-                    random = new Random();
                     problema = new problema();
                     problema.nombre = "fallo sistema";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 5.12;
+                    random = new Random();
                     numero = random.Next(1, 15);
+                    problema.tiempo_aumenta = numero;
                     listaProblemaCambio.Add(problema);
 
-                    random = new Random();
+
                     problema = new problema();
                     problema.nombre = "fallo electricidad";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 9.85;
-                    numero = random.Next(1, 5);
+                    random = new Random();
+                    numero = random.Next(1, 20);
+                    problema.tiempo_aumenta = numero;
                     listaProblemaCambio.Add(problema);
 
-                    //problema = new problema();
-                    //problema.nombre = "falta cedula";
-                    //listaProblemaCambio.Add(problema);
                     
-                    random = new Random();
                     problema = new problema();
                     problema.nombre = "dinero insuficiente";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 5.45;
+                    random = new Random();
+                    numero = random.Next(1, 5);
+                    problema.tiempo_aumenta = numero;
                     listaProblemaCambio.Add(problema);
 
-                    random = new Random();
                     problema = new problema();
                     problema.nombre = "moneda no es aceptada";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 9.85;
+                    random = new Random();
+                    numero = random.Next(1, 2);
+                    problema.tiempo_aumenta = numero;
                     listaProblemaCambio.Add(problema);
 
 
-                    //problemas cheque
-                    random = new Random();
-                    problema = new problema();
-                    problema.nombre = "fallo sistema";
-                    problema.probabilidad_ocurrencia_inicial = 0;
-                    problema.probabilidad_ocurrencia_final = 5.12;
-                    numero = random.Next(1, 15);
-                    lisaProblemaCheque.Add(problema);
+                    ////problemas cheque
+                    //random = new Random();
+                    //problema = new problema();
+                    //problema.nombre = "fallo sistema";
+                    //problema.probabilidad_ocurrencia_inicial = 0;
+                    //problema.probabilidad_ocurrencia_final = 5.12;
+                    //numero = random.Next(1, 15);
+                    //lisaProblemaCheque.Add(problema);
 
-                    random = new Random();
-                    problema = new problema();
-                    problema.nombre = "fallo electricidad";
-                    problema.probabilidad_ocurrencia_inicial = 0;
-                    problema.probabilidad_ocurrencia_final = 9.85;
-                    numero = random.Next(1, 5);
-                    lisaProblemaCheque.Add(problema);
+                    //random = new Random();
+                    //problema = new problema();
+                    //problema.nombre = "fallo electricidad";
+                    //problema.probabilidad_ocurrencia_inicial = 0;
+                    //problema.probabilidad_ocurrencia_final = 9.85;
+                    //numero = random.Next(1, 5);
+                    //lisaProblemaCheque.Add(problema);
 
-                    random = new Random();
-                    problema = new problema();
-                    problema.nombre = "falta cedula";
-                    problema.probabilidad_ocurrencia_inicial = 0;
-                    problema.probabilidad_ocurrencia_final = 14.42;
-                    lisaProblemaCheque.Add(problema);
+                    //random = new Random();
+                    //problema = new problema();
+                    //problema.nombre = "falta cedula";
+                    //problema.probabilidad_ocurrencia_inicial = 0;
+                    //problema.probabilidad_ocurrencia_final = 14.42;
+                    //lisaProblemaCheque.Add(problema);
 
-                    random = new Random();
-                    problema = new problema();
-                    problema.nombre = "cheque mal endosado";
-                    problema.probabilidad_ocurrencia_inicial = 0;
-                    problema.probabilidad_ocurrencia_final = 22.12;
-                    lisaProblemaCheque.Add(problema);
+                    //random = new Random();
+                    //problema = new problema();
+                    //problema.nombre = "cheque mal endosado";
+                    //problema.probabilidad_ocurrencia_inicial = 0;
+                    //problema.probabilidad_ocurrencia_final = 22.12;
+                    //lisaProblemaCheque.Add(problema);
 
-                    random = new Random();
-                    problema = new problema();
-                    problema.nombre = "cheque sin fondos";
-                    problema.probabilidad_ocurrencia_inicial = 0;
-                    problema.probabilidad_ocurrencia_final = 35.20;
-                    lisaProblemaCheque.Add(problema);
+                    //random = new Random();
+                    //problema = new problema();
+                    //problema.nombre = "cheque sin fondos";
+                    //problema.probabilidad_ocurrencia_inicial = 0;
+                    //problema.probabilidad_ocurrencia_final = 35.20;
+                    //lisaProblemaCheque.Add(problema);
                     #endregion
                 }
                 //cuando la temporada sea invierno
@@ -272,156 +288,183 @@ namespace SimulacionCajeroBanco
                 {
                     #region
                     //problemas deposito
-                    random = new Random();
                     problema = new problema();
                     problema.nombre = "fallo sistema";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 12.60;
-                    numero = random.Next(1, 15);
+                    random = new Random();
+                    numero = random.Next(1, 20);
+                    problema.tiempo_aumenta = numero;
                     listaProblemaDeposito.Add(problema);
 
-                    random = new Random();
+
                     problema = new problema();
                     problema.nombre = "fallo electricidad";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 20.30;
-                    numero = random.Next(1, 5);
+                    random = new Random();
+                    numero = random.Next(1, 30);
+                    problema.tiempo_aumenta = numero;
                     listaProblemaDeposito.Add(problema);
 
-                    random = new Random();
+
                     problema = new problema();
                     problema.nombre = "numero cuenta incorrecto";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 17.43;
+                    random = new Random();
+                    numero = random.Next(1, 2);
+                    problema.tiempo_aumenta = numero;
                     listaProblemaDeposito.Add(problema);
 
-                    random = new Random();
+
                     problema = new problema();
                     problema.nombre = "dinero insuficiente";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 15.30;
+                    random = new Random();
+                    numero = random.Next(1, 3);
+                    problema.tiempo_aumenta = numero;
                     listaProblemaDeposito.Add(problema);
 
-                    random = new Random();
+
                     problema = new problema();
                     problema.nombre = "falta cedula";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 7.50;
+                    random = new Random();
+                    numero = random.Next(1, 2);
+                    problema.tiempo_aumenta = numero;
                     listaProblemaDeposito.Add(problema);
 
 
                     //problemas retiro
-                    random = new Random();
                     problema = new problema();
                     problema.nombre = "fallo sistema";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 12.60;
-                    numero = random.Next(1, 15);
+                    random = new Random();
+                    numero = random.Next(1, 20);
+                    problema.tiempo_aumenta = numero;
                     listaProblemaRetiro.Add(problema);
 
-                    random = new Random();
+
                     problema = new problema();
                     problema.nombre = "fallo electricidad";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 20.30;
-                    numero = random.Next(1, 5);
+                    random = new Random();
+                    numero = random.Next(1, 30);
+                    problema.tiempo_aumenta = numero;
                     listaProblemaRetiro.Add(problema);
 
-                    random = new Random();
+
                     problema = new problema();
                     problema.nombre = "numero cuenta incorrecto";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 9.60;
+                    random = new Random();
+                    numero = random.Next(1, 3);
+                    problema.tiempo_aumenta = numero;
                     listaProblemaRetiro.Add(problema);
 
-                    random = new Random();
+
                     problema = new problema();
                     problema.nombre = "dinero insuficiente";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 14.39;
+                    random = new Random();
+                    numero = random.Next(1, 2);
+                    problema.tiempo_aumenta = numero;
                     listaProblemaRetiro.Add(problema);
 
-                    random = new Random();
                     problema = new problema();
                     problema.nombre = "falta cedula";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 22.43;
+                    random = new Random();
+                    numero = random.Next(1, 2);
+                    problema.tiempo_aumenta = numero;
                     listaProblemaRetiro.Add(problema);
 
 
                     //problemas cambio moneda
-                    random = new Random();
                     problema = new problema();
                     problema.nombre = "fallo sistema";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 12.60;
-                    numero = random.Next(1, 15);
+                    random = new Random();
+                    numero = random.Next(1, 20);
+                    problema.tiempo_aumenta = numero;
                     listaProblemaCambio.Add(problema);
 
-                    random = new Random();
+
                     problema = new problema();
                     problema.nombre = "fallo electricidad";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 20.30;
-                    numero = random.Next(1, 5);
+                    random = new Random();
+                    numero = random.Next(1, 30);
+                    problema.tiempo_aumenta = numero; 
                     listaProblemaCambio.Add(problema);
 
-                    //problema = new problema();
-                    //problema.nombre = "falta cedula";
-                    //listaProblemaCambio.Add(problema);
 
-                    random = new Random();
                     problema = new problema();
                     problema.nombre = "dinero insuficiente";
                     problema.probabilidad_ocurrencia_inicial = 0;
-                    problema.probabilidad_ocurrencia_final = 10.45;
+                    random = new Random();
+                    numero = random.Next(1, 6);
+                    problema.tiempo_aumenta = numero; 
                     listaProblemaCambio.Add(problema);
 
-                    random = new Random();
+
                     problema = new problema();
                     problema.nombre = "moneda no es aceptada";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 34.20;
+                    random = new Random();
+                    numero = random.Next(1, 3);
+                    problema.tiempo_aumenta = numero;
                     listaProblemaCambio.Add(problema);
 
 
                     //problemas cheque
-                    random = new Random();
-                    problema = new problema();
-                    problema.nombre = "fallo sistema";
-                    problema.probabilidad_ocurrencia_inicial = 0;
-                    problema.probabilidad_ocurrencia_final = 12.60;
-                    numero = random.Next(1, 15);
-                    lisaProblemaCheque.Add(problema);
+                    //random = new Random();
+                    //problema = new problema();
+                    //problema.nombre = "fallo sistema";
+                    //problema.probabilidad_ocurrencia_inicial = 0;
+                    //problema.probabilidad_ocurrencia_final = 12.60;
+                    //numero = random.Next(1, 15);
+                    //lisaProblemaCheque.Add(problema);
 
-                    random = new Random();
-                    problema = new problema();
-                    problema.nombre = "fallo electricidad";
-                    problema.probabilidad_ocurrencia_inicial = 0;
-                    problema.probabilidad_ocurrencia_final = 20.30;
-                    numero = random.Next(1, 5);
-                    lisaProblemaCheque.Add(problema);
+                    //random = new Random();
+                    //problema = new problema();
+                    //problema.nombre = "fallo electricidad";
+                    //problema.probabilidad_ocurrencia_inicial = 0;
+                    //problema.probabilidad_ocurrencia_final = 20.30;
+                    //numero = random.Next(1, 5);
+                    //lisaProblemaCheque.Add(problema);
 
-                    random = new Random();
-                    problema = new problema();
-                    problema.nombre = "falta cedula";
-                    problema.probabilidad_ocurrencia_inicial = 0;
-                    problema.probabilidad_ocurrencia_final = 23.41;
-                    lisaProblemaCheque.Add(problema);
+                    //random = new Random();
+                    //problema = new problema();
+                    //problema.nombre = "falta cedula";
+                    //problema.probabilidad_ocurrencia_inicial = 0;
+                    //problema.probabilidad_ocurrencia_final = 23.41;
+                    //lisaProblemaCheque.Add(problema);
 
-                    random = new Random();
-                    problema = new problema();
-                    problema.nombre = "cheque mal endosado";
-                    problema.probabilidad_ocurrencia_inicial = 0;
-                    problema.probabilidad_ocurrencia_final = 19.42;
-                    lisaProblemaCheque.Add(problema);
+                    //random = new Random();
+                    //problema = new problema();
+                    //problema.nombre = "cheque mal endosado";
+                    //problema.probabilidad_ocurrencia_inicial = 0;
+                    //problema.probabilidad_ocurrencia_final = 19.42;
+                    //lisaProblemaCheque.Add(problema);
 
-                    random = new Random();
-                    problema = new problema();
-                    problema.nombre = "cheque sin fondos";
-                    problema.probabilidad_ocurrencia_inicial = 0;
-                    problema.probabilidad_ocurrencia_final = 12.98;
-                    lisaProblemaCheque.Add(problema);
+                    //random = new Random();
+                    //problema = new problema();
+                    //problema.nombre = "cheque sin fondos";
+                    //problema.probabilidad_ocurrencia_inicial = 0;
+                    //problema.probabilidad_ocurrencia_final = 12.98;
+                    //lisaProblemaCheque.Add(problema);
                     #endregion
                 }
 
@@ -592,10 +635,11 @@ namespace SimulacionCajeroBanco
                         {
                             numero = random.NextDouble();
                             numero = Math.Round(numero,2);
+                            //0.45*100=  numero=45
                             numero*=100;
                             if (numero >= p.probabilidad_ocurrencia_inicial && numero <= p.probabilidad_ocurrencia_final)
                             {
-                                MessageBox.Show(numero.ToString() + "--" + p.probabilidad_ocurrencia_inicial + "-" + p.probabilidad_ocurrencia_final + "--");
+                                MessageBox.Show(numero.ToString() + "-" + p.probabilidad_ocurrencia_inicial + "-" + p.probabilidad_ocurrencia_final + "--");
                                 MessageBox.Show("cliente-> "+x.codigo+"-"+cliente.operacion_deseada+"->presento problema: " + p.nombre);
                                 MessageBox.Show("tiempo antes->" + cliente.tiempo_servicio_final + " tiempo ahora->" + ((cliente.tiempo_servicio_final + p.tiempo_aumenta)).ToString("N"));
                                 //cliente se presento este problema
@@ -606,9 +650,45 @@ namespace SimulacionCajeroBanco
                     }
 
                     //retiro
-
+                    if (x.operacion_deseada == "retiro")
+                    {
+                        listaProblemaRetiro.ForEach(p =>
+                        {
+                            numero = random.NextDouble();
+                            numero = Math.Round(numero, 2);
+                            numero *= 100;
+                            if (numero >= p.probabilidad_ocurrencia_inicial && numero <= p.probabilidad_ocurrencia_final)
+                            {
+                                MessageBox.Show(numero.ToString() + "-" + p.probabilidad_ocurrencia_inicial + "-" + p.probabilidad_ocurrencia_final + "--");
+                                MessageBox.Show("cliente-> " + x.codigo + "-" + cliente.operacion_deseada + "->presento problema: " + p.nombre);
+                                MessageBox.Show("tiempo antes->" + cliente.tiempo_servicio_final + " tiempo ahora->" + ((cliente.tiempo_servicio_final + p.tiempo_aumenta)).ToString("N"));
+                                //cliente se presento este problema
+                                cliente.problemas.Add(p);
+                                cliente.tiempo_servicio_final += p.tiempo_aumenta;
+                            }
+                        });
+                    }
 
                     //cambio moneda
+                    if (x.operacion_deseada == "cambio moneda")
+                    {
+                        listaProblemaCambio.ForEach(p =>
+                        {
+                            numero = random.NextDouble();
+                            numero = Math.Round(numero, 2);
+                            numero *= 100;
+                            if (numero >= p.probabilidad_ocurrencia_inicial && numero <= p.probabilidad_ocurrencia_final)
+                            {
+                                MessageBox.Show(numero.ToString() + "-" + p.probabilidad_ocurrencia_inicial + "-" + p.probabilidad_ocurrencia_final + "--");
+                                MessageBox.Show("cliente-> " + x.codigo + "-" + cliente.operacion_deseada + "->presento problema: " + p.nombre);
+                                MessageBox.Show("tiempo antes->" + cliente.tiempo_servicio_final + " tiempo ahora->" + ((cliente.tiempo_servicio_final + p.tiempo_aumenta)).ToString("N"));
+                                //cliente se presento este problema
+                                cliente.problemas.Add(p);
+                                cliente.tiempo_servicio_final += p.tiempo_aumenta;
+                            }
+                        });
+                    }
+
 
                     
                     
