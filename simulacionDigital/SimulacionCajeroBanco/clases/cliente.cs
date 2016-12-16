@@ -22,6 +22,8 @@ namespace SimulacionCajeroBanco.clases
         public bool atendiendo { get; set; }
         public bool atendido { get; set; }
         public bool abandono { get; set; }
+        public int intentos { get; set; }
+
 
 
     }

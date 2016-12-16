@@ -624,12 +624,16 @@ namespace SimulacionCajeroBanco
                 listaCliente.ForEach(x =>
                 {
                     random=new Random();
+                    //cliente esta siendo atendido
+                    x.atendiendo = true;
+                    x.abandono = false;
+                    
                     
                     
                     //verificando si ocurren problemas
 
                     //deposito
-                    if (x.operacion_deseada == "deposito")
+                    if (x.operacion_deseada == "deposito" && x.abandono == false)
                     {
                         listaProblemaDeposito.ForEach(p =>
                         {
@@ -639,10 +643,80 @@ namespace SimulacionCajeroBanco
                             numero*=100;
                             if (numero >= p.probabilidad_ocurrencia_inicial && numero <= p.probabilidad_ocurrencia_final)
                             {
-                                MessageBox.Show(numero.ToString() + "-" + p.probabilidad_ocurrencia_inicial + "-" + p.probabilidad_ocurrencia_final + "--");
-                                MessageBox.Show("cliente-> "+x.codigo+"-"+cliente.operacion_deseada+"->presento problema: " + p.nombre);
-                                MessageBox.Show("tiempo antes->" + cliente.tiempo_servicio_final + " tiempo ahora->" + ((cliente.tiempo_servicio_final + p.tiempo_aumenta)).ToString("N"));
-                                //cliente se presento este problema
+                                //MessageBox.Show(numero.ToString() + "-" + p.probabilidad_ocurrencia_inicial + "-" + p.probabilidad_ocurrencia_final + "--");
+                                //MessageBox.Show("cliente-> "+x.codigo+"-"+cliente.operacion_deseada+"->presento problema: " + p.nombre);
+                                //MessageBox.Show("tiempo antes->" + cliente.tiempo_servicio_final + " tiempo ahora->" + ((cliente.tiempo_servicio_final + p.tiempo_aumenta)).ToString("N"));
+                                //cliente se presento este problema y toma desiciones
+                                #region
+                                if (p.nombre == "fallo sistema")
+                                {
+                                    //el cliente puede elegir si se queda o se va porque el fallo es grave
+                                    numero = random.Next(1, 2);
+                                    if (numero == 1)
+                                    {
+                                        //se fue el cliente
+                                        x.abandono = true;
+                                    }
+                                }
+                                if (p.nombre == "fallo electricidad")
+                                {
+                                    //el cliente puede elegir si se queda o se va porque el fallo es grave
+                                    numero = random.Next(1, 2);
+                                    if (numero == 1)
+                                    {
+                                        //se fue el cliente
+                                        x.abandono = true;
+                                    }
+                                }
+                                if (p.nombre == "dinero insuficiente")
+                                {
+                                    //el cliente puede elegir si lo intenta una vez mas
+                                    numero = random.Next(1, 2);
+                                    if (numero == 1)
+                                    {
+                                        //lo intentara y aumenta tiempo
+                                        x.intentos +=1;
+                                        x.tiempo_servicio_final += p.tiempo_aumenta;
+                                    }
+                                    else
+                                    {
+                                        //cliente se fue
+                                        x.abandono = true;
+                                    }
+                                }
+                                if (p.nombre == "numero cuenta incorrecto")
+                                {
+                                    //el cliente puede elegir si lo intenta una vez mas
+                                    numero = random.Next(1, 2);
+                                    if (numero == 1)
+                                    {
+                                        //lo intentara y aumenta tiempo
+                                        x.intentos += 1;
+                                        x.tiempo_servicio_final += p.tiempo_aumenta;
+                                    }
+                                    else
+                                    {
+                                        //cliente se fue
+                                        x.abandono = true;
+                                    }
+                                }
+                                if (p.nombre == "falta cedula")
+                                {
+                                    //el cliente puede elegir si lo intenta una vez mas
+                                    numero = random.Next(1, 2);
+                                    if (numero == 1)
+                                    {
+                                        //lo intentara y aumenta tiempo
+                                        x.intentos += 1;
+                                        x.tiempo_servicio_final += p.tiempo_aumenta;
+                                    }
+                                    else
+                                    {
+                                        //cliente se fue
+                                        x.abandono = true;
+                                    }
+                                }
+                                #endregion
                                 cliente.problemas.Add(p);
                                 cliente.tiempo_servicio_final += p.tiempo_aumenta;
                             }
@@ -650,7 +724,7 @@ namespace SimulacionCajeroBanco
                     }
 
                     //retiro
-                    if (x.operacion_deseada == "retiro")
+                    if (x.operacion_deseada == "retiro" && x.abandono==false)
                     {
                         listaProblemaRetiro.ForEach(p =>
                         {
@@ -659,10 +733,83 @@ namespace SimulacionCajeroBanco
                             numero *= 100;
                             if (numero >= p.probabilidad_ocurrencia_inicial && numero <= p.probabilidad_ocurrencia_final)
                             {
-                                MessageBox.Show(numero.ToString() + "-" + p.probabilidad_ocurrencia_inicial + "-" + p.probabilidad_ocurrencia_final + "--");
-                                MessageBox.Show("cliente-> " + x.codigo + "-" + cliente.operacion_deseada + "->presento problema: " + p.nombre);
-                                MessageBox.Show("tiempo antes->" + cliente.tiempo_servicio_final + " tiempo ahora->" + ((cliente.tiempo_servicio_final + p.tiempo_aumenta)).ToString("N"));
-                                //cliente se presento este problema
+                                //MessageBox.Show(numero.ToString() + "-" + p.probabilidad_ocurrencia_inicial + "-" + p.probabilidad_ocurrencia_final + "--");
+                                //MessageBox.Show("cliente-> " + x.codigo + "-" + cliente.operacion_deseada + "->presento problema: " + p.nombre);
+                                //MessageBox.Show("tiempo antes->" + cliente.tiempo_servicio_final + " tiempo ahora->" + ((cliente.tiempo_servicio_final + p.tiempo_aumenta)).ToString("N"));
+                                //cliente se presento este problema y toma desiciones
+                                #region
+
+                                if (p.nombre == "fallo sistema")
+                                {
+                                    //el cliente puede elegir si se queda o se va porque el fallo es grave
+                                    numero = random.Next(1, 2);
+                                    if (numero == 1)
+                                    {
+                                        //se fue el cliente
+                                        x.abandono = true;
+                                    }
+                                }
+                                if (p.nombre == "fallo electricidad")
+                                {
+                                    //el cliente puede elegir si se queda o se va porque el fallo es grave
+                                    numero = random.Next(1, 2);
+                                    if (numero == 1)
+                                    {
+                                        //se fue el cliente
+                                        x.abandono = true;
+                                    }
+                                }
+
+                                if (p.nombre == "dinero insuficiente")
+                                {
+                                    //el cliente puede elegir si lo intenta una vez mas
+                                    numero = random.Next(1, 2);
+                                    if (numero == 1)
+                                    {
+                                        //lo intentara y aumenta tiempo
+                                        x.intentos += 1;
+                                        x.tiempo_servicio_final += p.tiempo_aumenta;
+                                    }
+                                    else
+                                    {
+                                        //cliente se fue
+                                        x.abandono = true;
+                                    }
+                                }
+                                if (p.nombre == "numero cuenta incorrecto")
+                                {
+                                    //el cliente puede elegir si lo intenta una vez mas
+                                    numero = random.Next(1, 2);
+                                    if (numero == 1)
+                                    {
+                                        //lo intentara y aumenta tiempo
+                                        x.intentos += 1;
+                                        x.tiempo_servicio_final += p.tiempo_aumenta;
+                                    }
+                                    else
+                                    {
+                                        //cliente se fue
+                                        x.abandono = true;
+                                    }
+                                }
+                                if (p.nombre == "falta cedula")
+                                {
+                                    //el cliente puede elegir si lo intenta una vez mas
+                                    numero = random.Next(1, 2);
+                                    if (numero == 1)
+                                    {
+                                        //lo intentara y aumenta tiempo
+                                        x.intentos += 1;
+                                        x.tiempo_servicio_final += p.tiempo_aumenta;
+                                    }
+                                    else
+                                    {
+                                        //cliente se fue
+                                        x.abandono = true;
+                                    }
+                                }
+
+                                #endregion
                                 cliente.problemas.Add(p);
                                 cliente.tiempo_servicio_final += p.tiempo_aumenta;
                             }
@@ -670,7 +817,7 @@ namespace SimulacionCajeroBanco
                     }
 
                     //cambio moneda
-                    if (x.operacion_deseada == "cambio moneda")
+                    if (x.operacion_deseada == "cambio moneda" && x.abandono == false)
                     {
                         listaProblemaCambio.ForEach(p =>
                         {
@@ -679,18 +826,93 @@ namespace SimulacionCajeroBanco
                             numero *= 100;
                             if (numero >= p.probabilidad_ocurrencia_inicial && numero <= p.probabilidad_ocurrencia_final)
                             {
-                                MessageBox.Show(numero.ToString() + "-" + p.probabilidad_ocurrencia_inicial + "-" + p.probabilidad_ocurrencia_final + "--");
-                                MessageBox.Show("cliente-> " + x.codigo + "-" + cliente.operacion_deseada + "->presento problema: " + p.nombre);
-                                MessageBox.Show("tiempo antes->" + cliente.tiempo_servicio_final + " tiempo ahora->" + ((cliente.tiempo_servicio_final + p.tiempo_aumenta)).ToString("N"));
-                                //cliente se presento este problema
+                                //MessageBox.Show(numero.ToString() + "-" + p.probabilidad_ocurrencia_inicial + "-" + p.probabilidad_ocurrencia_final + "--");
+                                //MessageBox.Show("cliente-> " + x.codigo + "-" + cliente.operacion_deseada + "->presento problema: " + p.nombre);
+                                //MessageBox.Show("tiempo antes->" + cliente.tiempo_servicio_final + " tiempo ahora->" + ((cliente.tiempo_servicio_final + p.tiempo_aumenta)).ToString("N"));
+                                //cliente se presento este problema y toma desiciones
+                                #region
+                                if (p.nombre == "fallo sistema")
+                                {
+                                    //el cliente puede elegir si se queda o se va porque el fallo es grave
+                                    numero = random.Next(1, 2);
+                                    if (numero == 1)
+                                    {
+                                        //se fue el cliente
+                                        x.abandono = true;
+                                    }
+                                }
+                                if (p.nombre == "fallo electricidad")
+                                {
+                                    //el cliente puede elegir si se queda o se va porque el fallo es grave
+                                    numero = random.Next(1, 2);
+                                    if (numero == 1)
+                                    {
+                                        //se fue el cliente
+                                        x.abandono = true;
+                                    }
+                                }
+                                if (p.nombre == "falta cedula")
+                                {
+                                    //el cliente puede elegir si lo intenta una vez mas
+                                    numero = random.Next(1, 2);
+                                    if (numero == 1)
+                                    {
+                                        //lo intentara y aumenta tiempo
+                                        x.intentos += 1;
+                                        x.tiempo_servicio_final += p.tiempo_aumenta;
+                                    }
+                                    else
+                                    {
+                                        //cliente se fue
+                                        x.abandono = true;
+                                    }
+                                }
+                                if (p.nombre == "moneda no es aceptada")
+                                {
+                                    //el cliente puede elegir si intentar cambiar las monedas porque estan feas
+                                    numero = random.Next(1, 2);
+                                    if (numero == 1)
+                                    {
+                                        //lo intentara y aumenta tiempo
+                                        x.intentos += 1;
+                                        x.tiempo_servicio_final += p.tiempo_aumenta;
+                                    }
+                                    else
+                                    {
+                                        //cliente se fue
+                                        x.abandono = true;
+                                    }
+                                }
+                                #endregion
                                 cliente.problemas.Add(p);
                                 cliente.tiempo_servicio_final += p.tiempo_aumenta;
+                                
                             }
                         });
                     }
 
 
-                    
+                    if (x.tiempo_servicio_esperado != x.tiempo_servicio_final)
+                    {
+                        if (x.problemas.Count == 0)
+                        {
+                            MessageBox.Show("cliente-> " + x.codigo + "  tiempo esperado->" + x.tiempo_servicio_esperado + " tiempo final->" + x.tiempo_servicio_final);
+                        }
+                    }
+
+                    //if (x.abandono == true)
+                    //{
+                    //    MessageBox.Show("cliente abandono->"+x.codigo);
+                        
+                    //}
+                    //if (x.problemas.Count > 0)
+                    //{
+                    //    MessageBox.Show("cliente->" + x.codigo + " problemas->" + x.problemas.Count);
+                    //}
+                    //if (x.tiempo_servicio_esperado != x.tiempo_servicio_final)
+                    //{
+                    //    MessageBox.Show("cliente-> "+x.codigo+"  tiempo esperado->" + x.tiempo_servicio_esperado + " tiempo final->" + x.tiempo_servicio_final);
+                    //}
                     
                 });
 
@@ -807,7 +1029,7 @@ namespace SimulacionCajeroBanco
                             {
                                 //cambio moneda
                                 operacion = new operaciones();
-                                operacion.nombre = "cambio monesa";
+                                operacion.nombre = "cambio moneda";
                                 operacion.tiempo_promedio = 3.1;
                                 cliente.operacion_deseada = operacion.nombre;
                                 cliente.tiempo_servicio_esperado = operacion.tiempo_promedio;
@@ -895,11 +1117,12 @@ namespace SimulacionCajeroBanco
                     }
                     #endregion
 
+                    
                     cliente.atendido = false;
                     cliente.atendiendo = false;
                     cliente.abandono = false;
                     cliente.tiempo_servicio_base = 0;
-
+                    cliente.intentos = 0;
                     listaCliente.Add(cliente);
                 }
 
@@ -957,11 +1180,13 @@ namespace SimulacionCajeroBanco
                     dataGridView1.Rows.Clear();
                 }
 
-               listaCliente.ForEach(x =>
-               {
-                   dataGridView1.Rows.Add(x.codigo, x.operacion_deseada,x.tanda,x.tiempo_servicio_esperado,x.problemas.Count.ToString(),x.tiempo_servicio_final);
-               });
-                  
+                //listaCliente = listaCliente.OrderByDescending(x=> x.problemas).ToList();
+
+                listaCliente.ForEach(x =>
+                {
+                    dataGridView1.Rows.Add(x.codigo, x.operacion_deseada, x.tanda, x.tiempo_servicio_esperado, x.problemas.Count.ToString(), x.tiempo_servicio_final,x.abandono);
+                });
+
             }
             catch (Exception ex)
             {
