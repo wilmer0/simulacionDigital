@@ -42,7 +42,7 @@ namespace SimulacionCajeroBanco
         private List<problema> listaProblemaDeposito;
         private List<problema> listaProblemaRetiro;
         private List<problema> listaProblemaCambio;
-       
+        private List<problema> lisaProblemaCheque; 
 
         //variables para datos
         private double tiempoLLegadaAcumulativo = 0;
@@ -65,6 +65,7 @@ namespace SimulacionCajeroBanco
             {
                 loadTemporada();
                 loadTanda();
+                getClientesByTemporada();
             }
             catch (Exception ex)
             {
@@ -94,7 +95,7 @@ namespace SimulacionCajeroBanco
                 listaProblemaDeposito=new List<problema>();
                 listaProblemaRetiro=new List<problema>();
                 listaProblemaCambio=new List<problema>();
-
+                lisaProblemaCheque=new List<problema>();
                 //instancia problemas
                 problema=new problema();
 
@@ -161,6 +162,27 @@ namespace SimulacionCajeroBanco
                 problema = new problema();
                 problema.nombre = "moneda no es aceptada";
                 listaProblemaCambio.Add(problema);
+
+
+                //problemas cheque
+                problema.nombre = "fallo sistema";
+                lisaProblemaCheque.Add(problema);
+
+                problema = new problema();
+                problema.nombre = "fallo electricidad";
+                lisaProblemaCheque.Add(problema);
+
+                problema = new problema();
+                problema.nombre = "falta cedula";
+                lisaProblemaCheque.Add(problema);
+
+                problema = new problema();
+                problema.nombre = "cheque mal endosado";
+                lisaProblemaCheque.Add(problema);
+
+                problema = new problema();
+                problema.nombre = "cheque sin fondos";
+                lisaProblemaCheque.Add(problema);
 
 
                
@@ -300,13 +322,12 @@ namespace SimulacionCajeroBanco
                 }
 
                 //cantidad de cajeros
-                cantidadCajeros = Convert.ToInt16(cantidadClienteText.Text.Trim());
+                cantidadCajeros = Convert.ToInt16(cantidadCajeroText.Text.Trim());
                 //cantidad de clientes
-                cantidadClientes = Convert.ToInt16(cantidadCajeroText.Text.Trim());
+                cantidadClientes = Convert.ToInt16(cantidadClienteText.Text.Trim());
 
-                loadTemporada();
-                loadTanda();
-
+                getClientes();
+                loadClientes();
 
 
             }
@@ -319,15 +340,94 @@ namespace SimulacionCajeroBanco
         #endregion
 
 
+        #region
+        //get clientes
+        public void getClientes()
+        {
+            try
+            {
+                random=new Random();
+                listaCliente=new List<cliente>();
+                //llenar clientes
+                
+                for (int f = 1; f <= cantidadClientes; f++)
+                {
+                    //llenando los datos de cada cliente
+                    cliente=new cliente();
+                    cliente.codigo = f;
+                    cliente.temporada = temporadaAnoCombo.Text;
+                    cliente.temporada = temporada.nombre;    
+                    
 
 
-        //load clientes
+                    listaCliente.Add(cliente);
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Error getClientes.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        #endregion
+
+
+        #region
+        //get clientes by temporada
+        public void getClientesByTemporada()
+        {
+            try
+            {
+                temporada=new temporada();
+                random = new Random();
+                //si fue primavera
+                if (temporadaAnoCombo.Text == "primavera")
+                {
+                    //se establecen los rango para la primavera
+                    temporada.nombre = "primavera";
+                    temporada.cantidad_cliente_rango_inicial = 250;
+                    temporada.cantidad_cliente_rango_final = 350;
+                    cantidadClienteText.Text=(random.Next(temporada.cantidad_cliente_rango_inicial,temporada.cantidad_cliente_rango_final)).ToString();
+                }
+                else if (temporadaAnoCombo.Text == "invierno")
+                {
+                    //se establecen los rangos para el invierno
+                    temporada.nombre = "invierno";
+                    temporada.cantidad_cliente_rango_inicial = 500;
+                    temporada.cantidad_cliente_rango_final = 950;
+                    cantidadClienteText.Text = (random.Next(temporada.cantidad_cliente_rango_inicial, temporada.cantidad_cliente_rango_final)).ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getClientesByTemporada.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        #endregion
+
+        //load clientes para presentarlo en el grid
         #region
         public void loadClientes()
         {
             try
             {
+                if (dataGridView1.Rows.Count > 0)
+                {
+                    dataGridView1.Rows.Clear();
+                }
 
+                for (int f = 1; f <= cantidadClientes; f++)
+                {
+                    //llenando los datos de cada cliente
+                    cliente = new cliente();
+                    cliente.codigo = f;
+                    cliente.temporada = temporadaAnoCombo.Text;
+                    cliente.temporada = temporada.nombre;
+
+
+                    dataGridView1.Rows.Add(cliente.codigo, cliente.temporada);
+                }
             }
             catch (Exception ex)
             {
@@ -511,9 +611,7 @@ namespace SimulacionCajeroBanco
         }
         #endregion
 
-
-
-
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -541,6 +639,11 @@ namespace SimulacionCajeroBanco
             {
                 MessageBox.Show("Error: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void temporadaAnoCombo_TextChanged(object sender, EventArgs e)
+        {
+            getClientesByTemporada();
         }
 
     }

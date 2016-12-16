@@ -9,5 +9,6 @@ namespace SimulacionCajeroBanco.clases
     public class tanda
     {
         public string nombre { get; set; }
+
     }
 }

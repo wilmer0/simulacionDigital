@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ColaBanco));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cantidadCajeroText = new System.Windows.Forms.TextBox();
@@ -200,6 +201,7 @@
             this.temporadaAnoCombo.Name = "temporadaAnoCombo";
             this.temporadaAnoCombo.Size = new System.Drawing.Size(162, 21);
             this.temporadaAnoCombo.TabIndex = 10;
+            this.temporadaAnoCombo.TextChanged += new System.EventHandler(this.temporadaAnoCombo_TextChanged);
             // 
             // tandaCombo
             // 
@@ -238,16 +240,21 @@
             // 
             // clientecolumn
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkBlue;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
             this.clientecolumn.DefaultCellStyle = dataGridViewCellStyle1;
+            this.clientecolumn.FillWeight = 5F;
             this.clientecolumn.HeaderText = "Cliente";
             this.clientecolumn.Name = "clientecolumn";
             this.clientecolumn.ReadOnly = true;
             // 
             // operacionGrid
             // 
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkBlue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            this.operacionGrid.DefaultCellStyle = dataGridViewCellStyle2;
             this.operacionGrid.HeaderText = "Operacion";
             this.operacionGrid.Name = "operacionGrid";
             this.operacionGrid.ReadOnly = true;
