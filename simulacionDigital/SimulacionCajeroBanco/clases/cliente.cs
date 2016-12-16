@@ -10,6 +10,7 @@ namespace SimulacionCajeroBanco.clases
     public class cliente
     {
         public int codigo { get; set; }
+        public double tiempo_servicio_esperado { get; set; } //el tiempo que deberia ser segun la operacion en la temp y tanda
         public double tiempo_servicio_base { get; set; }
         public double tiempo_servicio_final { get; set; }
         public string temporada { get; set; }
@@ -18,6 +19,10 @@ namespace SimulacionCajeroBanco.clases
         public string operacion_deseada { get; set; } // para saber la operacion que desea realizar
         public bool operacion_completada { get; set; } //para saber si completo la operacion
         public List<problema> problemas { get; set; }
+        public bool atendiendo { get; set; }
+        public bool atendido { get; set; }
+        public bool abandono { get; set; }
+
 
     }
 }

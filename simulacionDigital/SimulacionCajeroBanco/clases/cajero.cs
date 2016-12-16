@@ -11,5 +11,6 @@ namespace SimulacionCajeroBanco.clases
         public int codigo { get; set; }
         public int clientesAtendidos { get; set; }
         public double tiempoPromedioEnServcio { get; set; }
+        private List<cliente> clientes { get; set; }
     }
 }
