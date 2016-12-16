@@ -29,6 +29,7 @@ namespace SimulacionCajeroBanco
         Random random;//para randoms
         private int cantidadClientes = 0;
         private int cantidadCajeros = 0;
+        private double numero = 0;
 
 
         //listas
@@ -84,6 +85,8 @@ namespace SimulacionCajeroBanco
 
         }
 
+
+
         //get problemas
         #region
         public void getProblemas()
@@ -97,95 +100,269 @@ namespace SimulacionCajeroBanco
                 listaProblemaCambio=new List<problema>();
                 lisaProblemaCheque=new List<problema>();
                 //instancia problemas
-                problema=new problema();
-
-
-
-                //problemas deposito
-                problema.nombre = "fallo sistema";
-                listaProblemaDeposito.Add(problema);
-
-                problema = new problema();
-                problema.nombre = "fallo electricidad";
-                listaProblemaDeposito.Add(problema);
-                
-                problema = new problema();
-                problema.nombre = "numero cuenta incorrecto";
-                listaProblemaDeposito.Add(problema);
-                
-                problema = new problema();
-                problema.nombre = "dinero insuficiente";
-                listaProblemaDeposito.Add(problema);
-                
-                problema = new problema();
-                problema.nombre = "falta cedula";
-                listaProblemaDeposito.Add(problema);
-
-
-                //problemas retiro
-                problema.nombre = "fallo sistema";
-                listaProblemaRetiro.Add(problema);
-
-                problema = new problema();
-                problema.nombre = "fallo electricidad";
-                listaProblemaRetiro.Add(problema);
-
-                problema = new problema();
-                problema.nombre = "numero cuenta incorrecto";
-                listaProblemaRetiro.Add(problema);
-
-                problema = new problema();
-                problema.nombre = "dinero insuficiente";
-                listaProblemaRetiro.Add(problema);
-
-                problema = new problema();
-                problema.nombre = "falta cedula";
-                listaProblemaRetiro.Add(problema);
-
-
-                //problemas cambio moneda
-                problema.nombre = "fallo sistema";
-                listaProblemaCambio.Add(problema);
-
-                problema = new problema();
-                problema.nombre = "fallo electricidad";
-                listaProblemaCambio.Add(problema);
-
-                //problema = new problema();
-                //problema.nombre = "falta cedula";
-                //listaProblemaCambio.Add(problema);
-
-                problema = new problema();
-                problema.nombre = "dinero insuficiente";
-                listaProblemaCambio.Add(problema);
-
-                problema = new problema();
-                problema.nombre = "moneda no es aceptada";
-                listaProblemaCambio.Add(problema);
-
-
-                //problemas cheque
-                problema.nombre = "fallo sistema";
-                lisaProblemaCheque.Add(problema);
-
-                problema = new problema();
-                problema.nombre = "fallo electricidad";
-                lisaProblemaCheque.Add(problema);
-
-                problema = new problema();
-                problema.nombre = "falta cedula";
-                lisaProblemaCheque.Add(problema);
-
-                problema = new problema();
-                problema.nombre = "cheque mal endosado";
-                lisaProblemaCheque.Add(problema);
-
-                problema = new problema();
-                problema.nombre = "cheque sin fondos";
-                lisaProblemaCheque.Add(problema);
-
-
                
+
+                //cuando la temporada sea primavera
+                if (temporada.nombre == "primavera")
+                {
+                    #region
+                    //problemas deposito
+                    problema = new problema();
+                    problema.nombre = "fallo sistema";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 5.12;
+                    listaProblemaDeposito.Add(problema);
+
+                    problema = new problema();
+                    problema.nombre = "fallo electricidad";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 9.85;
+                    listaProblemaDeposito.Add(problema);
+
+                    problema = new problema();
+                    problema.nombre = "numero cuenta incorrecto";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 20.33;
+                    listaProblemaDeposito.Add(problema);
+
+                    problema = new problema();
+                    problema.nombre = "dinero insuficiente";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 15.66;
+                    listaProblemaDeposito.Add(problema);
+
+                    problema = new problema();
+                    problema.nombre = "falta cedula";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 12.74;
+                    listaProblemaDeposito.Add(problema);
+
+
+                    //problemas retiro
+                    problema = new problema();
+                    problema.nombre = "fallo sistema";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 5.12;
+                    listaProblemaRetiro.Add(problema);
+
+                    problema = new problema();
+                    problema.nombre = "fallo electricidad";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 9.85;
+                    listaProblemaRetiro.Add(problema);
+
+                    problema = new problema();
+                    problema.nombre = "numero cuenta incorrecto";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 14.69;
+                    listaProblemaRetiro.Add(problema);
+
+                    problema = new problema();
+                    problema.nombre = "dinero insuficiente";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 11.80;
+                    listaProblemaRetiro.Add(problema);
+
+                    problema = new problema();
+                    problema.nombre = "falta cedula";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 17.34;
+                    listaProblemaRetiro.Add(problema);
+
+
+                    //problemas cambio moneda
+                    problema = new problema();
+                    problema.nombre = "fallo sistema";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 5.12;
+                    listaProblemaCambio.Add(problema);
+
+                    problema = new problema();
+                    problema.nombre = "fallo electricidad";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 9.85;
+                    listaProblemaCambio.Add(problema);
+
+                    //problema = new problema();
+                    //problema.nombre = "falta cedula";
+                    //listaProblemaCambio.Add(problema);
+
+                    problema = new problema();
+                    problema.nombre = "dinero insuficiente";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 5.45;
+                    listaProblemaCambio.Add(problema);
+
+                    problema = new problema();
+                    problema.nombre = "moneda no es aceptada";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 9.85;
+                    listaProblemaCambio.Add(problema);
+
+
+                    //problemas cheque
+                    problema = new problema();
+                    problema.nombre = "fallo sistema";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 5.12;
+                    lisaProblemaCheque.Add(problema);
+
+                    problema = new problema();
+                    problema.nombre = "fallo electricidad";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 9.85;
+                    lisaProblemaCheque.Add(problema);
+
+                    problema = new problema();
+                    problema.nombre = "falta cedula";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 14.42;
+                    lisaProblemaCheque.Add(problema);
+
+                    problema = new problema();
+                    problema.nombre = "cheque mal endosado";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 22.12;
+                    lisaProblemaCheque.Add(problema);
+
+                    problema = new problema();
+                    problema.nombre = "cheque sin fondos";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 35.20;
+                    lisaProblemaCheque.Add(problema);
+                    #endregion
+                }
+                //cuando la temporada sea invierno
+                if (temporada.nombre == "invierno")
+                {
+                    #region
+                    //problemas deposito
+                    problema = new problema();
+                    problema.nombre = "fallo sistema";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 12.60;
+                    listaProblemaDeposito.Add(problema);
+
+                    problema = new problema();
+                    problema.nombre = "fallo electricidad";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 20.30;
+                    listaProblemaDeposito.Add(problema);
+
+                    problema = new problema();
+                    problema.nombre = "numero cuenta incorrecto";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 17.43;
+                    listaProblemaDeposito.Add(problema);
+
+                    problema = new problema();
+                    problema.nombre = "dinero insuficiente";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 15.30;
+                    listaProblemaDeposito.Add(problema);
+
+                    problema = new problema();
+                    problema.nombre = "falta cedula";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 7.50;
+                    listaProblemaDeposito.Add(problema);
+
+
+                    //problemas retiro
+                    problema = new problema();
+                    problema.nombre = "fallo sistema";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 12.60;
+                    listaProblemaRetiro.Add(problema);
+
+                    problema = new problema();
+                    problema.nombre = "fallo electricidad";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 20.30;
+                    listaProblemaRetiro.Add(problema);
+
+                    problema = new problema();
+                    problema.nombre = "numero cuenta incorrecto";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 9.60;
+                    listaProblemaRetiro.Add(problema);
+
+                    problema = new problema();
+                    problema.nombre = "dinero insuficiente";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 14.39;
+                    listaProblemaRetiro.Add(problema);
+
+                    problema = new problema();
+                    problema.nombre = "falta cedula";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 22.43;
+                    listaProblemaRetiro.Add(problema);
+
+
+                    //problemas cambio moneda
+                    problema = new problema();
+                    problema.nombre = "fallo sistema";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 12.60;
+                    listaProblemaCambio.Add(problema);
+
+                    problema = new problema();
+                    problema.nombre = "fallo electricidad";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 20.30;
+                    listaProblemaCambio.Add(problema);
+
+                    //problema = new problema();
+                    //problema.nombre = "falta cedula";
+                    //listaProblemaCambio.Add(problema);
+
+                    problema = new problema();
+                    problema.nombre = "dinero insuficiente";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 10.45;
+                    listaProblemaCambio.Add(problema);
+
+                    problema = new problema();
+                    problema.nombre = "moneda no es aceptada";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 34.20;
+                    listaProblemaCambio.Add(problema);
+
+
+                    //problemas cheque
+                    problema = new problema();
+                    problema.nombre = "fallo sistema";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 12.60;
+                    lisaProblemaCheque.Add(problema);
+
+                    problema = new problema();
+                    problema.nombre = "fallo electricidad";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 20.30;
+                    lisaProblemaCheque.Add(problema);
+
+                    problema = new problema();
+                    problema.nombre = "falta cedula";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 23.41;
+                    lisaProblemaCheque.Add(problema);
+
+                    problema = new problema();
+                    problema.nombre = "cheque mal endosado";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 19.42;
+                    lisaProblemaCheque.Add(problema);
+
+                    problema = new problema();
+                    problema.nombre = "cheque sin fondos";
+                    problema.probabilidad_ocurrencia_inicial = 0;
+                    problema.probabilidad_ocurrencia_final = 12.98;
+                    lisaProblemaCheque.Add(problema);
+                    #endregion
+                }
+
             }
             catch (Exception ex)
             {
@@ -196,9 +373,7 @@ namespace SimulacionCajeroBanco
         #endregion
 
 
-
-
-
+        
         //validar getAction
         #region
         public void loadTemporada()
@@ -231,6 +406,8 @@ namespace SimulacionCajeroBanco
         #endregion
 
 
+
+
         //validar getAction
         #region
         public void loadTanda()
@@ -261,6 +438,8 @@ namespace SimulacionCajeroBanco
             }
         }
         #endregion
+
+
 
         //validar getAction
         #region
@@ -310,6 +489,8 @@ namespace SimulacionCajeroBanco
         #endregion
 
 
+
+
         //get action
         #region
         public void getAction()
@@ -355,9 +536,106 @@ namespace SimulacionCajeroBanco
                     //llenando los datos de cada cliente
                     cliente=new cliente();
                     cliente.codigo = f;
-                    cliente.temporada = temporadaAnoCombo.Text;
-                    cliente.temporada = temporada.nombre;    
-                    
+                    cliente.temporada = temporada.nombre;
+                    //operacion que realizara dependiendo de la temporada y la tanda
+                    #region
+                    if (temporada.nombre == "primavera")
+                    {
+                        //temporada primavera
+                        if (tanda.nombre == "matutina")
+                        {
+                            //asigar operacion
+                            double numero = random.NextDouble();
+                            numero = Math.Round(numero, 2);
+                            MessageBox.Show(numero.ToString());
+                            if (numero >= 0 && numero <= 0.44)
+                            {
+                                //deposito
+                                cliente.operacion_deseada = "deposito";
+                            }
+                            if (numero >= 0.45 && numero <= 0.79)
+                            {
+                                //retiro
+                                cliente.operacion_deseada = "retiro";
+                            }
+                            if (numero >= 0.79 && numero <= 1)
+                            {
+                                //cambio moneda
+                                cliente.operacion_deseada = "cambio moneda";
+                            }
+                        }
+                        else if (tanda.nombre == "vespertina")
+                        {
+                            //asigar operacion
+                            double numero = random.NextDouble();
+                            numero = Math.Round(numero, 2);
+                            MessageBox.Show(numero.ToString());
+                            if (numero >= 0 && numero <= 0.34)
+                            {
+                                //deposito
+                                cliente.operacion_deseada = "deposito";
+                            }
+                            if (numero >= 0.35 && numero <= 0.69)
+                            {
+                                //retiro
+                                cliente.operacion_deseada = "retiro";
+                            }
+                            if (numero >= 0.70 && numero <= 1)
+                            {
+                                //cambio moneda
+                                cliente.operacion_deseada = "cambio moneda";
+                            }
+                        }
+                    }
+                    if(temporada.nombre=="invierno")
+                    {
+                        //temporada invierno
+                        if (tanda.nombre == "matutina")
+                        {
+                            //asigar operacion
+                            double numero = random.NextDouble();
+                            numero = Math.Round(numero, 2);
+                            MessageBox.Show(numero.ToString());
+                            if (numero >= 0 && numero <= 0.26)
+                            {
+                                //deposito
+                                cliente.operacion_deseada = "deposito";
+                            }
+                            if (numero >= 0.25 && numero <= 0.63)
+                            {
+                                //retiro
+                                cliente.operacion_deseada = "retiro";
+                            }
+                            if (numero >= 0.64 && numero <= 1)
+                            {
+                                //cambio moneda
+                                cliente.operacion_deseada = "cambio moneda";
+                            }
+                        }
+                        else if (tanda.nombre == "vespertina")
+                        {
+                            //asigar operacion
+                            double numero = random.NextDouble();
+                            numero = Math.Round(numero, 2);
+                            MessageBox.Show(numero.ToString());
+                            if (numero >= 0 && numero <= 0.29)
+                            {
+                                //deposito
+                                cliente.operacion_deseada = "deposito";
+                            }
+                            if (numero >= 0.30 && numero <= 0.62)
+                            {
+                                //retiro
+                                cliente.operacion_deseada = "retiro";
+                            }
+                            if (numero >= 0.63 && numero <= 1)
+                            {
+                                //cambio moneda
+                                cliente.operacion_deseada = "cambio moneda";
+                            }
+                        }
+                    }
+                    #endregion
 
 
                     listaCliente.Add(cliente);
