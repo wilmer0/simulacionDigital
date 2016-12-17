@@ -37,6 +37,7 @@ namespace SimulacionCajeroBanco
         private int cantidadCajerosRetiro = 0;
         private int cantidadCajerosCambioMoneda = 0;
         int cajeroSeleccionado = 0;
+        private int cantidadCajerosDisponibles = 0;
 
         //listas
         private List<cajero> listaCajero;
@@ -736,7 +737,7 @@ namespace SimulacionCajeroBanco
                         cajaEncontrada = false;
 
                         //saber cuantos cajeros de esta operacion hay
-                        int cantidadCajerosDisponibles = listaCajeroDeposito.ToList().Count;
+                        cantidadCajerosDisponibles = listaCajeroDeposito.ToList().Count;
                         //MessageBox.Show("cantidad de cajeros disponible para deposito-> "+cantidadCajerosDisponibles);
                         
                        
@@ -744,13 +745,14 @@ namespace SimulacionCajeroBanco
                                 //MessageBox.Show("operacion->" + clienteActual.operacion_deseada + " -cajero no.-> " + cajero.codigo + " -caja tipo->" + cajero.tipo_caja + "- cantidad-> " + cajero.cantidad_tipo_cajero);
                                 random = new Random();
                                 cajeroSeleccionado = 0;
-                                cajeroSeleccionado = random.Next(0, cantidadCajerosDisponibles-1);
-                                MessageBox.Show("cliente-> " + clienteActual.codigo + "- cajero tomado-> "+(cajeroSeleccionado+"deposito")+"=="+listaCajeroDeposito[cajeroSeleccionado].operacion);
+                                cajeroSeleccionado = random.Next(1, cantidadCajerosDisponibles);
+                                cajeroSeleccionado--;
+                                //MessageBox.Show("cliente-> " + clienteActual.codigo + "- cajero tomado-> "+(cajeroSeleccionado+"deposito")+"=="+listaCajeroDeposito[cajeroSeleccionado].operacion);
                                 if (cajaEncontrada == false)
                                 {
                                     //caja encontrada
                                     cajero.clientesCola = cajero.clientesCola + 1;
-                                    clienteActual.tipo_cajero = listaCajeroDeposito[cajeroSeleccionado].codigo + "-" +"deposito";
+                                    clienteActual.tipo_cajero = cajeroSeleccionado + "-" +"deposito";
                                     //MessageBox.Show(clienteActual.tipo_cajero);
                                     cajaEncontrada = true;
                                     
@@ -874,7 +876,7 @@ namespace SimulacionCajeroBanco
                         cajaEncontrada = false;
 
                         //saber cuantos cajeros de esta operacion hay
-                        int cantidadCajerosDisponibles = listaCajeroRetiro.ToList().Count;
+                        cantidadCajerosDisponibles = listaCajeroRetiro.ToList().Count;
                         //MessageBox.Show("cantidad de cajeros disponible para deposito-> "+cantidadCajerosDisponibles);
 
 
@@ -882,23 +884,27 @@ namespace SimulacionCajeroBanco
                         //MessageBox.Show("operacion->" + clienteActual.operacion_deseada + " -cajero no.-> " + cajero.codigo + " -caja tipo->" + cajero.tipo_caja + "- cantidad-> " + cajero.cantidad_tipo_cajero);
                         random = new Random();
                         cajeroSeleccionado = 0;
-                        cajeroSeleccionado = random.Next(0, cantidadCajerosDisponibles - 1);
-                        MessageBox.Show("cliente-> " + clienteActual.codigo + "- cajero tomado-> " + (cajeroSeleccionado + "retiro") + "==" + listaCajeroRetiro[cajeroSeleccionado].operacion); if (cajaEncontrada == false)
+                        cajeroSeleccionado = random.Next(0, cantidadCajerosDisponibles);
+                        cajeroSeleccionado--;
+                        //MessageBox.Show("cliente-> " + clienteActual.codigo + "- cajero tomado-> "+(cajeroSeleccionado+"deposito")+"=="+listaCajeroDeposito[cajeroSeleccionado].operacion);
+                        if (cajaEncontrada == false)
                         {
                             //caja encontrada
                             cajero.clientesCola = cajero.clientesCola + 1;
-                            clienteActual.tipo_cajero = listaCajeroRetiro[cajeroSeleccionado].codigo + "-" + "retiro";
-                            cajaEncontrada = true;
+                            clienteActual.tipo_cajero = cajeroSeleccionado + "-" + "retiro";
                             //MessageBox.Show(clienteActual.tipo_cajero);
+                            cajaEncontrada = true;
 
                         }
                         else
                         {
-                            //MessageBox.Show(" cliente-> " + clienteActual.codigo + " cajero seleccionado-> " + cajeroSeleccionado);
+                            //MessageBox.Show(" cliente-> " + clienteActual.codigo + " cajero seleccionado-> " +cajeroSeleccionado);
                         }
 
 
                         #endregion
+
+                      
 
                         //verificar problemas para retiro
                        
@@ -921,7 +927,7 @@ namespace SimulacionCajeroBanco
                         cajaEncontrada = false;
 
                         //saber cuantos cajeros de esta operacion hay
-                        int cantidadCajerosDisponibles = listaCajeroCambioMoneda.ToList().Count;
+                        cantidadCajerosDisponibles = listaCajeroCambioMoneda.ToList().Count;
                         //MessageBox.Show("cantidad de cajeros disponible para deposito-> "+cantidadCajerosDisponibles);
 
 
@@ -929,94 +935,29 @@ namespace SimulacionCajeroBanco
                         //MessageBox.Show("operacion->" + clienteActual.operacion_deseada + " -cajero no.-> " + cajero.codigo + " -caja tipo->" + cajero.tipo_caja + "- cantidad-> " + cajero.cantidad_tipo_cajero);
                         random = new Random();
                         cajeroSeleccionado = 0;
-                        cajeroSeleccionado = random.Next(0, cantidadCajerosDisponibles - 1);
-                        MessageBox.Show("cliente-> " + clienteActual.codigo + "- cajero tomado-> " + (cajeroSeleccionado + "deposito") + "==" + listaCajeroCambioMoneda[cajeroSeleccionado].operacion); if (cajaEncontrada == false)
+                        cajeroSeleccionado = random.Next(0, cantidadCajerosDisponibles);
+                        cajeroSeleccionado--;
+                        //MessageBox.Show("cliente-> " + clienteActual.codigo + "- cajero tomado-> "+(cajeroSeleccionado+"deposito")+"=="+listaCajeroDeposito[cajeroSeleccionado].operacion);
+                        if (cajaEncontrada == false)
                         {
                             //caja encontrada
                             cajero.clientesCola = cajero.clientesCola + 1;
-                            clienteActual.tipo_cajero = listaCajeroCambioMoneda[cajeroSeleccionado].codigo + "-" + "cambio moneda";
-                            cajaEncontrada = true;
+                            clienteActual.tipo_cajero = cajeroSeleccionado + "-" + "cambio moneda";
                             //MessageBox.Show(clienteActual.tipo_cajero);
+                            cajaEncontrada = true;
 
                         }
                         else
                         {
-                            //MessageBox.Show("cliente-> " + clienteActual.codigo + " cajero seleccionado-> " + cajeroSeleccionado);
+                            //MessageBox.Show(" cliente-> " + clienteActual.codigo + " cajero seleccionado-> " +cajeroSeleccionado);
                         }
 
 
                         #endregion
+                       
 
-                        listaProblemaCambio.ForEach(p =>
-                        {
-                            random = new Random();
-                            numero = random.NextDouble();
-                            numero = Math.Round(numero, 2);
-                            numero *= 100;
-                            if (numero >= p.probabilidad_ocurrencia_inicial && numero <= p.probabilidad_ocurrencia_final)
-                            {
-                                //MessageBox.Show(numero.ToString() + "-" + p.probabilidad_ocurrencia_inicial + "-" + p.probabilidad_ocurrencia_final + "--");
-                                //MessageBox.Show("cliente-> " + x.codigo + "-" + cliente.operacion_deseada + "->presento problema: " + p.nombre);
-                                //MessageBox.Show("tiempo antes->" + cliente.tiempo_servicio_final + " tiempo ahora->" + ((cliente.tiempo_servicio_final + p.tiempo_aumenta)).ToString("N"));
-                                //cliente se presento este problema y toma desiciones
-                                #region
-                                if (p.nombre == "fallo sistema")
-                                {
-                                    //el cliente puede elegir si se queda o se va porque el fallo es grave
-                                    numero = random.Next(1, 2);
-                                    if (numero == 1)
-                                    {
-                                        //se fue el cliente
-                                        clienteActual.abandono = true;
-                                    }
-                                }
-                                if (p.nombre == "fallo electricidad")
-                                {
-                                    //el cliente puede elegir si se queda o se va porque el fallo es grave
-                                    numero = random.Next(1, 2);
-                                    if (numero == 1)
-                                    {
-                                        //se fue el cliente
-                                        clienteActual.abandono = true;
-                                    }
-                                }
-                                if (p.nombre == "falta cedula")
-                                {
-                                    //el cliente puede elegir si lo intenta una vez mas
-                                    numero = random.Next(1, 2);
-                                    if (numero == 1)
-                                    {
-                                        //lo intentara y aumenta tiempo
-                                        clienteActual.intentos += 1;
-                                        clienteActual.tiempo_servicio_final += p.tiempo_aumenta;
-                                    }
-                                    else
-                                    {
-                                        //cliente se fue
-                                        clienteActual.abandono = true;
-                                    }
-                                }
-                                if (p.nombre == "moneda no es aceptada")
-                                {
-                                    //el cliente puede elegir si intentar cambiar las monedas porque estan feas
-                                    numero = random.Next(1, 2);
-                                    if (numero == 1)
-                                    {
-                                        //lo intentara y aumenta tiempo
-                                        clienteActual.intentos += 1;
-                                        clienteActual.tiempo_servicio_final += p.tiempo_aumenta;
-                                    }
-                                    else
-                                    {
-                                        //cliente se fue
-                                        clienteActual.abandono = true;
-                                    }
-                                }
-                                #endregion
-                               
-                                
-                            }
-                        });
+                       
+                             
                         
                     }
 
