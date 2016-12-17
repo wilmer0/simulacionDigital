@@ -725,45 +725,34 @@ namespace SimulacionCajeroBanco
                     //cliente esta siendo atendido
                     clienteActual.atendiendo = true;
                     clienteActual.abandono = false;
-                    
+                    random = new Random();
 
                     //deposito
                     if (clienteActual.operacion_deseada == "deposito" && clienteActual.abandono == false)
                     {
-                        //asignar caja a cliente
+                        //inicio asignar caja a cliente
                         #region
                        
-                        //MessageBox.Show(listaCajero.ToList().Count.ToString());
                         cajaEncontrada = false;
-
                         //saber cuantos cajeros de esta operacion hay
                         cantidadCajerosDisponibles = listaCajeroDeposito.ToList().Count;
-                        //MessageBox.Show("cantidad de cajeros disponible para deposito-> "+cantidadCajerosDisponibles);
-                        
-                       
-                                //hay mas de una caja que se puede hacer esa operacion entonces debe elegir a cual quiere ir
-                                //MessageBox.Show("operacion->" + clienteActual.operacion_deseada + " -cajero no.-> " + cajero.codigo + " -caja tipo->" + cajero.tipo_caja + "- cantidad-> " + cajero.cantidad_tipo_cajero);
-                                random = new Random();
-                                cajeroSeleccionado = 0;
-                                cajeroSeleccionado = random.Next(1, cantidadCajerosDisponibles);
-                                cajeroSeleccionado--;
-                                //MessageBox.Show("cliente-> " + clienteActual.codigo + "- cajero tomado-> "+(cajeroSeleccionado+"deposito")+"=="+listaCajeroDeposito[cajeroSeleccionado].operacion);
-                                if (cajaEncontrada == false)
-                                {
-                                    //caja encontrada
-                                    cajero.clientesCola = cajero.clientesCola + 1;
-                                    clienteActual.tipo_cajero = cajeroSeleccionado + "-" +"deposito";
-                                    //MessageBox.Show(clienteActual.tipo_cajero);
-                                    cajaEncontrada = true;
-                                    
-                                }
-                                else
-                                {
-                                    //MessageBox.Show(" cliente-> " + clienteActual.codigo + " cajero seleccionado-> " +cajeroSeleccionado);
-                                }
-
-                         
+                        //elegir que caja quiere el cliente
+                        cajeroSeleccionado = 0;
+                        cajeroSeleccionado = random.Next(0, cantidadCajerosDisponibles);
+                        MessageBox.Show(cajeroSeleccionado.ToString());
+                        if (cajaEncontrada == false)
+                        {
+                             //caja encontrada
+                             cajero.clientesCola = cajero.clientesCola + 1;
+                             clienteActual.tipo_cajero = cajeroSeleccionado + "-" +"deposito";
+                             cajaEncontrada = true;
+                        }
+                        else
+                        {
+                             //MessageBox.Show(" cliente-> " + clienteActual.codigo + " cajero seleccionado-> " +cajeroSeleccionado);
+                        }
                         #endregion
+                        //fin asignar caja a cliente
 
                         //verificando si ocurren problemas
                         listaProblemaDeposito.ForEach(p =>
@@ -869,40 +858,31 @@ namespace SimulacionCajeroBanco
                     //retiro
                     if (clienteActual.operacion_deseada == "retiro" && clienteActual.abandono==false)
                     {
-                        //asignar caja a cliente
+
+
+                        //inicio asignar caja a cliente
                         #region
 
-                        //MessageBox.Show(listaCajero.ToList().Count.ToString());
                         cajaEncontrada = false;
-
                         //saber cuantos cajeros de esta operacion hay
                         cantidadCajerosDisponibles = listaCajeroRetiro.ToList().Count;
-                        //MessageBox.Show("cantidad de cajeros disponible para deposito-> "+cantidadCajerosDisponibles);
-
-
-                        //hay mas de una caja que se puede hacer esa operacion entonces debe elegir a cual quiere ir
-                        //MessageBox.Show("operacion->" + clienteActual.operacion_deseada + " -cajero no.-> " + cajero.codigo + " -caja tipo->" + cajero.tipo_caja + "- cantidad-> " + cajero.cantidad_tipo_cajero);
-                        random = new Random();
+                        //elegir que caja quiere el cliente
                         cajeroSeleccionado = 0;
                         cajeroSeleccionado = random.Next(0, cantidadCajerosDisponibles);
-                        cajeroSeleccionado--;
-                        //MessageBox.Show("cliente-> " + clienteActual.codigo + "- cajero tomado-> "+(cajeroSeleccionado+"deposito")+"=="+listaCajeroDeposito[cajeroSeleccionado].operacion);
+                        MessageBox.Show(cajeroSeleccionado.ToString());
                         if (cajaEncontrada == false)
                         {
                             //caja encontrada
                             cajero.clientesCola = cajero.clientesCola + 1;
                             clienteActual.tipo_cajero = cajeroSeleccionado + "-" + "retiro";
-                            //MessageBox.Show(clienteActual.tipo_cajero);
                             cajaEncontrada = true;
-
                         }
                         else
                         {
                             //MessageBox.Show(" cliente-> " + clienteActual.codigo + " cajero seleccionado-> " +cajeroSeleccionado);
                         }
-
-
                         #endregion
+                        //fin asignar caja a cliente
 
                       
 
@@ -920,43 +900,35 @@ namespace SimulacionCajeroBanco
                     //cambio moneda
                     if (clienteActual.operacion_deseada == "cambio moneda" && clienteActual.abandono == false)
                     {
-                        //asignar caja a cliente
+                        //inicio asignar caja a cliente
                         #region
 
-                        //MessageBox.Show(listaCajero.ToList().Count.ToString());
                         cajaEncontrada = false;
-
                         //saber cuantos cajeros de esta operacion hay
                         cantidadCajerosDisponibles = listaCajeroCambioMoneda.ToList().Count;
-                        //MessageBox.Show("cantidad de cajeros disponible para deposito-> "+cantidadCajerosDisponibles);
-
-
-                        //hay mas de una caja que se puede hacer esa operacion entonces debe elegir a cual quiere ir
-                        //MessageBox.Show("operacion->" + clienteActual.operacion_deseada + " -cajero no.-> " + cajero.codigo + " -caja tipo->" + cajero.tipo_caja + "- cantidad-> " + cajero.cantidad_tipo_cajero);
-                        random = new Random();
+                        //elegir que caja quiere el cliente
                         cajeroSeleccionado = 0;
                         cajeroSeleccionado = random.Next(0, cantidadCajerosDisponibles);
-                        cajeroSeleccionado--;
-                        //MessageBox.Show("cliente-> " + clienteActual.codigo + "- cajero tomado-> "+(cajeroSeleccionado+"deposito")+"=="+listaCajeroDeposito[cajeroSeleccionado].operacion);
+                        MessageBox.Show(cajeroSeleccionado.ToString());
                         if (cajaEncontrada == false)
                         {
                             //caja encontrada
                             cajero.clientesCola = cajero.clientesCola + 1;
                             clienteActual.tipo_cajero = cajeroSeleccionado + "-" + "cambio moneda";
-                            //MessageBox.Show(clienteActual.tipo_cajero);
                             cajaEncontrada = true;
-
                         }
                         else
                         {
                             //MessageBox.Show(" cliente-> " + clienteActual.codigo + " cajero seleccionado-> " +cajeroSeleccionado);
                         }
-
-
                         #endregion
+                        //fin asignar caja a cliente
+                      
                        
 
                        
+
+                        //simular problemas para cambio moneda
                              
                         
                     }
