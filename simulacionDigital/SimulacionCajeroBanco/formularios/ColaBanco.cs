@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Reporting.WinForms;
@@ -721,7 +722,7 @@ namespace SimulacionCajeroBanco
                 //rrecorriendo los clientes
                 listaCliente.ForEach(clienteActual =>
                 {
-                   
+                    Thread.Sleep(10);
                     //cliente esta siendo atendido
                     clienteActual.atendiendo = true;
                     clienteActual.abandono = false;
@@ -739,7 +740,7 @@ namespace SimulacionCajeroBanco
                         //elegir que caja quiere el cliente
                         cajeroSeleccionado = 0;
                         cajeroSeleccionado = random.Next(0, cantidadCajerosDisponibles);
-                        MessageBox.Show(cajeroSeleccionado.ToString());
+                        //MessageBox.Show(cajeroSeleccionado.ToString());
                         if (cajaEncontrada == false)
                         {
                              //caja encontrada
@@ -862,14 +863,14 @@ namespace SimulacionCajeroBanco
 
                         //inicio asignar caja a cliente
                         #region
-
+                        
                         cajaEncontrada = false;
                         //saber cuantos cajeros de esta operacion hay
                         cantidadCajerosDisponibles = listaCajeroRetiro.ToList().Count;
                         //elegir que caja quiere el cliente
                         cajeroSeleccionado = 0;
                         cajeroSeleccionado = random.Next(0, cantidadCajerosDisponibles);
-                        MessageBox.Show(cajeroSeleccionado.ToString());
+                        //MessageBox.Show(cajeroSeleccionado.ToString());
                         if (cajaEncontrada == false)
                         {
                             //caja encontrada
@@ -909,7 +910,8 @@ namespace SimulacionCajeroBanco
                         //elegir que caja quiere el cliente
                         cajeroSeleccionado = 0;
                         cajeroSeleccionado = random.Next(0, cantidadCajerosDisponibles);
-                        MessageBox.Show(cajeroSeleccionado.ToString());
+                        //MessageBox.Show(cajeroSeleccionado.ToString());
+
                         if (cajaEncontrada == false)
                         {
                             //caja encontrada
