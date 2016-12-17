@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SimulacionCajeroBanco.formularios;
 
 namespace SimulacionCajeroBanco
 {
@@ -16,7 +17,7 @@ namespace SimulacionCajeroBanco
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ColaBanco());
+            Application.Run(new ventana_cargando());
         }
     }
 }

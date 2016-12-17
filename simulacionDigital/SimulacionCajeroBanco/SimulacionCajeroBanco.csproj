@@ -63,15 +63,23 @@
   <ItemGroup>
     <Compile Include="clases\cajero.cs" />
     <Compile Include="clases\cliente.cs" />
+    <Compile Include="clases\dia.cs" />
     <Compile Include="clases\operaciones.cs" />
     <Compile Include="clases\problema.cs" />
     <Compile Include="clases\tanda.cs" />
     <Compile Include="clases\temporada.cs" />
+    <Compile Include="clases\tipo_caja.cs" />
     <Compile Include="formularios\ColaBanco.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="formularios\ColaBanco.Designer.cs">
       <DependentUpon>ColaBanco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formularios\ventana_cargando.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios\ventana_cargando.Designer.cs">
+      <DependentUpon>ventana_cargando.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -84,6 +92,9 @@
     <EmbeddedResource Include="formularios\ColaBanco.resx">
       <DependentUpon>ColaBanco.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="formularios\ventana_cargando.resx">
+      <DependentUpon>ventana_cargando.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -92,6 +103,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="reportes\VisorReporteComun.resx">
       <DependentUpon>VisorReporteComun.cs</DependentUpon>
@@ -112,6 +124,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="clases_reportes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="recursos\Aha-Soft-Large-Seo-SEO.ico" />
+    <Content Include="recursos\banreservas2014.png" />
+    <Content Include="recursos\Play_button_next_stop_music_pause.png" />
+    <None Include="Resources\Boton-Loading-Rojo-90780.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
