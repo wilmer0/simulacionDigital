@@ -745,12 +745,13 @@ namespace SimulacionCajeroBanco
                                 random = new Random();
                                 cajeroSeleccionado = 0;
                                 cajeroSeleccionado = random.Next(0, cantidadCajerosDisponibles-1);
-                                //MessageBox.Show("cliente-> " + clienteActual.codigo + "- cajero limite-> " +cantidadCajerosDisponibles + "- cajero tomado-> " + cajeroSeleccionado);
+                                MessageBox.Show("cliente-> " + clienteActual.codigo + "- cajero tomado-> "+(cajeroSeleccionado+"deposito")+"=="+listaCajeroDeposito[cajeroSeleccionado].operacion);
                                 if (cajaEncontrada == false)
                                 {
                                     //caja encontrada
                                     cajero.clientesCola = cajero.clientesCola + 1;
-                                    clienteActual.tipo_cajero = listaCajeroDeposito[cajeroSeleccionado].codigo + "-" +listaCajeroDeposito[cajeroSeleccionado].operacion;
+                                    clienteActual.tipo_cajero = listaCajeroDeposito[cajeroSeleccionado].codigo + "-" +"deposito";
+                                    //MessageBox.Show(clienteActual.tipo_cajero);
                                     cajaEncontrada = true;
                                     
                                 }
@@ -882,13 +883,13 @@ namespace SimulacionCajeroBanco
                         random = new Random();
                         cajeroSeleccionado = 0;
                         cajeroSeleccionado = random.Next(0, cantidadCajerosDisponibles - 1);
-                        //MessageBox.Show("cliente-> " + clienteActual.codigo + "- cajero limite-> " +cantidadCajerosDisponibles + "- cajero tomado-> " + cajeroSeleccionado);
-                        if (cajaEncontrada == false)
+                        MessageBox.Show("cliente-> " + clienteActual.codigo + "- cajero tomado-> " + (cajeroSeleccionado + "retiro") + "==" + listaCajeroRetiro[cajeroSeleccionado].operacion); if (cajaEncontrada == false)
                         {
                             //caja encontrada
                             cajero.clientesCola = cajero.clientesCola + 1;
-                            clienteActual.tipo_cajero = listaCajeroRetiro[cajeroSeleccionado].codigo + "-" + listaCajeroRetiro[cajeroSeleccionado].operacion;
+                            clienteActual.tipo_cajero = listaCajeroRetiro[cajeroSeleccionado].codigo + "-" + "retiro";
                             cajaEncontrada = true;
+                            //MessageBox.Show(clienteActual.tipo_cajero);
 
                         }
                         else
@@ -929,13 +930,13 @@ namespace SimulacionCajeroBanco
                         random = new Random();
                         cajeroSeleccionado = 0;
                         cajeroSeleccionado = random.Next(0, cantidadCajerosDisponibles - 1);
-                        //MessageBox.Show("cliente-> " + clienteActual.codigo + "- cajero limite-> " +cantidadCajerosDisponibles + "- cajero tomado-> " + cajeroSeleccionado);
-                        if (cajaEncontrada == false)
+                        MessageBox.Show("cliente-> " + clienteActual.codigo + "- cajero tomado-> " + (cajeroSeleccionado + "deposito") + "==" + listaCajeroCambioMoneda[cajeroSeleccionado].operacion); if (cajaEncontrada == false)
                         {
                             //caja encontrada
                             cajero.clientesCola = cajero.clientesCola + 1;
-                            clienteActual.tipo_cajero = listaCajeroCambioMoneda[cajeroSeleccionado].codigo + "-" + listaCajeroCambioMoneda[cajeroSeleccionado].operacion;
+                            clienteActual.tipo_cajero = listaCajeroCambioMoneda[cajeroSeleccionado].codigo + "-" + "cambio moneda";
                             cajaEncontrada = true;
+                            //MessageBox.Show(clienteActual.tipo_cajero);
 
                         }
                         else
