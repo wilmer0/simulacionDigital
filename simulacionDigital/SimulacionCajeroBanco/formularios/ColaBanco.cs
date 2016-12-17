@@ -16,7 +16,6 @@ namespace SimulacionCajeroBanco
     public partial class ColaBanco : Form
     {
 
-
         //objetos
         private cajero cajero;
         private cliente cliente;
@@ -24,19 +23,31 @@ namespace SimulacionCajeroBanco
         private problema problema;
         private tanda tanda;
         private temporada temporada;
+        private dia dia;
+        private tipo_caja tipoCaja;
 
         //variables
         Random random;//para randoms
         private int cantidadClientes = 0;
         private int cantidadCajeros = 0;
         private double numero = 0;
-
+        int contadorCajero = 0;
+        private bool cajaEncontrada = false;
+        private int cantidadCajerosDeposito = 0;
+        private int cantidadCajerosRetiro = 0;
+        private int cantidadCajerosCambioMoneda = 0;
+        int cajeroSeleccionado = 0;
 
         //listas
         private List<cajero> listaCajero;
         private List<cliente> listaCliente;
         private List<temporada> listaTemporada;
-        private List<tanda> listaTanda; 
+        private List<tanda> listaTanda;
+        private List<dia> listaDias;
+        private List<tipo_caja> listaTipoCaja;
+        private List<cajero> listaCajeroDeposito;
+        private List<cajero> listaCajeroRetiro;
+        private List<cajero> listaCajeroCambioMoneda; 
 
 
         //listas problemas
@@ -44,6 +55,7 @@ namespace SimulacionCajeroBanco
         private List<problema> listaProblemaRetiro;
         private List<problema> listaProblemaCambio;
         private List<problema> lisaProblemaCheque; 
+
 
         //variables para datos
         private double tiempoLLegadaAcumulativo = 0;
@@ -67,9 +79,14 @@ namespace SimulacionCajeroBanco
                 this.dataGridView1.RowsDefaultCellStyle.BackColor = Color.Blue;
                 this.dataGridView1.AlternatingRowsDefaultCellStyle.BackColor =Color.DarkBlue;
 
+                loadDias();
+                loadTiposCaja();
                 loadTemporada();
                 loadTanda();
                 getClientesByTemporada();
+                
+            
+            
             }
             catch (Exception ex)
             {
@@ -478,9 +495,7 @@ namespace SimulacionCajeroBanco
         #endregion
 
 
-        
-        //validar getAction
-        #region
+        //load tandas
         public void loadTemporada()
         {
             try
@@ -508,12 +523,92 @@ namespace SimulacionCajeroBanco
 
             }
         }
-        #endregion
+      
+
+        //load dias
+        public void loadDias()
+        {       
+            #region
+            try
+            {
+
+                listaDias=new List<dia>();
+
+                //nuevo dia
+                dia=new dia();
+                dia.nombre = "normal";
+                dia.cantidad_cliente_rango_inicial = 0;
+                dia.cantidad_cliente_rango_final = 0;
+                listaDias.Add(dia);
+
+                //nuevo dia
+                dia = new dia();
+                dia.nombre = "pago";
+                dia.cantidad_cliente_rango_inicial = 0;
+                dia.cantidad_cliente_rango_final = 0;
+                listaDias.Add(dia);
+
+                //agregando los dias al combo
+                diasCombo.DisplayMember = "nombre";
+                diasCombo.ValueMember = "nombre";
+                diasCombo.DataSource = listaDias;
 
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadTiposCaja.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            #endregion
+        }
 
+        //load tipos de caja
+        public void loadTiposCaja()
+        {
+            #region
 
-        //validar getAction
+            try
+            {
+                listaTipoCaja=new List<tipo_caja>();
+
+                //nuevo tipo caja
+                tipoCaja=new tipo_caja();
+                tipoCaja.nombre = "deposito";
+                tipoCaja.clientes_abandono = 0;
+                tipoCaja.clientes_atendidos = 0;
+                tipoCaja.total_clientes = 0;
+                listaTipoCaja.Add(tipoCaja);
+
+                //nuevo tipo caja
+                tipoCaja = new tipo_caja();
+                tipoCaja.nombre = "retiro";
+                tipoCaja.clientes_abandono = 0;
+                tipoCaja.clientes_atendidos = 0;
+                tipoCaja.total_clientes = 0;
+                listaTipoCaja.Add(tipoCaja);
+
+                //nuevo tipo caja
+                tipoCaja = new tipo_caja();
+                tipoCaja.nombre = "cambio moneda";
+                tipoCaja.clientes_abandono = 0;
+                tipoCaja.clientes_atendidos = 0;
+                tipoCaja.total_clientes = 0;
+                listaTipoCaja.Add(tipoCaja);
+
+                //agregando los tipos de caja al combo
+                tipoCajaCombo.DisplayMember = "nombre";
+                tipoCajaCombo.ValueMember = "nombre";
+                tipoCajaCombo.DataSource = listaTipoCaja;
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadTiposCaja.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            #endregion
+        }
+        
+        //load tanda
         #region
         public void loadTanda()
         {
@@ -547,17 +642,18 @@ namespace SimulacionCajeroBanco
 
 
         //validar getAction
-        #region
+       
         public bool validarGetAction()
         {
+            #region
             try
             {
 
-                if (cantidadCajeroText.Text == "")
+                if (listaCajero == null)
                 {
-                    MessageBox.Show("Falta la cantidad de cajeros", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    cantidadCajeroText.Focus();
-                    cantidadCajeroText.SelectAll();
+                    MessageBox.Show("Falta agregar los cajeros", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    cantidadTipoCajaText.Focus();
+                    cantidadTipoCajaText.SelectAll();
                     return false;
                 }
                 if (cantidadClienteText.Text == "")
@@ -581,7 +677,7 @@ namespace SimulacionCajeroBanco
                     tandaCombo.SelectAll();
                     return false;
                 }
-
+               
                 return true;
             }
             catch (Exception ex)
@@ -590,14 +686,14 @@ namespace SimulacionCajeroBanco
                     MessageBoxIcon.Error);
                 return false;
             }
+            #endregion
         }
-        #endregion
-
-
+       
+        
 
 
         //get action
-        #region
+        
         public void getAction()
         {
             try
@@ -613,30 +709,63 @@ namespace SimulacionCajeroBanco
                 getProblemas();
                 
                 //cantidad de cajeros
-                cantidadCajeros = Convert.ToInt16(cantidadCajeroText.Text.Trim());
-                
-                
+                cantidadCajeros = Convert.ToInt16(listaCajero.ToList().Count);
+
                 //cantidad de clientes
                 cantidadClientes = Convert.ToInt16(cantidadClienteText.Text.Trim());
+
+                //generar clientes
                 getClientes();
 
                 //rrecorriendo los clientes
-                listaCliente.ForEach(x =>
+                listaCliente.ForEach(clienteActual =>
                 {
-                    random=new Random();
+                   
                     //cliente esta siendo atendido
-                    x.atendiendo = true;
-                    x.abandono = false;
+                    clienteActual.atendiendo = true;
+                    clienteActual.abandono = false;
                     
-                    
-                    
-                    //verificando si ocurren problemas
 
                     //deposito
-                    if (x.operacion_deseada == "deposito" && x.abandono == false)
+                    if (clienteActual.operacion_deseada == "deposito" && clienteActual.abandono == false)
                     {
+                        //asignar caja a cliente
+                        #region
+                       
+                        //MessageBox.Show(listaCajero.ToList().Count.ToString());
+                        cajaEncontrada = false;
+
+                        //saber cuantos cajeros de esta operacion hay
+                        int cantidadCajerosDisponibles = listaCajeroDeposito.ToList().Count;
+                        //MessageBox.Show("cantidad de cajeros disponible para deposito-> "+cantidadCajerosDisponibles);
+                        
+                       
+                                //hay mas de una caja que se puede hacer esa operacion entonces debe elegir a cual quiere ir
+                                //MessageBox.Show("operacion->" + clienteActual.operacion_deseada + " -cajero no.-> " + cajero.codigo + " -caja tipo->" + cajero.tipo_caja + "- cantidad-> " + cajero.cantidad_tipo_cajero);
+                                random = new Random();
+                                cajeroSeleccionado = 0;
+                                cajeroSeleccionado = random.Next(0, cantidadCajerosDisponibles-1);
+                                //MessageBox.Show("cliente-> " + clienteActual.codigo + "- cajero limite-> " +cantidadCajerosDisponibles + "- cajero tomado-> " + cajeroSeleccionado);
+                                if (cajaEncontrada == false)
+                                {
+                                    //caja encontrada
+                                    cajero.clientesCola = cajero.clientesCola + 1;
+                                    clienteActual.tipo_cajero = listaCajeroDeposito[cajeroSeleccionado].codigo + "-" +listaCajeroDeposito[cajeroSeleccionado].operacion;
+                                    cajaEncontrada = true;
+                                    
+                                }
+                                else
+                                {
+                                    //MessageBox.Show(" cliente-> " + clienteActual.codigo + " cajero seleccionado-> " +cajeroSeleccionado);
+                                }
+
+                         
+                        #endregion
+
+                        //verificando si ocurren problemas
                         listaProblemaDeposito.ForEach(p =>
                         {
+                            random = new Random();
                             numero = random.NextDouble();
                             numero = Math.Round(numero,2);
                             //0.45*100=  numero=45
@@ -655,7 +784,8 @@ namespace SimulacionCajeroBanco
                                     if (numero == 1)
                                     {
                                         //se fue el cliente
-                                        x.abandono = true;
+                                        clienteActual.abandono = true;
+                                        clienteActual.tipo_cajero = cajero.codigo + "-" + cajero.operacion;
                                     }
                                 }
                                 if (p.nombre == "fallo electricidad")
@@ -665,7 +795,8 @@ namespace SimulacionCajeroBanco
                                     if (numero == 1)
                                     {
                                         //se fue el cliente
-                                        x.abandono = true;
+                                        clienteActual.abandono = true;
+                                        clienteActual.tipo_cajero = cajero.codigo + "-" + cajero.operacion;
                                     }
                                 }
                                 if (p.nombre == "dinero insuficiente")
@@ -675,13 +806,13 @@ namespace SimulacionCajeroBanco
                                     if (numero == 1)
                                     {
                                         //lo intentara y aumenta tiempo
-                                        x.intentos +=1;
-                                        x.tiempo_servicio_final += p.tiempo_aumenta;
+                                        clienteActual.intentos +=1;
+                                        clienteActual.tiempo_servicio_final += p.tiempo_aumenta;
                                     }
                                     else
                                     {
                                         //cliente se fue
-                                        x.abandono = true;
+                                        clienteActual.abandono = true;
                                     }
                                 }
                                 if (p.nombre == "numero cuenta incorrecto")
@@ -691,13 +822,13 @@ namespace SimulacionCajeroBanco
                                     if (numero == 1)
                                     {
                                         //lo intentara y aumenta tiempo
-                                        x.intentos += 1;
-                                        x.tiempo_servicio_final += p.tiempo_aumenta;
+                                        clienteActual.intentos += 1;
+                                        clienteActual.tiempo_servicio_final += p.tiempo_aumenta;
                                     }
                                     else
                                     {
                                         //cliente se fue
-                                        x.abandono = true;
+                                        clienteActual.abandono = true;
                                     }
                                 }
                                 if (p.nombre == "falta cedula")
@@ -707,120 +838,117 @@ namespace SimulacionCajeroBanco
                                     if (numero == 1)
                                     {
                                         //lo intentara y aumenta tiempo
-                                        x.intentos += 1;
-                                        x.tiempo_servicio_final += p.tiempo_aumenta;
+                                        clienteActual.intentos += 1;
+                                        clienteActual.tiempo_servicio_final += p.tiempo_aumenta;
                                     }
                                     else
                                     {
                                         //cliente se fue
-                                        x.abandono = true;
+                                        clienteActual.abandono = true;
                                     }
                                 }
                                 #endregion
-                                cliente.problemas.Add(p);
-                                cliente.tiempo_servicio_final += p.tiempo_aumenta;
+                               
                             }
                         });
                     }
+
+
+
+
+
+
+
+
+
+
 
                     //retiro
-                    if (x.operacion_deseada == "retiro" && x.abandono==false)
+                    if (clienteActual.operacion_deseada == "retiro" && clienteActual.abandono==false)
                     {
-                        listaProblemaRetiro.ForEach(p =>
+                        //asignar caja a cliente
+                        #region
+
+                        //MessageBox.Show(listaCajero.ToList().Count.ToString());
+                        cajaEncontrada = false;
+
+                        //saber cuantos cajeros de esta operacion hay
+                        int cantidadCajerosDisponibles = listaCajeroRetiro.ToList().Count;
+                        //MessageBox.Show("cantidad de cajeros disponible para deposito-> "+cantidadCajerosDisponibles);
+
+
+                        //hay mas de una caja que se puede hacer esa operacion entonces debe elegir a cual quiere ir
+                        //MessageBox.Show("operacion->" + clienteActual.operacion_deseada + " -cajero no.-> " + cajero.codigo + " -caja tipo->" + cajero.tipo_caja + "- cantidad-> " + cajero.cantidad_tipo_cajero);
+                        random = new Random();
+                        cajeroSeleccionado = 0;
+                        cajeroSeleccionado = random.Next(0, cantidadCajerosDisponibles - 1);
+                        //MessageBox.Show("cliente-> " + clienteActual.codigo + "- cajero limite-> " +cantidadCajerosDisponibles + "- cajero tomado-> " + cajeroSeleccionado);
+                        if (cajaEncontrada == false)
                         {
-                            numero = random.NextDouble();
-                            numero = Math.Round(numero, 2);
-                            numero *= 100;
-                            if (numero >= p.probabilidad_ocurrencia_inicial && numero <= p.probabilidad_ocurrencia_final)
-                            {
-                                //MessageBox.Show(numero.ToString() + "-" + p.probabilidad_ocurrencia_inicial + "-" + p.probabilidad_ocurrencia_final + "--");
-                                //MessageBox.Show("cliente-> " + x.codigo + "-" + cliente.operacion_deseada + "->presento problema: " + p.nombre);
-                                //MessageBox.Show("tiempo antes->" + cliente.tiempo_servicio_final + " tiempo ahora->" + ((cliente.tiempo_servicio_final + p.tiempo_aumenta)).ToString("N"));
-                                //cliente se presento este problema y toma desiciones
-                                #region
+                            //caja encontrada
+                            cajero.clientesCola = cajero.clientesCola + 1;
+                            clienteActual.tipo_cajero = listaCajeroRetiro[cajeroSeleccionado].codigo + "-" + listaCajeroRetiro[cajeroSeleccionado].operacion;
+                            cajaEncontrada = true;
 
-                                if (p.nombre == "fallo sistema")
-                                {
-                                    //el cliente puede elegir si se queda o se va porque el fallo es grave
-                                    numero = random.Next(1, 2);
-                                    if (numero == 1)
-                                    {
-                                        //se fue el cliente
-                                        x.abandono = true;
-                                    }
-                                }
-                                if (p.nombre == "fallo electricidad")
-                                {
-                                    //el cliente puede elegir si se queda o se va porque el fallo es grave
-                                    numero = random.Next(1, 2);
-                                    if (numero == 1)
-                                    {
-                                        //se fue el cliente
-                                        x.abandono = true;
-                                    }
-                                }
+                        }
+                        else
+                        {
+                            //MessageBox.Show(" cliente-> " + clienteActual.codigo + " cajero seleccionado-> " + cajeroSeleccionado);
+                        }
 
-                                if (p.nombre == "dinero insuficiente")
-                                {
-                                    //el cliente puede elegir si lo intenta una vez mas
-                                    numero = random.Next(1, 2);
-                                    if (numero == 1)
-                                    {
-                                        //lo intentara y aumenta tiempo
-                                        x.intentos += 1;
-                                        x.tiempo_servicio_final += p.tiempo_aumenta;
-                                    }
-                                    else
-                                    {
-                                        //cliente se fue
-                                        x.abandono = true;
-                                    }
-                                }
-                                if (p.nombre == "numero cuenta incorrecto")
-                                {
-                                    //el cliente puede elegir si lo intenta una vez mas
-                                    numero = random.Next(1, 2);
-                                    if (numero == 1)
-                                    {
-                                        //lo intentara y aumenta tiempo
-                                        x.intentos += 1;
-                                        x.tiempo_servicio_final += p.tiempo_aumenta;
-                                    }
-                                    else
-                                    {
-                                        //cliente se fue
-                                        x.abandono = true;
-                                    }
-                                }
-                                if (p.nombre == "falta cedula")
-                                {
-                                    //el cliente puede elegir si lo intenta una vez mas
-                                    numero = random.Next(1, 2);
-                                    if (numero == 1)
-                                    {
-                                        //lo intentara y aumenta tiempo
-                                        x.intentos += 1;
-                                        x.tiempo_servicio_final += p.tiempo_aumenta;
-                                    }
-                                    else
-                                    {
-                                        //cliente se fue
-                                        x.abandono = true;
-                                    }
-                                }
 
-                                #endregion
-                                cliente.problemas.Add(p);
-                                cliente.tiempo_servicio_final += p.tiempo_aumenta;
-                            }
-                        });
+                        #endregion
+
+                        //verificar problemas para retiro
+                       
                     }
+                        
+
+
+
+
+
+
 
                     //cambio moneda
-                    if (x.operacion_deseada == "cambio moneda" && x.abandono == false)
+                    if (clienteActual.operacion_deseada == "cambio moneda" && clienteActual.abandono == false)
                     {
+                        //asignar caja a cliente
+                        #region
+
+                        //MessageBox.Show(listaCajero.ToList().Count.ToString());
+                        cajaEncontrada = false;
+
+                        //saber cuantos cajeros de esta operacion hay
+                        int cantidadCajerosDisponibles = listaCajeroCambioMoneda.ToList().Count;
+                        //MessageBox.Show("cantidad de cajeros disponible para deposito-> "+cantidadCajerosDisponibles);
+
+
+                        //hay mas de una caja que se puede hacer esa operacion entonces debe elegir a cual quiere ir
+                        //MessageBox.Show("operacion->" + clienteActual.operacion_deseada + " -cajero no.-> " + cajero.codigo + " -caja tipo->" + cajero.tipo_caja + "- cantidad-> " + cajero.cantidad_tipo_cajero);
+                        random = new Random();
+                        cajeroSeleccionado = 0;
+                        cajeroSeleccionado = random.Next(0, cantidadCajerosDisponibles - 1);
+                        //MessageBox.Show("cliente-> " + clienteActual.codigo + "- cajero limite-> " +cantidadCajerosDisponibles + "- cajero tomado-> " + cajeroSeleccionado);
+                        if (cajaEncontrada == false)
+                        {
+                            //caja encontrada
+                            cajero.clientesCola = cajero.clientesCola + 1;
+                            clienteActual.tipo_cajero = listaCajeroCambioMoneda[cajeroSeleccionado].codigo + "-" + listaCajeroCambioMoneda[cajeroSeleccionado].operacion;
+                            cajaEncontrada = true;
+
+                        }
+                        else
+                        {
+                            //MessageBox.Show("cliente-> " + clienteActual.codigo + " cajero seleccionado-> " + cajeroSeleccionado);
+                        }
+
+
+                        #endregion
+
                         listaProblemaCambio.ForEach(p =>
                         {
+                            random = new Random();
                             numero = random.NextDouble();
                             numero = Math.Round(numero, 2);
                             numero *= 100;
@@ -838,7 +966,7 @@ namespace SimulacionCajeroBanco
                                     if (numero == 1)
                                     {
                                         //se fue el cliente
-                                        x.abandono = true;
+                                        clienteActual.abandono = true;
                                     }
                                 }
                                 if (p.nombre == "fallo electricidad")
@@ -848,7 +976,7 @@ namespace SimulacionCajeroBanco
                                     if (numero == 1)
                                     {
                                         //se fue el cliente
-                                        x.abandono = true;
+                                        clienteActual.abandono = true;
                                     }
                                 }
                                 if (p.nombre == "falta cedula")
@@ -858,13 +986,13 @@ namespace SimulacionCajeroBanco
                                     if (numero == 1)
                                     {
                                         //lo intentara y aumenta tiempo
-                                        x.intentos += 1;
-                                        x.tiempo_servicio_final += p.tiempo_aumenta;
+                                        clienteActual.intentos += 1;
+                                        clienteActual.tiempo_servicio_final += p.tiempo_aumenta;
                                     }
                                     else
                                     {
                                         //cliente se fue
-                                        x.abandono = true;
+                                        clienteActual.abandono = true;
                                     }
                                 }
                                 if (p.nombre == "moneda no es aceptada")
@@ -874,31 +1002,38 @@ namespace SimulacionCajeroBanco
                                     if (numero == 1)
                                     {
                                         //lo intentara y aumenta tiempo
-                                        x.intentos += 1;
-                                        x.tiempo_servicio_final += p.tiempo_aumenta;
+                                        clienteActual.intentos += 1;
+                                        clienteActual.tiempo_servicio_final += p.tiempo_aumenta;
                                     }
                                     else
                                     {
                                         //cliente se fue
-                                        x.abandono = true;
+                                        clienteActual.abandono = true;
                                     }
                                 }
                                 #endregion
-                                cliente.problemas.Add(p);
-                                cliente.tiempo_servicio_final += p.tiempo_aumenta;
+                               
                                 
                             }
                         });
+                        
                     }
 
 
-                    if (x.tiempo_servicio_esperado != x.tiempo_servicio_final)
-                    {
-                        if (x.problemas.Count == 0)
-                        {
-                            MessageBox.Show("cliente-> " + x.codigo + "  tiempo esperado->" + x.tiempo_servicio_esperado + " tiempo final->" + x.tiempo_servicio_final);
-                        }
-                    }
+
+
+
+
+
+
+
+                    //if (clienteActual.tiempo_servicio_esperado != clienteActual.tiempo_servicio_final)
+                    //{
+                    //    if (clienteActual.problemas.Count == 0)
+                    //    {
+                    //        MessageBox.Show("cliente-> " + clienteActual.codigo + "  tiempo esperado->" + clienteActual.tiempo_servicio_esperado + " tiempo final->" + clienteActual.tiempo_servicio_final);
+                    //    }
+                    //}
 
                     //if (x.abandono == true)
                     //{
@@ -913,14 +1048,8 @@ namespace SimulacionCajeroBanco
                     //{
                     //    MessageBox.Show("cliente-> "+x.codigo+"  tiempo esperado->" + x.tiempo_servicio_esperado + " tiempo final->" + x.tiempo_servicio_final);
                     //}
-                    
+                   
                 });
-
-
-
-
-
-
                 loadClientes();
 
 
@@ -931,11 +1060,9 @@ namespace SimulacionCajeroBanco
                 MessageBox.Show("Error getAction.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        #endregion
 
-
-        #region
         //get clientes
+        #region
         public void getClientes()
         {
             try
@@ -943,16 +1070,12 @@ namespace SimulacionCajeroBanco
                 random=new Random();
                 listaCliente=new List<cliente>();
                 //llenar clientes
-                
                 for (int f = 1; f <= cantidadClientes; f++)
                 {
                     //llenando los datos de cada cliente
                     cliente=new cliente();
+                    //instanciando los problemas que pueda tener el cliente
                     cliente.problemas=new List<problema>();
-
-
-
-
                     cliente.codigo = f;
                     cliente.temporada = temporada.nombre;
                     cliente.tanda = tanda.nombre;
@@ -1123,6 +1246,11 @@ namespace SimulacionCajeroBanco
                     cliente.abandono = false;
                     cliente.tiempo_servicio_base = 0;
                     cliente.intentos = 0;
+                    //dia pago aumenta un 30% el tiempo esperado del cliente
+                    if (dia.nombre == "pago")
+                    {
+                        cliente.tiempo_servicio_esperado += cliente.tiempo_servicio_base*0.30;
+                    }
                     listaCliente.Add(cliente);
                 }
 
@@ -1135,9 +1263,8 @@ namespace SimulacionCajeroBanco
         }
         #endregion
 
-
+        //get clientes by temporada para poder establecer numeros random de clientes en base a la temporada 
         #region
-        //get clientes by temporada
         public void getClientesByTemporada()
         {
             try
@@ -1184,7 +1311,7 @@ namespace SimulacionCajeroBanco
 
                 listaCliente.ForEach(x =>
                 {
-                    dataGridView1.Rows.Add(x.codigo, x.operacion_deseada, x.tanda, x.tiempo_servicio_esperado, x.problemas.Count.ToString(), x.tiempo_servicio_final,x.abandono);
+                    dataGridView1.Rows.Add(x.codigo, x.operacion_deseada, x.tanda, x.tiempo_servicio_esperado, x.problemas.Count.ToString(), x.tiempo_servicio_final,x.abandono,x.tipo_cajero);
                 });
 
             }
@@ -1374,6 +1501,7 @@ namespace SimulacionCajeroBanco
 
         private void button1_Click(object sender, EventArgs e)
         {
+           
             getAction();
         }
 
@@ -1404,6 +1532,97 @@ namespace SimulacionCajeroBanco
         {
             getClientesByTemporada();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cantidadTipoCajaText.Text == "")
+                {
+                    MessageBox.Show("Falta la cantidad de ese tipo de caja", "", MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    cantidadTipoCajaText.Focus();
+                    cantidadTipoCajaText.SelectAll();
+                }
+
+                int cantidadTipoCajero = Convert.ToInt16(cantidadTipoCajaText.Text);
+                if (listaCajero == null)
+                {
+                    listaCajero = new List<cajero>();
+                    contadorCajero = 0;
+                }
+                if (listaCajeroDeposito == null)
+                {
+                    listaCajeroDeposito = new List<cajero>();
+                }
+                if (listaCajeroRetiro == null)
+                {
+                    listaCajeroRetiro = new List<cajero>();
+                }
+                if (listaCajeroCambioMoneda == null)
+                {
+                    listaCajeroCambioMoneda = new List<cajero>();
+                }
+
+                //creando un cajero nuevo y asignando el tipo de caja que manejara
+                for (int f = 0; f < cantidadTipoCajero; f++)
+                {
+                    cajero = new cajero();
+                    contadorCajero++;
+                    cajero.codigo = contadorCajero;
+                    cajero.operacion = tipoCajaCombo.Text;
+                    cajero.clientesAtendidos = 0;
+                    cajero.tiempoPromedioEnServcio = 0;
+                    cajero.clientesCola = 0;
+                    cajero.cantidad_cajeros_esta_operacion=0;
+                    //agregando el cajero a la lista de cajero
+                    listaCajero.Add(cajero);
+
+                    //guardando el cajero en cada lista separada
+                    if (cajero.operacion == "deposito")
+                    {
+                        listaCajeroDeposito.Add(cajero);
+                    }
+                    if (cajero.operacion == "retiro")
+                    {
+                        listaCajeroRetiro.Add(cajero);
+                    }
+                    if (cajero.operacion == "cambio moneda")
+                    {
+                        listaCajeroCambioMoneda.Add(cajero);
+                    }
+                    //MessageBox.Show("cod-> " + cajero.codigo.ToString() + " cli antendidos-> " + cajero.clientesAtendidos + " clientes cola-> " + cajero.clientesCola + " tiempo serv-> " + cajero.tiempoPromedioEnServcio + " tipo caja-> " + cajero.tipo_caja);
+                 }
+
+                MessageBox.Show("Agregado .:","", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                listaCajero = new List<cajero>();
+                contadorCajero = 0;
+                MessageBox.Show("Eliminado .:", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+
+
+
+
 
     }
 }

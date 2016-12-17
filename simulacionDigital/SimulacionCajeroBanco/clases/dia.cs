@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace SimulacionCajeroBanco.clases
 {
-    public class operaciones
+    public class dia
     {
         public string nombre { get; set; }
-
-        public double tiempo_promedio { get; set; }
-       
+        public int cantidad_cliente_rango_inicial { get; set; }
+        public int cantidad_cliente_rango_final { get; set; }
     }
 }
