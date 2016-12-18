@@ -2201,8 +2201,8 @@ namespace SimulacionCajeroBanco
                 String reporte = "SimulacionCajeroBanco.reportes.reporte_grafico_cliente.rdlc";
                 List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
 
+                listaReporteGraficoCliente=new List<reporte_grafico_cliente>();
                 //reporte estudiante
-                reporte_grafico_cliente reporteGraficoCliente = new reporte_grafico_cliente();
                 int cont = 0;
                 listaCliente.ForEach(clienteActual =>
                 {
@@ -2219,14 +2219,14 @@ namespace SimulacionCajeroBanco
                     reporteGraficoCliente.operacion_completada = clienteActual.operacion_completada;
                     reporteGraficoCliente.operacion_deseada = clienteActual.operacion_deseada;
                     reporteGraficoCliente.tanda = clienteActual.tanda;
-                    reporteGraficoCliente.tiempo_servicio_esperado = clienteActual.tiempo_servicio_base;
+                    reporteGraficoCliente.tiempo_servicio_esperado = clienteActual.tiempo_servicio_esperado;
                     reporteGraficoCliente.tiempo_servicio_final = clienteActual.tiempo_servicio_final;
                     reporteGraficoCliente.tipo_cajero = clienteActual.tipo_cajero;
                     Thread.Sleep(10);
                     listaReporteGraficoCliente.Add(reporteGraficoCliente);
                 });
 
-                ReportDataSource reporteF = new ReportDataSource("reporte_grafico_cliente", listaReportePorCajero);
+                ReportDataSource reporteF = new ReportDataSource("reporte_grafico_cliente", listaReporteGraficoCliente);
                 listaReportDataSource.Add(reporteF);
 
                 List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
