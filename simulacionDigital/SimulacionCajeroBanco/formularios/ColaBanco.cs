@@ -757,9 +757,10 @@ namespace SimulacionCajeroBanco
                         #endregion
                         //fin asignar caja a cliente
 
-                        //verificando si ocurren problemas
+                        //verificando si ocurren problemas en los procesos
                         listaProblemaDeposito.ForEach(problemaActual =>
                         {
+                            #region
                             random = new Random();
                             numero = random.NextDouble();
                             numero = Math.Round(numero,2);
@@ -767,10 +768,8 @@ namespace SimulacionCajeroBanco
                             numero*=100;
                             if (numero >= problemaActual.probabilidad_ocurrencia_inicial && numero <= problemaActual.probabilidad_ocurrencia_final)
                             {
-                                //MessageBox.Show(numero.ToString() + "-" + p.probabilidad_ocurrencia_inicial + "-" + p.probabilidad_ocurrencia_final + "--");
-                                //MessageBox.Show("cliente-> "+x.codigo+"-"+cliente.operacion_deseada+"->presento problema: " + p.nombre);
                                 //MessageBox.Show("tiempo antes->" + cliente.tiempo_servicio_final + " tiempo ahora->" + ((cliente.tiempo_servicio_final + p.tiempo_aumenta)).ToString("N"));
-                                //cliente se presento este problema y toma desiciones
+                                //cliente se presento este problema y toma desiciones por ende aumenta el tiempo
                                 #region
                                 if (problemaActual.nombre == "fallo sistema")
                                 {
@@ -843,8 +842,9 @@ namespace SimulacionCajeroBanco
                                     }
                                 }
                                 #endregion
-                               
+
                             }
+                            #endregion
                         });
                     }
 
@@ -985,8 +985,12 @@ namespace SimulacionCajeroBanco
             }
         }
 
-        //get clientes
-        #region
+
+
+
+
+
+        //get clientes || distribucion clientes
         public void getClientes()
         {
             try
@@ -996,6 +1000,7 @@ namespace SimulacionCajeroBanco
                 //llenar clientes
                 for (int f = 1; f <= cantidadClientes; f++)
                 {
+                    
                     //llenando los datos de cada cliente
                     cliente=new cliente();
                     //instanciando los problemas que pueda tener el cliente
@@ -1004,177 +1009,739 @@ namespace SimulacionCajeroBanco
                     cliente.temporada = temporada.nombre;
                     cliente.tanda = tanda.nombre;
                     //asignar operacion que realizara dependiendo de la temporada y la tanda
-                    //(deposito,retiro,cambio moneda,cheque)
-                    #region
-                    if (temporada.nombre == "primavera")
+                    //(deposito,retiro,cambio moneda)
+                    Thread.Sleep(20);
+                    numero = random.NextDouble();
+                    numero = Math.Round(numero, 2);
+                    //MessageBox.Show("rand operacion->"+numero.ToString());
+                    if (temporadaAnoCombo.Text == "primavera")
                     {
+                        #region
+                        //temporada primavera
+                        if (tandaCombo.Text == "matutina")
+                        {
+                            if (diasCombo.Text == "normal")
+                            {
+                                //asigar operacion
+                                #region
+                                if (numero >= 0 && numero <= 0.44)
+                                {
+                                    //deposito
+                                    #region
+                                    operacion = new operaciones();
+                                    operacion.nombre = "deposito";
+                                    operacion.tiempo_promedio_rango_inicial = 2.0;
+                                    operacion.tiempo_promedio_rango_final = 3.5;
+                                    cliente.operacion_deseada = operacion.nombre;
+                                    //obteniendo el tiempo promedio que dura la operacion y asigando a cliente
+
+                                    numero = random.Next(2, 3);
+                                    cliente.tiempo_servicio_esperado = numero;
+                                    random = new Random();
+                                    if (numero < 3)
+                                    {
+                                        Thread.Sleep(250);numero = random.Next(0, 9);
+                                    }
+                                    else
+                                    {
+                                        numero = (random.Next(0, 5));
+                                    }
+                                    cliente.tiempo_servicio_esperado =cliente.tiempo_servicio_esperado+ (numero/10);
+                                    cliente.tiempo_servicio_final = cliente.tiempo_servicio_esperado;
+                                    //MessageBox.Show("primavera-matutina-dia normal-deposito->" + cliente.tiempo_servicio_final);
+                                    #endregion
+
+                                }
+                                if (numero >= 0.45 && numero <= 0.79)
+                                {
+                                    //retiro
+                                    #region
+                                    operacion = new operaciones();
+                                    operacion.nombre = "retiro";
+                                    operacion.tiempo_promedio_rango_inicial = 2.0;
+                                    operacion.tiempo_promedio_rango_final = 3.3;
+                                    cliente.operacion_deseada = operacion.nombre;
+                                    //obteniendo el tiempo promedio que dura la operacion y asigando a cliente
+                                    Thread.Sleep(250);numero = random.Next(2, 3);
+                                    cliente.tiempo_servicio_esperado = numero;
+                                    random = new Random();
+                                    if (numero < 3)
+                                    {cliente.tiempo_servicio_esperado =cliente.tiempo_servicio_esperado+ (numero/10);
+                                        numero = (random.Next(0, 9)) / 10;
+                                    }
+                                    else
+                                    {
+                                        numero = (random.Next(0, 3)) / 10;
+                                    }
+                                    cliente.tiempo_servicio_esperado = cliente.tiempo_servicio_esperado + (numero / 10);
+                                    cliente.tiempo_servicio_final = cliente.tiempo_servicio_esperado;
+                                    //MessageBox.Show("primavera-matutina-dia normal-retiro->" + cliente.tiempo_servicio_final);
+                                    #endregion
+                                }
+                                if (numero >= 0.80 && numero <= 1)
+                                {
+                                    //cambio moneda
+                                    #region
+                                    operacion = new operaciones();
+                                    operacion.nombre = "cambio moneda";
+                                    operacion.tiempo_promedio_rango_inicial = 2.0;
+                                    operacion.tiempo_promedio_rango_final = 3.2;
+                                    cliente.operacion_deseada = operacion.nombre;
+                                    //obteniendo el tiempo promedio que dura la operacion y asigando a cliente
+                                    Thread.Sleep(250);numero = random.Next(2, 3);
+                                    cliente.tiempo_servicio_esperado = numero;
+                                    random = new Random();
+                                    if (numero < 3)
+                                    {
+                                        numero = (random.Next(0, 9)) / 10;
+                                    }
+                                    else
+                                    {
+                                        numero = (random.Next(0, 2)) / 10;
+                                    }
+                                    cliente.tiempo_servicio_esperado =cliente.tiempo_servicio_esperado+ (numero/10);
+                                    cliente.tiempo_servicio_final = cliente.tiempo_servicio_esperado;
+                                    //MessageBox.Show("primavera-matutina-dia normal-cambio moneda->" + cliente.tiempo_servicio_final);
+                                    #endregion
+                                }
+                                #endregion
+                            }
+                            else if (diasCombo.Text == "pago")
+                            {
+                                //asigar operacion
+                                #region
+                                //double numero = random.NextDouble();
+                                numero = Math.Round(numero, 2);
+                                //MessageBox.Show(numero.ToString());
+                                if (numero >= 0 && numero <= 0.35)
+                                {
+                                    //deposito
+                                    #region
+                                    operacion = new operaciones();
+                                    operacion.nombre = "deposito";
+                                    operacion.tiempo_promedio_rango_inicial = 3.0;
+                                    operacion.tiempo_promedio_rango_final = 4.8;
+                                    cliente.operacion_deseada = operacion.nombre;
+                                    //obteniendo el tiempo promedio que dura la operacion y asigando a cliente
+                                    Thread.Sleep(250);numero = random.Next(3, 4);
+                                    cliente.tiempo_servicio_esperado = numero;
+                                    random = new Random();
+                                    if (numero < 4)
+                                    {
+                                        numero = (random.Next(0, 9)) / 10;
+                                    }
+                                    else
+                                    {
+                                        numero = (random.Next(0, 8)) / 10;
+                                    }
+                                    cliente.tiempo_servicio_esperado =cliente.tiempo_servicio_esperado+ (numero/10);
+                                    cliente.tiempo_servicio_final = cliente.tiempo_servicio_esperado;
+                                    //MessageBox.Show("primavera-matutina-dia pago-deposito->" + cliente.tiempo_servicio_final);
+                                    #endregion
+
+                                }
+                                if (numero >= 0.36 && numero <= 0.81)
+                                {
+                                    #region
+                                    //retiro
+                                    operacion = new operaciones();
+                                    operacion.nombre = "retiro";
+                                    operacion.tiempo_promedio_rango_inicial = 2.0;
+                                    operacion.tiempo_promedio_rango_final = 4.7;
+                                    cliente.operacion_deseada = operacion.nombre;
+                                    //obteniendo el tiempo promedio que dura la operacion y asigando a cliente
+                                    Thread.Sleep(250);numero = random.Next(2, 4);
+                                    cliente.tiempo_servicio_esperado = numero;
+                                    random = new Random();
+                                    if (numero < 4)
+                                    {
+                                        numero = (random.Next(0, 9)) / 10;
+                                    }
+                                    else
+                                    {
+                                        numero = (random.Next(0, 7)) / 10;
+                                    }
+                                    cliente.tiempo_servicio_esperado =cliente.tiempo_servicio_esperado+ (numero/10);
+                                    cliente.tiempo_servicio_final = cliente.tiempo_servicio_esperado;
+                                    //MessageBox.Show("primavera-matutina-dia pago-retiro->" + cliente.tiempo_servicio_final);
+                                    #endregion
+                                }
+                                if (numero >= 0.82 && numero <= 1)
+                                {
+                                    #region
+                                    //cambio moneda
+                                    operacion = new operaciones();
+                                    operacion.nombre = "cambio moneda";
+                                    operacion.tiempo_promedio_rango_inicial = 2.0;
+                                    operacion.tiempo_promedio_rango_final = 3.5;
+                                    cliente.operacion_deseada = operacion.nombre;
+                                    //obteniendo el tiempo promedio que dura la operacion y asigando a cliente
+                                    numero = random.Next(2, 3);
+                                    random = new Random();
+                                    cliente.tiempo_servicio_esperado = numero;
+                                    random = new Random();
+                                    if (numero < 3)
+                                    {
+                                        numero = (random.Next(0, 9)) / 10;
+                                    }
+                                    else
+                                    {
+                                        numero = (random.Next(0, 5)) / 10;
+                                    }
+                                    cliente.tiempo_servicio_esperado =cliente.tiempo_servicio_esperado+ (numero/10);
+                                    cliente.tiempo_servicio_final = cliente.tiempo_servicio_esperado;
+                                    //MessageBox.Show("primavera-matutina-dia pago-cambio moneda->" + cliente.tiempo_servicio_final);
+                                    #endregion
+                                }
+                                #endregion
+                            }
+                        }
+                        else if (tanda.nombre == "vespertina")
+                        {
+                           
+                            if (diasCombo.Text == "normal")
+                            {
+                                //asigar operacion
+                                #region
+                                //double numero = random.NextDouble();
+                                numero = Math.Round(numero, 2);
+                                //MessageBox.Show(numero.ToString());
+                                if (numero >= 0 && numero <= 0.44)
+                                {
+                                    //deposito
+                                    #region
+                                    operacion = new operaciones();
+                                    operacion.nombre = "deposito";
+                                    operacion.tiempo_promedio_rango_inicial = 2.8;
+                                    operacion.tiempo_promedio_rango_final = 3.5;
+                                    cliente.operacion_deseada = operacion.nombre;
+                                    //obteniendo el tiempo promedio que dura la operacion y asigando a cliente
+                                    numero = random.Next(2, 3);
+                                    cliente.tiempo_servicio_esperado = numero;
+                                    random = new Random();
+                                    if (numero < 3)
+                                    {
+                                        numero = (random.Next(0, 9)) / 10;
+                                    }
+                                    else
+                                    {
+                                        numero = (random.Next(0, 5)) / 10;
+                                    }
+                                    cliente.tiempo_servicio_esperado =cliente.tiempo_servicio_esperado+ (numero/10);
+                                    cliente.tiempo_servicio_final = cliente.tiempo_servicio_esperado;
+                                    //MessageBox.Show("primavera-vespertina-dia normal-deposito->" + cliente.tiempo_servicio_final);
+                                    #endregion
+
+                                }
+                                if (numero >= 0.45 && numero <= 0.79)
+                                {
+                                    //retiro
+                                    #region
+                                    operacion = new operaciones();
+                                    operacion.nombre = "retiro";
+                                    operacion.tiempo_promedio_rango_inicial = 2.3;
+                                    operacion.tiempo_promedio_rango_final = 3.1;
+                                    cliente.operacion_deseada = operacion.nombre;
+                                    //obteniendo el tiempo promedio que dura la operacion y asigando a cliente
+                                    numero = random.Next(2, 3);
+                                    cliente.tiempo_servicio_esperado = numero;
+                                    random = new Random();
+                                    if (numero < 3)
+                                    {
+                                        numero = (random.Next(0, 9)) / 10;
+                                    }
+                                    else
+                                    {
+                                        numero = (random.Next(0, 1)) / 10;
+                                    }
+                                    cliente.tiempo_servicio_esperado =cliente.tiempo_servicio_esperado+ (numero/10);
+                                    cliente.tiempo_servicio_final = cliente.tiempo_servicio_esperado;
+                                    //MessageBox.Show("primavera-vespertina-dia normal-retiro->" + cliente.tiempo_servicio_final);
+                                    #endregion
+                                }
+                                if (numero >= 0.80 && numero <= 1)
+                                {
+                                    //cambio moneda
+                                    #region
+                                    operacion = new operaciones();
+                                    operacion.nombre = "cambio moneda";
+                                    operacion.tiempo_promedio_rango_inicial = 2.0;
+                                    operacion.tiempo_promedio_rango_final = 3.1;
+                                    cliente.operacion_deseada = operacion.nombre;
+                                    //obteniendo el tiempo promedio que dura la operacion y asigando a cliente
+                                    numero = random.Next(2, 3);
+                                    cliente.tiempo_servicio_esperado = numero;
+                                    random = new Random();
+                                    if (numero < 3)
+                                    {
+                                        numero = (random.Next(0, 9)) / 10;
+                                    }
+                                    else
+                                    {
+                                        numero = (random.Next(0, 1)) / 10;
+                                    }
+                                    cliente.tiempo_servicio_esperado =cliente.tiempo_servicio_esperado+ (numero/10);
+                                    cliente.tiempo_servicio_final = cliente.tiempo_servicio_esperado;
+                                    //MessageBox.Show("primavera-vespertina-dia normal-cambio moneda->" + cliente.tiempo_servicio_final);
+                                    #endregion
+                                }
+                                #endregion
+                            }
+                            else if (diasCombo.Text == "pago")
+                            {
+                                //asigar operacion
+                                #region
+                                //double numero = random.NextDouble();
+                                numero = Math.Round(numero, 2);
+                                //MessageBox.Show(numero.ToString());
+                                if (numero >= 0 && numero <= 0.35)
+                                {
+                                    //deposito
+                                    #region
+                                    operacion = new operaciones();
+                                    operacion.nombre = "deposito";
+                                    operacion.tiempo_promedio_rango_inicial = 3.0;
+                                    operacion.tiempo_promedio_rango_final = 5.6;
+                                    cliente.operacion_deseada = operacion.nombre;
+                                    //obteniendo el tiempo promedio que dura la operacion y asigando a cliente
+                                    numero = random.Next(3, 5);
+                                    cliente.tiempo_servicio_esperado = numero;
+                                    random = new Random();
+                                    if (numero < 5)
+                                    {
+                                        numero = (random.Next(0, 9)) / 10;
+                                    }
+                                    else
+                                    {
+                                        numero = (random.Next(0, 6)) / 10;
+                                    }
+                                    cliente.tiempo_servicio_esperado =cliente.tiempo_servicio_esperado+ (numero/10);
+                                    cliente.tiempo_servicio_final = cliente.tiempo_servicio_esperado;
+                                    //MessageBox.Show("primavera-vespertina-dia pago-deposito->" + cliente.tiempo_servicio_final);
+                                    #endregion
+
+                                }
+                                if (numero >= 0.36 && numero <= 0.81)
+                                {
+                                    //retiro
+                                    #region
+                                    operacion = new operaciones();
+                                    operacion.nombre = "retiro";
+                                    operacion.tiempo_promedio_rango_inicial = 2.0;
+                                    operacion.tiempo_promedio_rango_final = 4.8;
+                                    cliente.operacion_deseada = operacion.nombre;
+                                    //obteniendo el tiempo promedio que dura la operacion y asigando a cliente
+                                    numero = random.Next(2, 4);
+                                    cliente.tiempo_servicio_esperado = numero;
+                                    random = new Random();
+                                    if (numero < 4)
+                                    {
+                                        numero = (random.Next(0, 9)) / 10;
+                                    }
+                                    else
+                                    {
+                                        numero = (random.Next(0, 8)) / 10;
+                                    }
+                                    cliente.tiempo_servicio_esperado =cliente.tiempo_servicio_esperado+ (numero/10);
+                                    cliente.tiempo_servicio_final = cliente.tiempo_servicio_esperado;
+                                    //MessageBox.Show("primavera-vespertina-dia pago-retiro->" + numero);
+                                    #endregion
+                                }
+                                if (numero >= 0.82 && numero <= 1)
+                                {
+                                    //cambio moneda
+                                    #region
+                                    operacion = new operaciones();
+                                    operacion.nombre = "cambio moneda";
+                                    operacion.tiempo_promedio_rango_inicial = 2.0;
+                                    operacion.tiempo_promedio_rango_final = 4.7;
+                                    cliente.operacion_deseada = operacion.nombre;
+                                    //obteniendo el tiempo promedio que dura la operacion y asigando a cliente
+                                    numero = random.Next(2, 4);
+                                    cliente.tiempo_servicio_esperado = numero;
+                                    random = new Random();
+                                    if (numero < 4)
+                                    {
+                                        numero = (random.Next(0, 9)) / 10;
+                                    }
+                                    else
+                                    {
+                                        numero = (random.Next(0, 7)) / 10;
+                                    }
+                                    cliente.tiempo_servicio_esperado =cliente.tiempo_servicio_esperado+ (numero/10);
+                                    cliente.tiempo_servicio_final = cliente.tiempo_servicio_esperado;
+                                    //MessageBox.Show("primavera-vespertina-dia pago-cambio moneda->" + numero);
+                                    #endregion
+                                }
+                                #endregion
+                            }
+                        }
+                        #endregion
+                    }
+                    else if (temporada.nombre == "invierno")
+                    {
+                        #region
                         //temporada primavera
                         if (tanda.nombre == "matutina")
                         {
-                            //asigar operacion
-                            double numero = random.NextDouble();
-                            numero = Math.Round(numero, 2);
-                            //MessageBox.Show(numero.ToString());
-                            if (numero >= 0 && numero <= 0.44)
+                            if (diasCombo.Text == "normal")
                             {
-                                //deposito
-                                operacion=new operaciones();
-                                operacion.nombre = "deposito";
-                                operacion.tiempo_promedio = 3.5;
-                                cliente.operacion_deseada = operacion.nombre;
-                                cliente.tiempo_servicio_esperado = operacion.tiempo_promedio;
-                                cliente.tiempo_servicio_final = operacion.tiempo_promedio;
-                            }
-                            if (numero >= 0.45 && numero <= 0.79)
-                            {
-                                //retiro
-                                operacion = new operaciones();
-                                operacion.nombre = "retiro";
-                                operacion.tiempo_promedio = 2.7;
-                                cliente.operacion_deseada = operacion.nombre;
-                                cliente.tiempo_servicio_esperado = operacion.tiempo_promedio;
-                                cliente.tiempo_servicio_final = operacion.tiempo_promedio;
-                            }
-                            if (numero >= 0.79 && numero <= 1)
-                            {
-                                //cambio moneda
-                                operacion = new operaciones();
-                                operacion.nombre = "cambio moneda";
-                                operacion.tiempo_promedio = 3.0;
-                                cliente.operacion_deseada = operacion.nombre;
-                                cliente.tiempo_servicio_esperado = operacion.tiempo_promedio;
-                                cliente.tiempo_servicio_final = operacion.tiempo_promedio;
-                            }
-                        }
-                        else if (tanda.nombre == "vespertina")
-                        {
-                            //asigar operacion
-                            double numero = random.NextDouble();
-                            numero = Math.Round(numero, 2);
-                            //MessageBox.Show(numero.ToString());
-                            if (numero >= 0 && numero <= 0.34)
-                            {
-                                //deposito
-                                operacion = new operaciones();
-                                operacion.nombre = "deposito";
-                                operacion.tiempo_promedio = 3.2;
-                                cliente.operacion_deseada = operacion.nombre;
-                                cliente.tiempo_servicio_esperado = operacion.tiempo_promedio;
-                                cliente.tiempo_servicio_final = operacion.tiempo_promedio;
-                            }
-                            if (numero >= 0.35 && numero <= 0.69)
-                            {
-                                //retiro
-                                operacion = new operaciones();
-                                operacion.nombre = "retiro";
-                                operacion.tiempo_promedio = 2.9;
-                                cliente.operacion_deseada = operacion.nombre;
-                                cliente.tiempo_servicio_esperado = operacion.tiempo_promedio;
-                                cliente.tiempo_servicio_final = operacion.tiempo_promedio;
-                            }
-                            if (numero >= 0.70 && numero <= 1)
-                            {
-                                //cambio moneda
-                                operacion = new operaciones();
-                                operacion.nombre = "cambio moneda";
-                                operacion.tiempo_promedio = 3.1;
-                                cliente.operacion_deseada = operacion.nombre;
-                                cliente.tiempo_servicio_esperado = operacion.tiempo_promedio;
-                                cliente.tiempo_servicio_final = operacion.tiempo_promedio;
-                            }
-                        }
-                    }
-                    if(temporada.nombre=="invierno")
-                    {
-                        //temporada invierno
-                        if (tanda.nombre == "matutina")
-                        {
-                            //asigar operacion
-                            double numero = random.NextDouble();
-                            numero = Math.Round(numero, 2);
-                            //MessageBox.Show(numero.ToString());
-                            if (numero >= 0 && numero <= 0.26)
-                            {
-                                //deposito
-                                operacion = new operaciones();
-                                operacion.nombre = "deposito";
-                                operacion.tiempo_promedio = 3.0;
-                                cliente.operacion_deseada = operacion.nombre;
-                                cliente.tiempo_servicio_esperado = operacion.tiempo_promedio;
-                                cliente.tiempo_servicio_final = operacion.tiempo_promedio;
-                            }
-                            if (numero >= 0.25 && numero <= 0.63)
-                            {
-                                //retiro
-                                operacion = new operaciones();
-                                operacion.nombre = "retiro";
-                                operacion.tiempo_promedio = 3.2;
-                                cliente.operacion_deseada = operacion.nombre;
-                                cliente.tiempo_servicio_esperado = operacion.tiempo_promedio;
-                                cliente.tiempo_servicio_final = operacion.tiempo_promedio;
-                            }
-                            if (numero >= 0.64 && numero <= 1)
-                            {
-                                //cambio moneda
-                                operacion = new operaciones();
-                                operacion.nombre = "cambio moneda";
-                                operacion.tiempo_promedio = 2.5;
-                                cliente.operacion_deseada = operacion.nombre;
-                                cliente.tiempo_servicio_esperado = operacion.tiempo_promedio;
-                                cliente.tiempo_servicio_final = operacion.tiempo_promedio;
-                            }
-                        }
-                        else if (tanda.nombre == "vespertina")
-                        {
-                            //asigar operacion
-                            double numero = random.NextDouble();
-                            numero = Math.Round(numero, 2);
-                            //MessageBox.Show(numero.ToString());
-                            if (numero >= 0 && numero <= 0.29)
-                            {
-                                //deposito
-                                operacion = new operaciones();
-                                operacion.nombre = "deposito";
-                                operacion.tiempo_promedio = 2.9;
-                                cliente.operacion_deseada = operacion.nombre;
-                                cliente.tiempo_servicio_esperado = operacion.tiempo_promedio;
-                                cliente.tiempo_servicio_final = operacion.tiempo_promedio;
-                            }
-                            if (numero >= 0.30 && numero <= 0.62)
-                            {
-                                //retiro
-                                operacion = new operaciones();
-                                operacion.nombre = "retiro";
-                                operacion.tiempo_promedio = 3.5;
-                                cliente.operacion_deseada = operacion.nombre;
-                                cliente.tiempo_servicio_esperado = operacion.tiempo_promedio;
-                                cliente.tiempo_servicio_final = operacion.tiempo_promedio;
-                            }
-                            if (numero >= 0.63 && numero <= 1)
-                            {
-                                //cambio moneda
-                                operacion = new operaciones();
-                                operacion.nombre = "cambio moneda";
-                                operacion.tiempo_promedio = 2.7;
-                                cliente.operacion_deseada = operacion.nombre;
-                                cliente.tiempo_servicio_esperado = operacion.tiempo_promedio;
-                                cliente.tiempo_servicio_final = operacion.tiempo_promedio;
-                            }
-                        }
-                    }
-                    #endregion
+                                //asigar operacion
+                                #region
+                                //double numero = random.NextDouble();
+                                numero = Math.Round(numero, 2);
+                                //MessageBox.Show(numero.ToString());
+                                if (numero >= 0 && numero <= 0.44)
+                                {
+                                    //deposito
+                                    #region
+                                    operacion = new operaciones();
+                                    operacion.nombre = "deposito";
+                                    operacion.tiempo_promedio_rango_inicial = 2.0;
+                                    operacion.tiempo_promedio_rango_final = 3.0;
+                                    cliente.operacion_deseada = operacion.nombre;
+                                    //obteniendo el tiempo promedio que dura la operacion y asigando a cliente
+                                    numero = random.Next(2, 3);
+                                    cliente.tiempo_servicio_esperado = numero;
+                                    if (numero < 3)
+                                    {
+                                        numero = (random.Next(0, 9)) / 10;
+                                    }
+                                    else
+                                    {
+                                        numero = (random.Next(0, 5)) / 10;
+                                    }
+                                    cliente.tiempo_servicio_esperado =cliente.tiempo_servicio_esperado+ (numero/10);
+                                    cliente.tiempo_servicio_final = cliente.tiempo_servicio_esperado;
+                                    //MessageBox.Show("invierno-matutina-dia normal-deposito->" + cliente.tiempo_servicio_final);
+                                    #endregion
 
+                                }
+                                if (numero >= 0.45 && numero <= 0.79)
+                                {
+                                    //retiro
+                                    #region
+                                    operacion = new operaciones();
+                                    operacion.nombre = "retiro";
+                                    operacion.tiempo_promedio_rango_inicial = 2.0;
+                                    operacion.tiempo_promedio_rango_final = 3.3;
+                                    cliente.operacion_deseada = operacion.nombre;
+                                    //obteniendo el tiempo promedio que dura la operacion y asigando a cliente
+                                    numero = random.Next(2, 3);
+                                    cliente.tiempo_servicio_esperado = numero;
+                                    if (numero < 3)
+                                    {
+                                        numero = (random.Next(0, 9)) / 10;
+                                    }
+                                    else
+                                    {
+                                        numero = (random.Next(0, 3)) / 10;
+                                    }
+                                    cliente.tiempo_servicio_esperado =cliente.tiempo_servicio_esperado+ (numero/10);
+                                    cliente.tiempo_servicio_final = cliente.tiempo_servicio_esperado;
+                                    //MessageBox.Show("invierno-matutina-dia normal-retiro->" + cliente.tiempo_servicio_final);
+                                    #endregion
+                                }
+                                if (numero >= 0.80 && numero <= 1)
+                                {
+                                    //cambio moneda
+                                    #region
+                                    operacion = new operaciones();
+                                    operacion.nombre = "cambio moneda";
+                                    operacion.tiempo_promedio_rango_inicial = 2.0;
+                                    operacion.tiempo_promedio_rango_final = 3.5;
+                                    cliente.operacion_deseada = operacion.nombre;
+                                    //obteniendo el tiempo promedio que dura la operacion y asigando a cliente
+                                    numero = random.Next(2, 3);
+                                    cliente.tiempo_servicio_esperado = numero;
+                                    if (numero < 3)
+                                    {
+                                        numero = (random.Next(0, 9)) / 10;
+                                    }
+                                    else
+                                    {
+                                        numero = (random.Next(0, 5)) / 10;
+                                    }
+                                    cliente.tiempo_servicio_esperado =cliente.tiempo_servicio_esperado+ (numero/10);
+                                    cliente.tiempo_servicio_final = cliente.tiempo_servicio_esperado;
+                                    //MessageBox.Show("invierno-matutina-dia normal-cambio moneda->" + cliente.tiempo_servicio_final);
+                                    #endregion
+                                }
+                                #endregion
+                            }
+                            else if (diasCombo.Text == "pago")
+                            {
+                                //asigar operacion
+                                #region
+                                //double numero = random.NextDouble();
+                                numero = Math.Round(numero, 2);
+                                //MessageBox.Show(numero.ToString());
+                                if (numero >= 0 && numero <= 0.35)
+                                {
+                                    //deposito
+                                    #region
+                                    operacion = new operaciones();
+                                    operacion.nombre = "deposito";
+                                    operacion.tiempo_promedio_rango_inicial = 2.0;
+                                    operacion.tiempo_promedio_rango_final = 4.9;
+                                    cliente.operacion_deseada = operacion.nombre;
+                                    //obteniendo el tiempo promedio que dura la operacion y asigando a cliente
+                                    numero = random.Next(2, 4);
+                                    cliente.tiempo_servicio_esperado = numero;
+                                    random = new Random();
+                                    if (numero < 4)
+                                    {
+                                        numero = (random.Next(0, 9)) / 10;
+                                    }
+                                    else
+                                    {
+                                        numero = (random.Next(0, 9)) / 10;
+                                    }
+                                    cliente.tiempo_servicio_esperado =cliente.tiempo_servicio_esperado+ (numero/10);
+                                    cliente.tiempo_servicio_final = cliente.tiempo_servicio_esperado;
+                                   // MessageBox.Show("invierno-matutina-dia pago-deposito->" + cliente.tiempo_servicio_final);
+                                    #endregion
+
+                                }
+                                if (numero >= 0.36 && numero <= 0.81)
+                                {
+                                    #region
+                                    //retiro
+                                    operacion = new operaciones();
+                                    operacion.nombre = "retiro";
+                                    operacion.tiempo_promedio_rango_inicial = 2.0;
+                                    operacion.tiempo_promedio_rango_final = 5.0;
+                                    cliente.operacion_deseada = operacion.nombre;
+                                    //obteniendo el tiempo promedio que dura la operacion y asigando a cliente
+                                    numero = random.Next(2, 4);
+                                    cliente.tiempo_servicio_esperado = numero;
+                                    if (numero < 5)
+                                    {
+                                        numero = (random.Next(0, 9)) / 10;
+                                    }
+                                    else
+                                    {
+                                        numero = (random.Next(0, 0)) / 10;
+                                    }
+                                    cliente.tiempo_servicio_esperado =cliente.tiempo_servicio_esperado+ (numero/10);
+                                    cliente.tiempo_servicio_final = cliente.tiempo_servicio_esperado;
+                                    //MessageBox.Show("invierno-matutina-dia pago-retiro->" + cliente.tiempo_servicio_final);
+                                    #endregion
+                                }
+                                if (numero >= 0.82 && numero <= 1)
+                                {
+                                    #region
+                                    //cambio moneda
+                                    operacion = new operaciones();
+                                    operacion.nombre = "cambio moneda";
+                                    operacion.tiempo_promedio_rango_inicial = 3.0;
+                                    operacion.tiempo_promedio_rango_final = 4.5;
+                                    cliente.operacion_deseada = operacion.nombre;
+                                    //obteniendo el tiempo promedio que dura la operacion y asigando a cliente
+                                    numero = random.Next(3, 4);
+                                    cliente.tiempo_servicio_esperado = numero;
+                                    if (numero < 4)
+                                    {
+                                        numero = (random.Next(0, 9)) / 10;
+                                    }
+                                    else
+                                    {
+                                        numero = (random.Next(0, 5)) / 10;
+                                    }
+                                    cliente.tiempo_servicio_esperado =cliente.tiempo_servicio_esperado+ (numero/10);
+                                    cliente.tiempo_servicio_final = cliente.tiempo_servicio_esperado;
+                                    //MessageBox.Show("invierno-matutina-dia pago-cambio moneda->" + cliente.tiempo_servicio_final);
+                                    #endregion
+                                }
+                                #endregion
+                            }
+                        }
+                        else if (tanda.nombre == "vespertina")
+                        {
+
+                            if (diasCombo.Text == "normal")
+                            {
+                                //asigar operacion
+                                #region
+                                //double numero = random.NextDouble();
+                                numero = Math.Round(numero, 2);
+                                //MessageBox.Show(numero.ToString());
+                                if (numero >= 0 && numero <= 0.44)
+                                {
+                                    //deposito
+                                    #region
+                                    operacion = new operaciones();
+                                    operacion.nombre = "deposito";
+                                    operacion.tiempo_promedio_rango_inicial = 2.0;
+                                    operacion.tiempo_promedio_rango_final = 3.3;
+                                    cliente.operacion_deseada = operacion.nombre;
+                                    //obteniendo el tiempo promedio que dura la operacion y asigando a cliente
+                                    numero = random.Next(2, 3);
+                                    cliente.tiempo_servicio_esperado = numero;
+                                    random = new Random();
+                                    if (numero <3)
+                                    {
+                                        numero = (random.Next(0, 9))/10;
+                                    }
+                                    else
+                                    {
+                                        numero = (random.Next(0, 3)) / 10;
+                                    }
+                                    cliente.tiempo_servicio_esperado =cliente.tiempo_servicio_esperado+ (numero/10);
+                                    cliente.tiempo_servicio_final = cliente.tiempo_servicio_esperado;
+                                    //MessageBox.Show("invierno-vespertina-dia normal-deposito->" + cliente.tiempo_servicio_final);
+                                    #endregion
+
+                                }
+                                if (numero >= 0.45 && numero <= 0.79)
+                                {
+                                    //retiro
+                                    #region
+                                    operacion = new operaciones();
+                                    operacion.nombre = "retiro";
+                                    operacion.tiempo_promedio_rango_inicial = 2.0;
+                                    operacion.tiempo_promedio_rango_final = 3.4;
+                                    cliente.operacion_deseada = operacion.nombre;
+                                    //obteniendo el tiempo promedio que dura la operacion y asigando a cliente
+                                    numero = random.Next(2, 3);
+                                    cliente.tiempo_servicio_esperado = numero;
+                                    if (numero == 2)
+                                    {
+                                        numero = (random.Next(0, 9)) / 10;
+                                    }
+                                    else
+                                    {
+                                        numero = (random.Next(0, 4)) / 10;
+                                    }
+                                    numero = (random.Next(0, 1)) / 10;
+                                    cliente.tiempo_servicio_esperado =cliente.tiempo_servicio_esperado+ (numero/10);
+                                    cliente.tiempo_servicio_final = cliente.tiempo_servicio_esperado;
+                                    //MessageBox.Show("invierno-vespertina-dia normal-retiro->" + cliente.tiempo_servicio_final);
+                                    #endregion
+                                }
+                                if (numero >= 0.80 && numero <= 1)
+                                {
+                                    //cambio moneda
+                                    #region
+                                    operacion = new operaciones();
+                                    operacion.nombre = "cambio moneda";
+                                    operacion.tiempo_promedio_rango_inicial = 2.0;
+                                    operacion.tiempo_promedio_rango_final = 3.8;
+                                    cliente.operacion_deseada = operacion.nombre;
+                                    //obteniendo el tiempo promedio que dura la operacion y asigando a cliente
+                                    numero = random.Next(2, 3);
+                                    cliente.tiempo_servicio_esperado = numero;
+                                    if (numero <3)
+                                    {
+                                        numero = (random.Next(0, 9)) / 10;
+                                    }
+                                    else
+                                    {
+                                        numero = (random.Next(0, 8)) / 10;
+                                    }
+                                    cliente.tiempo_servicio_esperado =cliente.tiempo_servicio_esperado+ (numero/10);
+                                    cliente.tiempo_servicio_final = cliente.tiempo_servicio_esperado;
+                                    //MessageBox.Show("invierno-vespertina-dia normal-cambio moneda->" + cliente.tiempo_servicio_final);
+                                    #endregion
+                                }
+                                #endregion
+                            }
+                            else if (diasCombo.Text == "pago")
+                            {
+                                //asigar operacion
+                                #region
+                                //double numero = random.NextDouble();
+                                numero = Math.Round(numero, 2);
+                                //MessageBox.Show(numero.ToString());
+                                if (numero >= 0 && numero <= 0.35)
+                                {
+                                    //deposito
+                                    #region
+                                    operacion = new operaciones();
+                                    operacion.nombre = "deposito";
+                                    operacion.tiempo_promedio_rango_inicial = 2.3;
+                                    operacion.tiempo_promedio_rango_final = 4.5;
+                                    cliente.operacion_deseada = operacion.nombre;
+                                    //obteniendo el tiempo promedio que dura la operacion y asigando a cliente
+                                    numero = random.Next(2, 4);
+                                    cliente.tiempo_servicio_esperado = numero;
+                                    random = new Random();
+                                    if (numero <4)
+                                    {
+                                        numero = (random.Next(0, 9)) / 10;
+                                    }
+                                    else
+                                    {
+                                        numero = (random.Next(0, 5)) / 10;
+                                    } 
+                                    cliente.tiempo_servicio_esperado =cliente.tiempo_servicio_esperado+ (numero/10);
+                                    cliente.tiempo_servicio_final = cliente.tiempo_servicio_esperado;
+                                    //MessageBox.Show("invierno-vespertina-dia pago-deposito->" + cliente.tiempo_servicio_final);
+                                    #endregion
+
+                                }
+                                if (numero >= 0.36 && numero <= 0.81)
+                                {
+                                    //retiro
+                                    #region
+                                    operacion = new operaciones();
+                                    operacion.nombre = "retiro";
+                                    operacion.tiempo_promedio_rango_inicial = 2.0;
+                                    operacion.tiempo_promedio_rango_final = 4.9;
+                                    cliente.operacion_deseada = operacion.nombre;
+                                    //obteniendo el tiempo promedio que dura la operacion y asigando a cliente
+                                    numero = random.Next(2, 4);
+                                    cliente.tiempo_servicio_esperado = numero;
+                                    if (numero < 4)
+                                    {
+                                        numero = (random.Next(1, 9)) / 10;
+                                    }
+                                    else
+                                    {
+                                        numero = (random.Next(0, 9)) / 10;
+                                    }
+                                    cliente.tiempo_servicio_esperado =cliente.tiempo_servicio_esperado+ (numero/10);
+                                    cliente.tiempo_servicio_final = cliente.tiempo_servicio_esperado;
+                                    //MessageBox.Show("invierno-vespertina-dia pago-retiro->" + numero);
+                                    #endregion
+                                }
+                                if (numero >= 0.82 && numero <= 1)
+                                {
+                                    //cambio moneda
+                                    #region
+                                    operacion = new operaciones();
+                                    operacion.nombre = "cambio moneda";
+                                    operacion.tiempo_promedio_rango_inicial = 2.9;
+                                    operacion.tiempo_promedio_rango_final = 3.7;
+                                    cliente.operacion_deseada = operacion.nombre;
+                                    //obteniendo el tiempo promedio que dura la operacion y asigando a cliente
+                                    numero = random.Next(2, 3);
+                                    cliente.tiempo_servicio_esperado = numero;
+                                    if (numero < 3)
+                                    {
+                                        numero = (random.Next(0, 9)) / 10;
+                                    }
+                                    else
+                                    {
+                                        numero = (random.Next(0, 7)) / 10;
+                                    }
+                                    cliente.tiempo_servicio_esperado =cliente.tiempo_servicio_esperado+ (numero/10);
+                                    cliente.tiempo_servicio_final = cliente.tiempo_servicio_esperado;
+                                    //MessageBox.Show("invierno-vespertina-dia pago-cambio moneda->" + numero);
+                                    #endregion
+                                }
+                                #endregion
+                            }
+                        }
+                        #endregion
+                    }
                     
+
+
                     cliente.atendido = false;
                     cliente.atendiendo = false;
                     cliente.abandono = false;
-                    cliente.tiempo_servicio_base = 0;
                     cliente.intentos = 0;
-                    //dia pago aumenta un 30% el tiempo esperado del cliente
-                    if (dia.nombre == "pago")
-                    {
-                        cliente.tiempo_servicio_esperado += cliente.tiempo_servicio_base*0.30;
-                    }
                     listaCliente.Add(cliente);
                 }
 
@@ -1185,7 +1752,17 @@ namespace SimulacionCajeroBanco
                 MessageBox.Show("Error getClientes.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        #endregion
+        
+
+
+
+
+
+
+
+
+
+
 
         //get clientes by temporada para poder establecer numeros random de clientes en base a la temporada 
         #region
@@ -1263,7 +1840,7 @@ namespace SimulacionCajeroBanco
 
                 //datos generales
                 String reporte = "SimulacionCajeroBanco.clases_reportes.reporte_cliente.rdlc";
-                List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
+                //List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
 
 
 
@@ -1292,10 +1869,10 @@ namespace SimulacionCajeroBanco
                 //ReportDataSource reporteF = new ReportDataSource("estudiante", ListaReporteEstudiante);
                 //listaReportDataSource.Add(reporteF);
 
-                List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
+                //List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
 
-                VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter, true, false, false);
-                ventana.ShowDialog();
+                //VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter, true, false, false);
+                //ventana.ShowDialog();
 
             }
             catch (Exception ex)

@@ -10,7 +10,8 @@ namespace SimulacionCajeroBanco.clases
     {
         public string nombre { get; set; }
 
-        public double tiempo_promedio { get; set; }
-       
+        public double tiempo_promedio_rango_inicial { get; set; }
+        public double tiempo_promedio_rango_final { get; set; }
+
     }
 }
