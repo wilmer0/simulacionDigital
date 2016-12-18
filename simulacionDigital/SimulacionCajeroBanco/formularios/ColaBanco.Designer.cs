@@ -307,6 +307,7 @@
             this.tandaCombo.Name = "tandaCombo";
             this.tandaCombo.Size = new System.Drawing.Size(162, 21);
             this.tandaCombo.TabIndex = 9;
+            this.tandaCombo.TextChanged += new System.EventHandler(this.tandaCombo_TextChanged);
             // 
             // dataGridView1
             // 
