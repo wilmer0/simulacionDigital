@@ -66,12 +66,14 @@ namespace SimulacionCajeroBanco
         private double clienteRetiro = 0;
         private double clienteCambioMoneda = 0;
         
-
+        //hilo
+        private BackgroundWorker worker;
 
         public ColaBanco()
         {
             InitializeComponent();
             loadVentana();
+            
         }
 
         public void loadVentana()
@@ -134,6 +136,7 @@ namespace SimulacionCajeroBanco
                     problema.nombre = "fallo sistema";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 30.40;
+                    Thread.Sleep(5);
                     random = new Random();
                     numero = random.Next(1,15);
                     problema.tiempo_aumenta = numero;
@@ -143,6 +146,7 @@ namespace SimulacionCajeroBanco
                     problema.nombre = "fallo electricidad";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 25.30;
+                    Thread.Sleep(5);
                     random = new Random();
                     numero = random.Next(1, 20);
                     problema.tiempo_aumenta = numero;
@@ -152,6 +156,7 @@ namespace SimulacionCajeroBanco
                     problema.nombre = "numero cuenta incorrecto";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 23.60;
+                    Thread.Sleep(5);
                     random = new Random();
                     numero = random.Next(1, 3);
                     problema.tiempo_aumenta = numero;
@@ -161,6 +166,7 @@ namespace SimulacionCajeroBanco
                     problema.nombre = "dinero insuficiente";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 17.85;
+                    Thread.Sleep(5);
                     random = new Random();
                     numero = random.Next(1, 15);
                     problema.tiempo_aumenta = numero;
@@ -170,6 +176,7 @@ namespace SimulacionCajeroBanco
                     problema.nombre = "falta cedula";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 35.90;
+                    Thread.Sleep(5);
                     random = new Random();
                     numero = random.Next(1, 2);
                     problema.tiempo_aumenta = numero;
@@ -181,6 +188,7 @@ namespace SimulacionCajeroBanco
                     problema.nombre = "fallo sistema";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 5.12;
+                    Thread.Sleep(5);
                     random = new Random();
                     numero = random.Next(1, 15);
                     problema.tiempo_aumenta = numero;
@@ -190,6 +198,7 @@ namespace SimulacionCajeroBanco
                     problema.nombre = "fallo electricidad";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 9.85;
+                    Thread.Sleep(5);
                     random = new Random();
                     numero = random.Next(1, 20);
                     problema.tiempo_aumenta = numero;
@@ -199,6 +208,7 @@ namespace SimulacionCajeroBanco
                     problema.nombre = "numero cuenta incorrecto";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 14.69;
+                    Thread.Sleep(5);
                     random = new Random();
                     numero = random.Next(1, 2);
                     problema.tiempo_aumenta = numero;
@@ -208,6 +218,7 @@ namespace SimulacionCajeroBanco
                     problema.nombre = "dinero insuficiente";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 11.80;
+                    Thread.Sleep(5);
                     random = new Random();
                     numero = random.Next(1,3);
                     problema.tiempo_aumenta = numero;
@@ -217,6 +228,7 @@ namespace SimulacionCajeroBanco
                     problema.nombre = "falta cedula";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 17.34;
+                    Thread.Sleep(5);
                     random = new Random();
                     numero = random.Next(1, 2);
                     problema.tiempo_aumenta = numero;
@@ -228,6 +240,7 @@ namespace SimulacionCajeroBanco
                     problema.nombre = "fallo sistema";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 5.12;
+                    Thread.Sleep(5);
                     random = new Random();
                     numero = random.Next(1, 15);
                     problema.tiempo_aumenta = numero;
@@ -238,6 +251,7 @@ namespace SimulacionCajeroBanco
                     problema.nombre = "fallo electricidad";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 9.85;
+                    Thread.Sleep(5);
                     random = new Random();
                     numero = random.Next(1, 20);
                     problema.tiempo_aumenta = numero;
@@ -248,6 +262,7 @@ namespace SimulacionCajeroBanco
                     problema.nombre = "dinero insuficiente";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 5.45;
+                    Thread.Sleep(5);
                     random = new Random();
                     numero = random.Next(1, 5);
                     problema.tiempo_aumenta = numero;
@@ -257,6 +272,7 @@ namespace SimulacionCajeroBanco
                     problema.nombre = "moneda no es aceptada";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 9.85;
+                    Thread.Sleep(5);
                     random = new Random();
                     numero = random.Next(1, 2);
                     problema.tiempo_aumenta = numero;
@@ -311,6 +327,7 @@ namespace SimulacionCajeroBanco
                     problema.nombre = "fallo sistema";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 12.60;
+                    Thread.Sleep(5);
                     random = new Random();
                     numero = random.Next(1, 20);
                     problema.tiempo_aumenta = numero;
@@ -321,6 +338,7 @@ namespace SimulacionCajeroBanco
                     problema.nombre = "fallo electricidad";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 20.30;
+                    Thread.Sleep(5);
                     random = new Random();
                     numero = random.Next(1, 30);
                     problema.tiempo_aumenta = numero;
@@ -331,6 +349,7 @@ namespace SimulacionCajeroBanco
                     problema.nombre = "numero cuenta incorrecto";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 17.43;
+                    Thread.Sleep(5);
                     random = new Random();
                     numero = random.Next(1, 2);
                     problema.tiempo_aumenta = numero;
@@ -341,6 +360,7 @@ namespace SimulacionCajeroBanco
                     problema.nombre = "dinero insuficiente";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 15.30;
+                    Thread.Sleep(5);
                     random = new Random();
                     numero = random.Next(1, 3);
                     problema.tiempo_aumenta = numero;
@@ -351,6 +371,7 @@ namespace SimulacionCajeroBanco
                     problema.nombre = "falta cedula";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 7.50;
+                    Thread.Sleep(5);
                     random = new Random();
                     numero = random.Next(1, 2);
                     problema.tiempo_aumenta = numero;
@@ -362,6 +383,7 @@ namespace SimulacionCajeroBanco
                     problema.nombre = "fallo sistema";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 12.60;
+                    Thread.Sleep(5);
                     random = new Random();
                     numero = random.Next(1, 20);
                     problema.tiempo_aumenta = numero;
@@ -372,6 +394,7 @@ namespace SimulacionCajeroBanco
                     problema.nombre = "fallo electricidad";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 20.30;
+                    Thread.Sleep(5);
                     random = new Random();
                     numero = random.Next(1, 30);
                     problema.tiempo_aumenta = numero;
@@ -382,6 +405,7 @@ namespace SimulacionCajeroBanco
                     problema.nombre = "numero cuenta incorrecto";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 9.60;
+                    Thread.Sleep(5);
                     random = new Random();
                     numero = random.Next(1, 3);
                     problema.tiempo_aumenta = numero;
@@ -392,6 +416,7 @@ namespace SimulacionCajeroBanco
                     problema.nombre = "dinero insuficiente";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 14.39;
+                    Thread.Sleep(5);
                     random = new Random();
                     numero = random.Next(1, 2);
                     problema.tiempo_aumenta = numero;
@@ -401,6 +426,7 @@ namespace SimulacionCajeroBanco
                     problema.nombre = "falta cedula";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 22.43;
+                    Thread.Sleep(5);
                     random = new Random();
                     numero = random.Next(1, 2);
                     problema.tiempo_aumenta = numero;
@@ -412,6 +438,7 @@ namespace SimulacionCajeroBanco
                     problema.nombre = "fallo sistema";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 12.60;
+                    Thread.Sleep(5);
                     random = new Random();
                     numero = random.Next(1, 20);
                     problema.tiempo_aumenta = numero;
@@ -422,6 +449,7 @@ namespace SimulacionCajeroBanco
                     problema.nombre = "fallo electricidad";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 20.30;
+                    Thread.Sleep(5);
                     random = new Random();
                     numero = random.Next(1, 30);
                     problema.tiempo_aumenta = numero; 
@@ -431,6 +459,7 @@ namespace SimulacionCajeroBanco
                     problema = new problema();
                     problema.nombre = "dinero insuficiente";
                     problema.probabilidad_ocurrencia_inicial = 0;
+                    Thread.Sleep(5);
                     random = new Random();
                     numero = random.Next(1, 6);
                     problema.tiempo_aumenta = numero; 
@@ -441,6 +470,7 @@ namespace SimulacionCajeroBanco
                     problema.nombre = "moneda no es aceptada";
                     problema.probabilidad_ocurrencia_inicial = 0;
                     problema.probabilidad_ocurrencia_final = 34.20;
+                    Thread.Sleep(5);
                     random = new Random();
                     numero = random.Next(1, 3);
                     problema.tiempo_aumenta = numero;
@@ -722,7 +752,7 @@ namespace SimulacionCajeroBanco
                 //rrecorriendo los clientes
                 listaCliente.ForEach(clienteActual =>
                 {
-                    Thread.Sleep(10);
+                    Thread.Sleep(5);
                     //cliente esta siendo atendido
                     clienteActual.atendiendo = true;
                     clienteActual.abandono = false;
@@ -741,6 +771,7 @@ namespace SimulacionCajeroBanco
                         cantidadCajerosDisponibles = listaCajeroDeposito.ToList().Count;
                         //elegir que caja quiere el cliente
                         cajeroSeleccionado = 0;
+                        Thread.Sleep(5);
                         cajeroSeleccionado = random.Next(0, cantidadCajerosDisponibles);
                         //MessageBox.Show(cajeroSeleccionado.ToString());
                         if (cajaEncontrada == false)
@@ -761,6 +792,7 @@ namespace SimulacionCajeroBanco
                         listaProblemaDeposito.ForEach(problemaActual =>
                         {
                             #region
+                            Thread.Sleep(10);
                             random = new Random();
                             numero = random.NextDouble();
                             numero = Math.Round(numero,2);
@@ -774,29 +806,45 @@ namespace SimulacionCajeroBanco
                                 if (problemaActual.nombre == "fallo sistema")
                                 {
                                     //el cliente puede elegir si se queda o se va porque el fallo es grave
+                                    Thread.Sleep(10);
                                     numero = random.Next(1, 2);
+                                    clienteActual.problemas.Add(problemaActual);
                                     if (numero == 1)
                                     {
                                         //se fue el cliente
                                         clienteActual.abandono = true;
-                                        clienteActual.tipo_cajero = cajero.codigo + "-" + cajero.operacion;
+                                        //clienteActual.tipo_cajero = cajero.codigo + "-" + cajero.operacion;
+                                    }
+                                    else
+                                    {
+                                        //el cliente se queda por ende aumenta el tiempo de servicio
+                                        clienteActual.tiempo_servicio_final += problemaActual.tiempo_aumenta;
                                     }
                                 }
                                 if (problemaActual.nombre == "fallo electricidad")
                                 {
                                     //el cliente puede elegir si se queda o se va porque el fallo es grave
+                                    Thread.Sleep(10);
                                     numero = random.Next(1, 2);
+                                    clienteActual.problemas.Add(problemaActual);
                                     if (numero == 1)
                                     {
                                         //se fue el cliente
                                         clienteActual.abandono = true;
-                                        clienteActual.tipo_cajero = cajero.codigo + "-" + cajero.operacion;
+                                        //clienteActual.tipo_cajero = cajero.codigo + "-" + cajero.operacion;
+                                    }
+                                    else
+                                    {
+                                        //cliente se queda por ende aumenta el tiempo de servicio
+                                        clienteActual.tiempo_servicio_final += problemaActual.tiempo_aumenta;
                                     }
                                 }
                                 if (problemaActual.nombre == "dinero insuficiente")
                                 {
                                     //el cliente puede elegir si lo intenta una vez mas
+                                    Thread.Sleep(10);
                                     numero = random.Next(1, 2);
+                                    clienteActual.problemas.Add(problemaActual);
                                     if (numero == 1)
                                     {
                                         //lo intentara y aumenta tiempo
@@ -812,7 +860,9 @@ namespace SimulacionCajeroBanco
                                 if (problemaActual.nombre == "numero cuenta incorrecto")
                                 {
                                     //el cliente puede elegir si lo intenta una vez mas
+                                    Thread.Sleep(10);
                                     numero = random.Next(1, 2);
+                                    clienteActual.problemas.Add(problemaActual);
                                     if (numero == 1)
                                     {
                                         //lo intentara y aumenta tiempo
@@ -828,7 +878,9 @@ namespace SimulacionCajeroBanco
                                 if (problemaActual.nombre == "falta cedula")
                                 {
                                     //el cliente puede elegir si lo intenta una vez mas
+                                    Thread.Sleep(10);
                                     numero = random.Next(1, 2);
+                                    clienteActual.problemas.Add(problemaActual);
                                     if (numero == 1)
                                     {
                                         //lo intentara y aumenta tiempo
@@ -874,6 +926,7 @@ namespace SimulacionCajeroBanco
                         cantidadCajerosDisponibles = listaCajeroRetiro.ToList().Count;
                         //elegir que caja quiere el cliente
                         cajeroSeleccionado = 0;
+                        Thread.Sleep(5);
                         cajeroSeleccionado = random.Next(0, cantidadCajerosDisponibles);
                         //MessageBox.Show(cajeroSeleccionado.ToString());
                         if (cajaEncontrada == false)
@@ -892,7 +945,116 @@ namespace SimulacionCajeroBanco
 
 
 
-                        //verificando si ocurren problemas
+                        //verificando si ocurren problemas en los procesos
+                        listaProblemaRetiro.ForEach(problemaActual =>
+                        {
+                            #region
+                            Thread.Sleep(10);
+                            random = new Random();
+                            numero = random.NextDouble();
+                            numero = Math.Round(numero, 2);
+                            //0.45*100=  numero=45
+                            numero *= 100;
+                            if (numero >= problemaActual.probabilidad_ocurrencia_inicial && numero <= problemaActual.probabilidad_ocurrencia_final)
+                            {
+                                //MessageBox.Show("tiempo antes->" + cliente.tiempo_servicio_final + " tiempo ahora->" + ((cliente.tiempo_servicio_final + p.tiempo_aumenta)).ToString("N"));
+                                //cliente se presento este problema y toma desiciones por ende aumenta el tiempo
+                                #region
+                                if (problemaActual.nombre == "fallo sistema")
+                                {
+                                    //el cliente puede elegir si se queda o se va porque el fallo es grave
+                                    Thread.Sleep(10);
+                                    numero = random.Next(1, 2);
+                                    clienteActual.problemas.Add(problemaActual);
+                                    if (numero == 1)
+                                    {
+                                        //se fue el cliente
+                                        clienteActual.abandono = true;
+                                        //clienteActual.tipo_cajero = cajero.codigo + "-" + cajero.operacion;
+                                    }
+                                    else
+                                    {
+                                        //el cliente se queda por ende aumenta el tiempo de servicio
+                                        clienteActual.tiempo_servicio_final += problemaActual.tiempo_aumenta;
+                                    }
+                                }
+                                if (problemaActual.nombre == "fallo electricidad")
+                                {
+                                    //el cliente puede elegir si se queda o se va porque el fallo es grave
+                                    Thread.Sleep(10);
+                                    numero = random.Next(1, 2);
+                                    clienteActual.problemas.Add(problemaActual);
+                                    if (numero == 1)
+                                    {
+                                        //se fue el cliente
+                                        clienteActual.abandono = true;
+                                        //clienteActual.tipo_cajero = cajero.codigo + "-" + cajero.operacion;
+                                    }
+                                    else
+                                    {
+                                        //cliente se queda por ende aumenta el tiempo de servicio
+                                        clienteActual.tiempo_servicio_final += problemaActual.tiempo_aumenta;
+                                    }
+                                }
+                                if (problemaActual.nombre == "dinero insuficiente")
+                                {
+                                    //el cliente puede elegir si lo intenta una vez mas
+                                    Thread.Sleep(10);
+                                    numero = random.Next(1, 2);
+                                    clienteActual.problemas.Add(problemaActual);
+                                    if (numero == 1)
+                                    {
+                                        //lo intentara y aumenta tiempo
+                                        clienteActual.intentos += 1;
+                                        clienteActual.tiempo_servicio_final += problemaActual.tiempo_aumenta;
+                                    }
+                                    else
+                                    {
+                                        //cliente se fue
+                                        clienteActual.abandono = true;
+                                    }
+                                }
+                                if (problemaActual.nombre == "numero cuenta incorrecto")
+                                {
+                                    //el cliente puede elegir si lo intenta una vez mas
+                                    Thread.Sleep(10);
+                                    numero = random.Next(1, 2);
+                                    clienteActual.problemas.Add(problemaActual);
+                                    if (numero == 1)
+                                    {
+                                        //lo intentara y aumenta tiempo
+                                        clienteActual.intentos += 1;
+                                        clienteActual.tiempo_servicio_final += problemaActual.tiempo_aumenta;
+                                    }
+                                    else
+                                    {
+                                        //cliente se fue
+                                        clienteActual.abandono = true;
+                                    }
+                                }
+                                if (problemaActual.nombre == "falta cedula")
+                                {
+                                    //el cliente puede elegir si lo intenta una vez mas
+                                    Thread.Sleep(10);
+                                    numero = random.Next(1, 2);
+                                    clienteActual.problemas.Add(problemaActual);
+                                    if (numero == 1)
+                                    {
+                                        //lo intentara y aumenta tiempo
+                                        clienteActual.intentos += 1;
+                                        clienteActual.tiempo_servicio_final += problemaActual.tiempo_aumenta;
+                                    }
+                                    else
+                                    {
+                                        //cliente se fue
+                                        clienteActual.abandono = true;
+                                    }
+                                }
+                                #endregion
+
+                            }
+                            #endregion
+                        });
                        
                     }
                         
@@ -917,6 +1079,7 @@ namespace SimulacionCajeroBanco
                         cantidadCajerosDisponibles = listaCajeroCambioMoneda.ToList().Count;
                         //elegir que caja quiere el cliente
                         cajeroSeleccionado = 0;
+                        Thread.Sleep(5);
                         cajeroSeleccionado = random.Next(0, cantidadCajerosDisponibles);
                         //MessageBox.Show(cajeroSeleccionado.ToString());
 
@@ -938,7 +1101,116 @@ namespace SimulacionCajeroBanco
 
 
 
-                        //verificando si ocurren problemas
+                        //verificando si ocurren problemas en los procesos
+                        listaProblemaCambio.ForEach(problemaActual =>
+                        {
+                            #region
+                            Thread.Sleep(10);
+                            random = new Random();
+                            numero = random.NextDouble();
+                            numero = Math.Round(numero, 2);
+                            //0.45*100=  numero=45
+                            numero *= 100;
+                            if (numero >= problemaActual.probabilidad_ocurrencia_inicial && numero <= problemaActual.probabilidad_ocurrencia_final)
+                            {
+                                //MessageBox.Show("tiempo antes->" + cliente.tiempo_servicio_final + " tiempo ahora->" + ((cliente.tiempo_servicio_final + p.tiempo_aumenta)).ToString("N"));
+                                //cliente se presento este problema y toma desiciones por ende aumenta el tiempo
+                                #region
+                                if (problemaActual.nombre == "fallo sistema")
+                                {
+                                    //el cliente puede elegir si se queda o se va porque el fallo es grave
+                                    Thread.Sleep(10);
+                                    numero = random.Next(1, 2);
+                                    clienteActual.problemas.Add(problemaActual);
+                                    if (numero == 1)
+                                    {
+                                        //se fue el cliente
+                                        clienteActual.abandono = true;
+                                        //clienteActual.tipo_cajero = cajero.codigo + "-" + cajero.operacion;
+                                    }
+                                    else
+                                    {
+                                        //el cliente se queda por ende aumenta el tiempo de servicio
+                                        clienteActual.tiempo_servicio_final += problemaActual.tiempo_aumenta;
+                                    }
+                                }
+                                if (problemaActual.nombre == "fallo electricidad")
+                                {
+                                    //el cliente puede elegir si se queda o se va porque el fallo es grave
+                                    Thread.Sleep(10);
+                                    numero = random.Next(1, 2);
+                                    clienteActual.problemas.Add(problemaActual);
+                                    if (numero == 1)
+                                    {
+                                        //se fue el cliente
+                                        clienteActual.abandono = true;
+                                        //clienteActual.tipo_cajero = cajero.codigo + "-" + cajero.operacion;
+                                    }
+                                    else
+                                    {
+                                        //cliente se queda por ende aumenta el tiempo de servicio
+                                        clienteActual.tiempo_servicio_final += problemaActual.tiempo_aumenta;
+                                    }
+                                }
+                                if (problemaActual.nombre == "dinero insuficiente")
+                                {
+                                    //el cliente puede elegir si lo intenta una vez mas
+                                    Thread.Sleep(10);
+                                    numero = random.Next(1, 2);
+                                    clienteActual.problemas.Add(problemaActual);
+                                    if (numero == 1)
+                                    {
+                                        //lo intentara y aumenta tiempo
+                                        clienteActual.intentos += 1;
+                                        clienteActual.tiempo_servicio_final += problemaActual.tiempo_aumenta;
+                                    }
+                                    else
+                                    {
+                                        //cliente se fue
+                                        clienteActual.abandono = true;
+                                    }
+                                }
+                                if (problemaActual.nombre == "numero cuenta incorrecto")
+                                {
+                                    //el cliente puede elegir si lo intenta una vez mas
+                                    Thread.Sleep(10);
+                                    numero = random.Next(1, 2);
+                                    clienteActual.problemas.Add(problemaActual);
+                                    if (numero == 1)
+                                    {
+                                        //lo intentara y aumenta tiempo
+                                        clienteActual.intentos += 1;
+                                        clienteActual.tiempo_servicio_final += problemaActual.tiempo_aumenta;
+                                    }
+                                    else
+                                    {
+                                        //cliente se fue
+                                        clienteActual.abandono = true;
+                                    }
+                                }
+                                if (problemaActual.nombre == "falta cedula")
+                                {
+                                    //el cliente puede elegir si lo intenta una vez mas
+                                    Thread.Sleep(10);
+                                    numero = random.Next(1, 2);
+                                    clienteActual.problemas.Add(problemaActual);
+                                    if (numero == 1)
+                                    {
+                                        //lo intentara y aumenta tiempo
+                                        clienteActual.intentos += 1;
+                                        clienteActual.tiempo_servicio_final += problemaActual.tiempo_aumenta;
+                                    }
+                                    else
+                                    {
+                                        //cliente se fue
+                                        clienteActual.abandono = true;
+                                    }
+                                }
+                                #endregion
+
+                            }
+                            #endregion
+                        });
                              
                         
                     }
@@ -974,6 +1246,7 @@ namespace SimulacionCajeroBanco
                     //}
                    
                 });
+                
                 loadClientes();
 
 
@@ -1010,6 +1283,7 @@ namespace SimulacionCajeroBanco
                     cliente.tanda = tanda.nombre;
                     //asignar operacion que realizara dependiendo de la temporada y la tanda
                     //(deposito,retiro,cambio moneda)
+                    //para que no se corra el valor porque va tan rapido que el valor se pierde
                     Thread.Sleep(20);
                     numero = random.NextDouble();
                     numero = Math.Round(numero, 2);
@@ -1040,7 +1314,7 @@ namespace SimulacionCajeroBanco
                                     random = new Random();
                                     if (numero < 3)
                                     {
-                                        Thread.Sleep(250);numero = random.Next(0, 9);
+                                        Thread.Sleep(5);numero = random.Next(0, 9);
                                     }
                                     else
                                     {
@@ -1062,7 +1336,7 @@ namespace SimulacionCajeroBanco
                                     operacion.tiempo_promedio_rango_final = 3.3;
                                     cliente.operacion_deseada = operacion.nombre;
                                     //obteniendo el tiempo promedio que dura la operacion y asigando a cliente
-                                    Thread.Sleep(250);numero = random.Next(2, 3);
+                                    Thread.Sleep(5);numero = random.Next(2, 3);
                                     cliente.tiempo_servicio_esperado = numero;
                                     random = new Random();
                                     if (numero < 3)
@@ -1088,7 +1362,7 @@ namespace SimulacionCajeroBanco
                                     operacion.tiempo_promedio_rango_final = 3.2;
                                     cliente.operacion_deseada = operacion.nombre;
                                     //obteniendo el tiempo promedio que dura la operacion y asigando a cliente
-                                    Thread.Sleep(250);numero = random.Next(2, 3);
+                                    Thread.Sleep(5);numero = random.Next(2, 3);
                                     cliente.tiempo_servicio_esperado = numero;
                                     random = new Random();
                                     if (numero < 3)
@@ -1123,7 +1397,7 @@ namespace SimulacionCajeroBanco
                                     operacion.tiempo_promedio_rango_final = 4.8;
                                     cliente.operacion_deseada = operacion.nombre;
                                     //obteniendo el tiempo promedio que dura la operacion y asigando a cliente
-                                    Thread.Sleep(250);numero = random.Next(3, 4);
+                                    Thread.Sleep(5);numero = random.Next(3, 4);
                                     cliente.tiempo_servicio_esperado = numero;
                                     random = new Random();
                                     if (numero < 4)
@@ -1150,7 +1424,7 @@ namespace SimulacionCajeroBanco
                                     operacion.tiempo_promedio_rango_final = 4.7;
                                     cliente.operacion_deseada = operacion.nombre;
                                     //obteniendo el tiempo promedio que dura la operacion y asigando a cliente
-                                    Thread.Sleep(250);numero = random.Next(2, 4);
+                                    Thread.Sleep(5);numero = random.Next(2, 4);
                                     cliente.tiempo_servicio_esperado = numero;
                                     random = new Random();
                                     if (numero < 4)
@@ -1754,12 +2028,7 @@ namespace SimulacionCajeroBanco
         }
         
 
-
-
-
-
-
-
+        
 
 
 
@@ -1814,6 +2083,8 @@ namespace SimulacionCajeroBanco
                 {
                     dataGridView1.Rows.Add(x.codigo, x.operacion_deseada, x.tanda, x.tiempo_servicio_esperado, x.problemas.Count.ToString(), x.tiempo_servicio_final,x.abandono,x.tipo_cajero);
                 });
+
+                MessageBox.Show("Finalizo proceso", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
             }
             catch (Exception ex)
@@ -2116,6 +2387,16 @@ namespace SimulacionCajeroBanco
             {
                 MessageBox.Show("Error :" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void tandaCombo_TextChanged(object sender, EventArgs e)
+        {
+            if (tanda == null)
+            {
+                tanda=new tanda();
+            }
+            tanda.nombre = tandaCombo.Text;
+            
         }
 
 
