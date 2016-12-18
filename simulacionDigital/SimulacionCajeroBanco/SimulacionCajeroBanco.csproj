@@ -66,6 +66,9 @@
     <Compile Include="clases\tanda.cs" />
     <Compile Include="clases\temporada.cs" />
     <Compile Include="clases\tipo_caja.cs" />
+    <Compile Include="clases_reportes\Class1.cs" />
+    <Compile Include="clases_reportes\reporte_grafico_cliente.cs" />
+    <Compile Include="clases_reportes\reporte_por_cajero.cs" />
     <Compile Include="formularios\ColaBanco.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,10 +105,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="reportes\reporte_grafico_cliente.rdlc" />
+    <EmbeddedResource Include="reportes\reporte_por_cajero.rdlc" />
     <EmbeddedResource Include="reportes\VisorReporteComun.resx">
       <DependentUpon>VisorReporteComun.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\SimulacionCajeroBanco.clases_reportes.reporte_por_cajero.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -119,9 +125,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="clases_reportes\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="recursos\Aha-Soft-Large-Seo-SEO.ico" />
     <Content Include="recursos\banreservas2014.png" />

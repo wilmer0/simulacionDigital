@@ -20,9 +20,9 @@ namespace SimulacionCajeroBanco.clases
         public bool operacion_completada { get; set; } //para saber si completo la operacion
         public List<problema> problemas { get; set; }
         public bool atendiendo { get; set; }
-        public bool atendido { get; set; }
-        public bool abandono { get; set; }
-        public int intentos { get; set; }
+        public bool atendido { get; set; } 
+        public bool abandono { get; set; } //para saber si cuando se presento un problema el cliente abandono la fila
+        public int intentos { get; set; } //para saber la cantidad de intentos que realizo cuando se presento un problema
         public string numeroCajeroAntendio { get; set; }
         public string tipo_cajero { get; set; }
 
