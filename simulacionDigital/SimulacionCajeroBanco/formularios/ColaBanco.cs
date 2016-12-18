@@ -733,6 +733,8 @@ namespace SimulacionCajeroBanco
                     {
                         //inicio asignar caja a cliente
                         #region
+
+                        
                        
                         cajaEncontrada = false;
                         //saber cuantos cajeros de esta operacion hay
@@ -856,6 +858,9 @@ namespace SimulacionCajeroBanco
 
 
 
+
+
+
                     //retiro
                     if (clienteActual.operacion_deseada == "retiro" && clienteActual.abandono==false)
                     {
@@ -891,6 +896,9 @@ namespace SimulacionCajeroBanco
                        
                     }
                         
+
+
+
 
 
 
