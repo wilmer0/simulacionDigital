@@ -758,21 +758,21 @@ namespace SimulacionCajeroBanco
                         //fin asignar caja a cliente
 
                         //verificando si ocurren problemas
-                        listaProblemaDeposito.ForEach(p =>
+                        listaProblemaDeposito.ForEach(problemaActual =>
                         {
                             random = new Random();
                             numero = random.NextDouble();
                             numero = Math.Round(numero,2);
                             //0.45*100=  numero=45
                             numero*=100;
-                            if (numero >= p.probabilidad_ocurrencia_inicial && numero <= p.probabilidad_ocurrencia_final)
+                            if (numero >= problemaActual.probabilidad_ocurrencia_inicial && numero <= problemaActual.probabilidad_ocurrencia_final)
                             {
                                 //MessageBox.Show(numero.ToString() + "-" + p.probabilidad_ocurrencia_inicial + "-" + p.probabilidad_ocurrencia_final + "--");
                                 //MessageBox.Show("cliente-> "+x.codigo+"-"+cliente.operacion_deseada+"->presento problema: " + p.nombre);
                                 //MessageBox.Show("tiempo antes->" + cliente.tiempo_servicio_final + " tiempo ahora->" + ((cliente.tiempo_servicio_final + p.tiempo_aumenta)).ToString("N"));
                                 //cliente se presento este problema y toma desiciones
                                 #region
-                                if (p.nombre == "fallo sistema")
+                                if (problemaActual.nombre == "fallo sistema")
                                 {
                                     //el cliente puede elegir si se queda o se va porque el fallo es grave
                                     numero = random.Next(1, 2);
@@ -783,7 +783,7 @@ namespace SimulacionCajeroBanco
                                         clienteActual.tipo_cajero = cajero.codigo + "-" + cajero.operacion;
                                     }
                                 }
-                                if (p.nombre == "fallo electricidad")
+                                if (problemaActual.nombre == "fallo electricidad")
                                 {
                                     //el cliente puede elegir si se queda o se va porque el fallo es grave
                                     numero = random.Next(1, 2);
@@ -794,7 +794,7 @@ namespace SimulacionCajeroBanco
                                         clienteActual.tipo_cajero = cajero.codigo + "-" + cajero.operacion;
                                     }
                                 }
-                                if (p.nombre == "dinero insuficiente")
+                                if (problemaActual.nombre == "dinero insuficiente")
                                 {
                                     //el cliente puede elegir si lo intenta una vez mas
                                     numero = random.Next(1, 2);
@@ -802,7 +802,7 @@ namespace SimulacionCajeroBanco
                                     {
                                         //lo intentara y aumenta tiempo
                                         clienteActual.intentos +=1;
-                                        clienteActual.tiempo_servicio_final += p.tiempo_aumenta;
+                                        clienteActual.tiempo_servicio_final += problemaActual.tiempo_aumenta;
                                     }
                                     else
                                     {
@@ -810,7 +810,7 @@ namespace SimulacionCajeroBanco
                                         clienteActual.abandono = true;
                                     }
                                 }
-                                if (p.nombre == "numero cuenta incorrecto")
+                                if (problemaActual.nombre == "numero cuenta incorrecto")
                                 {
                                     //el cliente puede elegir si lo intenta una vez mas
                                     numero = random.Next(1, 2);
@@ -818,7 +818,7 @@ namespace SimulacionCajeroBanco
                                     {
                                         //lo intentara y aumenta tiempo
                                         clienteActual.intentos += 1;
-                                        clienteActual.tiempo_servicio_final += p.tiempo_aumenta;
+                                        clienteActual.tiempo_servicio_final += problemaActual.tiempo_aumenta;
                                     }
                                     else
                                     {
@@ -826,7 +826,7 @@ namespace SimulacionCajeroBanco
                                         clienteActual.abandono = true;
                                     }
                                 }
-                                if (p.nombre == "falta cedula")
+                                if (problemaActual.nombre == "falta cedula")
                                 {
                                     //el cliente puede elegir si lo intenta una vez mas
                                     numero = random.Next(1, 2);
@@ -834,7 +834,7 @@ namespace SimulacionCajeroBanco
                                     {
                                         //lo intentara y aumenta tiempo
                                         clienteActual.intentos += 1;
-                                        clienteActual.tiempo_servicio_final += p.tiempo_aumenta;
+                                        clienteActual.tiempo_servicio_final += problemaActual.tiempo_aumenta;
                                     }
                                     else
                                     {
@@ -890,9 +890,9 @@ namespace SimulacionCajeroBanco
                         #endregion
                         //fin asignar caja a cliente
 
-                      
 
-                        //verificar problemas para retiro
+
+                        //verificando si ocurren problemas
                        
                     }
                         
@@ -933,12 +933,12 @@ namespace SimulacionCajeroBanco
                         }
                         #endregion
                         //fin asignar caja a cliente
-                      
-                       
 
-                       
 
-                        //simular problemas para cambio moneda
+
+
+
+                        //verificando si ocurren problemas
                              
                         
                     }
