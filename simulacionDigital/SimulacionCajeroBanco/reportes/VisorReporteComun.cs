@@ -33,7 +33,7 @@ namespace _7ADMFIC_1._0.VentanasComunes
         //    lista.Add(usuarioDataSource);
         //    GetLoad(reporte, lista,null);
         //}
-        public VisorReporteComun(String reporte, List<ReportDataSource> lista, List<ReportParameter> ListaReportParameter,Boolean IncluirEmpresa, Boolean IncluirUsuario, Boolean IncluirFechaActual, Boolean ExportarExel = false)
+        public VisorReporteComun(String reporte, List<ReportDataSource> lista, List<ReportParameter> ListaReportParameter, Boolean ExportarExel = false)
         {
             InitializeComponent();
             ExportarExel = ExportarExel;
@@ -80,24 +80,5 @@ namespace _7ADMFIC_1._0.VentanasComunes
             Reporte.SetDisplayMode(DisplayMode.PrintLayout);
             this.Reporte.RefreshReport();
         }
-
-
-
-        //public void ImprimirMedio(String Impresora)
-        //{
-        //    PageSettings _pageSettings = new PageSettings();
-        //    _pageSettings.PaperSize = new System.Drawing.Printing.PaperSize("MYNEWSIZE", 850, 550);
-        //    _pageSettings.PrinterSettings.PrinterName = Impresora;
-        //    _pageSettings.Margins.Left = 0;
-        //    _pageSettings.Margins.Right = 0;
-        //    _pageSettings.Margins.Bottom = 0;
-        //    _pageSettings.Margins.Top = 0;
-
-        //    _pageSettings.Landscape = false;
-
-        //    AutoPrintClsMedio2 autoprintme = new AutoPrintClsMedio2(Reporte.LocalReport, _pageSettings);
-
-        //    autoprintme.Print();
-        //}
     }
 }
