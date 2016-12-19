@@ -2359,8 +2359,12 @@ namespace SimulacionCajeroBanco
                     listaReporteGraficoCliente.Add(reporteGraficoCliente);
                 });
 
-                ReportDataSource reporteF = new ReportDataSource("reporte_grafico_cliente", listaReporteGraficoCliente);
-                listaReportDataSource.Add(reporteF);
+                ReportDataSource reporteGrafico = new ReportDataSource("reporte_grafico_cliente", listaReporteGraficoCliente);
+                listaReportDataSource.Add(reporteGrafico);
+
+                ReportDataSource reporteProblemas = new ReportDataSource("reporte_problemas_log", listaClienteProblemasLog);
+                listaReportDataSource.Add(reporteProblemas);
+
 
                 List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
 

@@ -616,7 +616,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>reporte_grafico_cliente</DataSetName>
-        <Top>10.62375in</Top>
+        <Top>13.75917in</Top>
         <Left>0.29042in</Left>
         <Height>0.5in</Height>
         <Width>7.86456in</Width>
@@ -1982,7 +1982,7 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>13.49875in</Height>
+    <Height>14.25917in</Height>
     <Style />
   </Body>
   <Width>8.49875in</Width>
