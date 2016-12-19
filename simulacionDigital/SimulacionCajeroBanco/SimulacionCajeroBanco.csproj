@@ -67,6 +67,7 @@
     <Compile Include="clases\temporada.cs" />
     <Compile Include="clases\tipo_caja.cs" />
     <Compile Include="clases_reportes\Class1.cs" />
+    <Compile Include="clases_reportes\clientesProblemasLog.cs" />
     <Compile Include="clases_reportes\reporte_grafico_cliente.cs" />
     <Compile Include="clases_reportes\reporte_por_cajero.cs" />
     <Compile Include="formularios\ColaBanco.cs">
