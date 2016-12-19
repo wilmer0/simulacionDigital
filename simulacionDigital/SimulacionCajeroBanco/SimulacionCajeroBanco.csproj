@@ -113,6 +113,7 @@
       <DependentUpon>VisorReporteComun.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\SimulacionCajeroBanco.clases_reportes.clientesProblemasLog.datasource" />
     <None Include="Properties\DataSources\SimulacionCajeroBanco.clases_reportes.reporte_grafico_cliente.datasource" />
     <None Include="Properties\DataSources\SimulacionCajeroBanco.clases_reportes.reporte_por_cajero.datasource" />
     <None Include="Properties\Settings.settings">

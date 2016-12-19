@@ -883,7 +883,7 @@ namespace SimulacionCajeroBanco
                                         //el cliente se queda por ende aumenta el tiempo de servicio
                                         clienteActual.tiempo_servicio_final += problemaActual.tiempo_aumenta;
                                         clientesProblemasLog.tiempo_despues = clienteActual.tiempo_servicio_final;
-                                        clientesProblemasLog.respuesta = "el cliente no se fue, esper a que el problema se solucione";
+                                        clientesProblemasLog.respuesta = "el cliente no se fue, espera que el problema se solucione";
                                         
                                     }
                                 }
@@ -903,6 +903,7 @@ namespace SimulacionCajeroBanco
                                         clientesProblemasLog.nombreProblema = problemaActual.nombre;
                                         clientesProblemasLog.tiempo_antes = clienteActual.tiempo_servicio_final;
                                         clientesProblemasLog.respuesta = "el cliente no se fue, lo intenta de nuevo";
+                                        clientesProblemasLog.cantidad_intentos = 1;
                                         //lo intentara y aumenta tiempo
                                         clienteActual.intentos +=1;
                                         clienteActual.tiempo_servicio_final += problemaActual.tiempo_aumenta;
@@ -934,6 +935,7 @@ namespace SimulacionCajeroBanco
                                         clientesProblemasLog.nombreProblema = problemaActual.nombre;
                                         clientesProblemasLog.tiempo_antes = clienteActual.tiempo_servicio_final;
                                         clientesProblemasLog.respuesta = "el cliente no se fue lo intenta denuevo";
+                                        clientesProblemasLog.cantidad_intentos = 1;
                                         //lo intentara y aumenta tiempo
                                         clienteActual.intentos += 1;
                                         clienteActual.tiempo_servicio_final += problemaActual.tiempo_aumenta;
@@ -964,7 +966,8 @@ namespace SimulacionCajeroBanco
                                         clientesProblemasLog.operacion = clienteActual.operacion_deseada;
                                         clientesProblemasLog.nombreProblema = problemaActual.nombre;
                                         clientesProblemasLog.tiempo_antes = clienteActual.tiempo_servicio_final;
-                                        clientesProblemasLog.respuesta = "el cliente no se fue, lo intentara denuevo";
+                                        clientesProblemasLog.respuesta = "el cliente no se fue, lo intenta denuevo";
+                                        clientesProblemasLog.cantidad_intentos = 1;
                                         //lo intentara y aumenta tiempo
                                         clienteActual.intentos += 1;
                                         clienteActual.tiempo_servicio_final += problemaActual.tiempo_aumenta;
@@ -1083,7 +1086,7 @@ namespace SimulacionCajeroBanco
                                         //cliente se queda por ende aumenta el tiempo de servicio
                                         clienteActual.tiempo_servicio_final += problemaActual.tiempo_aumenta;
                                         clientesProblemasLog.tiempo_despues = clienteActual.tiempo_servicio_final;
-                                        clientesProblemasLog.respuesta = "el cliente no se fue, esper a que el problema se solucione";
+                                        clientesProblemasLog.respuesta = "el cliente no se fue, espera que el problema se solucione";
                                     }
                                 }
                                 if (problemaActual.nombre == "dinero insuficiente")
@@ -1097,9 +1100,10 @@ namespace SimulacionCajeroBanco
                                     if (numero == 1)
                                     {
                                         //cliente se queda por ende aumenta el tiempo de servicio
+                                        clientesProblemasLog.cantidad_intentos = 1;
                                         clienteActual.tiempo_servicio_final += problemaActual.tiempo_aumenta;
                                         clientesProblemasLog.tiempo_despues = clienteActual.tiempo_servicio_final;
-                                        clientesProblemasLog.respuesta = "el cliente no se fue, esper a que el problema se solucione";
+                                        clientesProblemasLog.respuesta = "el cliente no se fue, espera que el problema se solucione";
                                     }
                                     else
                                     {
@@ -1120,9 +1124,10 @@ namespace SimulacionCajeroBanco
                                     if (numero == 1)
                                     {
                                         //cliente se queda por ende aumenta el tiempo de servicio
+                                        clientesProblemasLog.cantidad_intentos = 1;
                                         clienteActual.tiempo_servicio_final += problemaActual.tiempo_aumenta;
                                         clientesProblemasLog.tiempo_despues = clienteActual.tiempo_servicio_final;
-                                        clientesProblemasLog.respuesta = "el cliente no se fue, esper a que el problema se solucione";
+                                        clientesProblemasLog.respuesta = "el cliente no se fue, espera que el problema se solucione";
                                     }
                                     else
                                     {
@@ -1143,9 +1148,10 @@ namespace SimulacionCajeroBanco
                                     if (numero == 1)
                                     {
                                         //cliente se queda por ende aumenta el tiempo de servicio
+                                        clientesProblemasLog.cantidad_intentos = 1;
                                         clienteActual.tiempo_servicio_final += problemaActual.tiempo_aumenta;
                                         clientesProblemasLog.tiempo_despues = clienteActual.tiempo_servicio_final;
-                                        clientesProblemasLog.respuesta = "el cliente no se fue, esper a que el problema se solucione";
+                                        clientesProblemasLog.respuesta = "el cliente no se fue, espera que el problema se solucione";
                                     }
                                     else
                                     {
@@ -1260,7 +1266,7 @@ namespace SimulacionCajeroBanco
                                         //el cliente se queda por ende aumenta el tiempo de servicio
                                         clienteActual.tiempo_servicio_final += problemaActual.tiempo_aumenta;
                                         clientesProblemasLog.tiempo_despues = clienteActual.tiempo_servicio_final;
-                                        clientesProblemasLog.respuesta = "el cliente no se fue, esper a que el problema se solucione";
+                                        clientesProblemasLog.respuesta = "el cliente no se fue, espera que el problema se solucione";
                                     }
                                 }
                                 if (problemaActual.nombre == "dinero insuficiente")
@@ -1274,6 +1280,7 @@ namespace SimulacionCajeroBanco
                                     if (numero == 1)
                                     {
                                         //lo intentara y aumenta tiempo
+                                        clientesProblemasLog.cantidad_intentos = 1;
                                         clienteActual.intentos += 1;
                                         clienteActual.tiempo_servicio_final += problemaActual.tiempo_aumenta;
                                         clientesProblemasLog.respuesta = "el cliente no se fue, espero la solucion del problema";
@@ -1297,6 +1304,7 @@ namespace SimulacionCajeroBanco
                                     if (numero == 1)
                                     {
                                         //lo intentara y aumenta tiempo
+                                        clientesProblemasLog.cantidad_intentos = 1;
                                         clienteActual.intentos += 1;
                                         clienteActual.tiempo_servicio_final += problemaActual.tiempo_aumenta;
                                         clientesProblemasLog.respuesta = "el cliente no se fue, espero la solucion del problema";
@@ -1320,6 +1328,7 @@ namespace SimulacionCajeroBanco
                                     if (numero == 1)
                                     {
                                         //lo intentara y aumenta tiempo
+                                        clientesProblemasLog.cantidad_intentos = 1;
                                         clienteActual.intentos += 1;
                                         clienteActual.tiempo_servicio_final += problemaActual.tiempo_aumenta;
                                         clientesProblemasLog.respuesta = "el cliente no se fue, espero la solucion del problema";
