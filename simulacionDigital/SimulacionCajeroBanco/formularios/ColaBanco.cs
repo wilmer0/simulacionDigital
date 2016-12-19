@@ -19,64 +19,64 @@ namespace SimulacionCajeroBanco
     {
 
         //objetos
-        private cajero cajero;
-        private cliente cliente;
-        private operaciones operacion;
-        private problema problema;
-        private tanda tanda;
-        private temporada temporada;
-        private dia dia;
-        private tipo_caja tipoCaja;
-        private clientesProblemasLog clientesProblemasLog;
+        private cajero cajero;  //objero cajero con todos los atributos, guardar un cajero
+        private cliente cliente; //objero cliente con todos los atributos, guardar un cliente
+        private operaciones operacion;//objero operacion con todos los atributos, guardar una operacion(deposito,retiro,etc)
+        private problema problema;//objero problema con todos los atributos, guardar problema falla luz, falla sistema,etc
+        private tanda tanda;//objero tanda con todos los atributos, guardar tanda matutina o vespertina
+        private temporada temporada;//objero temporada con todos los atributos, guardar temporada de anio
+        private dia dia;//objero dia con todos los atributos, guardar dia si es pago o normal
+        private tipo_caja tipoCaja;//objero tipoCaja con todos los atributos, guardar el tipo de caja
+        private clientesProblemasLog clientesProblemasLog;//objero clientesProblemasLog con todos los atributos
 
         //objetos reportes
-        private reporte_por_cajero reportePorCajero;
-        private reporte_grafico_cliente reporteGraficoCliente;
-        private List<clientesProblemasLog> listaClienteProblemasLog; 
+        private reporte_por_cajero reportePorCajero; //objeto para el reporte por cajero
+        private reporte_grafico_cliente reporteGraficoCliente; //objeto para el reporte grafico de clientes
+        private List<clientesProblemasLog> listaClienteProblemasLog;  //objeto para guardar los problemas de tdos los clientes
         
         //listas de reportes
-        private List<reporte_por_cajero> listaReportePorCajero;
-        private List<reporte_grafico_cliente> listaReporteGraficoCliente;
+        private List<reporte_por_cajero> listaReportePorCajero; //lista para almacenar los objetos reporte por cajeros 
+        private List<reporte_grafico_cliente> listaReporteGraficoCliente; //lista para almacenar los objetos reporte grafico de cliente
 
 
-            //variables
+        //variables
         Random random;//para randoms
-        private int cantidadClientes = 0;
-        private int cantidadCajeros = 0;
-        private double numero = 0;
-        int contadorCajero = 0;
-        private bool cajaEncontrada = false;
-        private int cantidadCajerosDeposito = 0;
-        private int cantidadCajerosRetiro = 0;
-        private int cantidadCajerosCambioMoneda = 0;
-        int cajeroSeleccionado = 0;
-        private int cantidadCajerosDisponibles = 0;
+        private int cantidadClientes = 0; //saber la cantidad de clientes
+        private int cantidadCajeros = 0; //para saber la cantidad de cajeros de todas als operaciones
+        private double numero = 0; //usado para almacenar randoms
+        int contadorCajero = 0;    //usado para asignar codigo a los cajero
+        private bool cajaEncontrada = false; //para saber siel cliente encontro la caja deseada
+        private int cantidadCajerosDeposito = 0; //para saber la cantidad de cajeros con la operacion deposito
+        private int cantidadCajerosRetiro = 0;//para saber la cantidad de cajeros con la operacion retiro
+        private int cantidadCajerosCambioMoneda = 0; //para saber la cantidad de cajeros con la operacion cambio moneda
+        int cajeroSeleccionado = 0;     //para saber el cajero que selecciono el cliente
+        private int cantidadCajerosDisponibles = 0; //para saber la cantidad de cajeros que estan disponibles
 
         //listas
-        private List<cajero> listaCajero;
-        private List<cliente> listaCliente;
-        private List<temporada> listaTemporada;
-        private List<tanda> listaTanda;
-        private List<dia> listaDias;
-        private List<tipo_caja> listaTipoCaja;
-        private List<cajero> listaCajeroDeposito;
-        private List<cajero> listaCajeroRetiro;
-        private List<cajero> listaCajeroCambioMoneda; 
+        private List<cajero> listaCajero;             //para guardar todos los cajeros
+        private List<cliente> listaCliente;         //para guardar los clientes
+        private List<temporada> listaTemporada;     //para guardar las temporadas del anio
+        private List<tanda> listaTanda; //para guardar las tandas
+        private List<dia> listaDias;   //para guardar los tipos de dias
+        private List<tipo_caja> listaTipoCaja; //para guardar los tipos de caja
+        private List<cajero> listaCajeroDeposito; //para guardar los cajeros que son de deposito
+        private List<cajero> listaCajeroRetiro; //para guardar los cajeros que son de retiro
+        private List<cajero> listaCajeroCambioMoneda;  //para guardar los cajero que son cambio moneda
 
 
         //listas problemas
-        private List<problema> listaProblemaDeposito;
-        private List<problema> listaProblemaRetiro;
-        private List<problema> listaProblemaCambio;
-        private List<problema> lisaProblemaCheque; 
+        private List<problema> listaProblemaDeposito; //lista par guardar los problemas de depositos
+        private List<problema> listaProblemaRetiro;//lista par guardar los problemas de retiro
+        private List<problema> listaProblemaCambio;//lista par guardar los problemas de cambio de moneda
+        private List<problema> lisaProblemaCheque; //lista par guardar los problemas de cheques
 
 
         //variables para datos
-        private double tiempoLLegadaAcumulativo = 0;
-        private double tiempoServicioAcumulativo = 0;
-        private double clienteDeposito = 0;
-        private double clienteRetiro = 0;
-        private double clienteCambioMoneda = 0;
+        private double tiempoLLegadaAcumulativo = 0; //variable para acumular el tiempo llegada
+        private double tiempoServicioAcumulativo = 0;//variable para acumular el tiempo servicio
+        private double clienteDeposito = 0;//variable para acumular los clientes de cambio de deposito
+        private double clienteRetiro = 0;//variable para acumular los clientes de cambio de retiro
+        private double clienteCambioMoneda = 0;//variable para acumular los clientes de cambio de moneda
         
         //hilo
         private BackgroundWorker worker;
