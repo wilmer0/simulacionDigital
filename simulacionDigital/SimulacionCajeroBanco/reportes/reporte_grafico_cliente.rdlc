@@ -3159,13 +3159,13 @@
                   <FontSize>8pt</FontSize>
                 </Style>
                 <ChartAxisTitle>
-                  <Caption>Respuestas</Caption>
+                  <Caption />
                   <Style>
                     <FontSize>8pt</FontSize>
                   </Style>
                 </ChartAxisTitle>
                 <ChartMajorGridLines>
-                  <Enabled>True</Enabled>
+                  <Enabled>False</Enabled>
                   <Style>
                     <Border>
                       <Color>Gainsboro</Color>
@@ -3173,7 +3173,7 @@
                   </Style>
                 </ChartMajorGridLines>
                 <ChartMinorGridLines>
-                  <Enabled>True</Enabled>
+                  <Enabled>False</Enabled>
                   <Style>
                     <Border>
                       <Color>Gainsboro</Color>
@@ -3248,7 +3248,7 @@
                   </Style>
                 </ChartMajorGridLines>
                 <ChartMinorGridLines>
-                  <Enabled>True</Enabled>
+                  <Enabled>False</Enabled>
                   <Style>
                     <Border>
                       <Color>Gainsboro</Color>
