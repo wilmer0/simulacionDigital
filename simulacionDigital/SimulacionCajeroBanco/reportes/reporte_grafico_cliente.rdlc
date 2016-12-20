@@ -2544,7 +2544,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>reporte_problemas_log</DataSetName>
-        <Top>16.87375in</Top>
+        <Top>18.405in</Top>
         <Left>0.29046in</Left>
         <Height>0.5in</Height>
         <Width>7.86452in</Width>
@@ -2864,7 +2864,7 @@
                   <FontSize>8pt</FontSize>
                 </Style>
                 <ChartAxisTitle>
-                  <Caption>Título del eje</Caption>
+                  <Caption>Operacion</Caption>
                   <Style>
                     <FontSize>8pt</FontSize>
                   </Style>
@@ -3131,7 +3131,7 @@
                   <DataElementOutput>Output</DataElementOutput>
                 </ChartDataPoint>
               </ChartDataPoints>
-              <Subtype>Stacked</Subtype>
+              <Type>Line</Type>
               <Style />
               <ChartEmptyPoints>
                 <Style />
@@ -3142,12 +3142,6 @@
                   <Style />
                 </ChartDataLabel>
               </ChartEmptyPoints>
-              <CustomProperties>
-                <CustomProperty>
-                  <Name>DrawingStyle</Name>
-                  <Value>Cylinder</Value>
-                </CustomProperty>
-              </CustomProperties>
               <ValueAxisName>Primary</ValueAxisName>
               <CategoryAxisName>Primary</CategoryAxisName>
               <ChartSmartLabel>
@@ -3165,7 +3159,7 @@
                   <FontSize>8pt</FontSize>
                 </Style>
                 <ChartAxisTitle>
-                  <Caption>Título del eje</Caption>
+                  <Caption>Respuestas</Caption>
                   <Style>
                     <FontSize>8pt</FontSize>
                   </Style>
@@ -3309,9 +3303,6 @@
                 </ChartAxisScaleBreak>
               </ChartAxis>
             </ChartValueAxes>
-            <ChartThreeDProperties>
-              <Enabled>true</Enabled>
-            </ChartThreeDProperties>
             <Style>
               <BackgroundGradientType>None</BackgroundGradientType>
             </Style>
@@ -3365,7 +3356,7 @@
         <DataSetName>reporte_problemas_log</DataSetName>
         <Top>14.12028in</Top>
         <Left>0.29046in</Left>
-        <Height>2.68403in</Height>
+        <Height>3.67361in</Height>
         <Width>7.86466in</Width>
         <ZIndex>26</ZIndex>
         <Style>

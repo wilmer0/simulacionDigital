@@ -180,7 +180,7 @@ namespace SimulacionCajeroBanco
                     problema.probabilidad_ocurrencia_final = 17.85;
                     Thread.Sleep(20);
                     random = new Random();
-                    numero = random.Next(1, 15);
+                    numero = random.Next(1, 4);
                     problema.tiempo_aumenta = numero;
                     listaProblemaDeposito.Add(problema);
 
@@ -835,7 +835,7 @@ namespace SimulacionCajeroBanco
                                     clientesProblemasLog.nombreProblema = problemaActual.nombre;
                                     //el cliente puede elegir si se queda o se va porque el fallo es grave
                                     Thread.Sleep(20);
-                                    numero = random.Next(1, 2);
+                                    numero = random.Next(1, 3);
                                     clienteActual.problemas.Add(problemaActual);
                                     if (numero == 1)
                                     {
@@ -863,7 +863,7 @@ namespace SimulacionCajeroBanco
                                     clientesProblemasLog.nombreProblema = problemaActual.nombre;
                                     //el cliente puede elegir si se queda o se va porque el fallo es grave
                                     Thread.Sleep(20);
-                                    numero = random.Next(1, 2);
+                                    numero = random.Next(1, 3);
                                     clienteActual.problemas.Add(problemaActual);
                                     if (numero == 1)
                                     {
@@ -1043,7 +1043,7 @@ namespace SimulacionCajeroBanco
                                     clientesProblemasLog.nombreProblema = problemaActual.nombre;
                                     //el cliente puede elegir si se queda o se va porque el fallo es grave
                                     Thread.Sleep(20);
-                                    numero = random.Next(1, 2);
+                                    numero = random.Next(1, 3);
                                     clienteActual.problemas.Add(problemaActual);
                                     if (numero == 1)
                                     {
@@ -1070,7 +1070,7 @@ namespace SimulacionCajeroBanco
                                     clientesProblemasLog.nombreProblema = problemaActual.nombre;
                                     //el cliente puede elegir si se queda o se va porque el fallo es grave
                                     Thread.Sleep(20);
-                                    numero = random.Next(1, 2);
+                                    numero = random.Next(1, 3);
                                     clienteActual.problemas.Add(problemaActual);
                                     if (numero == 1)
                                     {
@@ -1225,7 +1225,7 @@ namespace SimulacionCajeroBanco
                                     clientesProblemasLog.nombreProblema = problemaActual.nombre;
                                     //el cliente puede elegir si se queda o se va porque el fallo es grave
                                     Thread.Sleep(20);
-                                    numero = random.Next(1, 2);
+                                    numero = random.Next(1, 3);
                                     clienteActual.problemas.Add(problemaActual);
                                     if (numero == 1)
                                     {
@@ -1250,7 +1250,7 @@ namespace SimulacionCajeroBanco
                                     clientesProblemasLog.nombreProblema = problemaActual.nombre;
                                     //el cliente puede elegir si se queda o se va porque el fallo es grave
                                     Thread.Sleep(20);
-                                    numero = random.Next(1, 2);
+                                    numero = random.Next(1, 3);
                                     clienteActual.problemas.Add(problemaActual);
                                     if (numero == 1)
                                     {
@@ -2468,7 +2468,7 @@ namespace SimulacionCajeroBanco
 
 
                 //imprimir reportes
-                imprimir1();
+                //imprimir1();
                 imprimir2();
                 imprimir3();
 
