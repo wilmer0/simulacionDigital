@@ -699,7 +699,7 @@
                   <FontSize>8pt</FontSize>
                 </Style>
                 <ChartAxisTitle>
-                  <Caption>Título del eje</Caption>
+                  <Caption>operaciones</Caption>
                   <Style>
                     <FontSize>8pt</FontSize>
                   </Style>
@@ -993,7 +993,7 @@
                   <FontSize>8pt</FontSize>
                 </Style>
                 <ChartAxisTitle>
-                  <Caption>Título del eje</Caption>
+                  <Caption>operaciones</Caption>
                   <Style>
                     <FontSize>8pt</FontSize>
                   </Style>
@@ -2015,7 +2015,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>10.37958in</Top>
+        <Top>10.4675in</Top>
         <Left>0.2904in</Left>
         <Height>0.47917in</Height>
         <Width>7.86458in</Width>
@@ -2574,7 +2574,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
-        <Top>10.88653in</Top>
+        <Top>10.97444in</Top>
         <Left>0.29046in</Left>
         <Height>0.25in</Height>
         <Width>2.2413in</Width>
@@ -2614,7 +2614,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox5</rd:DefaultName>
-        <Top>10.88653in</Top>
+        <Top>10.97444in</Top>
         <Left>2.53174in</Left>
         <Height>0.25in</Height>
         <Width>1in</Width>
@@ -2653,7 +2653,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
-        <Top>10.87264in</Top>
+        <Top>10.96056in</Top>
         <Left>5.16384in</Left>
         <Height>0.25in</Height>
         <Width>1.99128in</Width>
@@ -2693,7 +2693,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox5</rd:DefaultName>
-        <Top>10.87264in</Top>
+        <Top>10.96056in</Top>
         <Left>7.15512in</Left>
         <Height>0.25in</Height>
         <Width>1in</Width>
@@ -2732,7 +2732,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
-        <Top>11.12264in</Top>
+        <Top>11.21056in</Top>
         <Left>5.16378in</Left>
         <Height>0.25in</Height>
         <Width>1.99128in</Width>
@@ -2772,7 +2772,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox5</rd:DefaultName>
-        <Top>11.12264in</Top>
+        <Top>11.21056in</Top>
         <Left>7.15506in</Left>
         <Height>0.25in</Height>
         <Width>1in</Width>
@@ -3057,7 +3057,7 @@
           </Style>
         </ChartNoDataMessage>
         <DataSetName>reporte_problemas_log</DataSetName>
-        <Top>11.61333in</Top>
+        <Top>11.70125in</Top>
         <Left>0.29046in</Left>
         <Height>2.4375in</Height>
         <Width>7.86452in</Width>
@@ -3378,7 +3378,7 @@
         </Style>
       </Chart>
     </ReportItems>
-    <Height>17.37375in</Height>
+    <Height>19.99875in</Height>
     <Style />
   </Body>
   <Width>8.49875in</Width>

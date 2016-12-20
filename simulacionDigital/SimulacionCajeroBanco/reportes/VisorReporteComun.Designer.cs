@@ -37,14 +37,14 @@
             this.Reporte.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Reporte.Location = new System.Drawing.Point(0, 0);
             this.Reporte.Name = "Reporte";
-            this.Reporte.Size = new System.Drawing.Size(817, 582);
+            this.Reporte.Size = new System.Drawing.Size(868, 582);
             this.Reporte.TabIndex = 0;
             // 
             // VisorReporteComun
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(817, 582);
+            this.ClientSize = new System.Drawing.Size(868, 582);
             this.Controls.Add(this.Reporte);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VisorReporteComun";
