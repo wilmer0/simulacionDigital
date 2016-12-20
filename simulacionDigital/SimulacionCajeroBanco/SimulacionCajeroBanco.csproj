@@ -41,10 +41,7 @@
       <HintPath>..\packages\Microsoft.Reporting.WinForms.v11.1.0.0.0\lib\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Reporting.WinForms.v11.1.0.0.0\lib\Microsoft.ReportViewer.WinForms.DLL</HintPath>
-      <Private>True</Private>
-    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.SqlServer.Types, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Reporting.WinForms.v11.1.0.0.0\lib\Microsoft.SqlServer.Types.dll</HintPath>
       <Private>True</Private>
@@ -69,6 +66,11 @@
     <Compile Include="clases\tanda.cs" />
     <Compile Include="clases\temporada.cs" />
     <Compile Include="clases\tipo_caja.cs" />
+    <Compile Include="clases_reportes\Class1.cs" />
+    <Compile Include="clases_reportes\clientesProblemasLog.cs" />
+    <Compile Include="clases_reportes\reporte_grafico_cliente.cs" />
+    <Compile Include="clases_reportes\reporte_grafico_cliente_encabezado.cs" />
+    <Compile Include="clases_reportes\reporte_por_cajero.cs" />
     <Compile Include="formularios\ColaBanco.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,10 +107,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="reportes\reporte_grafico_cliente.rdlc" />
+    <EmbeddedResource Include="reportes\reporte_por_cajero.rdlc" />
     <EmbeddedResource Include="reportes\VisorReporteComun.resx">
       <DependentUpon>VisorReporteComun.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\SimulacionCajeroBanco.clases_reportes.clientesProblemasLog.datasource" />
+    <None Include="Properties\DataSources\SimulacionCajeroBanco.clases_reportes.reporte_grafico_cliente.datasource" />
+    <None Include="Properties\DataSources\SimulacionCajeroBanco.clases_reportes.reporte_por_cajero.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -122,13 +129,20 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="clases_reportes\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="recursos\Aha-Soft-Large-Seo-SEO.ico" />
     <Content Include="recursos\banreservas2014.png" />
     <Content Include="recursos\Play_button_next_stop_music_pause.png" />
+    <Content Include="Resources\3499424w91v795brv.gif" />
+    <Content Include="Resources\8YsAmq3.gif" />
+    <Content Include="Resources\Cento-Lodigiani-animated-GIFs-10.gif" />
+    <Content Include="Resources\dribbbleloading.gif" />
+    <Content Include="Resources\giphy.gif" />
+    <Content Include="Resources\hex-loader2.gif" />
+    <Content Include="Resources\kTTdW2l.gif" />
+    <Content Include="Resources\tumblr_n2eccv6Dev1rgpzseo1_1280.gif" />
+    <Content Include="Resources\tumblr_n3d222ytYM1s32c21o1_400.gif" />
     <None Include="Resources\Boton-Loading-Rojo-90780.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
