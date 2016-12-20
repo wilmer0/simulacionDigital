@@ -113,6 +113,7 @@
       <DependentUpon>VisorReporteComun.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\SimulacionCajeroBanco.clases_reportes.clientesProblemasLog.datasource" />
     <None Include="Properties\DataSources\SimulacionCajeroBanco.clases_reportes.reporte_grafico_cliente.datasource" />
     <None Include="Properties\DataSources\SimulacionCajeroBanco.clases_reportes.reporte_por_cajero.datasource" />
     <None Include="Properties\Settings.settings">
@@ -133,6 +134,15 @@
     <Content Include="recursos\Aha-Soft-Large-Seo-SEO.ico" />
     <Content Include="recursos\banreservas2014.png" />
     <Content Include="recursos\Play_button_next_stop_music_pause.png" />
+    <Content Include="Resources\3499424w91v795brv.gif" />
+    <Content Include="Resources\8YsAmq3.gif" />
+    <Content Include="Resources\Cento-Lodigiani-animated-GIFs-10.gif" />
+    <Content Include="Resources\dribbbleloading.gif" />
+    <Content Include="Resources\giphy.gif" />
+    <Content Include="Resources\hex-loader2.gif" />
+    <Content Include="Resources\kTTdW2l.gif" />
+    <Content Include="Resources\tumblr_n2eccv6Dev1rgpzseo1_1280.gif" />
+    <Content Include="Resources\tumblr_n3d222ytYM1s32c21o1_400.gif" />
     <None Include="Resources\Boton-Loading-Rojo-90780.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
