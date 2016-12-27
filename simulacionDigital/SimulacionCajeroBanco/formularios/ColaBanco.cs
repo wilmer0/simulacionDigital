@@ -18,6 +18,7 @@ namespace SimulacionCajeroBanco
     public partial class ColaBanco : Form
     {
 
+
         //objetos
         private cajero cajero;  //objero cajero con todos los atributos, guardar un cajero
         private cliente cliente; //objero cliente con todos los atributos, guardar un cliente
@@ -30,14 +31,19 @@ namespace SimulacionCajeroBanco
         private clientesProblemasLog clientesProblemasLog;//objero clientesProblemasLog con todos los atributos
         private fases fases;//objeto para almacenar las fases de los procesos
 
+
+
         //objetos reportes
         private reporte_por_cajero reportePorCajero; //objeto para el reporte por cajero
         private reporte_grafico_cliente reporteGraficoCliente; //objeto para el reporte grafico de clientes
         private List<clientesProblemasLog> listaClienteProblemasLog;  //objeto para guardar los problemas de tdos los clientes
         
+
+
         //listas de reportes
         private List<reporte_por_cajero> listaReportePorCajero; //lista para almacenar los objetos reporte por cajeros 
         private List<reporte_grafico_cliente> listaReporteGraficoCliente; //lista para almacenar los objetos reporte grafico de cliente
+
 
 
         //variables
@@ -53,6 +59,8 @@ namespace SimulacionCajeroBanco
         int cajeroSeleccionado = 0;     //para saber el cajero que selecciono el cliente
         private int cantidadCajerosDisponibles = 0; //para saber la cantidad de cajeros que estan disponibles
 
+
+
         //listas
         private List<cajero> listaCajero;             //para guardar todos los cajeros
         private List<cliente> listaCliente;         //para guardar los clientes
@@ -64,16 +72,21 @@ namespace SimulacionCajeroBanco
         private List<cajero> listaCajeroRetiro; //para guardar los cajeros que son de retiro
         private List<cajero> listaCajeroCambioMoneda;  //para guardar los cajero que son cambio moneda
         
+
+
         //lista de fases por operacion
         private List<fases> listaFasesDeposito;//lista que almacena las fases de depositos
         private List<fases> listaFasesRetiro;//lista que almacena las fases de retiros
         private List<fases> listaFasesCambioMoneda; //lista que almacena las fases de cambio monedas
+
+
 
         //listas problemas
         private List<problema> listaProblemaDeposito; //lista par guardar los problemas de depositos
         private List<problema> listaProblemaRetiro;//lista par guardar los problemas de retiro
         private List<problema> listaProblemaCambio;//lista par guardar los problemas de cambio de moneda
         private List<problema> lisaProblemaCheque; //lista par guardar los problemas de cheques
+
 
 
         //variables para datos
@@ -103,9 +116,6 @@ namespace SimulacionCajeroBanco
                 loadTemporada();
                 loadTanda();
                 getClientesByTemporada();
-                
-            
-            
             }
             catch (Exception ex)
             {
