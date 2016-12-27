@@ -19,7 +19,6 @@ C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionC
 C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBanco\bin\Release\Microsoft.ReportViewer.Common.dll
 C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBanco\bin\Release\Microsoft.ReportViewer.ProcessingObjectModel.DLL
 C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBanco\bin\Release\Microsoft.SqlServer.Types.dll
-C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBanco\obj\Release\SimulacionCajeroBanco.csprojResolveAssemblyReference.cache
 C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBanco\obj\Release\SimulacionCajeroBanco.ColaBanco.resources
 C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBanco\obj\Release\SimulacionCajeroBanco.formularios.ventana_cargando.resources
 C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBanco\obj\Release\SimulacionCajeroBanco.Properties.Resources.resources
