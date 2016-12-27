@@ -10,6 +10,7 @@ namespace SimulacionCajeroBanco.clases_reportes
     {
         public int codigocliente { get; set; }
         public string operacion { get; set; }
+        public string fase { get; set; }
         public double tiempo_antes { get; set; }
         public double tiempo_despues { get; set; }
         public string nombreProblema { get; set; }

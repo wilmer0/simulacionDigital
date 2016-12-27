@@ -30,7 +30,7 @@ namespace SimulacionCajeroBanco.formularios
 
         public void DoWork()
         {
-            if (timer.Interval == 4000)
+            if (timer.Interval == 1000)
             {
                 timer.Stop();
                 ColaBanco ventana = new ColaBanco();

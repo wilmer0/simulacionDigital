@@ -61,6 +61,7 @@
     <Compile Include="clases\cajero.cs" />
     <Compile Include="clases\cliente.cs" />
     <Compile Include="clases\dia.cs" />
+    <Compile Include="clases\fases.cs" />
     <Compile Include="clases\operaciones.cs" />
     <Compile Include="clases\problema.cs" />
     <Compile Include="clases\tanda.cs" />
