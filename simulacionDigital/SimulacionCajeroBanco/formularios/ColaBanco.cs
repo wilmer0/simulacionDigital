@@ -624,6 +624,7 @@ namespace SimulacionCajeroBanco
                 temporadaAnoCombo.DataSource = listaTemporada;
                 temporadaAnoCombo.DisplayMember = "nombre";
                 temporadaAnoCombo.ValueMember = "nombre";
+                temporadaAnoCombo.SelectedIndex = 0;
 
             }
             catch (Exception ex)
@@ -661,6 +662,7 @@ namespace SimulacionCajeroBanco
                 diasCombo.DisplayMember = "nombre";
                 diasCombo.ValueMember = "nombre";
                 diasCombo.DataSource = listaDias;
+                diasCombo.SelectedIndex = 0;
 
 
             }
@@ -708,7 +710,8 @@ namespace SimulacionCajeroBanco
                 tipoCajaCombo.DisplayMember = "nombre";
                 tipoCajaCombo.ValueMember = "nombre";
                 tipoCajaCombo.DataSource = listaTipoCaja;
-               
+                tipoCajaCombo.SelectedIndex = 0;
+
             }
             catch (Exception ex)
             {
@@ -835,10 +838,10 @@ namespace SimulacionCajeroBanco
                 listaClienteProblemasLog = new List<clientesProblemasLog>();
                 
                 //rrecorriendo los clientes
-                listaCliente.ForEach(clienteActual =>
+                foreach(cliente clienteActual in listaCliente)//listaCliente.ForEach(clienteActual =>
                 {
                     
-                    Thread.Sleep(20);
+                    //Thread.Sleep(20);
                     //instancia de los problemas log del cliente
                     //clientesProblemasLog.codigocliente = clienteActual.codigo;
                     //clientesProblemasLog.problema_encontrado = false;
@@ -1535,13 +1538,6 @@ namespace SimulacionCajeroBanco
                     }
 
 
-
-
-
-
-
-
-
                     //if (clienteActual.tiempo_servicio_esperado != clienteActual.tiempo_servicio_final)
                     //{
                     //    if (clienteActual.problemas.Count == 0)
@@ -1568,7 +1564,7 @@ namespace SimulacionCajeroBanco
                         clienteActual.operacion_completada = true;
                     }
                    
-                });
+                }
                 
                 loadClientes();
 
@@ -2362,11 +2358,6 @@ namespace SimulacionCajeroBanco
                 MessageBox.Show("Error getClientes.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
-
-        
-
-
 
 
         //get clientes by temporada para poder establecer numeros random de clientes en base a la temporada 
