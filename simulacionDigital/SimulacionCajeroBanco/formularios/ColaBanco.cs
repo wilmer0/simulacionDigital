@@ -20,17 +20,16 @@ namespace SimulacionCajeroBanco
 
 
         //objetos
-        private cajero cajero;  //objero cajero con todos los atributos, guardar un cajero
-        private cliente cliente; //objero cliente con todos los atributos, guardar un cliente
-        private operaciones operacion;//objero operacion con todos los atributos, guardar una operacion(deposito,retiro,etc)
-        private problema problema;//objero problema con todos los atributos, guardar problema falla luz, falla sistema,etc
-        private tanda tanda;//objero tanda con todos los atributos, guardar tanda matutina o vespertina
-        private temporada temporada;//objero temporada con todos los atributos, guardar temporada de anio
-        private dia dia;//objero dia con todos los atributos, guardar dia si es pago o normal
-        private tipo_caja tipoCaja;//objero tipoCaja con todos los atributos, guardar el tipo de caja
-        private clientesProblemasLog clientesProblemasLog;//objero clientesProblemasLog con todos los atributos
+        private cajero cajero;  //objeto cajero con todos los atributos, guardar un cajero
+        private cliente cliente; //objeto cliente con todos los atributos, guardar un cliente
+        private operaciones operacion;//objeto operacion con todos los atributos, guardar una operacion(deposito,retiro,etc)
+        private problema problema;//objeto problema con todos los atributos, guardar problema falla luz, falla sistema,etc
+        private tanda tanda;//objeto tanda con todos los atributos, guardar tanda matutina o vespertina
+        private temporada temporada;//objeto temporada con todos los atributos, guardar temporada de anio
+        private dia dia;//objeto dia con todos los atributos, guardar dia si es pago o normal
+        private tipo_caja tipoCaja;//objeto tipoCaja con todos los atributos, guardar el tipo de caja
+        private clientesProblemasLog clientesProblemasLog;//objeto clientesProblemasLog con todos los atributos
         private fases fases;//objeto para almacenar las fases de los procesos
-
 
 
         //objetos reportes
@@ -39,11 +38,9 @@ namespace SimulacionCajeroBanco
         private List<clientesProblemasLog> listaClienteProblemasLog;  //objeto para guardar los problemas de tdos los clientes
         
 
-
         //listas de reportes
         private List<reporte_por_cajero> listaReportePorCajero; //lista para almacenar los objetos reporte por cajeros 
         private List<reporte_grafico_cliente> listaReporteGraficoCliente; //lista para almacenar los objetos reporte grafico de cliente
-
 
 
         //variables
@@ -73,12 +70,10 @@ namespace SimulacionCajeroBanco
         private List<cajero> listaCajeroCambioMoneda;  //para guardar los cajero que son cambio moneda
         
 
-
         //lista de fases por operacion
         private List<fases> listaFasesDeposito;//lista que almacena las fases de depositos
         private List<fases> listaFasesRetiro;//lista que almacena las fases de retiros
         private List<fases> listaFasesCambioMoneda; //lista que almacena las fases de cambio monedas
-
 
 
         //listas problemas
@@ -86,7 +81,6 @@ namespace SimulacionCajeroBanco
         private List<problema> listaProblemaRetiro;//lista par guardar los problemas de retiro
         private List<problema> listaProblemaCambio;//lista par guardar los problemas de cambio de moneda
         private List<problema> lisaProblemaCheque; //lista par guardar los problemas de cheques
-
 
 
         //variables para datos
@@ -124,6 +118,7 @@ namespace SimulacionCajeroBanco
             loadTemporada();
             loadTanda();
         }
+        
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -754,7 +749,6 @@ namespace SimulacionCajeroBanco
 
 
         //validar getAction
-       
         public bool validarGetAction()
         {
             #region
@@ -802,10 +796,7 @@ namespace SimulacionCajeroBanco
         }
        
         
-
-
         //get action
-        
         public void getAction()
         {
             try
@@ -1576,12 +1567,7 @@ namespace SimulacionCajeroBanco
                 MessageBox.Show("Error getAction.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
-
-
-
-
+        
         //get clientes || distribucion clientes
         public void getClientes()
         {
@@ -2434,7 +2420,6 @@ namespace SimulacionCajeroBanco
         }
         #endregion
 
-
         //reporte por cajeros;
         #region
         public void imprimir1()
@@ -2628,8 +2613,6 @@ namespace SimulacionCajeroBanco
             }
         }
         #endregion
-
-        
 
         private void button1_Click(object sender, EventArgs e)
         {
