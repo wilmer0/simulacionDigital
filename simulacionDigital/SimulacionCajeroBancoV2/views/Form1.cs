@@ -117,6 +117,7 @@ namespace SimulacionCajeroBancoV2
                 comboBoxTipoCaja.DisplayMember = "nombre";
                 comboBoxTipoCaja.ValueMember = "id";
 
+                loadListaCajeros();
                 getCantidadCajeros();
             }
             catch (Exception ex)
@@ -251,6 +252,27 @@ namespace SimulacionCajeroBancoV2
             }
         }
 
+        public int getIdCajeroByRandom(double random)
+        {
+            try
+            {
+                random = random/100;
+                foreach (var x in listaCajero)
+                {
+                    if (x.intervalo_inicial<= random && x.intervalo_final >= random)
+                    {
+                        return x.id;
+                    }
+                }
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getIdByRandom.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+        }
+
         public void getAction()
         {
             try
@@ -267,7 +289,11 @@ namespace SimulacionCajeroBancoV2
                     cliente=new cliente();
                     cliente.id = f;
                     cliente.idTemporada = temporadaSeleccionada.id;
-                    
+
+                    //saber que cajero escojio el cliente
+                    randomEntero = getNumeroRandom(1, 100);
+                    cliente.idCajero = getIdCajeroByRandom(randomEntero);
+
                     //obteniendo la tanda del cliente
                     //temporada matutina con probabilidad de 41% y 59% tanda vespertina
                     Thread.Sleep(30);
@@ -293,6 +319,7 @@ namespace SimulacionCajeroBancoV2
                     randomEntero = getNumeroRandom(0, 100);
                     if (randomEntero >= 1 && randomEntero<=43)
                     {
+                    
                         //deposito
                         cliente.idOperacion = 1;
                         cliente.operacion = "deposito";
@@ -433,7 +460,7 @@ namespace SimulacionCajeroBancoV2
 
                 foreach (var x in  listaCliente)
                 {
-                    dataGridView1.Rows.Add(x.id,x.operacion,x.tanda);
+                    dataGridView1.Rows.Add(x.id,x.operacion,x.tanda,"","","","",x.idCajero);
                 }
 
                 MessageBox.Show("Finalizó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
