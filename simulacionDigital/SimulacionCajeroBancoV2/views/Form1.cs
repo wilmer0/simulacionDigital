@@ -18,16 +18,23 @@ namespace SimulacionCajeroBancoV2
 
         //modelos
         modeloTemporada modeloTemporada=new modeloTemporada();
+        modeloTanda modeloTanda=new modeloTanda();
+        modeloCajero modeloCajero=new modeloCajero();
 
         //objetos
         private temporada temporada;
         private cliente cliente;
         private tanda tanda;
         private problema problema;
+        private cajero cajero;
 
         //listas
+        private List<tanda> listaTanda; 
         private List<cliente> listaCliente;
         private List<temporada> listaTemporada;
+        private List<cajero> listaCajero; 
+
+        //lista de problema
         private List<problema> listaProblemaDeposito;
         private List<problema> listaProblemaRetiro;
         private List<problema> listaProblemaCambio;
@@ -48,8 +55,10 @@ namespace SimulacionCajeroBancoV2
         {
             try
             {
+                listaCajero=new List<cajero>();
                 getTemporadas();
-
+                getTandas();
+                getCajeros();
 
             }
             catch (Exception ex)
@@ -75,6 +84,42 @@ namespace SimulacionCajeroBancoV2
             }
         }
 
+        public void getTandas()
+        {
+            try
+            {
+                listaTanda = new List<tanda>();
+                listaTanda = modeloTanda.getListaTanda(Convert.ToInt16(comboBoxTemporada.SelectedValue.ToString()));
+
+                comboBoxTanda.DataSource = listaTanda;
+                comboBoxTanda.DisplayMember = "nombre";
+                comboBoxTanda.ValueMember = "id";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getTandas.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void getCajeros()
+        {
+            try
+            {
+                listaCajero = new List<cajero>();
+                listaCajero = modeloCajero.getListaCajero();
+
+                comboBoxTipoCaja.DataSource = listaCajero;
+                comboBoxTipoCaja.DisplayMember = "nombre";
+                comboBoxTipoCaja.ValueMember = "id";
+
+                getCantidadCajeros();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getCajeros.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -82,15 +127,50 @@ namespace SimulacionCajeroBancoV2
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+           getCajeros();
+           MessageBox.Show("Se ha blanqueado la lista de cajeros","",MessageBoxButtons.OK,MessageBoxIcon.Warning);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            try
+            {
+                cajero= new cajero();
+                cajero.id = (listaCajero.Count) + 1;
+                cajero.nombre = "Cajero "+cajero.id;
+                listaCajero.Add(cajero);
+                loadListaCajeros();
+                
 
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Error agregando el cajero.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
 
+        public void getCantidadCajeros()
+        {
+            try
+            {
+                cantidadCajerosLabel.Text = "cajeros: " + listaCajero.Count;
+            }
+            catch (Exception)
+            {
+                
+            }
+        }
 
+        public void loadListaCajeros()
+        {
+            comboBoxTipoCaja.DataSource = listaCajero.ToList();
+            comboBoxTipoCaja.DisplayMember = "nombre";
+            comboBoxTipoCaja.ValueMember = "id";
+            comboBoxTipoCaja.SelectedIndex = 0;
+            getCantidadCajeros();
+        }
 
     }
 }

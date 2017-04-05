@@ -45,7 +45,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="modelos\modeloTanda.cs" />
     <Compile Include="modelos\modeloTemporada.cs" />
+    <Compile Include="modelos\modeloTipoCaja.cs" />
+    <Compile Include="objetos\cajero.cs" />
     <Compile Include="objetos\cliente.cs" />
     <Compile Include="objetos\operacion.cs" />
     <Compile Include="objetos\problema.cs" />
