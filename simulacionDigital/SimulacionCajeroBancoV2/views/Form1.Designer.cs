@@ -29,10 +29,20 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.cantidadClienteText = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxTemporada = new System.Windows.Forms.ComboBox();
@@ -47,12 +57,36 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.cantidadCajerosLabel = new System.Windows.Forms.Label();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.clientecolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.operacionGrid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tandacolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tiempoesperadoclumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantidadProblemsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tiempoServicioFinalColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.abandonocolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cajeroColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.faseColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tiempoColum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tiempo2Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProblemaColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Respuestacolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -74,7 +108,7 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.label3);
-            this.groupBox4.Controls.Add(this.textBox1);
+            this.groupBox4.Controls.Add(this.cantidadClienteText);
             this.groupBox4.Location = new System.Drawing.Point(644, 11);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(200, 79);
@@ -91,12 +125,12 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Cantidad Clientes";
             // 
-            // textBox1
+            // cantidadClienteText
             // 
-            this.textBox1.Location = new System.Drawing.Point(28, 43);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(132, 20);
-            this.textBox1.TabIndex = 5;
+            this.cantidadClienteText.Location = new System.Drawing.Point(28, 43);
+            this.cantidadClienteText.Name = "cantidadClienteText";
+            this.cantidadClienteText.Size = new System.Drawing.Size(132, 20);
+            this.cantidadClienteText.TabIndex = 5;
             // 
             // groupBox3
             // 
@@ -114,7 +148,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(21, 15);
+            this.label1.Location = new System.Drawing.Point(6, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(90, 17);
             this.label1.TabIndex = 0;
@@ -133,7 +167,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(190, 16);
+            this.label2.Location = new System.Drawing.Point(155, 16);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 17);
             this.label2.TabIndex = 1;
@@ -178,7 +212,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(60, 11);
+            this.label4.Location = new System.Drawing.Point(6, 10);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 17);
             this.label4.TabIndex = 6;
@@ -201,9 +235,9 @@
             // 
             this.comboBoxTipoCaja.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTipoCaja.FormattingEnabled = true;
-            this.comboBoxTipoCaja.Location = new System.Drawing.Point(26, 30);
+            this.comboBoxTipoCaja.Location = new System.Drawing.Point(9, 30);
             this.comboBoxTipoCaja.Name = "comboBoxTipoCaja";
-            this.comboBoxTipoCaja.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxTipoCaja.Size = new System.Drawing.Size(163, 21);
             this.comboBoxTipoCaja.TabIndex = 7;
             // 
             // panel1
@@ -242,6 +276,7 @@
             this.button1.Size = new System.Drawing.Size(78, 61);
             this.button1.TabIndex = 14;
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label5
             // 
@@ -256,23 +291,249 @@
             this.label5.TabIndex = 17;
             this.label5.Text = "Pro-Simulator";
             // 
-            // groupBox5
-            // 
-            this.groupBox5.Location = new System.Drawing.Point(769, 337);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(200, 100);
-            this.groupBox5.TabIndex = 19;
-            this.groupBox5.TabStop = false;
-            // 
             // cantidadCajerosLabel
             // 
             this.cantidadCajerosLabel.AutoSize = true;
             this.cantidadCajerosLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cantidadCajerosLabel.Location = new System.Drawing.Point(23, 53);
+            this.cantidadCajerosLabel.Location = new System.Drawing.Point(6, 53);
             this.cantidadCajerosLabel.Name = "cantidadCajerosLabel";
             this.cantidadCajerosLabel.Size = new System.Drawing.Size(66, 17);
             this.cantidadCajerosLabel.TabIndex = 24;
             this.cantidadCajerosLabel.Text = "cajeros:";
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(12, 112);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1239, 513);
+            this.tabControl1.TabIndex = 20;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.dataGridView1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1231, 487);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Corrida";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.dataGridView2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1231, 487);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Problemas";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.clientecolumn,
+            this.operacionGrid,
+            this.tandacolumn,
+            this.tiempoesperadoclumn,
+            this.cantidadProblemsColumn,
+            this.tiempoServicioFinalColumn,
+            this.abandonocolumn,
+            this.cajeroColumn});
+            this.dataGridView1.Location = new System.Drawing.Point(9, 6);
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(1216, 463);
+            this.dataGridView1.TabIndex = 12;
+            // 
+            // clientecolumn
+            // 
+            dataGridViewCellStyle39.BackColor = System.Drawing.Color.DarkBlue;
+            dataGridViewCellStyle39.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle39.ForeColor = System.Drawing.Color.White;
+            this.clientecolumn.DefaultCellStyle = dataGridViewCellStyle39;
+            this.clientecolumn.FillWeight = 30F;
+            this.clientecolumn.HeaderText = "Cliente";
+            this.clientecolumn.Name = "clientecolumn";
+            this.clientecolumn.ReadOnly = true;
+            // 
+            // operacionGrid
+            // 
+            dataGridViewCellStyle40.BackColor = System.Drawing.Color.DarkBlue;
+            dataGridViewCellStyle40.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle40.ForeColor = System.Drawing.Color.White;
+            this.operacionGrid.DefaultCellStyle = dataGridViewCellStyle40;
+            this.operacionGrid.HeaderText = "Operacion";
+            this.operacionGrid.Name = "operacionGrid";
+            this.operacionGrid.ReadOnly = true;
+            // 
+            // tandacolumn
+            // 
+            dataGridViewCellStyle41.BackColor = System.Drawing.Color.DarkBlue;
+            dataGridViewCellStyle41.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle41.ForeColor = System.Drawing.Color.White;
+            this.tandacolumn.DefaultCellStyle = dataGridViewCellStyle41;
+            this.tandacolumn.FillWeight = 50F;
+            this.tandacolumn.HeaderText = "Tanda";
+            this.tandacolumn.Name = "tandacolumn";
+            this.tandacolumn.ReadOnly = true;
+            // 
+            // tiempoesperadoclumn
+            // 
+            dataGridViewCellStyle42.BackColor = System.Drawing.Color.DarkBlue;
+            dataGridViewCellStyle42.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle42.ForeColor = System.Drawing.Color.White;
+            this.tiempoesperadoclumn.DefaultCellStyle = dataGridViewCellStyle42;
+            this.tiempoesperadoclumn.FillWeight = 50F;
+            this.tiempoesperadoclumn.HeaderText = "T. Esperado";
+            this.tiempoesperadoclumn.Name = "tiempoesperadoclumn";
+            this.tiempoesperadoclumn.ReadOnly = true;
+            // 
+            // cantidadProblemsColumn
+            // 
+            dataGridViewCellStyle43.BackColor = System.Drawing.Color.DarkBlue;
+            dataGridViewCellStyle43.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle43.ForeColor = System.Drawing.Color.White;
+            this.cantidadProblemsColumn.DefaultCellStyle = dataGridViewCellStyle43;
+            this.cantidadProblemsColumn.FillWeight = 50F;
+            this.cantidadProblemsColumn.HeaderText = "Cant. problemas";
+            this.cantidadProblemsColumn.Name = "cantidadProblemsColumn";
+            this.cantidadProblemsColumn.ReadOnly = true;
+            // 
+            // tiempoServicioFinalColumn
+            // 
+            dataGridViewCellStyle44.BackColor = System.Drawing.Color.DarkBlue;
+            dataGridViewCellStyle44.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle44.ForeColor = System.Drawing.Color.White;
+            this.tiempoServicioFinalColumn.DefaultCellStyle = dataGridViewCellStyle44;
+            this.tiempoServicioFinalColumn.FillWeight = 50F;
+            this.tiempoServicioFinalColumn.HeaderText = "T. servicio final";
+            this.tiempoServicioFinalColumn.Name = "tiempoServicioFinalColumn";
+            this.tiempoServicioFinalColumn.ReadOnly = true;
+            // 
+            // abandonocolumn
+            // 
+            dataGridViewCellStyle45.BackColor = System.Drawing.Color.DarkBlue;
+            dataGridViewCellStyle45.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle45.ForeColor = System.Drawing.Color.White;
+            this.abandonocolumn.DefaultCellStyle = dataGridViewCellStyle45;
+            this.abandonocolumn.HeaderText = "abandono";
+            this.abandonocolumn.Name = "abandonocolumn";
+            this.abandonocolumn.ReadOnly = true;
+            // 
+            // cajeroColumn
+            // 
+            dataGridViewCellStyle46.BackColor = System.Drawing.Color.DarkBlue;
+            dataGridViewCellStyle46.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle46.ForeColor = System.Drawing.Color.White;
+            this.cajeroColumn.DefaultCellStyle = dataGridViewCellStyle46;
+            this.cajeroColumn.HeaderText = "Cajero";
+            this.cajeroColumn.Name = "cajeroColumn";
+            this.cajeroColumn.ReadOnly = true;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.AllowUserToResizeColumns = false;
+            this.dataGridView2.AllowUserToResizeRows = false;
+            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.faseColumn,
+            this.tiempoColum,
+            this.tiempo2Column,
+            this.ProblemaColumn,
+            this.Respuestacolumn});
+            this.dataGridView2.Location = new System.Drawing.Point(9, 3);
+            this.dataGridView2.MultiSelect = false;
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.RowHeadersVisible = false;
+            this.dataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView2.Size = new System.Drawing.Size(1216, 468);
+            this.dataGridView2.TabIndex = 13;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewCellStyle47.BackColor = System.Drawing.Color.DarkBlue;
+            dataGridViewCellStyle47.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle47.ForeColor = System.Drawing.Color.White;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle47;
+            this.dataGridViewTextBoxColumn1.FillWeight = 30F;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Cliente";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewCellStyle48.BackColor = System.Drawing.Color.DarkBlue;
+            dataGridViewCellStyle48.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle48.ForeColor = System.Drawing.Color.White;
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle48;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Operacion";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // faseColumn
+            // 
+            this.faseColumn.HeaderText = "Fase";
+            this.faseColumn.Name = "faseColumn";
+            this.faseColumn.ReadOnly = true;
+            // 
+            // tiempoColum
+            // 
+            this.tiempoColum.HeaderText = "Tiempo anterior";
+            this.tiempoColum.Name = "tiempoColum";
+            this.tiempoColum.ReadOnly = true;
+            // 
+            // tiempo2Column
+            // 
+            this.tiempo2Column.HeaderText = "Tiempo posterior";
+            this.tiempo2Column.Name = "tiempo2Column";
+            this.tiempo2Column.ReadOnly = true;
+            // 
+            // ProblemaColumn
+            // 
+            this.ProblemaColumn.HeaderText = "Problema1";
+            this.ProblemaColumn.Name = "ProblemaColumn";
+            this.ProblemaColumn.ReadOnly = true;
+            // 
+            // Respuestacolumn
+            // 
+            this.Respuestacolumn.HeaderText = "Respuesta";
+            this.Respuestacolumn.Name = "Respuestacolumn";
+            this.Respuestacolumn.ReadOnly = true;
             // 
             // Form1
             // 
@@ -280,7 +541,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1263, 646);
-            this.Controls.Add(this.groupBox5);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
@@ -295,6 +556,11 @@
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -307,7 +573,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBoxTanda;
         private System.Windows.Forms.ComboBox comboBoxTemporada;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox cantidadClienteText;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBoxTipoCaja;
         private System.Windows.Forms.Label label4;
@@ -320,8 +586,27 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label cantidadCajerosLabel;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clientecolumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn operacionGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tandacolumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tiempoesperadoclumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantidadProblemsColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tiempoServicioFinalColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn abandonocolumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cajeroColumn;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn faseColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tiempoColum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tiempo2Column;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProblemaColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Respuestacolumn;
     }
 }
 
