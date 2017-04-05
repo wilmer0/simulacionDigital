@@ -23,13 +23,17 @@ namespace SimulacionCajeroBancoV2.objetos
         public double tiempoCola { get; set; }
         public double tiempoEntregaDatos { get; set; }
         public double tiempoProcesoSolicitud { get; set; }
-
+        public double tiempoEsperadoServicio { get; set; }
+        public double tiempoTotalServicio { get; set; }
         public bool aceptaCuentaAhorro { get; set; }
         public bool aceptaDepositarRetiro { get; set; }
         public bool cambioDolaresApesos { get; set; }
         public bool cambioPesosADolares { get; set; }
         public bool aceptaCuentaAhorroCambioMoneda { get; set; }
         public decimal montoTransaccion { get; set; }
+
+        public bool abandono { get; set; }
+        public List<problema> listaProblema { get; set; }
 
     }
 }

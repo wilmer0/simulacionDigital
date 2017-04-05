@@ -288,7 +288,10 @@ namespace SimulacionCajeroBancoV2
                     //llenando los primeros datos de cliente actual
                     cliente=new cliente();
                     cliente.id = f;
+                    cliente.abandono = false;
                     cliente.idTemporada = temporadaSeleccionada.id;
+                    //instanciando la lista de problemas del cliene
+                    cliente.listaProblema=new List<problema>();
 
                     //saber que cajero escojio el cliente
                     randomEntero = getNumeroRandom(1, 100);
@@ -414,7 +417,99 @@ namespace SimulacionCajeroBancoV2
                         #endregion
                     }
 
-
+                    //asignando los tiempos promedios esperado cada fase de cada operacion en base a la temporada
+                    #region
+                    if (cliente.idTemporada == 1)
+                    {
+                        //temporada 1
+                        #region
+                        if (cliente.idOperacion == 1)
+                        {
+                            //deposito
+                            cliente.tiempoEsperadoCola = 2.5;
+                            cliente.tiempoEsperadoEntregaDatos = 1.8;
+                            cliente.tiempoEsperadoProcesoSolicitud = 1.5;
+                            cliente.tiempoEsperadoServicio = 5.8;
+                        }
+                        else if (cliente.idOperacion == 2)
+                        {
+                            //retiro
+                            cliente.tiempoEsperadoCola = 2.2;
+                            cliente.tiempoEsperadoEntregaDatos = 2.1;
+                            cliente.tiempoEsperadoProcesoSolicitud = 1.3;
+                            cliente.tiempoEsperadoServicio = 5.6;
+                        }
+                        else if (cliente.idOperacion == 3)
+                        {
+                            //cambio moneda
+                            cliente.tiempoEsperadoCola = 1.5;
+                            cliente.tiempoEsperadoEntregaDatos = 1.5;
+                            cliente.tiempoEsperadoProcesoSolicitud = 2.0;
+                            cliente.tiempoEsperadoServicio = 5.0;
+                        }
+                        #endregion
+                    }
+                    else if (cliente.idTemporada == 2)
+                    {
+                        //temporada 2
+                        #region
+                        //if (cliente.idOperacion == 1)
+                        //{
+                        //    //deposito
+                        //    cliente.tiempoEsperadoCola = 2.5;
+                        //    cliente.tiempoEsperadoEntregaDatos = 1.8;
+                        //    cliente.tiempoEsperadoProcesoSolicitud = 1.5;
+                        //    cliente.tiempoEsperadoServicio = 5.8;
+                        //}
+                        //else if (cliente.idOperacion == 2)
+                        //{
+                        //    //retiro
+                        //    cliente.tiempoEsperadoCola = 2.2;
+                        //    cliente.tiempoEsperadoEntregaDatos = 2.1;
+                        //    cliente.tiempoEsperadoProcesoSolicitud = 1.3;
+                        //    cliente.tiempoEsperadoServicio = 5.6;
+                        //}
+                        //else if (cliente.idOperacion == 3)
+                        //{
+                        //    //cambio moneda
+                        //    cliente.tiempoEsperadoCola = 1.5;
+                        //    cliente.tiempoEsperadoEntregaDatos = 1.5;
+                        //    cliente.tiempoEsperadoProcesoSolicitud = 2.0;
+                        //    cliente.tiempoEsperadoServicio = 5.0;
+                        //}
+                        #endregion
+                    }
+                    else if (cliente.idTemporada == 3)
+                    {
+                        //temporada 3
+                        #region
+                        //if (cliente.idOperacion == 1)
+                        //{
+                        //    //deposito
+                        //    cliente.tiempoEsperadoCola = 2.5;
+                        //    cliente.tiempoEsperadoEntregaDatos = 1.8;
+                        //    cliente.tiempoEsperadoProcesoSolicitud = 1.5;
+                        //    cliente.tiempoEsperadoServicio = 5.8;
+                        //}
+                        //else if (cliente.idOperacion == 2)
+                        //{
+                        //    //retiro
+                        //    cliente.tiempoEsperadoCola = 2.2;
+                        //    cliente.tiempoEsperadoEntregaDatos = 2.1;
+                        //    cliente.tiempoEsperadoProcesoSolicitud = 1.3;
+                        //    cliente.tiempoEsperadoServicio = 5.6;
+                        //}
+                        //else if (cliente.idOperacion == 3)
+                        //{
+                        //    //cambio moneda
+                        //    cliente.tiempoEsperadoCola = 1.5;
+                        //    cliente.tiempoEsperadoEntregaDatos = 1.5;
+                        //    cliente.tiempoEsperadoProcesoSolicitud = 2.0;
+                        //    cliente.tiempoEsperadoServicio = 5.0;
+                        //}
+                        #endregion
+                    }
+                    #endregion
 
 
 
@@ -453,7 +548,7 @@ namespace SimulacionCajeroBancoV2
 
                 foreach (var x in  listaCliente)
                 {
-                    dataGridView1.Rows.Add(x.id,x.operacion,x.tanda,"","","","",x.idCajero);
+                    dataGridView1.Rows.Add(x.id,x.operacion,x.tanda,x.tiempoEsperadoServicio,"",x.tiempoTotalServicio,"",x.idCajero);
                 }
 
                 MessageBox.Show("Finalizó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
