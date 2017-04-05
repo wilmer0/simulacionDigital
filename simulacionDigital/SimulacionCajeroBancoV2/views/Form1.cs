@@ -312,10 +312,6 @@ namespace SimulacionCajeroBancoV2
                     }
 
                     //obteniendo la operacion
-                    //deposito 43, retiro 37, cambio moneda 20
-                    //random=new Random();
-                    //randomEntero = 0;
-                    //randomEntero = random.Next(0, 100) + 1;
                     randomEntero = getNumeroRandom(0, 100);
                     if (randomEntero >= 1 && randomEntero<=43)
                     {
@@ -325,9 +321,6 @@ namespace SimulacionCajeroBancoV2
                         cliente.operacion = "deposito";
                         #region
                         //el deposito puede ser efectivo 60,cheque 30, transferencia 10
-                        //random=new Random();
-                        //randomEntero = 0;
-                        //randomEntero = random.Next(0,100)+1;
                         randomEntero = getNumeroRandom(0, 100);
                         if (randomEntero >= 1 && randomEntero <= 60)
                         {
