@@ -10,6 +10,8 @@ namespace SimulacionCajeroBancoV2.objetos
     {
         public int id { get; set; }
         public string nombre { get; set; }
-        
+        public double intervalo_inicial { get; set; }
+        public double intervalo_final { get; set; }
+
     }
 }

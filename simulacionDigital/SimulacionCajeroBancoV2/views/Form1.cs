@@ -170,6 +170,20 @@ namespace SimulacionCajeroBancoV2
 
         public void loadListaCajeros()
         {
+            double probabilidad = 0;
+            double probabilidadTemporal = 0;
+            double cantidadCajeros = 0;
+
+            cantidadCajeros = listaCajero.Count;
+            probabilidad = Math.Round((1/cantidadCajeros),2);
+
+            foreach (var x in listaCajero)
+            {
+                x.intervalo_inicial = probabilidadTemporal;
+                probabilidadTemporal += probabilidad;
+                x.intervalo_final = probabilidadTemporal;
+            }
+
             comboBoxTipoCaja.DataSource = listaCajero.ToList();
             comboBoxTipoCaja.DisplayMember = "nombre";
             comboBoxTipoCaja.ValueMember = "id";
@@ -256,7 +270,7 @@ namespace SimulacionCajeroBancoV2
                     
                     //obteniendo la tanda del cliente
                     //temporada matutina con probabilidad de 41% y 59% tanda vespertina
-                    
+                    Thread.Sleep(30);
                     randomEntero = getNumeroRandom(0, 100);
                     if (randomEntero <= 41)
                     {
@@ -404,7 +418,6 @@ namespace SimulacionCajeroBancoV2
             getAction();
         }
 
-
         public void loadListaCliente()
         {
             try
@@ -422,6 +435,8 @@ namespace SimulacionCajeroBancoV2
                 {
                     dataGridView1.Rows.Add(x.id,x.operacion,x.tanda);
                 }
+
+                MessageBox.Show("Finalizó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
             catch (Exception ex)
