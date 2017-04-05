@@ -318,7 +318,6 @@ namespace SimulacionCajeroBancoV2
                     randomEntero = getNumeroRandom(0, 100);
                     if (randomEntero >= 1 && randomEntero<=43)
                     {
-                    
                         //deposito
                         cliente.idOperacion = 1;
                         cliente.operacion = "deposito";
@@ -330,7 +329,8 @@ namespace SimulacionCajeroBancoV2
                             //deposito en efectivo
                             cliente.tipoDespotiso = "efectivo";
                             //como el deposito es en efectivo si es monto > 45,000 se ofrece una cuenta de ahorro que el 38% acepta
-                            cliente.montoTransaccion = getNumeroRandom(1, 100000);
+                            //para este caso el deposito mas bajo fue de 5,000 y el mayor fue de 150,0000
+                            cliente.montoTransaccion = getNumeroRandom(5000, 150000);
                             if (cliente.montoTransaccion > 45000)
                             {
                                 //monto de transaccion > 45,000 se oferta cuenta de ahorro. 
@@ -364,6 +364,8 @@ namespace SimulacionCajeroBancoV2
                         //retiro
                         cliente.idOperacion = 2;
                         cliente.operacion = "retiro";
+                        //para este caso el retiro mas bajo fue de 10,500 y el mayor fue de 122,000
+                        cliente.montoTransaccion = getNumeroRandom(10500, 122000);
                         #region
                         //existe un 34% de que lo quiera depositar en otra cuenta
                         randomEntero = getNumeroRandom(1, 100);
@@ -390,15 +392,21 @@ namespace SimulacionCajeroBancoV2
                         randomEntero = getNumeroRandom(1, 100);
                         if (randomEntero >= 1 && randomEntero <= 63)
                         {
+                            cliente.operacion += "-DP";
                             //dolares a pesos
                             cliente.cambioDolaresApesos = true;
                             cliente.cambioPesosADolares = false;
+                            //para este caso el cambio mas bajo fue de 50 y el mayor fue de 2000
+                            cliente.montoTransaccion = getNumeroRandom(50, 2000);
                         }
                         else
                         {
                             //pesos a dolares
+                            cliente.operacion += "-PD";
                             cliente.cambioPesosADolares = true;
                             cliente.cambioDolaresApesos = false;
+                            //para este caso el deposito mas bajo fue de 4500 y el mayor fue de 80000
+                            cliente.montoTransaccion = getNumeroRandom(4500, 80000);
                         }
 
                         //ofreciendo cuenta de ahorro en moneda que cambio un 20% acepta
@@ -548,7 +556,7 @@ namespace SimulacionCajeroBancoV2
 
                 foreach (var x in  listaCliente)
                 {
-                    dataGridView1.Rows.Add(x.id,x.operacion,x.tanda,x.tiempoEsperadoServicio,"",x.tiempoTotalServicio,"",x.idCajero);
+                    dataGridView1.Rows.Add(x.id,x.operacion,x.tanda,x.tiempoEsperadoServicio,x.montoTransaccion.ToString("N"),x.tiempoTotalServicio,"",x.idCajero);
                 }
 
                 MessageBox.Show("Finalizó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
