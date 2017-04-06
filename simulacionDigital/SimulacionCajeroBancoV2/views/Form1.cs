@@ -1056,7 +1056,7 @@ namespace SimulacionCajeroBancoV2
 
 
                 //llenando los problemas log de todos los clientes
-                //listaProblemaLogs = listaProblemaLogs.FindAll(x => x.problema_encontrado == true);
+                listaProblemaLogs = listaProblemaLogs.FindAll(x => x.problema_encontrado == true);
                 foreach (var x in listaProblemaLogs)
                 {
                     dataGridView2.Rows.Add(x.idcliente, x.operacion,x.fase,x.tiempo_antes,x.tiempo_despues,x.nombreProblema,x.desicion);
