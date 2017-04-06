@@ -595,49 +595,63 @@ namespace SimulacionCajeroBancoV2
                     cliente.listaProblema = new List<problema>();
 
                     getListasProblema(cliente);
-                    if (cliente.idOperacion == 1)
+                    if (cliente.idTemporada == 1)
                     {
-                        //deposito
+                        #region
+                        if (cliente.idOperacion == 1)
+                        {
+                            //deposito
 
-                        //falta numero de cuenta 13%
+                            //falta numero de cuenta 13%
 
-                        //numero cuenta incorrecto 25%
+                            //numero cuenta incorrecto 25%
 
-                        //falta dinero por parte del cliente 27%
+                            //falta dinero por parte del cliente 27%
 
-                        //dinero efectivo mal estado 22%
+                            //dinero efectivo mal estado 22%
 
-                        //cheque mal endosado 17%
+                            //cheque mal endosado 17%
 
-                        //saldo cuenta cliente es insuficiente para transferencia 13%
+                            //saldo cuenta cliente es insuficiente para transferencia 13%
 
 
-                    }else if (cliente.idOperacion == 2)
+                        }
+                        else if (cliente.idOperacion == 2)
+                        {
+                            //retiro
+
+                            /*
+                                -falta la cedula-21%
+                                -cedula en muy mal estado-15%
+                                -numero de cuenta se le olvido-18%
+                                -numero de cuenta incorrecto-30%
+                                -monto a retirar excede el limite disponible-16%
+                             */
+
+                        }
+                        else if (cliente.idOperacion == 3)
+                        {
+                            //cambio moneda
+
+                            /*
+                                -monto que llevo el cliente no era el correcto (el cliente queria $100 y solo llevo $50)-13%
+                                -monto que dijo el cliente no esta completo (el cliente pidio $150 pero solo tiene $120)-20%
+                                -el dinero del cliente esta en muy mal estado.-35%
+                                -el banco no tiene dollar.-9%
+                                -el banco no tiene euro.-10%
+                                -el cajero dio dinero de menos-13%
+                             */
+                        }
+                        #endregion
+
+                    }else if (cliente.idTemporada == 2)
                     {
-                        //retiro
-
-                        /*
-                            -falta la cedula-21%
-                            -cedula en muy mal estado-15%
-                            -numero de cuenta se le olvido-18%
-                            -numero de cuenta incorrecto-30%
-                            -monto a retirar excede el limite disponible-16%
-                         */
-
+                        
+                    }else if (cliente.idTemporada == 3)
+                    {
+                        
                     }
-                    else if (cliente.idOperacion == 3)
-                    {
-                        //cambio moneda
-
-                        /*
-                            -monto que llevo el cliente no era el correcto (el cliente queria $100 y solo llevo $50)-13%
-                            -monto que dijo el cliente no esta completo (el cliente pidio $150 pero solo tiene $120)-20%
-                            -el dinero del cliente esta en muy mal estado.-35%
-                            -el banco no tiene dollar.-9%
-                            -el banco no tiene euro.-10%
-                            -el cajero dio dinero de menos-13%
-                         */
-                    }
+                   
 
 
 
