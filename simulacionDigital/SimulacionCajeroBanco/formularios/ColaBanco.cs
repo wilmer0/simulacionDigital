@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Reporting.WinForms;
+using Microsoft.Reporting.WebForms;
 using SimulacionCajeroBanco.clases;
 using SimulacionCajeroBanco.clases_reportes;
 using _7ADMFIC_1._0.VentanasComunes;

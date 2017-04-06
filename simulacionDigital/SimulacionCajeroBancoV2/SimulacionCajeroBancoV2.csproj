@@ -50,8 +50,10 @@
     <Compile Include="modelos\modeloTipoCaja.cs" />
     <Compile Include="objetos\cajero.cs" />
     <Compile Include="objetos\cliente.cs" />
+    <Compile Include="objetos\fases.cs" />
     <Compile Include="objetos\operacion.cs" />
     <Compile Include="objetos\problema.cs" />
+    <Compile Include="objetos\problemasLogs.cs" />
     <Compile Include="objetos\tanda.cs" />
     <Compile Include="objetos\temporada.cs" />
     <Compile Include="views\Form1.cs">

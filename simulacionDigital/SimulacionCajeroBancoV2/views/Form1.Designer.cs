@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -40,6 +38,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -62,15 +62,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.faseColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tiempoColum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tiempo2Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProblemaColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Respuestacolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clientecolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.operacionGrid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tandacolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -80,6 +71,15 @@
             this.tiempoServicioFinalColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.abandonocolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cajeroColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.faseColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tiempoColum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tiempo2Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProblemaColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Respuestacolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -359,103 +359,7 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1216, 463);
             this.dataGridView1.TabIndex = 12;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.dataGridView2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1231, 487);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Problemas";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.AllowUserToResizeColumns = false;
-            this.dataGridView2.AllowUserToResizeRows = false;
-            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.faseColumn,
-            this.tiempoColum,
-            this.tiempo2Column,
-            this.ProblemaColumn,
-            this.Respuestacolumn});
-            this.dataGridView2.Location = new System.Drawing.Point(9, 3);
-            this.dataGridView2.MultiSelect = false;
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(1216, 468);
-            this.dataGridView2.TabIndex = 13;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.DarkBlue;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle10;
-            this.dataGridViewTextBoxColumn1.FillWeight = 30F;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Cliente";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.DarkBlue;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
-            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle11;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Operacion";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // faseColumn
-            // 
-            this.faseColumn.FillWeight = 50F;
-            this.faseColumn.HeaderText = "Fase";
-            this.faseColumn.Name = "faseColumn";
-            this.faseColumn.ReadOnly = true;
-            // 
-            // tiempoColum
-            // 
-            this.tiempoColum.FillWeight = 50F;
-            this.tiempoColum.HeaderText = "Tiempo anterior";
-            this.tiempoColum.Name = "tiempoColum";
-            this.tiempoColum.ReadOnly = true;
-            // 
-            // tiempo2Column
-            // 
-            this.tiempo2Column.FillWeight = 50F;
-            this.tiempo2Column.HeaderText = "Tiempo posterior";
-            this.tiempo2Column.Name = "tiempo2Column";
-            this.tiempo2Column.ReadOnly = true;
-            // 
-            // ProblemaColumn
-            // 
-            this.ProblemaColumn.HeaderText = "Problema";
-            this.ProblemaColumn.Name = "ProblemaColumn";
-            this.ProblemaColumn.ReadOnly = true;
-            // 
-            // Respuestacolumn
-            // 
-            this.Respuestacolumn.FillWeight = 200F;
-            this.Respuestacolumn.HeaderText = "Respuesta";
-            this.Respuestacolumn.Name = "Respuestacolumn";
-            this.Respuestacolumn.ReadOnly = true;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // clientecolumn
             // 
@@ -553,6 +457,103 @@
             this.cajeroColumn.HeaderText = "Cajero";
             this.cajeroColumn.Name = "cajeroColumn";
             this.cajeroColumn.ReadOnly = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.dataGridView2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1231, 487);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Problemas";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.AllowUserToResizeColumns = false;
+            this.dataGridView2.AllowUserToResizeRows = false;
+            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.faseColumn,
+            this.tiempoColum,
+            this.tiempo2Column,
+            this.ProblemaColumn,
+            this.Respuestacolumn});
+            this.dataGridView2.Location = new System.Drawing.Point(9, 3);
+            this.dataGridView2.MultiSelect = false;
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.RowHeadersVisible = false;
+            this.dataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView2.Size = new System.Drawing.Size(1216, 468);
+            this.dataGridView2.TabIndex = 13;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.DarkBlue;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle10;
+            this.dataGridViewTextBoxColumn1.FillWeight = 30F;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Cliente";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.DarkBlue;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle11;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Operacion";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // faseColumn
+            // 
+            this.faseColumn.FillWeight = 50F;
+            this.faseColumn.HeaderText = "Fase";
+            this.faseColumn.Name = "faseColumn";
+            this.faseColumn.ReadOnly = true;
+            // 
+            // tiempoColum
+            // 
+            this.tiempoColum.FillWeight = 50F;
+            this.tiempoColum.HeaderText = "Tiempo anterior";
+            this.tiempoColum.Name = "tiempoColum";
+            this.tiempoColum.ReadOnly = true;
+            // 
+            // tiempo2Column
+            // 
+            this.tiempo2Column.FillWeight = 50F;
+            this.tiempo2Column.HeaderText = "Tiempo posterior";
+            this.tiempo2Column.Name = "tiempo2Column";
+            this.tiempo2Column.ReadOnly = true;
+            // 
+            // ProblemaColumn
+            // 
+            this.ProblemaColumn.HeaderText = "Problema";
+            this.ProblemaColumn.Name = "ProblemaColumn";
+            this.ProblemaColumn.ReadOnly = true;
+            // 
+            // Respuestacolumn
+            // 
+            this.Respuestacolumn.FillWeight = 200F;
+            this.Respuestacolumn.HeaderText = "Respuesta";
+            this.Respuestacolumn.Name = "Respuestacolumn";
+            this.Respuestacolumn.ReadOnly = true;
             // 
             // Form1
             // 

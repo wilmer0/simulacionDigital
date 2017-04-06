@@ -19,28 +19,35 @@ namespace SimulacionCajeroBancoV2
 
 
         //modelos
-        modeloTemporada modeloTemporada=new modeloTemporada();
-        modeloTanda modeloTanda=new modeloTanda();
-        modeloCajero modeloCajero=new modeloCajero();
+        modeloTemporada modeloTemporada=new modeloTemporada(); // toda la programacion con respecto a la temporada
+        modeloTanda modeloTanda = new modeloTanda(); // toda la programacion con respecto a la tanda
+        modeloCajero modeloCajero = new modeloCajero();// toda la programacion con respecto al cajero
 
         //objetos
-        private temporada temporada;
-        private cliente cliente;
-        private tanda tanda;
-        private problema problema;
-        private cajero cajero;
+        private temporada temporada; // objeto con todos los atributos de la temporada
+        private cliente cliente;// objeto con todos los atributos del cliente
+        private tanda tanda;// objeto con todos los atributos de la tanda
+        private problema problema;// objeto con todos los atributos del problema
+        private cajero cajero;// objeto con todos los atributos del cajero
+        private fases fase;//objeto con todos los atributos de las fases
 
         //listas
-        private List<tanda> listaTanda; 
-        private List<cliente> listaCliente;
-        private List<temporada> listaTemporada;
-        private List<cajero> listaCajero; 
+        private List<tanda> listaTanda; // lista de las tandas disponibles
+        private List<cliente> listaCliente;// lista de los clientes donde se almacena cada corrida
+        private List<temporada> listaTemporada;// lista de las temporadas disponibles
+        private List<cajero> listaCajero;// lista de los cajeros disponibles
+        private problemasLogs problemasLogs;// lista de los problemas con detalles encontrado en la corrida
 
         //lista de problema
         private List<problema> listaProblemaDeposito;
         private List<problema> listaProblemaRetiro;
         private List<problema> listaProblemaCambio;
         private List<int> listaNumero;
+        private List<problemasLogs> listaProblemaLogs;
+        private List<fases> listaFases;
+        private List<fases> listaFasesDeposito;
+        private List<fases> listaFasesRetiro;
+        private List<fases> listaFasesCambioMoneda;
 
 
         //variables
@@ -67,6 +74,7 @@ namespace SimulacionCajeroBancoV2
                 getTandas();
                 getCajeros();
                 getListaNumeros();
+                getListaFases();
 
             }
             catch (Exception ex)
@@ -101,6 +109,7 @@ namespace SimulacionCajeroBancoV2
             }
         }
 
+        //carga las tandas
         public void getTandas()
         {
             try
@@ -118,6 +127,7 @@ namespace SimulacionCajeroBancoV2
             }
         }
 
+        //carga los cajeros
         public void getCajeros()
         {
             try
@@ -169,6 +179,7 @@ namespace SimulacionCajeroBancoV2
             }
         }
 
+        //carga la cantidad de cajeros
         public void getCantidadCajeros()
         {
             try
@@ -181,6 +192,7 @@ namespace SimulacionCajeroBancoV2
             }
         }
 
+        //carga la lista de cajeros
         public void loadListaCajeros()
         {
             double probabilidad = 0;
@@ -264,6 +276,7 @@ namespace SimulacionCajeroBancoV2
             }
         }
 
+        //obtiene un id cajero en base a un numero random con los intervalos del cajero
         public int getIdCajeroByRandom(double random)
         {
             try
@@ -285,6 +298,7 @@ namespace SimulacionCajeroBancoV2
             }
         }
 
+        //proceso padre
         public void getAction()
         {
             try
@@ -294,7 +308,9 @@ namespace SimulacionCajeroBancoV2
                     return;
                 }
 
+
                 listaCliente=new List<cliente>();
+
                 for (int f = 1; f <= cantidadClientes; f++)
                 {
                     //llenando los primeros datos de cliente actual
@@ -302,12 +318,17 @@ namespace SimulacionCajeroBancoV2
                     cliente.id = f;
                     cliente.abandono = false;
                     cliente.idTemporada = temporadaSeleccionada.id;
-                    
-                    //saber que cajero escojio el cliente
+
+
+                    //saber que cajero escogio el cliente
+                    #region
                     randomEntero = getNumeroRandom(1, 100);
                     cliente.idCajero = getIdCajeroByRandom(randomEntero);
+                    #endregion
+
 
                     //obteniendo la tanda del cliente
+                    #region
                     //tanda matutina con probabilidad de 41% y 59% tanda vespertina
                     //Thread.Sleep(30);
                     randomEntero = getNumeroRandom(1, 100);
@@ -323,8 +344,11 @@ namespace SimulacionCajeroBancoV2
                         cliente.idTanda = 2;
                         cliente.tanda = "vespertina";
                     }
+                    #endregion
 
+                    
                     //obteniendo la operacion
+                    #region
                     randomEntero = getNumeroRandom(1, 100);
                     if (randomEntero >= 1 && randomEntero<=43)
                     {
@@ -437,8 +461,10 @@ namespace SimulacionCajeroBancoV2
 
                         #endregion
                     }
+                    #endregion
 
-                    //asignando los tiempos promedios esperado cada fase de cada operacion en base a la temporada
+
+                    //asignando los tiempos promedios esperado y finales bases cada fase de cada operacion en base a la temporada
                     #region
                     if (cliente.idTemporada == 1)
                     {
@@ -449,12 +475,15 @@ namespace SimulacionCajeroBancoV2
                             //deposito
                             cliente.tiempoEsperadoCola = getNumeroRandom(200,250); //de 2.0 a 2.5
                             cliente.tiempoEsperadoCola /= 100;
+                            cliente.tiempoCola = cliente.tiempoEsperadoCola;
                             
                             cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(100, 180); //de 1 a 1.8
                             cliente.tiempoEsperadoEntregaDatos /= 100;
+                            cliente.tiempoEntregaDatos = cliente.tiempoEsperadoEntregaDatos;
                             
                             cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(100, 150); //de 1.0 a 1.5
                             cliente.tiempoEsperadoProcesoSolicitud /= 100;
+                            cliente.tiempoProcesoSolicitud = cliente.tiempoEsperadoProcesoSolicitud;
                             
                             cliente.tiempoEsperadoServicio = cliente.tiempoEsperadoCola+ cliente.tiempoEsperadoEntregaDatos + cliente.tiempoEsperadoProcesoSolicitud;
                         }
@@ -463,12 +492,15 @@ namespace SimulacionCajeroBancoV2
                             //retiro
                             cliente.tiempoEsperadoCola = getNumeroRandom(200, 220); // 2.0 a 2.2
                             cliente.tiempoEsperadoCola /= 100;
+                            cliente.tiempoCola = cliente.tiempoEsperadoCola;
                             
                             cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(180, 210); //de 1.8 a 2.1
                             cliente.tiempoEsperadoEntregaDatos /= 100;
+                            cliente.tiempoEntregaDatos = cliente.tiempoEsperadoEntregaDatos;
                             
                             cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(100, 130); //de 1.0 a 1.3
                             cliente.tiempoEsperadoProcesoSolicitud /= 100;
+                            cliente.tiempoProcesoSolicitud = cliente.tiempoEsperadoProcesoSolicitud;
                             
                             cliente.tiempoEsperadoServicio = cliente.tiempoEsperadoCola + cliente.tiempoEsperadoEntregaDatos + cliente.tiempoEsperadoProcesoSolicitud;
                         }
@@ -477,12 +509,15 @@ namespace SimulacionCajeroBancoV2
                             //cambio moneda
                             cliente.tiempoEsperadoCola = getNumeroRandom(120, 150);  //de 1.2 a 1.5
                             cliente.tiempoEsperadoCola /= 100;
+                            cliente.tiempoCola = cliente.tiempoEsperadoCola;
 
                             cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(120, 150); // de 1.2 a 1.5
                             cliente.tiempoEsperadoEntregaDatos /= 100;
-                            
+                            cliente.tiempoEntregaDatos = cliente.tiempoEsperadoEntregaDatos;
+
                             cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(180, 200); //de  1.8 a 2.0
                             cliente.tiempoEsperadoProcesoSolicitud /= 100;
+                            cliente.tiempoProcesoSolicitud = cliente.tiempoEsperadoProcesoSolicitud;
                             
                             cliente.tiempoEsperadoServicio = cliente.tiempoEsperadoCola + cliente.tiempoEsperadoEntregaDatos + cliente.tiempoEsperadoProcesoSolicitud;
                         }
@@ -497,12 +532,15 @@ namespace SimulacionCajeroBancoV2
                             //deposito
                             cliente.tiempoEsperadoCola = getNumeroRandom(100, 200); // de 1 a 2
                             cliente.tiempoEsperadoCola /= 100;
+                            cliente.tiempoCola = cliente.tiempoEsperadoCola;
 
                             cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(100, 150);  // 1 a 1.5
                             cliente.tiempoEsperadoEntregaDatos /= 100;
+                            cliente.tiempoEntregaDatos = cliente.tiempoEsperadoEntregaDatos;
 
                             cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(100, 140); // de 1.0 a 1.4
                             cliente.tiempoEsperadoProcesoSolicitud /= 100;
+                            cliente.tiempoProcesoSolicitud = cliente.tiempoEsperadoProcesoSolicitud;
 
                             cliente.tiempoEsperadoServicio = cliente.tiempoEsperadoCola + cliente.tiempoEsperadoEntregaDatos + cliente.tiempoEsperadoProcesoSolicitud;
                         }
@@ -511,12 +549,15 @@ namespace SimulacionCajeroBancoV2
                             //retiro
                             cliente.tiempoEsperadoCola = getNumeroRandom(100, 130);  //de 1.0 a 1.3
                             cliente.tiempoEsperadoCola /= 100;
+                            cliente.tiempoCola = cliente.tiempoEsperadoCola;
 
                             cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(100, 150); // de 1 a 1.5
                             cliente.tiempoEsperadoEntregaDatos /= 100;
+                            cliente.tiempoEntregaDatos = cliente.tiempoEsperadoEntregaDatos;
 
                             cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(100, 130); // de 1.0 a 1.3
                             cliente.tiempoEsperadoProcesoSolicitud /= 100;
+                            cliente.tiempoProcesoSolicitud = cliente.tiempoEsperadoProcesoSolicitud;
 
                             cliente.tiempoEsperadoServicio = cliente.tiempoEsperadoCola + cliente.tiempoEsperadoEntregaDatos + cliente.tiempoEsperadoProcesoSolicitud;
                         }
@@ -525,12 +566,15 @@ namespace SimulacionCajeroBancoV2
                             //cambio moneda
                             cliente.tiempoEsperadoCola = getNumeroRandom(100, 140);  // de 1 a 1.4
                             cliente.tiempoEsperadoCola /= 100;
+                            cliente.tiempoCola = cliente.tiempoEsperadoCola;
 
                             cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(130, 150); //de 1.3 a 1.5
                             cliente.tiempoEsperadoEntregaDatos /= 100;
+                            cliente.tiempoEntregaDatos = cliente.tiempoEsperadoEntregaDatos;
 
                             cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(140, 180); //de 1.4 a 1.8
                             cliente.tiempoEsperadoProcesoSolicitud /= 100;
+                            cliente.tiempoProcesoSolicitud = cliente.tiempoEsperadoProcesoSolicitud;
 
                             cliente.tiempoEsperadoServicio = cliente.tiempoEsperadoCola + cliente.tiempoEsperadoEntregaDatos + cliente.tiempoEsperadoProcesoSolicitud;
                         }
@@ -545,12 +589,15 @@ namespace SimulacionCajeroBancoV2
                             //deposito
                             cliente.tiempoEsperadoCola = getNumeroRandom(100, 450); // de 1.0 a 4.5
                             cliente.tiempoEsperadoCola /= 100;
+                            cliente.tiempoCola = cliente.tiempoEsperadoCola;
 
                             cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(100, 180); // 1 a 1.8
                             cliente.tiempoEsperadoEntregaDatos /= 100;
+                            cliente.tiempoEntregaDatos = cliente.tiempoEsperadoEntregaDatos;
 
                             cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(100, 280); // de 1.0 a 2.8
                             cliente.tiempoEsperadoProcesoSolicitud /= 100;
+                            cliente.tiempoProcesoSolicitud = cliente.tiempoEsperadoProcesoSolicitud;
 
                             cliente.tiempoEsperadoServicio = cliente.tiempoEsperadoCola + cliente.tiempoEsperadoEntregaDatos + cliente.tiempoEsperadoProcesoSolicitud;
                         }
@@ -559,12 +606,15 @@ namespace SimulacionCajeroBancoV2
                             //retiro
                             cliente.tiempoEsperadoCola = getNumeroRandom(200, 350); // de 2.0 a 3.5
                             cliente.tiempoEsperadoCola /= 100;
+                            cliente.tiempoCola = cliente.tiempoEsperadoCola;
 
                             cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(170, 220); // de 1.7 a 2.2
                             cliente.tiempoEsperadoEntregaDatos /= 100;
+                            cliente.tiempoEntregaDatos = cliente.tiempoEsperadoEntregaDatos;
 
                             cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(100, 170); //de 1.0 a 1.7
                             cliente.tiempoEsperadoProcesoSolicitud /= 100;
+                            cliente.tiempoProcesoSolicitud = cliente.tiempoEsperadoProcesoSolicitud;
 
                             cliente.tiempoEsperadoServicio = cliente.tiempoEsperadoCola + cliente.tiempoEsperadoEntregaDatos + cliente.tiempoEsperadoProcesoSolicitud;
                         }
@@ -573,12 +623,15 @@ namespace SimulacionCajeroBancoV2
                             //cambio moneda
                             cliente.tiempoEsperadoCola = getNumeroRandom(100, 250);  // de 1 a 2.5
                             cliente.tiempoEsperadoCola /= 100;
+                            cliente.tiempoCola = cliente.tiempoEsperadoCola;
 
                             cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(100, 150); // de 1 a 1.5
                             cliente.tiempoEsperadoEntregaDatos /= 100;
+                            cliente.tiempoEntregaDatos = cliente.tiempoEsperadoEntregaDatos;
 
                             cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(140, 200); // de  1.4 a 2.0
                             cliente.tiempoEsperadoProcesoSolicitud /= 100;
+                            cliente.tiempoProcesoSolicitud = cliente.tiempoEsperadoProcesoSolicitud;
 
                             cliente.tiempoEsperadoServicio = cliente.tiempoEsperadoCola + cliente.tiempoEsperadoEntregaDatos + cliente.tiempoEsperadoProcesoSolicitud;
                         }
@@ -589,234 +642,195 @@ namespace SimulacionCajeroBancoV2
 
 
                     //simulando problemas
+                    #region
 
                     //instanciando la lista de problemas del cliene
                     cliente.listaProblema = new List<problema>();
 
+                    //instanciando la lista de los problemas log para el reporte
+                    listaProblemaLogs =new List<problemasLogs>();
+                    problemasLogs=new problemasLogs();
+
                     getListasProblema(cliente);
                     if (cliente.idTemporada == 1)
                     {
+                        //temporada 1
                         #region
                         if (cliente.idOperacion == 1)
                         {
                             //deposito
                             #region
-                            //falta numero de cuenta 13%
-                            randomEntero = getNumeroRandom(1, 100);
-                            if (randomEntero <= 13)
-                            {
-                                problema = new problema();
-                                problema.id = cliente.listaProblema.Count+1;
-                                problema.nombre = "falta numero cuenta";
-                                cliente.listaProblema.Add(problema);
-                            }
 
-                            //numero cuenta incorrecto 25%
-                            randomEntero = getNumeroRandom(1, 100);
-                            if (randomEntero <= 25)
+                            //recorriendo las fases
+                            foreach (var faceActual in listaFases)
                             {
-                                problema = new problema();
-                                problema.id = cliente.listaProblema.Count + 1;
-                                problema.nombre = "numero cuenta incorrecto";
-                                cliente.listaProblema.Add(problema);
-                            }
+                                #region
+                                if (faceActual.id == 1)
+                                {
+                                    //cola espera
+                                    #region
+                                    #endregion
+                                }
+                                else if (faceActual.id == 2)
+                                {
+                                    //entrega datos
+                                    #region
+                                    //falta numero de cuenta 13%
+                                    randomEntero = getNumeroRandom(1, 100);
+                                    if (randomEntero <= 13 && cliente.abandono == false)
+                                    {
+                                        problema = new problema();
+                                        problema.id = cliente.listaProblema.Count + 1;
+                                        problema.nombre = "falta numero cuenta";
+                                        cliente.listaProblema.Add(problema);
 
-                            //falta dinero por parte del cliente 27%
-                            randomEntero = getNumeroRandom(1, 100);
-                            if (randomEntero <= 27)
-                            {
-                                problema = new problema();
-                                problema.id = cliente.listaProblema.Count + 1;
-                                problema.nombre = "falta dinero cliente";
-                                cliente.listaProblema.Add(problema);
-                            }
+                                        problemasLogs = new problemasLogs();
+                                        problemasLogs.idcliente = cliente.id;
+                                        problemasLogs.fase = faceActual.nombre;
+                                        problemasLogs.tiempo_antes = cliente.tiempoEntregaDatos;
+                                        listaProblemaLogs.Add(problemasLogs);
+                                    }
+                                    //numero cuenta incorrecto 25%
+                                    randomEntero = getNumeroRandom(1, 100);
+                                    if (randomEntero <= 25 && cliente.abandono == false)
+                                    {
+                                        problema = new problema();
+                                        problema.id = cliente.listaProblema.Count + 1;
+                                        problema.nombre = "numero cuenta incorrecto";
+                                        cliente.listaProblema.Add(problema);
 
+                                        problemasLogs = new problemasLogs();
+                                        problemasLogs.idcliente = cliente.id;
+                                        problemasLogs.fase = faceActual.nombre;
+                                        problemasLogs.tiempo_antes = cliente.tiempoEntregaDatos;
+                                        listaProblemaLogs.Add(problemasLogs);
+                                    }
 
-                            //dinero efectivo mal estado 22%
-                            if (cliente.tipoOperacion == "efectivo")
-                            {
+                                    #endregion
+
+                                }
+                                else if (faceActual.id == 3)
+                                {
+                                    //proceso de solicitud
+                                    #region
+                                    #endregion
+
+                                }
+                                
+
+                               
+
+                                //falta dinero por parte del cliente 27%
                                 randomEntero = getNumeroRandom(1, 100);
-                                if (randomEntero <= 22)
+                                if (randomEntero <= 27 && cliente.abandono == false)
                                 {
                                     problema = new problema();
                                     problema.id = cliente.listaProblema.Count + 1;
-                                    problema.nombre = "dinero mal estado";
+                                    problema.nombre = "falta dinero cliente";
                                     cliente.listaProblema.Add(problema);
                                 }
-                            }
 
-                            //cheque mal endosado 17%
-                            if (cliente.tipoOperacion == "cheque")
-                            {
-                                randomEntero = getNumeroRandom(1, 100);
-                                if (randomEntero <= 17)
-                                {
-                                    problema = new problema();
-                                    problema.id = cliente.listaProblema.Count + 1;
-                                    problema.nombre = "cheque mal endosado";
-                                    cliente.listaProblema.Add(problema);
-                                }
-                            }
 
-                            //saldo cuenta cliente es insuficiente para transferencia 13%
-                            if (cliente.tipoOperacion == "transferencia")
-                            {
-                                randomEntero = getNumeroRandom(1, 100);
-                                if (randomEntero <= 13)
+                                //dinero efectivo mal estado 22%
+                                if (cliente.tipoOperacion == "efectivo")
                                 {
-                                    problema = new problema();
-                                    problema.id = cliente.listaProblema.Count + 1;
-                                    problema.nombre = "saldo cuenta insuficiente";
-                                    cliente.listaProblema.Add(problema);
+                                    randomEntero = getNumeroRandom(1, 100);
+                                    if (randomEntero <= 22 && cliente.abandono == false)
+                                    {
+                                        problema = new problema();
+                                        problema.id = cliente.listaProblema.Count + 1;
+                                        problema.nombre = "dinero mal estado";
+                                        cliente.listaProblema.Add(problema);
+                                    }
                                 }
+
+                                //cheque mal endosado 17%
+                                if (cliente.tipoOperacion == "cheque")
+                                {
+                                    randomEntero = getNumeroRandom(1, 100);
+                                    if (randomEntero <= 17 && cliente.abandono==false)
+                                    {
+                                        problema = new problema();
+                                        problema.id = cliente.listaProblema.Count + 1;
+                                        problema.nombre = "cheque mal endosado";
+                                        cliente.listaProblema.Add(problema);
+                                    }
+                                }
+
+                                //saldo cuenta cliente es insuficiente para transferencia 13%
+                                if (cliente.tipoOperacion == "transferencia")
+                                {
+                                    randomEntero = getNumeroRandom(1, 100);
+                                    if (randomEntero <= 13 && cliente.abandono==false) 
+                                    {
+                                        problema = new problema();
+                                        problema.id = cliente.listaProblema.Count + 1;
+                                        problema.nombre = "saldo cuenta insuficiente";
+                                        cliente.listaProblema.Add(problema);
+                                    }
+                                }
+                                #endregion
                             }
+                            
                             #endregion
 
                         }
                         else if (cliente.idOperacion == 2)
                         {
                             //retiro
-                            #region
-                            //-falta la cedula-21%
-                            randomEntero = getNumeroRandom(1, 100);
-                            if (randomEntero <= 21)
-                            {
-                                problema = new problema();
-                                problema.id = cliente.listaProblema.Count + 1;
-                                problema.nombre = "falta cedula";
-                                cliente.listaProblema.Add(problema);
-                            }
-                            
-                            //-cedula en muy mal estado-15%
-                            randomEntero = getNumeroRandom(1, 100);
-                            if (randomEntero <= 15)
-                            {
-                                problema = new problema();
-                                problema.id = cliente.listaProblema.Count + 1;
-                                problema.nombre = "cedula mal estado";
-                                cliente.listaProblema.Add(problema);
-                            }
-
-                            //-numero de cuenta se le olvido-18%
-                            randomEntero = getNumeroRandom(1, 100);
-                            if (randomEntero <= 18)
-                            {
-                                problema = new problema();
-                                problema.id = cliente.listaProblema.Count + 1;
-                                problema.nombre = "se olvido numero cuenta";
-                                cliente.listaProblema.Add(problema);
-                            }
-
-                            //-numero de cuenta incorrecto-30%
-                            randomEntero = getNumeroRandom(1, 100);
-                            if (randomEntero <= 30)
-                            {
-                                problema = new problema();
-                                problema.id = cliente.listaProblema.Count + 1;
-                                problema.nombre = "numero cuenta incorrecto";
-                                cliente.listaProblema.Add(problema);
-                            }
-
-                            //-monto a retirar excede el limite disponible-16%
-                            randomEntero = getNumeroRandom(1, 100);
-                            if (randomEntero <= 16)
-                            {
-                                problema = new problema();
-                                problema.id = cliente.listaProblema.Count + 1;
-                                problema.nombre = "monto excede limite disponible";
-                                cliente.listaProblema.Add(problema);
-                            }
-#endregion
+                          
 
                         }
                         else if (cliente.idOperacion == 3)
                         {
                             //cambio moneda
-                            #region
-
-                            //-monto que llevo el cliente no era el correcto (el cliente queria $100 y solo llevo $50)-13%
-                            randomEntero = getNumeroRandom(1, 100);
-                            if (randomEntero <= 13)
-                            {
-                                problema = new problema();
-                                problema.id = cliente.listaProblema.Count + 1;
-                                problema.nombre = "monto dinero insuficiente para el deseado";
-                                cliente.listaProblema.Add(problema);
-                            }
-
-                            //-monto que dijo el cliente no esta completo (el cliente pidio $150 pero solo tiene $120)-20%
-                            randomEntero = getNumeroRandom(1, 100);
-                            if (randomEntero <= 20)
-                            {
-                                problema = new problema();
-                                problema.id = cliente.listaProblema.Count + 1;
-                                problema.nombre = "monto incompleto";
-                                cliente.listaProblema.Add(problema);
-                            }
-
-                            //-el dinero del cliente esta en muy mal estado.-35%
-                            randomEntero = getNumeroRandom(1, 100);
-                            if (randomEntero <= 35)
-                            {
-                                problema = new problema();
-                                problema.id = cliente.listaProblema.Count + 1;
-                                problema.nombre = "dinero cliente mal estado";
-                                cliente.listaProblema.Add(problema);
-                            }
-                            //-el dinero qe devolvio el cajero esta en mal estado-3%
-                            randomEntero = getNumeroRandom(1, 100);
-                            if (randomEntero <= 3)
-                            {
-                                problema = new problema();
-                                problema.id = cliente.listaProblema.Count + 1;
-                                problema.nombre = "dinero del cajero mal estado";
-                                cliente.listaProblema.Add(problema);
-                            }
-
-                            //-el banco no tiene dollares suficiente.-9%
-                            randomEntero = getNumeroRandom(1, 100);
-                            if (randomEntero <= 9)
-                            {
-                                problema = new problema();
-                                problema.id = cliente.listaProblema.Count + 1;
-                                problema.nombre = "banco no tiene dolares suficiente";
-                                cliente.listaProblema.Add(problema);
-                            }
-
-                            //-el cajero dio dinero de menos-13%
-                            randomEntero = getNumeroRandom(1, 100);
-                            if (randomEntero <= 13)
-                            {
-                                problema = new problema();
-                                problema.id = cliente.listaProblema.Count + 1;
-                                problema.nombre = "cajero no da dinero completo";
-                                cliente.listaProblema.Add(problema);
-                            }
-
-
-
-                            #endregion
+                           
 
                         }
                         #endregion
 
                     }else if (cliente.idTemporada == 2)
                     {
-
+                        //temporada 2
                         #region
                         #endregion
 
                     }
                     else if (cliente.idTemporada == 3)
                     {
+                        //temporada 3
                         #region
                         #endregion
 
                     }
-                   
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    #endregion
+
+
+
+                    
+                    
+                    
+                    
+                    
+                    
                     listaCliente.Add(cliente);
                     //loadListaCliente();
                 }
@@ -830,11 +844,13 @@ namespace SimulacionCajeroBancoV2
             }
         }
 
+        //boton getAction
         private void button1_Click(object sender, EventArgs e)
         {
             getAction();
         }
 
+        //carga la lista de cliente en el dataGridView
         public void loadListaCliente()
         {
             try
@@ -867,6 +883,7 @@ namespace SimulacionCajeroBancoV2
             }
         }
 
+        //geera un numero random entre un rango de numero inicial y numero final
         public int getNumeroRandom(int inicio, int final)
         {
             random = new Random();
@@ -1226,6 +1243,45 @@ namespace SimulacionCajeroBancoV2
             return listaProblemaRetiro;
         }
 
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        //get lista fases por operacion
+        public void getListaFases()
+        {
+            try
+            {
+                //lista de fases
+                #region
+                listaFases = new List<fases>();
+                //cola de espera
+                fase = new fases();
+                fase.id = 1;
+                fase.nombre = "cola espera";
+                listaFases.Add(fase);
+
+                //entrega de datos
+                fase = new fases();
+                fase.id = 2;
+                fase.nombre = "entrega datos";
+                listaFases.Add(fase);
+                
+                //proceso de solicitud
+                fase = new fases();
+                fase.id = 3;
+                fase.nombre = "proceso solicitud";
+                listaFases.Add(fase);
+                #endregion
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getFases.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
 
     }
