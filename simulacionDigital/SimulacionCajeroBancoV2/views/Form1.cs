@@ -600,55 +600,218 @@ namespace SimulacionCajeroBancoV2
                         if (cliente.idOperacion == 1)
                         {
                             //deposito
-
+                            #region
                             //falta numero de cuenta 13%
+                            randomEntero = getNumeroRandom(1, 100);
+                            if (randomEntero <= 13)
+                            {
+                                problema = new problema();
+                                problema.id = cliente.listaProblema.Count+1;
+                                problema.nombre = "falta numero cuenta";
+                                cliente.listaProblema.Add(problema);
+                            }
 
                             //numero cuenta incorrecto 25%
+                            randomEntero = getNumeroRandom(1, 100);
+                            if (randomEntero <= 25)
+                            {
+                                problema = new problema();
+                                problema.id = cliente.listaProblema.Count + 1;
+                                problema.nombre = "numero cuenta incorrecto";
+                                cliente.listaProblema.Add(problema);
+                            }
 
                             //falta dinero por parte del cliente 27%
+                            randomEntero = getNumeroRandom(1, 100);
+                            if (randomEntero <= 27)
+                            {
+                                problema = new problema();
+                                problema.id = cliente.listaProblema.Count + 1;
+                                problema.nombre = "falta dinero cliente";
+                                cliente.listaProblema.Add(problema);
+                            }
+
 
                             //dinero efectivo mal estado 22%
+                            if (cliente.tipoOperacion == "efectivo")
+                            {
+                                randomEntero = getNumeroRandom(1, 100);
+                                if (randomEntero <= 22)
+                                {
+                                    problema = new problema();
+                                    problema.id = cliente.listaProblema.Count + 1;
+                                    problema.nombre = "dinero mal estado";
+                                    cliente.listaProblema.Add(problema);
+                                }
+                            }
 
                             //cheque mal endosado 17%
+                            if (cliente.tipoOperacion == "cheque")
+                            {
+                                randomEntero = getNumeroRandom(1, 100);
+                                if (randomEntero <= 17)
+                                {
+                                    problema = new problema();
+                                    problema.id = cliente.listaProblema.Count + 1;
+                                    problema.nombre = "cheque mal endosado";
+                                    cliente.listaProblema.Add(problema);
+                                }
+                            }
 
                             //saldo cuenta cliente es insuficiente para transferencia 13%
-
+                            if (cliente.tipoOperacion == "transferencia")
+                            {
+                                randomEntero = getNumeroRandom(1, 100);
+                                if (randomEntero <= 13)
+                                {
+                                    problema = new problema();
+                                    problema.id = cliente.listaProblema.Count + 1;
+                                    problema.nombre = "saldo cuenta insuficiente";
+                                    cliente.listaProblema.Add(problema);
+                                }
+                            }
+                            #endregion
 
                         }
                         else if (cliente.idOperacion == 2)
                         {
                             //retiro
+                            #region
+                            //-falta la cedula-21%
+                            randomEntero = getNumeroRandom(1, 100);
+                            if (randomEntero <= 21)
+                            {
+                                problema = new problema();
+                                problema.id = cliente.listaProblema.Count + 1;
+                                problema.nombre = "falta cedula";
+                                cliente.listaProblema.Add(problema);
+                            }
+                            
+                            //-cedula en muy mal estado-15%
+                            randomEntero = getNumeroRandom(1, 100);
+                            if (randomEntero <= 15)
+                            {
+                                problema = new problema();
+                                problema.id = cliente.listaProblema.Count + 1;
+                                problema.nombre = "cedula mal estado";
+                                cliente.listaProblema.Add(problema);
+                            }
 
-                            /*
-                                -falta la cedula-21%
-                                -cedula en muy mal estado-15%
-                                -numero de cuenta se le olvido-18%
-                                -numero de cuenta incorrecto-30%
-                                -monto a retirar excede el limite disponible-16%
-                             */
+                            //-numero de cuenta se le olvido-18%
+                            randomEntero = getNumeroRandom(1, 100);
+                            if (randomEntero <= 18)
+                            {
+                                problema = new problema();
+                                problema.id = cliente.listaProblema.Count + 1;
+                                problema.nombre = "se olvido numero cuenta";
+                                cliente.listaProblema.Add(problema);
+                            }
+
+                            //-numero de cuenta incorrecto-30%
+                            randomEntero = getNumeroRandom(1, 100);
+                            if (randomEntero <= 30)
+                            {
+                                problema = new problema();
+                                problema.id = cliente.listaProblema.Count + 1;
+                                problema.nombre = "numero cuenta incorrecto";
+                                cliente.listaProblema.Add(problema);
+                            }
+
+                            //-monto a retirar excede el limite disponible-16%
+                            randomEntero = getNumeroRandom(1, 100);
+                            if (randomEntero <= 16)
+                            {
+                                problema = new problema();
+                                problema.id = cliente.listaProblema.Count + 1;
+                                problema.nombre = "monto excede limite disponible";
+                                cliente.listaProblema.Add(problema);
+                            }
+#endregion
 
                         }
                         else if (cliente.idOperacion == 3)
                         {
                             //cambio moneda
+                            #region
 
-                            /*
-                                -monto que llevo el cliente no era el correcto (el cliente queria $100 y solo llevo $50)-13%
-                                -monto que dijo el cliente no esta completo (el cliente pidio $150 pero solo tiene $120)-20%
-                                -el dinero del cliente esta en muy mal estado.-35%
-                                -el banco no tiene dollar.-9%
-                                -el banco no tiene euro.-10%
-                                -el cajero dio dinero de menos-13%
-                             */
+                            //-monto que llevo el cliente no era el correcto (el cliente queria $100 y solo llevo $50)-13%
+                            randomEntero = getNumeroRandom(1, 100);
+                            if (randomEntero <= 13)
+                            {
+                                problema = new problema();
+                                problema.id = cliente.listaProblema.Count + 1;
+                                problema.nombre = "monto dinero insuficiente para el deseado";
+                                cliente.listaProblema.Add(problema);
+                            }
+
+                            //-monto que dijo el cliente no esta completo (el cliente pidio $150 pero solo tiene $120)-20%
+                            randomEntero = getNumeroRandom(1, 100);
+                            if (randomEntero <= 20)
+                            {
+                                problema = new problema();
+                                problema.id = cliente.listaProblema.Count + 1;
+                                problema.nombre = "monto incompleto";
+                                cliente.listaProblema.Add(problema);
+                            }
+
+                            //-el dinero del cliente esta en muy mal estado.-35%
+                            randomEntero = getNumeroRandom(1, 100);
+                            if (randomEntero <= 35)
+                            {
+                                problema = new problema();
+                                problema.id = cliente.listaProblema.Count + 1;
+                                problema.nombre = "dinero cliente mal estado";
+                                cliente.listaProblema.Add(problema);
+                            }
+                            //-el dinero qe devolvio el cajero esta en mal estado-3%
+                            randomEntero = getNumeroRandom(1, 100);
+                            if (randomEntero <= 3)
+                            {
+                                problema = new problema();
+                                problema.id = cliente.listaProblema.Count + 1;
+                                problema.nombre = "dinero del cajero mal estado";
+                                cliente.listaProblema.Add(problema);
+                            }
+
+                            //-el banco no tiene dollares suficiente.-9%
+                            randomEntero = getNumeroRandom(1, 100);
+                            if (randomEntero <= 9)
+                            {
+                                problema = new problema();
+                                problema.id = cliente.listaProblema.Count + 1;
+                                problema.nombre = "banco no tiene dolares suficiente";
+                                cliente.listaProblema.Add(problema);
+                            }
+
+                            //-el cajero dio dinero de menos-13%
+                            randomEntero = getNumeroRandom(1, 100);
+                            if (randomEntero <= 13)
+                            {
+                                problema = new problema();
+                                problema.id = cliente.listaProblema.Count + 1;
+                                problema.nombre = "cajero no da dinero completo";
+                                cliente.listaProblema.Add(problema);
+                            }
+
+
+
+                            #endregion
+
                         }
                         #endregion
 
                     }else if (cliente.idTemporada == 2)
                     {
-                        
-                    }else if (cliente.idTemporada == 3)
+
+                        #region
+                        #endregion
+
+                    }
+                    else if (cliente.idTemporada == 3)
                     {
-                        
+                        #region
+                        #endregion
+
                     }
                    
 
