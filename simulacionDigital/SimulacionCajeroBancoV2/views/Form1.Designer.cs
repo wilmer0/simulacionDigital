@@ -29,16 +29,17 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -61,14 +62,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.clientecolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.operacionGrid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tandacolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tiempoesperadoclumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantidadProblemsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tiempoServicioFinalColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.abandonocolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cajeroColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -78,6 +71,15 @@
             this.tiempo2Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProblemaColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Respuestacolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientecolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.operacionGrid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tandacolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tiempoesperadoclumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantidadProblemsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tiempoServicioFinalColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.abandonocolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cajeroColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -343,6 +345,7 @@
             this.operacionGrid,
             this.tandacolumn,
             this.tiempoesperadoclumn,
+            this.Column1,
             this.cantidadProblemsColumn,
             this.tiempoServicioFinalColumn,
             this.abandonocolumn,
@@ -356,91 +359,6 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1216, 463);
             this.dataGridView1.TabIndex = 12;
-            // 
-            // clientecolumn
-            // 
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.DarkBlue;
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.White;
-            this.clientecolumn.DefaultCellStyle = dataGridViewCellStyle21;
-            this.clientecolumn.FillWeight = 30F;
-            this.clientecolumn.HeaderText = "Cliente";
-            this.clientecolumn.Name = "clientecolumn";
-            this.clientecolumn.ReadOnly = true;
-            // 
-            // operacionGrid
-            // 
-            dataGridViewCellStyle22.BackColor = System.Drawing.Color.DarkBlue;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.White;
-            this.operacionGrid.DefaultCellStyle = dataGridViewCellStyle22;
-            this.operacionGrid.HeaderText = "Operacion";
-            this.operacionGrid.Name = "operacionGrid";
-            this.operacionGrid.ReadOnly = true;
-            // 
-            // tandacolumn
-            // 
-            dataGridViewCellStyle23.BackColor = System.Drawing.Color.DarkBlue;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle23.ForeColor = System.Drawing.Color.White;
-            this.tandacolumn.DefaultCellStyle = dataGridViewCellStyle23;
-            this.tandacolumn.FillWeight = 50F;
-            this.tandacolumn.HeaderText = "Tanda";
-            this.tandacolumn.Name = "tandacolumn";
-            this.tandacolumn.ReadOnly = true;
-            // 
-            // tiempoesperadoclumn
-            // 
-            dataGridViewCellStyle24.BackColor = System.Drawing.Color.DarkBlue;
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle24.ForeColor = System.Drawing.Color.White;
-            this.tiempoesperadoclumn.DefaultCellStyle = dataGridViewCellStyle24;
-            this.tiempoesperadoclumn.FillWeight = 50F;
-            this.tiempoesperadoclumn.HeaderText = "T. Esperado";
-            this.tiempoesperadoclumn.Name = "tiempoesperadoclumn";
-            this.tiempoesperadoclumn.ReadOnly = true;
-            // 
-            // cantidadProblemsColumn
-            // 
-            dataGridViewCellStyle25.BackColor = System.Drawing.Color.DarkBlue;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle25.ForeColor = System.Drawing.Color.White;
-            this.cantidadProblemsColumn.DefaultCellStyle = dataGridViewCellStyle25;
-            this.cantidadProblemsColumn.FillWeight = 50F;
-            this.cantidadProblemsColumn.HeaderText = "Cant. problemas";
-            this.cantidadProblemsColumn.Name = "cantidadProblemsColumn";
-            this.cantidadProblemsColumn.ReadOnly = true;
-            // 
-            // tiempoServicioFinalColumn
-            // 
-            dataGridViewCellStyle26.BackColor = System.Drawing.Color.DarkBlue;
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle26.ForeColor = System.Drawing.Color.White;
-            this.tiempoServicioFinalColumn.DefaultCellStyle = dataGridViewCellStyle26;
-            this.tiempoServicioFinalColumn.FillWeight = 50F;
-            this.tiempoServicioFinalColumn.HeaderText = "T. servicio final";
-            this.tiempoServicioFinalColumn.Name = "tiempoServicioFinalColumn";
-            this.tiempoServicioFinalColumn.ReadOnly = true;
-            // 
-            // abandonocolumn
-            // 
-            dataGridViewCellStyle27.BackColor = System.Drawing.Color.DarkBlue;
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle27.ForeColor = System.Drawing.Color.White;
-            this.abandonocolumn.DefaultCellStyle = dataGridViewCellStyle27;
-            this.abandonocolumn.HeaderText = "abandono";
-            this.abandonocolumn.Name = "abandonocolumn";
-            this.abandonocolumn.ReadOnly = true;
-            // 
-            // cajeroColumn
-            // 
-            dataGridViewCellStyle28.BackColor = System.Drawing.Color.DarkBlue;
-            dataGridViewCellStyle28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle28.ForeColor = System.Drawing.Color.White;
-            this.cajeroColumn.DefaultCellStyle = dataGridViewCellStyle28;
-            this.cajeroColumn.HeaderText = "Cajero";
-            this.cajeroColumn.Name = "cajeroColumn";
-            this.cajeroColumn.ReadOnly = true;
             // 
             // tabPage2
             // 
@@ -486,10 +404,10 @@
             // 
             // dataGridViewTextBoxColumn1
             // 
-            dataGridViewCellStyle29.BackColor = System.Drawing.Color.DarkBlue;
-            dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle29.ForeColor = System.Drawing.Color.White;
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.DarkBlue;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridViewTextBoxColumn1.FillWeight = 30F;
             this.dataGridViewTextBoxColumn1.HeaderText = "Cliente";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
@@ -497,10 +415,10 @@
             // 
             // dataGridViewTextBoxColumn2
             // 
-            dataGridViewCellStyle30.BackColor = System.Drawing.Color.DarkBlue;
-            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle30.ForeColor = System.Drawing.Color.White;
-            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.DarkBlue;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridViewTextBoxColumn2.HeaderText = "Operacion";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
@@ -538,6 +456,103 @@
             this.Respuestacolumn.HeaderText = "Respuesta";
             this.Respuestacolumn.Name = "Respuestacolumn";
             this.Respuestacolumn.ReadOnly = true;
+            // 
+            // clientecolumn
+            // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            this.clientecolumn.DefaultCellStyle = dataGridViewCellStyle1;
+            this.clientecolumn.FillWeight = 30F;
+            this.clientecolumn.HeaderText = "Cliente";
+            this.clientecolumn.Name = "clientecolumn";
+            this.clientecolumn.ReadOnly = true;
+            // 
+            // operacionGrid
+            // 
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkBlue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            this.operacionGrid.DefaultCellStyle = dataGridViewCellStyle2;
+            this.operacionGrid.HeaderText = "Operacion";
+            this.operacionGrid.Name = "operacionGrid";
+            this.operacionGrid.ReadOnly = true;
+            // 
+            // tandacolumn
+            // 
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DarkBlue;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            this.tandacolumn.DefaultCellStyle = dataGridViewCellStyle3;
+            this.tandacolumn.FillWeight = 50F;
+            this.tandacolumn.HeaderText = "Tanda";
+            this.tandacolumn.Name = "tandacolumn";
+            this.tandacolumn.ReadOnly = true;
+            // 
+            // tiempoesperadoclumn
+            // 
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkBlue;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            this.tiempoesperadoclumn.DefaultCellStyle = dataGridViewCellStyle4;
+            this.tiempoesperadoclumn.FillWeight = 50F;
+            this.tiempoesperadoclumn.HeaderText = "T. Esperado";
+            this.tiempoesperadoclumn.Name = "tiempoesperadoclumn";
+            this.tiempoesperadoclumn.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.DarkBlue;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Column1.HeaderText = "Monto transaccion";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // cantidadProblemsColumn
+            // 
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DarkBlue;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            this.cantidadProblemsColumn.DefaultCellStyle = dataGridViewCellStyle6;
+            this.cantidadProblemsColumn.FillWeight = 50F;
+            this.cantidadProblemsColumn.HeaderText = "Cant. problemas";
+            this.cantidadProblemsColumn.Name = "cantidadProblemsColumn";
+            this.cantidadProblemsColumn.ReadOnly = true;
+            // 
+            // tiempoServicioFinalColumn
+            // 
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.DarkBlue;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            this.tiempoServicioFinalColumn.DefaultCellStyle = dataGridViewCellStyle7;
+            this.tiempoServicioFinalColumn.FillWeight = 50F;
+            this.tiempoServicioFinalColumn.HeaderText = "T. servicio final";
+            this.tiempoServicioFinalColumn.Name = "tiempoServicioFinalColumn";
+            this.tiempoServicioFinalColumn.ReadOnly = true;
+            // 
+            // abandonocolumn
+            // 
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.DarkBlue;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            this.abandonocolumn.DefaultCellStyle = dataGridViewCellStyle8;
+            this.abandonocolumn.FillWeight = 30F;
+            this.abandonocolumn.HeaderText = "abandono";
+            this.abandonocolumn.Name = "abandonocolumn";
+            this.abandonocolumn.ReadOnly = true;
+            // 
+            // cajeroColumn
+            // 
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.DarkBlue;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
+            this.cajeroColumn.DefaultCellStyle = dataGridViewCellStyle9;
+            this.cajeroColumn.FillWeight = 30F;
+            this.cajeroColumn.HeaderText = "Cajero";
+            this.cajeroColumn.Name = "cajeroColumn";
+            this.cajeroColumn.ReadOnly = true;
             // 
             // Form1
             // 
@@ -594,14 +609,6 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clientecolumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn operacionGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tandacolumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tiempoesperadoclumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cantidadProblemsColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tiempoServicioFinalColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn abandonocolumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cajeroColumn;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -610,6 +617,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tiempo2Column;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProblemaColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Respuestacolumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clientecolumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn operacionGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tandacolumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tiempoesperadoclumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantidadProblemsColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tiempoServicioFinalColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn abandonocolumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cajeroColumn;
     }
 }
 

@@ -16,7 +16,7 @@ namespace SimulacionCajeroBancoV2.objetos
         public int idOperacion { get; set; }
         public string operacion { get; set; }
         public int idCajero { get; set; }
-        public string tipoDespotiso { get; set; }
+        public string tipoOperacion { get; set; }
         public double tiempoEsperadoCola { get; set; }
         public double tiempoEsperadoEntregaDatos { get; set; }
         public double tiempoEsperadoProcesoSolicitud { get; set; }
