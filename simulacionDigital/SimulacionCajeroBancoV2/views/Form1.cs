@@ -308,10 +308,9 @@ namespace SimulacionCajeroBancoV2
                     cliente.idCajero = getIdCajeroByRandom(randomEntero);
 
                     //obteniendo la tanda del cliente
-                    //temporada matutina con probabilidad de 41% y 59% tanda vespertina
+                    //tanda matutina con probabilidad de 41% y 59% tanda vespertina
                     //Thread.Sleep(30);
                     randomEntero = getNumeroRandom(1, 100);
-                    
                     if (randomEntero <= 41)
                     {
                         //tanda matutina
@@ -443,18 +442,18 @@ namespace SimulacionCajeroBancoV2
                     #region
                     if (cliente.idTemporada == 1)
                     {
-                        //temporada 1
+                        //temporada 1 normal (media cliente dura un tiempo promedio normal)
                         #region
                         if (cliente.idOperacion == 1)
                         {
                             //deposito
-                            cliente.tiempoEsperadoCola = getNumeroRandom(200,250); // de 2.0 a 2.5
+                            cliente.tiempoEsperadoCola = getNumeroRandom(200,250); //de 2.0 a 2.5
                             cliente.tiempoEsperadoCola /= 100;
                             
-                            cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(150, 180); //1.8; // 1.5 a 1.8
+                            cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(100, 180); //de 1 a 1.8
                             cliente.tiempoEsperadoEntregaDatos /= 100;
                             
-                            cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(100, 150); //1.5; // de 1.0 a 1.5
+                            cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(100, 150); //de 1.0 a 1.5
                             cliente.tiempoEsperadoProcesoSolicitud /= 100;
                             
                             cliente.tiempoEsperadoServicio = cliente.tiempoEsperadoCola+ cliente.tiempoEsperadoEntregaDatos + cliente.tiempoEsperadoProcesoSolicitud;
@@ -462,13 +461,13 @@ namespace SimulacionCajeroBancoV2
                         else if (cliente.idOperacion == 2)
                         {
                             //retiro
-                            cliente.tiempoEsperadoCola = getNumeroRandom(200, 220); // 2.2; de 2.0 a 2.2
+                            cliente.tiempoEsperadoCola = getNumeroRandom(200, 220); // 2.0 a 2.2
                             cliente.tiempoEsperadoCola /= 100;
                             
-                            cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(180, 210); //  2.1; de 1.8 a 2.1
+                            cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(180, 210); //de 1.8 a 2.1
                             cliente.tiempoEsperadoEntregaDatos /= 100;
                             
-                            cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(100, 130); //1.3; de 1.0 a 1.3
+                            cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(100, 130); //de 1.0 a 1.3
                             cliente.tiempoEsperadoProcesoSolicitud /= 100;
                             
                             cliente.tiempoEsperadoServicio = cliente.tiempoEsperadoCola + cliente.tiempoEsperadoEntregaDatos + cliente.tiempoEsperadoProcesoSolicitud;
@@ -476,13 +475,13 @@ namespace SimulacionCajeroBancoV2
                         else if (cliente.idOperacion == 3)
                         {
                             //cambio moneda
-                            cliente.tiempoEsperadoCola = getNumeroRandom(120, 150);  //1.5; de 1.2 a 1.5
+                            cliente.tiempoEsperadoCola = getNumeroRandom(120, 150);  //de 1.2 a 1.5
                             cliente.tiempoEsperadoCola /= 100;
 
-                            cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(120, 150); // 1.5; de 1.2 a 1.5
+                            cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(120, 150); // de 1.2 a 1.5
                             cliente.tiempoEsperadoEntregaDatos /= 100;
                             
-                            cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(180, 200); // 2.0; de  1.8 a 2.0
+                            cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(180, 200); //de  1.8 a 2.0
                             cliente.tiempoEsperadoProcesoSolicitud /= 100;
                             
                             cliente.tiempoEsperadoServicio = cliente.tiempoEsperadoCola + cliente.tiempoEsperadoEntregaDatos + cliente.tiempoEsperadoProcesoSolicitud;
@@ -491,98 +490,98 @@ namespace SimulacionCajeroBancoV2
                     }
                     else if (cliente.idTemporada == 2)
                     {
-                        //temporada 2
+                        //temporada 2 baja (cliente dura poco tiempo)
                         #region
-                        //if (cliente.idOperacion == 1)
-                        //{
-                        //    //deposito
-                        //    cliente.tiempoEsperadoCola = getNumeroRandom(200, 250); // de 2.0 a 2.5
-                        //    cliente.tiempoEsperadoCola /= 100;
+                        if (cliente.idOperacion == 1)
+                        {
+                            //deposito
+                            cliente.tiempoEsperadoCola = getNumeroRandom(100, 200); // de 1 a 2
+                            cliente.tiempoEsperadoCola /= 100;
 
-                        //    cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(150, 180); //1.8; // 1.5 a 1.8
-                        //    cliente.tiempoEsperadoEntregaDatos /= 100;
+                            cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(100, 150);  // 1 a 1.5
+                            cliente.tiempoEsperadoEntregaDatos /= 100;
 
-                        //    cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(100, 150); //1.5; // de 1.0 a 1.5
-                        //    cliente.tiempoEsperadoProcesoSolicitud /= 100;
+                            cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(100, 140); // de 1.0 a 1.4
+                            cliente.tiempoEsperadoProcesoSolicitud /= 100;
 
-                        //    cliente.tiempoEsperadoServicio = cliente.tiempoEsperadoCola + cliente.tiempoEsperadoEntregaDatos + cliente.tiempoEsperadoProcesoSolicitud;
-                        //}
-                        //else if (cliente.idOperacion == 2)
-                        //{
-                        //    //retiro
-                        //    cliente.tiempoEsperadoCola = getNumeroRandom(200, 220); // 2.2; de 2.0 a 2.2
-                        //    cliente.tiempoEsperadoCola /= 100;
+                            cliente.tiempoEsperadoServicio = cliente.tiempoEsperadoCola + cliente.tiempoEsperadoEntregaDatos + cliente.tiempoEsperadoProcesoSolicitud;
+                        }
+                        else if (cliente.idOperacion == 2)
+                        {
+                            //retiro
+                            cliente.tiempoEsperadoCola = getNumeroRandom(100, 130);  //de 1.0 a 1.3
+                            cliente.tiempoEsperadoCola /= 100;
 
-                        //    cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(180, 210); //  2.1; de 1.8 a 2.1
-                        //    cliente.tiempoEsperadoEntregaDatos /= 100;
+                            cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(100, 150); // de 1 a 1.5
+                            cliente.tiempoEsperadoEntregaDatos /= 100;
 
-                        //    cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(100, 130); //1.3; de 1.0 a 1.3
-                        //    cliente.tiempoEsperadoProcesoSolicitud /= 100;
+                            cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(100, 130); // de 1.0 a 1.3
+                            cliente.tiempoEsperadoProcesoSolicitud /= 100;
 
-                        //    cliente.tiempoEsperadoServicio = cliente.tiempoEsperadoCola + cliente.tiempoEsperadoEntregaDatos + cliente.tiempoEsperadoProcesoSolicitud;
-                        //}
-                        //else if (cliente.idOperacion == 3)
-                        //{
-                        //    //cambio moneda
-                        //    cliente.tiempoEsperadoCola = getNumeroRandom(120, 150);  //1.5; de 1.2 a 1.5
-                        //    cliente.tiempoEsperadoCola /= 100;
+                            cliente.tiempoEsperadoServicio = cliente.tiempoEsperadoCola + cliente.tiempoEsperadoEntregaDatos + cliente.tiempoEsperadoProcesoSolicitud;
+                        }
+                        else if (cliente.idOperacion == 3)
+                        {
+                            //cambio moneda
+                            cliente.tiempoEsperadoCola = getNumeroRandom(100, 140);  // de 1 a 1.4
+                            cliente.tiempoEsperadoCola /= 100;
 
-                        //    cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(120, 150); // 1.5; de 1.2 a 1.5
-                        //    cliente.tiempoEsperadoEntregaDatos /= 100;
+                            cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(130, 150); //de 1.3 a 1.5
+                            cliente.tiempoEsperadoEntregaDatos /= 100;
 
-                        //    cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(180, 200); // 2.0; de  1.8 a 2.0
-                        //    cliente.tiempoEsperadoProcesoSolicitud /= 100;
+                            cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(140, 180); //de 1.4 a 1.8
+                            cliente.tiempoEsperadoProcesoSolicitud /= 100;
 
-                        //    cliente.tiempoEsperadoServicio = cliente.tiempoEsperadoCola + cliente.tiempoEsperadoEntregaDatos + cliente.tiempoEsperadoProcesoSolicitud;
-                        //}
+                            cliente.tiempoEsperadoServicio = cliente.tiempoEsperadoCola + cliente.tiempoEsperadoEntregaDatos + cliente.tiempoEsperadoProcesoSolicitud;
+                        }
                         #endregion
                     }
                     else if (cliente.idTemporada == 3)
                     {
-                        //temporada 3
+                        //temporada 3 alta (mas dura el cliente)
                         #region
-                        //if (cliente.idOperacion == 1)
-                        //{
-                        //    //deposito
-                        //    cliente.tiempoEsperadoCola = getNumeroRandom(200, 250); // de 2.0 a 2.5
-                        //    cliente.tiempoEsperadoCola /= 100;
+                        if (cliente.idOperacion == 1)
+                        {
+                            //deposito
+                            cliente.tiempoEsperadoCola = getNumeroRandom(100, 450); // de 1.0 a 4.5
+                            cliente.tiempoEsperadoCola /= 100;
 
-                        //    cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(150, 180); //1.8; // 1.5 a 1.8
-                        //    cliente.tiempoEsperadoEntregaDatos /= 100;
+                            cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(100, 180); // 1 a 1.8
+                            cliente.tiempoEsperadoEntregaDatos /= 100;
 
-                        //    cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(100, 150); //1.5; // de 1.0 a 1.5
-                        //    cliente.tiempoEsperadoProcesoSolicitud /= 100;
+                            cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(100, 280); // de 1.0 a 2.8
+                            cliente.tiempoEsperadoProcesoSolicitud /= 100;
 
-                        //    cliente.tiempoEsperadoServicio = cliente.tiempoEsperadoCola + cliente.tiempoEsperadoEntregaDatos + cliente.tiempoEsperadoProcesoSolicitud;
-                        //}
-                        //else if (cliente.idOperacion == 2)
-                        //{
-                        //    //retiro
-                        //    cliente.tiempoEsperadoCola = getNumeroRandom(200, 220); // 2.2; de 2.0 a 2.2
-                        //    cliente.tiempoEsperadoCola /= 100;
+                            cliente.tiempoEsperadoServicio = cliente.tiempoEsperadoCola + cliente.tiempoEsperadoEntregaDatos + cliente.tiempoEsperadoProcesoSolicitud;
+                        }
+                        else if (cliente.idOperacion == 2)
+                        {
+                            //retiro
+                            cliente.tiempoEsperadoCola = getNumeroRandom(200, 350); // de 2.0 a 3.5
+                            cliente.tiempoEsperadoCola /= 100;
 
-                        //    cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(180, 210); //  2.1; de 1.8 a 2.1
-                        //    cliente.tiempoEsperadoEntregaDatos /= 100;
+                            cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(170, 220); // de 1.7 a 2.2
+                            cliente.tiempoEsperadoEntregaDatos /= 100;
 
-                        //    cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(100, 130); //1.3; de 1.0 a 1.3
-                        //    cliente.tiempoEsperadoProcesoSolicitud /= 100;
+                            cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(100, 170); //de 1.0 a 1.7
+                            cliente.tiempoEsperadoProcesoSolicitud /= 100;
 
-                        //    cliente.tiempoEsperadoServicio = cliente.tiempoEsperadoCola + cliente.tiempoEsperadoEntregaDatos + cliente.tiempoEsperadoProcesoSolicitud;
-                        //}
-                        //else if (cliente.idOperacion == 3)
-                        //{
-                        //    //cambio moneda
-                        //    cliente.tiempoEsperadoCola = getNumeroRandom(120, 150);  //1.5; de 1.2 a 1.5
-                        //    cliente.tiempoEsperadoCola /= 100;
+                            cliente.tiempoEsperadoServicio = cliente.tiempoEsperadoCola + cliente.tiempoEsperadoEntregaDatos + cliente.tiempoEsperadoProcesoSolicitud;
+                        }
+                        else if (cliente.idOperacion == 3)
+                        {
+                            //cambio moneda
+                            cliente.tiempoEsperadoCola = getNumeroRandom(100, 250);  // de 1 a 2.5
+                            cliente.tiempoEsperadoCola /= 100;
 
-                        //    cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(120, 150); // 1.5; de 1.2 a 1.5
-                        //    cliente.tiempoEsperadoEntregaDatos /= 100;
+                            cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(100, 150); // de 1 a 1.5
+                            cliente.tiempoEsperadoEntregaDatos /= 100;
 
-                        //    cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(180, 200); // 2.0; de  1.8 a 2.0
-                        //    cliente.tiempoEsperadoProcesoSolicitud /= 100;
+                            cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(140, 200); // de  1.4 a 2.0
+                            cliente.tiempoEsperadoProcesoSolicitud /= 100;
 
-                        //    cliente.tiempoEsperadoServicio = cliente.tiempoEsperadoCola + cliente.tiempoEsperadoEntregaDatos + cliente.tiempoEsperadoProcesoSolicitud;
-                        //}
+                            cliente.tiempoEsperadoServicio = cliente.tiempoEsperadoCola + cliente.tiempoEsperadoEntregaDatos + cliente.tiempoEsperadoProcesoSolicitud;
+                        }
                       
                         #endregion
                     }
