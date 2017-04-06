@@ -594,7 +594,50 @@ namespace SimulacionCajeroBancoV2
                     //instanciando la lista de problemas del cliene
                     cliente.listaProblema = new List<problema>();
 
-                    
+                    getListasProblema(cliente);
+                    if (cliente.idOperacion == 1)
+                    {
+                        //deposito
+
+                        //falta numero de cuenta 13%
+
+                        //numero cuenta incorrecto 25%
+
+                        //falta dinero por parte del cliente 27%
+
+                        //dinero efectivo mal estado 22%
+
+                        //cheque mal endosado 17%
+
+                        //saldo cuenta cliente es insuficiente para transferencia 13%
+
+
+                    }else if (cliente.idOperacion == 2)
+                    {
+                        //retiro
+
+                        /*
+                            -falta la cedula-21%
+                            -cedula en muy mal estado-15%
+                            -numero de cuenta se le olvido-18%
+                            -numero de cuenta incorrecto-30%
+                            -monto a retirar excede el limite disponible-16%
+                         */
+
+                    }
+                    else if (cliente.idOperacion == 3)
+                    {
+                        //cambio moneda
+
+                        /*
+                            -monto que llevo el cliente no era el correcto (el cliente queria $100 y solo llevo $50)-13%
+                            -monto que dijo el cliente no esta completo (el cliente pidio $150 pero solo tiene $120)-20%
+                            -el dinero del cliente esta en muy mal estado.-35%
+                            -el banco no tiene dollar.-9%
+                            -el banco no tiene euro.-10%
+                            -el cajero dio dinero de menos-13%
+                         */
+                    }
 
 
 
@@ -655,36 +698,359 @@ namespace SimulacionCajeroBancoV2
             return random.Next(inicio, final +1);
         }
 
-        public List<problema> getListaProblema()
+        public List<problema> getListasProblema(cliente cliente)
         {
+            //para asignar los intervalos de los problemas dependiendo de la temporada del cliente
+
             listaProblemaDeposito = new List<problema>();
             listaProblemaRetiro = new List<problema>();
             listaProblemaCambio = new List<problema>();
 
-            //problemas deposito
-            #region
-            problema =new problema();
+            if (cliente.idTemporada == 1)
+            {
+                //problemas deposito
+                #region
+                //numero cuenta
+                problema = new problema();
+                problema.id = 1;
+                problema.nombre = "falta numero cuenta";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 13;
+                listaProblemaDeposito.Add(problema);
+                //numero cuenta incorrecto
+                problema = new problema();
+                problema.id = 2;
+                problema.nombre = "numero cuenta incorrecto";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 25;
+                listaProblemaDeposito.Add(problema);
+                //monto incompleto
+                problema = new problema();
+                problema.id = 3;
+                problema.nombre = "monto incompleto";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 27;
+                listaProblemaDeposito.Add(problema);
+                //dinero en mal estado
+                problema = new problema();
+                problema.id = 4;
+                problema.nombre = "dinero mal estado";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 22;
+                listaProblemaDeposito.Add(problema);
+                //cheque mal ensosado
+                problema = new problema();
+                problema.id = 5;
+                problema.nombre = "cheque mal endosado";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 17;
+                listaProblemaDeposito.Add(problema);
+                //saldo cuenta cliente es isuficiente
+                problema = new problema();
+                problema.id = 6;
+                problema.nombre = "saldo cuenta cliente insuficiente";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 13;
+                listaProblemaDeposito.Add(problema);
+                #endregion
 
-            listaProblemaDeposito.Add(problema);
-            #endregion
+                //problemas retiro
+                #region
+                //numero cuenta
+                problema = new problema();
+                problema.id = 1;
+                problema.nombre = "falta numero cuenta";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 13;
+                listaProblemaRetiro.Add(problema);
+                //numero cuenta
+                problema = new problema();
+                problema.id = 1;
+                problema.nombre = "falta numero cuenta";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 13;
+                listaProblemaRetiro.Add(problema);
+                //numero cuenta
+                problema = new problema();
+                problema.id = 1;
+                problema.nombre = "falta numero cuenta";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 13;
+                listaProblemaRetiro.Add(problema);
+                //numero cuenta
+                problema = new problema();
+                problema.id = 1;
+                problema.nombre = "falta numero cuenta";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 13;
+                listaProblemaRetiro.Add(problema);
+                #endregion
+
+                //problemas cambio moneda
+                #region
+                //numero cuenta
+                problema = new problema();
+                problema.id = 1;
+                problema.nombre = "falta numero cuenta";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 13;
+                listaProblemaCambio.Add(problema);
+                //numero cuenta
+                problema = new problema();
+                problema.id = 1;
+                problema.nombre = "falta numero cuenta";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 13;
+                listaProblemaCambio.Add(problema);
+                //numero cuenta
+                problema = new problema();
+                problema.id = 1;
+                problema.nombre = "falta numero cuenta";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 13;
+                listaProblemaCambio.Add(problema);
+                //numero cuenta
+                problema = new problema();
+                problema.id = 1;
+                problema.nombre = "falta numero cuenta";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 13;
+                listaProblemaCambio.Add(problema);
+                #endregion
+
+            }else if (cliente.idTemporada == 2)
+            {
+                //problemas deposito
+                #region
+                //numero cuenta
+                problema = new problema();
+                problema.id = 1;
+                problema.nombre = "falta numero cuenta";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 13;
+                listaProblemaDeposito.Add(problema);
+                //numero cuenta incorrecto
+                problema = new problema();
+                problema.id = 2;
+                problema.nombre = "numero cuenta incorrecto";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 25;
+                listaProblemaDeposito.Add(problema);
+                //monto incompleto
+                problema = new problema();
+                problema.id = 3;
+                problema.nombre = "monto incompleto";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 27;
+                listaProblemaDeposito.Add(problema);
+                //dinero en mal estado
+                problema = new problema();
+                problema.id = 4;
+                problema.nombre = "dinero mal estado";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 22;
+                listaProblemaDeposito.Add(problema);
+                //cheque mal ensosado
+                problema = new problema();
+                problema.id = 5;
+                problema.nombre = "cheque mal endosado";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 17;
+                listaProblemaDeposito.Add(problema);
+                //saldo cuenta cliente es isuficiente
+                problema = new problema();
+                problema.id = 6;
+                problema.nombre = "saldo cuenta cliente insuficiente";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 13;
+                listaProblemaDeposito.Add(problema);
+                #endregion
+
+                //problemas retiro
+                #region
+                //numero cuenta
+                problema = new problema();
+                problema.id = 1;
+                problema.nombre = "falta numero cuenta";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 13;
+                listaProblemaRetiro.Add(problema);
+                //numero cuenta
+                problema = new problema();
+                problema.id = 1;
+                problema.nombre = "falta numero cuenta";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 13;
+                listaProblemaRetiro.Add(problema);
+                //numero cuenta
+                problema = new problema();
+                problema.id = 1;
+                problema.nombre = "falta numero cuenta";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 13;
+                listaProblemaRetiro.Add(problema);
+                //numero cuenta
+                problema = new problema();
+                problema.id = 1;
+                problema.nombre = "falta numero cuenta";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 13;
+                listaProblemaRetiro.Add(problema);
+                #endregion
+
+                //problemas cambio moneda
+                #region
+                //numero cuenta
+                problema = new problema();
+                problema.id = 1;
+                problema.nombre = "falta numero cuenta";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 13;
+                listaProblemaCambio.Add(problema);
+                //numero cuenta
+                problema = new problema();
+                problema.id = 1;
+                problema.nombre = "falta numero cuenta";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 13;
+                listaProblemaCambio.Add(problema);
+                //numero cuenta
+                problema = new problema();
+                problema.id = 1;
+                problema.nombre = "falta numero cuenta";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 13;
+                listaProblemaCambio.Add(problema);
+                //numero cuenta
+                problema = new problema();
+                problema.id = 1;
+                problema.nombre = "falta numero cuenta";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 13;
+                listaProblemaCambio.Add(problema);
+                #endregion
+
+
+            }else if (cliente.idTemporada == 3)
+            {
+                //problemas deposito
+                #region
+                //numero cuenta
+                problema = new problema();
+                problema.id = 1;
+                problema.nombre = "falta numero cuenta";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 13;
+                listaProblemaDeposito.Add(problema);
+                //numero cuenta incorrecto
+                problema = new problema();
+                problema.id = 2;
+                problema.nombre = "numero cuenta incorrecto";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 25;
+                listaProblemaDeposito.Add(problema);
+                //monto incompleto
+                problema = new problema();
+                problema.id = 3;
+                problema.nombre = "monto incompleto";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 27;
+                listaProblemaDeposito.Add(problema);
+                //dinero en mal estado
+                problema = new problema();
+                problema.id = 4;
+                problema.nombre = "dinero mal estado";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 22;
+                listaProblemaDeposito.Add(problema);
+                //cheque mal ensosado
+                problema = new problema();
+                problema.id = 5;
+                problema.nombre = "cheque mal endosado";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 17;
+                listaProblemaDeposito.Add(problema);
+                //saldo cuenta cliente es isuficiente
+                problema = new problema();
+                problema.id = 6;
+                problema.nombre = "saldo cuenta cliente insuficiente";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 13;
+                listaProblemaDeposito.Add(problema);
+                #endregion
+
+                //problemas retiro
+                #region
+                //numero cuenta
+                problema = new problema();
+                problema.id = 1;
+                problema.nombre = "falta numero cuenta";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 13;
+                listaProblemaRetiro.Add(problema);
+                //numero cuenta
+                problema = new problema();
+                problema.id = 1;
+                problema.nombre = "falta numero cuenta";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 13;
+                listaProblemaRetiro.Add(problema);
+                //numero cuenta
+                problema = new problema();
+                problema.id = 1;
+                problema.nombre = "falta numero cuenta";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 13;
+                listaProblemaRetiro.Add(problema);
+                //numero cuenta
+                problema = new problema();
+                problema.id = 1;
+                problema.nombre = "falta numero cuenta";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 13;
+                listaProblemaRetiro.Add(problema);
+                #endregion
+
+                //problemas cambio moneda
+                #region
+                //numero cuenta
+                problema = new problema();
+                problema.id = 1;
+                problema.nombre = "falta numero cuenta";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 13;
+                listaProblemaCambio.Add(problema);
+                //numero cuenta
+                problema = new problema();
+                problema.id = 1;
+                problema.nombre = "falta numero cuenta";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 13;
+                listaProblemaCambio.Add(problema);
+                //numero cuenta
+                problema = new problema();
+                problema.id = 1;
+                problema.nombre = "falta numero cuenta";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 13;
+                listaProblemaCambio.Add(problema);
+                //numero cuenta
+                problema = new problema();
+                problema.id = 1;
+                problema.nombre = "falta numero cuenta";
+                problema.intervalo_inicial = 0;
+                problema.intervalo_final = 13;
+                listaProblemaCambio.Add(problema);
+                #endregion
+
+            }
            
-
-            //problemas retiro
-            #region
-            listaProblemaRetiro.Add(problema);
-            #endregion
-
-            
-
-
-            //problemas cambio moneda
-            #region
-            listaProblemaCambio.Add(problema);
-            #endregion
 
 
             return listaProblemaRetiro;
         }
+
+
 
     }
 }
