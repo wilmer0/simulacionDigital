@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SimulacionCajeroBancoV2.modelos;
 using SimulacionCajeroBancoV2.objetos;
+using SimulacionCajeroBancoV2.views;
 
 namespace SimulacionCajeroBancoV2
 {
@@ -675,7 +676,10 @@ namespace SimulacionCajeroBancoV2
                                 {
                                     //entrega datos
                                     #region
+
+
                                     //falta numero de cuenta 13%
+                                    #region
                                     randomEntero = getNumeroRandom(1, 100);
                                     if (randomEntero <= 13 && cliente.abandono == false)
                                     {
@@ -685,12 +689,37 @@ namespace SimulacionCajeroBancoV2
                                         cliente.listaProblema.Add(problema);
 
                                         problemasLogs = new problemasLogs();
+                                        problemasLogs.problema_encontrado = true;
                                         problemasLogs.idcliente = cliente.id;
                                         problemasLogs.fase = faceActual.nombre;
+                                        //tiempo que tenia el cliente cuando se presento el problema
                                         problemasLogs.tiempo_antes = cliente.tiempoEntregaDatos;
+
+                                        //saber si el cliente espera o se va
+                                        if (getNumeroRandom(1, 2) == 1)
+                                        {
+                                            //cliente lo intenta y revisa de nuevo
+                                            problemasLogs.cantidad_intentos += 1;
+                                            problemasLogs.desicion = "cliente revisa de nuevo";
+                                            cliente.tiempoEsperadoEntregaDatos += ((getNumeroRandom(0, 200))/100);
+                                        }
+                                        else
+                                        {
+                                            //cliente se va
+                                            problemasLogs.desicion = "cliente abandona";
+                                            cliente.abandono = true;
+                                            problemasLogs.tiempo_despues = cliente.tiempoEntregaDatos;
+                                        }
+
+                                        //tiempo que tiene el cliente ahora despues de que el cliente espera o se va
+                                        problemasLogs.tiempo_despues = 0;
+                                        
                                         listaProblemaLogs.Add(problemasLogs);
                                     }
+                                    #endregion
+                                    
                                     //numero cuenta incorrecto 25%
+                                    #region
                                     randomEntero = getNumeroRandom(1, 100);
                                     if (randomEntero <= 25 && cliente.abandono == false)
                                     {
@@ -700,75 +729,226 @@ namespace SimulacionCajeroBancoV2
                                         cliente.listaProblema.Add(problema);
 
                                         problemasLogs = new problemasLogs();
+                                        problemasLogs.problema_encontrado = true;
                                         problemasLogs.idcliente = cliente.id;
                                         problemasLogs.fase = faceActual.nombre;
+                                        //tiempo que tenia el cliente cuando se presento el problema
                                         problemasLogs.tiempo_antes = cliente.tiempoEntregaDatos;
+
+                                        //saber si el cliente espera o se va
+                                        if (getNumeroRandom(1, 2) == 1)
+                                        {
+                                            //cliente lo intenta y revisa de nuevo
+                                            problemasLogs.cantidad_intentos += 1;
+                                            problemasLogs.desicion = "cliente revisa de nuevo";
+                                            cliente.tiempoEsperadoEntregaDatos += ((getNumeroRandom(0, 200)) / 100);
+                                        }
+                                        else
+                                        {
+                                            //cliente se va
+                                            problemasLogs.desicion = "cliente abandona";
+                                            cliente.abandono = true;
+                                            problemasLogs.tiempo_despues = cliente.tiempoEntregaDatos;
+                                        }
+
+                                        //tiempo que tiene el cliente ahora despues de que el cliente espera o se va
+                                        problemasLogs.tiempo_despues = 0;
+
                                         listaProblemaLogs.Add(problemasLogs);
                                     }
-
                                     #endregion
 
+                                    //falta dinero por parte del cliente 27%
+                                    #region
+                                    randomEntero = getNumeroRandom(1, 100);
+                                    if (randomEntero <= 27 && cliente.abandono == false)
+                                    {
+                                        problema = new problema();
+                                        problema.id = cliente.listaProblema.Count + 1;
+                                        problema.nombre = "falta dinero cliente";
+                                        cliente.listaProblema.Add(problema);
+
+                                        problemasLogs = new problemasLogs();
+                                        problemasLogs.problema_encontrado = true;
+                                        problemasLogs.idcliente = cliente.id;
+                                        problemasLogs.fase = faceActual.nombre;
+                                        //tiempo que tenia el cliente cuando se presento el problema
+                                        problemasLogs.tiempo_antes = cliente.tiempoEntregaDatos;
+
+                                        //saber si el cliente espera o se va
+                                        if (getNumeroRandom(1, 2) == 1)
+                                        {
+                                            //cliente lo intenta y revisa de nuevo
+                                            problemasLogs.cantidad_intentos += 1;
+                                            problemasLogs.desicion = "cliente revisa de nuevo";
+                                            cliente.tiempoEsperadoEntregaDatos += ((getNumeroRandom(0, 200)) / 100);
+                                        }
+                                        else
+                                        {
+                                            //cliente se va
+                                            problemasLogs.desicion = "cliente abandona";
+                                            cliente.abandono = true;
+                                            problemasLogs.tiempo_despues = cliente.tiempoEntregaDatos;
+                                        }
+
+                                        //tiempo que tiene el cliente ahora despues de que el cliente espera o se va
+                                        problemasLogs.tiempo_despues = 0;
+
+                                        listaProblemaLogs.Add(problemasLogs);
+                                    }
+                                    #endregion
+
+                                    //dinero efectivo mal estado 22%
+                                    #region
+                                    if (cliente.tipoOperacion == "efectivo" && cliente.abandono==false)
+                                    {
+                                        #region
+                                        randomEntero = getNumeroRandom(1, 100);
+                                        if (randomEntero <= 22 && cliente.abandono == false)
+                                        {
+
+                                            problema = new problema();
+                                            problema.id = cliente.listaProblema.Count + 1;
+                                            problema.nombre = "falta dinero cliente";
+                                            cliente.listaProblema.Add(problema);
+
+                                            problemasLogs = new problemasLogs();
+                                            problemasLogs.problema_encontrado = true;
+                                            problemasLogs.idcliente = cliente.id;
+                                            problemasLogs.fase = faceActual.nombre;
+                                            //tiempo que tenia el cliente cuando se presento el problema
+                                            problemasLogs.tiempo_antes = cliente.tiempoEntregaDatos;
+
+                                            //saber si el cliente espera o se va
+                                            if (getNumeroRandom(1, 2) == 1)
+                                            {
+                                                //cliente lo intenta y revisa de nuevo
+                                                problemasLogs.cantidad_intentos += 1;
+                                                problemasLogs.desicion = "el cliente revisa de nuevo";
+                                                cliente.tiempoEsperadoEntregaDatos += ((getNumeroRandom(0, 300))/100);
+                                            }
+                                            else
+                                            {
+                                                //cliente se va
+                                                problemasLogs.desicion = "cliente abandona";
+                                                cliente.abandono = true;
+                                                problemasLogs.tiempo_despues = cliente.tiempoEntregaDatos;
+                                            }
+
+                                            //tiempo que tiene el cliente ahora despues de que el cliente espera o se va
+                                            problemasLogs.tiempo_despues = 0;
+
+                                            listaProblemaLogs.Add(problemasLogs);
+                                        }
+
+                                        #endregion
+                                    }
+                                    #endregion
+
+                                    //cheque mal endosado 17%
+                                    #region
+                                    if (cliente.tipoOperacion == "cheque" && cliente.abandono==false)
+                                    {
+                                        #region
+                                        randomEntero = getNumeroRandom(1, 100);
+                                        if (randomEntero <= 17 && cliente.abandono == false)
+                                        {
+                                            problema = new problema();
+                                            problema.id = cliente.listaProblema.Count + 1;
+                                            problema.nombre = "cheque mal endosado";
+                                            cliente.listaProblema.Add(problema);
+
+                                            problemasLogs = new problemasLogs();
+                                            problemasLogs.problema_encontrado = true;
+                                            problemasLogs.idcliente = cliente.id;
+                                            problemasLogs.fase = faceActual.nombre;
+                                            //tiempo que tenia el cliente cuando se presento el problema
+                                            problemasLogs.tiempo_antes = cliente.tiempoEntregaDatos;
+
+                                            //saber si el cliente espera o se va
+                                            if (getNumeroRandom(1, 2) == 1)
+                                            {
+                                                //cliente lo intenta y revisa de nuevo
+                                                problemasLogs.cantidad_intentos += 1;
+                                                problemasLogs.desicion = "el cliente endosa el cheque";
+                                                cliente.tiempoEsperadoEntregaDatos += ((getNumeroRandom(0, 300)) / 100);
+                                            }
+                                            else
+                                            {
+                                                //cliente se va
+                                                problemasLogs.desicion = "cliente abandona";
+                                                cliente.abandono = true;
+                                                problemasLogs.tiempo_despues = cliente.tiempoEntregaDatos;
+                                            }
+
+                                            //tiempo que tiene el cliente ahora despues de que el cliente espera o se va
+                                            problemasLogs.tiempo_despues = 0;
+
+                                            listaProblemaLogs.Add(problemasLogs);
+                                        }
+
+                                        #endregion
+                                    }
+                                    #endregion
+
+                                    //saldo cuenta cliente es insuficiente para transferencia 13%
+                                    #region
+                                    if (cliente.tipoOperacion == "transferencia" && cliente.abandono == false)
+                                    {
+                                        #region
+                                        randomEntero = getNumeroRandom(1, 100);
+                                        if (randomEntero <= 13 && cliente.abandono == false)
+                                        {
+                                            problema = new problema();
+                                            problema.id = cliente.listaProblema.Count + 1;
+                                            problema.nombre = "saldo cuenta insuficiente";
+                                            cliente.listaProblema.Add(problema);
+
+                                            problemasLogs = new problemasLogs();
+                                            problemasLogs.problema_encontrado = true;
+                                            problemasLogs.idcliente = cliente.id;
+                                            problemasLogs.fase = faceActual.nombre;
+                                            //tiempo que tenia el cliente cuando se presento el problema
+                                            problemasLogs.tiempo_antes = cliente.tiempoEntregaDatos;
+
+                                            //saber si el cliente espera o se va
+                                            if (getNumeroRandom(1, 2) == 1)
+                                            {
+                                                //cliente lo intenta y revisa de nuevo
+                                                problemasLogs.cantidad_intentos += 1;
+                                                problemasLogs.desicion = "el cliente endosa el cheque";
+                                                cliente.tiempoEsperadoEntregaDatos += ((getNumeroRandom(0, 300)) / 100);
+                                            }
+                                            else
+                                            {
+                                                //cliente se va
+                                                problemasLogs.desicion = "cliente abandona";
+                                                cliente.abandono = true;
+                                                problemasLogs.tiempo_despues = cliente.tiempoEntregaDatos;
+                                            }
+
+                                            //tiempo que tiene el cliente ahora despues de que el cliente espera o se va
+                                            problemasLogs.tiempo_despues = 0;
+
+                                            listaProblemaLogs.Add(problemasLogs);
+                                        }
+
+                                        #endregion
+                                    }
+                                    #endregion
+
+
+
+                                    #endregion
                                 }
                                 else if (faceActual.id == 3)
                                 {
                                     //proceso de solicitud
                                     #region
                                     #endregion
-
                                 }
+
                                 
-
-                               
-
-                                //falta dinero por parte del cliente 27%
-                                randomEntero = getNumeroRandom(1, 100);
-                                if (randomEntero <= 27 && cliente.abandono == false)
-                                {
-                                    problema = new problema();
-                                    problema.id = cliente.listaProblema.Count + 1;
-                                    problema.nombre = "falta dinero cliente";
-                                    cliente.listaProblema.Add(problema);
-                                }
-
-
-                                //dinero efectivo mal estado 22%
-                                if (cliente.tipoOperacion == "efectivo")
-                                {
-                                    randomEntero = getNumeroRandom(1, 100);
-                                    if (randomEntero <= 22 && cliente.abandono == false)
-                                    {
-                                        problema = new problema();
-                                        problema.id = cliente.listaProblema.Count + 1;
-                                        problema.nombre = "dinero mal estado";
-                                        cliente.listaProblema.Add(problema);
-                                    }
-                                }
-
-                                //cheque mal endosado 17%
-                                if (cliente.tipoOperacion == "cheque")
-                                {
-                                    randomEntero = getNumeroRandom(1, 100);
-                                    if (randomEntero <= 17 && cliente.abandono==false)
-                                    {
-                                        problema = new problema();
-                                        problema.id = cliente.listaProblema.Count + 1;
-                                        problema.nombre = "cheque mal endosado";
-                                        cliente.listaProblema.Add(problema);
-                                    }
-                                }
-
-                                //saldo cuenta cliente es insuficiente para transferencia 13%
-                                if (cliente.tipoOperacion == "transferencia")
-                                {
-                                    randomEntero = getNumeroRandom(1, 100);
-                                    if (randomEntero <= 13 && cliente.abandono==false) 
-                                    {
-                                        problema = new problema();
-                                        problema.id = cliente.listaProblema.Count + 1;
-                                        problema.nombre = "saldo cuenta insuficiente";
-                                        cliente.listaProblema.Add(problema);
-                                    }
-                                }
                                 #endregion
                             }
                             
@@ -864,7 +1044,7 @@ namespace SimulacionCajeroBancoV2
 
                 dataGridView1.Rows.Clear();
                 dataGridView2.Rows.Clear();
-
+                //llenando corrida de los clientes
                 foreach (var x in  listaCliente)
                 {
                     if (x.idOperacion == null || x.operacion == "")
@@ -872,6 +1052,14 @@ namespace SimulacionCajeroBancoV2
                         MessageBox.Show("cliente no tiene operacion-->" + x.id);
                     }
                     dataGridView1.Rows.Add(x.id,x.operacion+"-"+x.tipoOperacion,x.tanda,x.tiempoEsperadoServicio,x.montoTransaccion.ToString("N"),x.listaProblema.Count.ToString("N"),x.tiempoTotalServicio,x.abandono,x.idCajero);
+                }
+
+
+                //llenando los problemas log de todos los clientes
+                //listaProblemaLogs = listaProblemaLogs.FindAll(x => x.problema_encontrado == true);
+                foreach (var x in listaProblemaLogs)
+                {
+                    dataGridView2.Rows.Add(x.idcliente, x.operacion,x.fase,x.tiempo_antes,x.tiempo_despues,x.nombreProblema,x.desicion);
                 }
 
                 MessageBox.Show("Finalizó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1283,6 +1471,25 @@ namespace SimulacionCajeroBancoV2
             }
         }
 
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
+        }
+
+        private void dataGridView1_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                Int64 idCliente = Convert.ToInt64(dataGridView1.CurrentRow.Cells[0].Value);
+                //MessageBox.Show(idCliente.ToString());
+                visor_problemas ventana = new visor_problemas(idCliente, listaProblemaLogs);
+                ventana.Owner = this;
+                ventana.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error doble click.: " + ex.ToString());
+            }
+        }
     }
 }

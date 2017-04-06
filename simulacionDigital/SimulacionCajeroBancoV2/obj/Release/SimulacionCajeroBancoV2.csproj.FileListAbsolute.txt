@@ -16,3 +16,4 @@ C:\Users\7Soft\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCa
 C:\Users\7Soft\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBancoV2\obj\Release\SimulacionCajeroBancoV2.Form1.resources
 C:\Users\7Soft\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBancoV2\obj\Release\SimulacionCajeroBancoV2.Properties.Resources.resources
 C:\Users\7Soft\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBancoV2\obj\Release\SimulacionCajeroBancoV2.csproj.GenerateResource.Cache
+C:\Users\7Soft\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBancoV2\obj\Release\SimulacionCajeroBancoV2.views.visor_problemas.resources

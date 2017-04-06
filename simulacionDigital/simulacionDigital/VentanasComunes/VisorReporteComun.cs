@@ -8,7 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Microsoft.Reporting.WinForms;
+using Microsoft.Reporting.WebForms;
 
 
 namespace _7ADMFIC_1._0.VentanasComunes
@@ -65,20 +65,20 @@ namespace _7ADMFIC_1._0.VentanasComunes
         }
         private void GetLoad(String reporte, List<ReportDataSource> lista, List<ReportParameter> ListaReportParameter)
         {
-            Reporte.LocalReport.ReportEmbeddedResource = reporte;
-            lista.ForEach(x =>
-            {
-                 Reporte.LocalReport.DataSources.Add(x);
-            });
-            if(ListaReportParameter!=null)
-            {
-                Reporte.LocalReport.SetParameters(ListaReportParameter);
-            }
+            //Reporte.LocalReport.ReportEmbeddedResource = reporte;
+            //lista.ForEach(x =>
+            //{
+            //     Reporte.LocalReport.DataSources.Add(x);
+            //});
+            //if(ListaReportParameter!=null)
+            //{
+            //    Reporte.LocalReport.SetParameters(ListaReportParameter);
+            //}
         }
         private void visor_reporte_Load(object sender, EventArgs e)
         {
-            Reporte.SetDisplayMode(DisplayMode.PrintLayout);
-            this.Reporte.RefreshReport();
+            //Reporte.SetDisplayMode(DisplayMode.PrintLayout);
+            //this.Reporte.RefreshReport();
         }
 
 
