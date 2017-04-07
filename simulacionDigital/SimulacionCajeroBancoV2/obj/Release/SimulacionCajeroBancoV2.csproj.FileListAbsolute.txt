@@ -7,3 +7,14 @@ C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionC
 C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBancoV2\obj\Release\SimulacionCajeroBancoV2.exe
 C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBancoV2\obj\Release\SimulacionCajeroBancoV2.pdb
 C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBancoV2\obj\Release\SimulacionCajeroBancoV2.csprojResolveAssemblyReference.cache
+C:\Users\7Soft\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBancoV2\bin\Release\SimulacionCajeroBancoV2.exe.config
+C:\Users\7Soft\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBancoV2\obj\Release\SimulacionCajeroBancoV2.exe
+C:\Users\7Soft\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBancoV2\obj\Release\SimulacionCajeroBancoV2.pdb
+C:\Users\7Soft\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBancoV2\bin\Release\SimulacionCajeroBancoV2.exe
+C:\Users\7Soft\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBancoV2\bin\Release\SimulacionCajeroBancoV2.pdb
+C:\Users\7Soft\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBancoV2\obj\Release\SimulacionCajeroBancoV2.csprojResolveAssemblyReference.cache
+C:\Users\7Soft\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBancoV2\obj\Release\SimulacionCajeroBancoV2.Form1.resources
+C:\Users\7Soft\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBancoV2\obj\Release\SimulacionCajeroBancoV2.Properties.Resources.resources
+C:\Users\7Soft\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBancoV2\obj\Release\SimulacionCajeroBancoV2.csproj.GenerateResource.Cache
+C:\Users\7Soft\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBancoV2\obj\Release\SimulacionCajeroBancoV2.views.visor_problemas.resources
+C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBancoV2\obj\Release\SimulacionCajeroBancoV2.views.visor_problemas.resources

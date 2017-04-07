@@ -4,12 +4,14 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SimulacionCajeroBancoV2.modelos;
 using SimulacionCajeroBancoV2.objetos;
+using SimulacionCajeroBancoV2.views;
 
 namespace SimulacionCajeroBancoV2
 {
@@ -18,28 +20,39 @@ namespace SimulacionCajeroBancoV2
 
 
         //modelos
-        modeloTemporada modeloTemporada=new modeloTemporada();
-        modeloTanda modeloTanda=new modeloTanda();
-        modeloCajero modeloCajero=new modeloCajero();
+        modeloTemporada modeloTemporada=new modeloTemporada(); // toda la programacion con respecto a la temporada
+        modeloTanda modeloTanda = new modeloTanda(); // toda la programacion con respecto a la tanda
+        modeloCajero modeloCajero = new modeloCajero();// toda la programacion con respecto al cajero
 
         //objetos
-        private temporada temporada;
-        private cliente cliente;
-        private tanda tanda;
-        private problema problema;
-        private cajero cajero;
+        private temporada temporada; // objeto con todos los atributos de la temporada
+        private cliente cliente;// objeto con todos los atributos del cliente
+        private tanda tanda;// objeto con todos los atributos de la tanda
+        private problema problema;// objeto con todos los atributos del problema
+        private cajero cajero;// objeto con todos los atributos del cajero
+        private fases fase;//objeto con todos los atributos de las fases
+        private operacion operacion;
 
         //listas
-        private List<tanda> listaTanda; 
-        private List<cliente> listaCliente;
-        private List<temporada> listaTemporada;
-        private List<cajero> listaCajero; 
+        private List<tanda> listaTanda; // lista de las tandas disponibles
+        private List<cliente> listaCliente;// lista de los clientes donde se almacena cada corrida
+        private List<temporada> listaTemporada;// lista de las temporadas disponibles
+        private List<cajero> listaCajero;// lista de los cajeros disponibles
+        private problemasLogs problemasLogs;// lista de los problemas con detalles encontrado en la corrida
+        private List<operacion> listaOperaciones; 
+      
 
         //lista de problema
         private List<problema> listaProblemaDeposito;
         private List<problema> listaProblemaRetiro;
         private List<problema> listaProblemaCambio;
-
+        private List<int> listaNumero;
+        private List<problemasLogs> listaProblemaLogs;
+        private List<fases> listaFases;
+        private List<fases> listaFasesDeposito;
+        private List<fases> listaFasesRetiro;
+        private List<fases> listaFasesCambioMoneda;
+        private List<problema> listaProblemaSistema; 
 
         //variables
         public temporada temporadaSeleccionada;
@@ -64,11 +77,23 @@ namespace SimulacionCajeroBancoV2
                 getTemporadas();
                 getTandas();
                 getCajeros();
+                getListaNumeros();
+                getListaFases();
+                getListaOperaciones();
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error loadVentana.:" + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+        }
+
+        public void getListaNumeros()
+        {
+            listaNumero=new List<int>();
+            for (int f = 1; f <=100; f++)
+            {
+                listaNumero.Add(f);
             }
         }
 
@@ -89,6 +114,7 @@ namespace SimulacionCajeroBancoV2
             }
         }
 
+        //carga las tandas
         public void getTandas()
         {
             try
@@ -106,6 +132,7 @@ namespace SimulacionCajeroBancoV2
             }
         }
 
+        //carga los cajeros
         public void getCajeros()
         {
             try
@@ -157,6 +184,7 @@ namespace SimulacionCajeroBancoV2
             }
         }
 
+        //carga la cantidad de cajeros
         public void getCantidadCajeros()
         {
             try
@@ -169,6 +197,7 @@ namespace SimulacionCajeroBancoV2
             }
         }
 
+        //carga la lista de cajeros
         public void loadListaCajeros()
         {
             double probabilidad = 0;
@@ -192,6 +221,7 @@ namespace SimulacionCajeroBancoV2
             getCantidadCajeros();
         }
 
+        //validando antes de iniciar el proceso
         public bool validarGetAction()
         {
             try
@@ -252,6 +282,7 @@ namespace SimulacionCajeroBancoV2
             }
         }
 
+        //obtiene un id cajero en base a un numero random con los intervalos del cajero
         public int getIdCajeroByRandom(double random)
         {
             try
@@ -273,6 +304,7 @@ namespace SimulacionCajeroBancoV2
             }
         }
 
+        //proceso padre
         public void getAction()
         {
             try
@@ -282,7 +314,16 @@ namespace SimulacionCajeroBancoV2
                     return;
                 }
 
+                //get lista de problemas intervalos en base a la temporada
+                getListasProblema(temporadaSeleccionada.id);
+
+                //instanciando la lista de cliente
                 listaCliente=new List<cliente>();
+
+                //instanciando la lista de los problemas log para el reporte
+                listaProblemaLogs = new List<problemasLogs>();
+                problemasLogs = new problemasLogs();
+
                 for (int f = 1; f <= cantidadClientes; f++)
                 {
                     //llenando los primeros datos de cliente actual
@@ -290,17 +331,21 @@ namespace SimulacionCajeroBancoV2
                     cliente.id = f;
                     cliente.abandono = false;
                     cliente.idTemporada = temporadaSeleccionada.id;
-                    //instanciando la lista de problemas del cliene
-                    cliente.listaProblema=new List<problema>();
 
-                    //saber que cajero escojio el cliente
+                    //instanciando la lista de problemas del cliene
+                    cliente.listaProblema = new List<problema>();
+                    
+                    //saber que cajero escogio el cliente
+                    #region
                     randomEntero = getNumeroRandom(1, 100);
                     cliente.idCajero = getIdCajeroByRandom(randomEntero);
+                    #endregion
 
                     //obteniendo la tanda del cliente
-                    //temporada matutina con probabilidad de 41% y 59% tanda vespertina
-                    Thread.Sleep(30);
-                    randomEntero = getNumeroRandom(0, 100);
+                    #region
+                    //tanda matutina con probabilidad de 41% y 59% tanda vespertina
+                    //Thread.Sleep(30);
+                    randomEntero = getNumeroRandom(1, 100);
                     if (randomEntero <= 41)
                     {
                         //tanda matutina
@@ -313,9 +358,11 @@ namespace SimulacionCajeroBancoV2
                         cliente.idTanda = 2;
                         cliente.tanda = "vespertina";
                     }
+                    #endregion
 
                     //obteniendo la operacion
-                    randomEntero = getNumeroRandom(0, 100);
+                    #region
+                    randomEntero = getNumeroRandom(1, 100);
                     if (randomEntero >= 1 && randomEntero<=43)
                     {
                         //deposito
@@ -323,11 +370,11 @@ namespace SimulacionCajeroBancoV2
                         cliente.operacion = "deposito";
                         #region
                         //el deposito puede ser efectivo 60,cheque 30, transferencia 10
-                        randomEntero = getNumeroRandom(0, 100);
+                        randomEntero = getNumeroRandom(1, 100);
                         if (randomEntero >= 1 && randomEntero <= 60)
                         {
                             //deposito en efectivo
-                            cliente.tipoDespotiso = "efectivo";
+                            cliente.tipoOperacion = "efectivo";
                             //como el deposito es en efectivo si es monto > 45,000 se ofrece una cuenta de ahorro que el 38% acepta
                             //para este caso el deposito mas bajo fue de 5,000 y el mayor fue de 150,0000
                             cliente.montoTransaccion = getNumeroRandom(5000, 150000);
@@ -339,7 +386,6 @@ namespace SimulacionCajeroBancoV2
                                 {
                                     //acepta cuenta de ahorro aumenta tiempo formula (-1/landa * LN(random()))
                                     cliente.aceptaCuentaAhorro = true;
-                                    random=new Random();
                                     cliente.tiempoProcesoSolicitud += Math.Round((-1*0.03)*(Math.Log(random.NextDouble())),4);
                                 }
                                 else
@@ -350,11 +396,15 @@ namespace SimulacionCajeroBancoV2
                         }else if (randomEntero >= 60 && randomEntero <= 90)
                         {
                             //deposito en cheque
-                            cliente.tipoDespotiso = "cheque";
+                            cliente.tipoOperacion = "cheque";
+                            //cuando es cheque el monto minimo es de 5000 y la maxima es de 85,000
+                            cliente.montoTransaccion = getNumeroRandom(5000, 85000);
                         }else if (randomEntero >= 90 && randomEntero <= 100)
                         {
                             //deposito en transferencia
-                            cliente.tipoDespotiso = "transferencia";
+                            cliente.tipoOperacion = "transferencia";
+                            //cuando es transferencia el monto minimo es de 3500 y la maxima es de 160,000
+                            cliente.montoTransaccion = getNumeroRandom(3500, 160000);
                         }
 
                         #endregion
@@ -390,7 +440,7 @@ namespace SimulacionCajeroBancoV2
                         #region
                         //saber si cambio pesos a dolares o dolares a pesos
                         randomEntero = getNumeroRandom(1, 100);
-                        if (randomEntero >= 1 && randomEntero <= 63)
+                        if (randomEntero >= 1 && randomEntero <= 43)
                         {
                             cliente.operacion += "-DP";
                             //dolares a pesos
@@ -424,100 +474,255 @@ namespace SimulacionCajeroBancoV2
 
                         #endregion
                     }
+                    #endregion
 
-                    //asignando los tiempos promedios esperado cada fase de cada operacion en base a la temporada
+                    //asignando los tiempos promedios esperado y finales bases cada fase de cada operacion en base a la temporada
                     #region
                     if (cliente.idTemporada == 1)
                     {
-                        //temporada 1
+                        //temporada 1 normal (media cliente dura un tiempo promedio normal)
                         #region
                         if (cliente.idOperacion == 1)
                         {
                             //deposito
-                            cliente.tiempoEsperadoCola = 2.5;
-                            cliente.tiempoEsperadoEntregaDatos = 1.8;
-                            cliente.tiempoEsperadoProcesoSolicitud = 1.5;
-                            cliente.tiempoEsperadoServicio = 5.8;
+                            cliente.tiempoEsperadoCola = getNumeroRandom(100,250); //de 1.0 a 2.5
+                            cliente.tiempoEsperadoCola /= 100;
+                            cliente.tiempoCola = cliente.tiempoEsperadoCola;
+                            
+                            cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(100, 180); //de 1 a 1.8
+                            cliente.tiempoEsperadoEntregaDatos /= 100;
+                            cliente.tiempoEntregaDatos = cliente.tiempoEsperadoEntregaDatos;
+                            
+                            cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(100, 190); //de 1.0 a 1.9
+                            cliente.tiempoEsperadoProcesoSolicitud /= 100;
+                            cliente.tiempoProcesoSolicitud = cliente.tiempoEsperadoProcesoSolicitud;
+                            
+                            cliente.tiempoEsperadoServicio = cliente.tiempoEsperadoCola+ cliente.tiempoEsperadoEntregaDatos + cliente.tiempoEsperadoProcesoSolicitud;
                         }
                         else if (cliente.idOperacion == 2)
                         {
                             //retiro
-                            cliente.tiempoEsperadoCola = 2.2;
-                            cliente.tiempoEsperadoEntregaDatos = 2.1;
-                            cliente.tiempoEsperadoProcesoSolicitud = 1.3;
-                            cliente.tiempoEsperadoServicio = 5.6;
+                            cliente.tiempoEsperadoCola = getNumeroRandom(120, 260); // 1.2 a 2.60
+                            cliente.tiempoEsperadoCola /= 100;
+                            cliente.tiempoCola = cliente.tiempoEsperadoCola;
+                            
+                            cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(180, 290); //de 1.8 a 2.9
+                            cliente.tiempoEsperadoEntregaDatos /= 100;
+                            cliente.tiempoEntregaDatos = cliente.tiempoEsperadoEntregaDatos;
+                            
+                            cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(200, 340); //de 2 a 3.4
+                            cliente.tiempoEsperadoProcesoSolicitud /= 100;
+                            cliente.tiempoProcesoSolicitud = cliente.tiempoEsperadoProcesoSolicitud;
+                            
+                            cliente.tiempoEsperadoServicio = cliente.tiempoEsperadoCola + cliente.tiempoEsperadoEntregaDatos + cliente.tiempoEsperadoProcesoSolicitud;
                         }
                         else if (cliente.idOperacion == 3)
                         {
                             //cambio moneda
-                            cliente.tiempoEsperadoCola = 1.5;
-                            cliente.tiempoEsperadoEntregaDatos = 1.5;
-                            cliente.tiempoEsperadoProcesoSolicitud = 2.0;
-                            cliente.tiempoEsperadoServicio = 5.0;
+                            cliente.tiempoEsperadoCola = getNumeroRandom(120, 320);  //de 1.2 a 3.20
+                            cliente.tiempoEsperadoCola /= 100;
+                            cliente.tiempoCola = cliente.tiempoEsperadoCola;
+
+                            cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(120, 350); // de 1.2 a 3.5
+                            cliente.tiempoEsperadoEntregaDatos /= 100;
+                            cliente.tiempoEntregaDatos = cliente.tiempoEsperadoEntregaDatos;
+
+                            cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(180, 220); //de  1.8 a 2.2
+                            cliente.tiempoEsperadoProcesoSolicitud /= 100;
+                            cliente.tiempoProcesoSolicitud = cliente.tiempoEsperadoProcesoSolicitud;
+                            
+                            cliente.tiempoEsperadoServicio = cliente.tiempoEsperadoCola + cliente.tiempoEsperadoEntregaDatos + cliente.tiempoEsperadoProcesoSolicitud;
                         }
                         #endregion
                     }
                     else if (cliente.idTemporada == 2)
                     {
-                        //temporada 2
+                        //temporada 2 baja (cliente dura poco tiempo)
                         #region
-                        //if (cliente.idOperacion == 1)
-                        //{
-                        //    //deposito
-                        //    cliente.tiempoEsperadoCola = 2.5;
-                        //    cliente.tiempoEsperadoEntregaDatos = 1.8;
-                        //    cliente.tiempoEsperadoProcesoSolicitud = 1.5;
-                        //    cliente.tiempoEsperadoServicio = 5.8;
-                        //}
-                        //else if (cliente.idOperacion == 2)
-                        //{
-                        //    //retiro
-                        //    cliente.tiempoEsperadoCola = 2.2;
-                        //    cliente.tiempoEsperadoEntregaDatos = 2.1;
-                        //    cliente.tiempoEsperadoProcesoSolicitud = 1.3;
-                        //    cliente.tiempoEsperadoServicio = 5.6;
-                        //}
-                        //else if (cliente.idOperacion == 3)
-                        //{
-                        //    //cambio moneda
-                        //    cliente.tiempoEsperadoCola = 1.5;
-                        //    cliente.tiempoEsperadoEntregaDatos = 1.5;
-                        //    cliente.tiempoEsperadoProcesoSolicitud = 2.0;
-                        //    cliente.tiempoEsperadoServicio = 5.0;
-                        //}
+                        if (cliente.idOperacion == 1)
+                        {
+                            //deposito
+                            cliente.tiempoEsperadoCola = getNumeroRandom(100, 200); // de 1 a 2
+                            cliente.tiempoEsperadoCola /= 100;
+                            cliente.tiempoCola = cliente.tiempoEsperadoCola;
+
+                            cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(100, 150);  // 1 a 1.5
+                            cliente.tiempoEsperadoEntregaDatos /= 100;
+                            cliente.tiempoEntregaDatos = cliente.tiempoEsperadoEntregaDatos;
+
+                            cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(100, 140); // de 1.0 a 1.4
+                            cliente.tiempoEsperadoProcesoSolicitud /= 100;
+                            cliente.tiempoProcesoSolicitud = cliente.tiempoEsperadoProcesoSolicitud;
+
+                            cliente.tiempoEsperadoServicio = cliente.tiempoEsperadoCola + cliente.tiempoEsperadoEntregaDatos + cliente.tiempoEsperadoProcesoSolicitud;
+                        }
+                        else if (cliente.idOperacion == 2)
+                        {
+                            //retiro
+                            cliente.tiempoEsperadoCola = getNumeroRandom(100, 320);  //de 1.0 a 3.2
+                            cliente.tiempoEsperadoCola /= 100;
+                            cliente.tiempoCola = cliente.tiempoEsperadoCola;
+
+                            cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(100, 150); // de 1 a 1.5
+                            cliente.tiempoEsperadoEntregaDatos /= 100;
+                            cliente.tiempoEntregaDatos = cliente.tiempoEsperadoEntregaDatos;
+
+                            cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(100, 130); // de 1.0 a 1.3
+                            cliente.tiempoEsperadoProcesoSolicitud /= 100;
+                            cliente.tiempoProcesoSolicitud = cliente.tiempoEsperadoProcesoSolicitud;
+
+                            cliente.tiempoEsperadoServicio = cliente.tiempoEsperadoCola + cliente.tiempoEsperadoEntregaDatos + cliente.tiempoEsperadoProcesoSolicitud;
+                        }
+                        else if (cliente.idOperacion == 3)
+                        {
+                            //cambio moneda
+                            cliente.tiempoEsperadoCola = getNumeroRandom(100, 220);  // de 1 a 2.2
+                            cliente.tiempoEsperadoCola /= 100;
+                            cliente.tiempoCola = cliente.tiempoEsperadoCola;
+
+                            cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(130, 150); //de 1.3 a 1.5
+                            cliente.tiempoEsperadoEntregaDatos /= 100;
+                            cliente.tiempoEntregaDatos = cliente.tiempoEsperadoEntregaDatos;
+
+                            cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(140, 180); //de 1.4 a 1.8
+                            cliente.tiempoEsperadoProcesoSolicitud /= 100;
+                            cliente.tiempoProcesoSolicitud = cliente.tiempoEsperadoProcesoSolicitud;
+
+                            cliente.tiempoEsperadoServicio = cliente.tiempoEsperadoCola + cliente.tiempoEsperadoEntregaDatos + cliente.tiempoEsperadoProcesoSolicitud;
+                        }
                         #endregion
                     }
                     else if (cliente.idTemporada == 3)
                     {
-                        //temporada 3
+                        //temporada 3 alta (mas dura el cliente)
                         #region
-                        //if (cliente.idOperacion == 1)
-                        //{
-                        //    //deposito
-                        //    cliente.tiempoEsperadoCola = 2.5;
-                        //    cliente.tiempoEsperadoEntregaDatos = 1.8;
-                        //    cliente.tiempoEsperadoProcesoSolicitud = 1.5;
-                        //    cliente.tiempoEsperadoServicio = 5.8;
-                        //}
-                        //else if (cliente.idOperacion == 2)
-                        //{
-                        //    //retiro
-                        //    cliente.tiempoEsperadoCola = 2.2;
-                        //    cliente.tiempoEsperadoEntregaDatos = 2.1;
-                        //    cliente.tiempoEsperadoProcesoSolicitud = 1.3;
-                        //    cliente.tiempoEsperadoServicio = 5.6;
-                        //}
-                        //else if (cliente.idOperacion == 3)
-                        //{
-                        //    //cambio moneda
-                        //    cliente.tiempoEsperadoCola = 1.5;
-                        //    cliente.tiempoEsperadoEntregaDatos = 1.5;
-                        //    cliente.tiempoEsperadoProcesoSolicitud = 2.0;
-                        //    cliente.tiempoEsperadoServicio = 5.0;
-                        //}
+                        if (cliente.idOperacion == 1)
+                        {
+                            //deposito
+                            cliente.tiempoEsperadoCola = getNumeroRandom(100, 450); // de 1.0 a 4.5
+                            cliente.tiempoEsperadoCola /= 100;
+                            cliente.tiempoCola = cliente.tiempoEsperadoCola;
+
+                            cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(100, 180); // 1 a 1.8
+                            cliente.tiempoEsperadoEntregaDatos /= 100;
+                            cliente.tiempoEntregaDatos = cliente.tiempoEsperadoEntregaDatos;
+
+                            cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(100, 280); // de 1.0 a 2.8
+                            cliente.tiempoEsperadoProcesoSolicitud /= 100;
+                            cliente.tiempoProcesoSolicitud = cliente.tiempoEsperadoProcesoSolicitud;
+
+                            cliente.tiempoEsperadoServicio = cliente.tiempoEsperadoCola + cliente.tiempoEsperadoEntregaDatos + cliente.tiempoEsperadoProcesoSolicitud;
+                        }
+                        else if (cliente.idOperacion == 2)
+                        {
+                            //retiro
+                            cliente.tiempoEsperadoCola = getNumeroRandom(200, 350); // de 2.0 a 3.5
+                            cliente.tiempoEsperadoCola /= 100;
+                            cliente.tiempoCola = cliente.tiempoEsperadoCola;
+
+                            cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(170, 220); // de 1.7 a 2.2
+                            cliente.tiempoEsperadoEntregaDatos /= 100;
+                            cliente.tiempoEntregaDatos = cliente.tiempoEsperadoEntregaDatos;
+
+                            cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(100, 170); //de 1.0 a 1.7
+                            cliente.tiempoEsperadoProcesoSolicitud /= 100;
+                            cliente.tiempoProcesoSolicitud = cliente.tiempoEsperadoProcesoSolicitud;
+
+                            cliente.tiempoEsperadoServicio = cliente.tiempoEsperadoCola + cliente.tiempoEsperadoEntregaDatos + cliente.tiempoEsperadoProcesoSolicitud;
+                        }
+                        else if (cliente.idOperacion == 3)
+                        {
+                            //cambio moneda
+                            cliente.tiempoEsperadoCola = getNumeroRandom(100, 250);  // de 1 a 2.5
+                            cliente.tiempoEsperadoCola /= 100;
+                            cliente.tiempoCola = cliente.tiempoEsperadoCola;
+
+                            cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(100, 150); // de 1 a 1.5
+                            cliente.tiempoEsperadoEntregaDatos /= 100;
+                            cliente.tiempoEntregaDatos = cliente.tiempoEsperadoEntregaDatos;
+
+                            cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(140, 200); // de  1.4 a 2.0
+                            cliente.tiempoEsperadoProcesoSolicitud /= 100;
+                            cliente.tiempoProcesoSolicitud = cliente.tiempoEsperadoProcesoSolicitud;
+
+                            cliente.tiempoEsperadoServicio = cliente.tiempoEsperadoCola + cliente.tiempoEsperadoEntregaDatos + cliente.tiempoEsperadoProcesoSolicitud;
+                        }
+                      
                         #endregion
                     }
                     #endregion
+
+                    //simulando problemas
+                    #region
+                    //recorriendo las fases
+                    foreach (var faseActual in listaFases)
+                    {
+                        #region
+                        //recorriendo las operaciones
+                        foreach (var operacionActual in listaOperaciones)
+                        {
+                            foreach (var problemaActual in listaProblemaDeposito)
+                            {
+                                if (problemaActual.idFase == faseActual.id && cliente.idOperacion==operacionActual.id && cliente.abandono == false)
+                                {
+                                    //el problema actual pertenece a la fase actual
+                                    if (getNumeroRandom(1, 100) <= problemaActual.intervalo_final &&
+                                        cliente.abandono == false)
+                                    {
+                                        //encontro problema en la operacion actual de la fase actual
+
+                                        //agregandolo al cliente
+                                        cliente.listaProblema.Add(problemaActual);
+                                        //agregandolo al log
+                                        problemasLogs = new problemasLogs();
+                                        problemasLogs.problema_encontrado = true;
+                                        problemasLogs.cantidad_intentos = 0;
+                                        problemasLogs.fase = faseActual.nombre;
+                                        problemasLogs.nombreProblema = problemaActual.nombre;
+                                        problemasLogs.idcliente = cliente.id;
+                                        problemasLogs.operacion = operacionActual.nombre;
+                                        problemasLogs.tiempo_antes = cliente.tiempoTotalServicio;
+
+                                        //saber si el cliente abandona o se queda
+                                        if (getNumeroRandom(1, 2) == 1)
+                                        {
+                                            problemasLogs.respuesta = "cliente espera solucion problema";
+                                            //cliente espera lo intenta de nuevo
+                                            problemasLogs.cantidad_intentos += 1;
+                                            //aumenta el tiempo porque el cliente espero que se resuelva el problema
+                                            cliente.tiempoTotalServicio += getNumeroRandom(problemaActual.tiempoInicial, problemaActual.tiempoFinal);
+                                            problemasLogs.tiempo_despues = cliente.tiempoTotalServicio;
+
+                                        }
+                                        else
+                                        {
+                                            //cliente no espera, se va
+                                            cliente.abandono = true;
+                                            //como se fue no aumenta el tiempo
+                                            problemasLogs.tiempo_despues = cliente.tiempoTotalServicio;
+                                            problemasLogs.respuesta = "cliente no espera";
+                                        }
+                                        listaProblemaLogs.Add(problemasLogs);
+                                    }
+                                }
+                            }
+                        }
+                        #endregion
+
+                    }
+
+
+
+
+
+
+                    #endregion
+                   
+
+
+
+
+
 
 
 
@@ -525,7 +730,6 @@ namespace SimulacionCajeroBancoV2
                     listaCliente.Add(cliente);
                     //loadListaCliente();
                 }
-            
             
             loadListaCliente();
             
@@ -536,11 +740,13 @@ namespace SimulacionCajeroBancoV2
             }
         }
 
+        //boton getAction
         private void button1_Click(object sender, EventArgs e)
         {
             getAction();
         }
 
+        //carga la lista de cliente en el dataGridView
         public void loadListaCliente()
         {
             try
@@ -550,13 +756,27 @@ namespace SimulacionCajeroBancoV2
                     MessageBox.Show("Error lista cliente esta nula, debe generar la corrida","", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+               
 
                 dataGridView1.Rows.Clear();
                 dataGridView2.Rows.Clear();
-
+                //llenando corrida de los clientes
                 foreach (var x in  listaCliente)
                 {
-                    dataGridView1.Rows.Add(x.id,x.operacion,x.tanda,x.tiempoEsperadoServicio,x.montoTransaccion.ToString("N"),x.tiempoTotalServicio,"",x.idCajero);
+                    if (x.idOperacion == null || x.operacion == "")
+                    {
+                        MessageBox.Show("cliente no tiene operacion-->" + x.id);
+                    }
+                    cliente.tiempoTotalServicio = cliente.tiempoCola + cliente.tiempoEntregaDatos + cliente.tiempoProcesoSolicitud;
+                    dataGridView1.Rows.Add(x.id,x.operacion+"-"+x.tipoOperacion,x.tanda,x.tiempoEsperadoServicio,x.montoTransaccion.ToString("N"),x.listaProblema.Count.ToString("N"),x.tiempoTotalServicio,x.abandono,x.idCajero);
+                }
+
+
+                //llenando los problemas log de todos los clientes
+                listaProblemaLogs = listaProblemaLogs.FindAll(x => x.problema_encontrado == true);
+                foreach (var x in listaProblemaLogs)
+                {
+                    dataGridView2.Rows.Add(x.idcliente, x.operacion,x.fase,x.tiempo_antes,x.tiempo_despues,x.nombreProblema,x.respuesta);
                 }
 
                 MessageBox.Show("Finalizó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -568,14 +788,483 @@ namespace SimulacionCajeroBancoV2
             }
         }
 
+        //geera un numero random entre un rango de numero inicial y numero final
         public int getNumeroRandom(int inicio, int final)
         {
-            //Thread.Sleep(1);
-            random=new Random();
-            randomEntero = 0;
-            randomEntero = random.Next(inicio, final) + 1;
-            return randomEntero;
+            random = new Random();
+            Thread.Sleep(5);
+            return random.Next(inicio, final +1);
         }
 
+        //get lista de problemas dependiendo del tipo de operacion
+        public void getListasProblema(int id)
+        {
+            try
+            {
+                //para asignar los intervalos de los problemas dependiendo de la temporada del cliente
+                listaProblemaSistema = new List<problema>();
+                listaProblemaDeposito = new List<problema>();
+                listaProblemaRetiro = new List<problema>();
+                listaProblemaCambio = new List<problema>();
+                
+                //0-cualquier fase
+                //1-cola espera
+                //2-entrega datos
+                //3-proceso solicitud
+
+                //temporada ==1
+                if (id == 1)
+                {
+                    //problemas generales del sistema
+                    #region
+                    //falla sistema 3%
+                    problema = new problema();
+                    problema.id = 6;
+                    problema.nombre = "falla sistema";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 10;
+                    problema.idFase = 0;
+                    problema.tiempoInicial = 4;
+                    problema.tiempoFinal = 10;
+                    listaProblemaSistema.Add(problema);
+                    //falla electricidad 5%
+                    problema = new problema();
+                    problema.id = 7;
+                    problema.nombre = "falla electricidad";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 15;
+                    problema.idFase = 0;
+                    problema.tiempoInicial = 2;
+                    problema.tiempoFinal = 7;
+                    listaProblemaSistema.Add(problema);
+                    //falla computadora o equipo 10%
+                    problema = new problema();
+                    problema.id = 8;
+                    problema.nombre = "falla computadora";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 13;
+                    problema.idFase = 0;
+                    problema.tiempoInicial = 1;
+                    problema.tiempoFinal = 5;
+                    listaProblemaSistema.Add(problema);
+                    #endregion
+
+                    //problemas deposito
+                    #region
+
+                    //fase cola espera
+                    //falla sistema
+                    problema = new problema();
+                    problema.id = 1;
+                    problema.nombre = "falla sistema";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 15;
+                    problema.idFase = 1;
+                    problema.tiempoInicial = 1;
+                    problema.tiempoFinal = 15;
+                    listaProblemaDeposito.Add(problema);
+                    //falla energia electrica
+                    problema = new problema();
+                    problema.id = 1;
+                    problema.nombre = "falla energia electrica";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 10;
+                    problema.idFase = 1;
+                    problema.tiempoInicial = 1;
+                    problema.tiempoFinal = 13;
+                    listaProblemaDeposito.Add(problema);
+                    //falla sistema
+                    problema = new problema();
+                    problema.id = 1;
+                    problema.nombre = "problema la computadora";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 13;
+                    problema.idFase = 1;
+                    problema.tiempoInicial = 1;
+                    problema.tiempoFinal = 10;
+                    listaProblemaDeposito.Add(problema);
+
+
+                    //fase entrega datos
+                    //falta numero cuenta
+                    problema = new problema();
+                    problema.id = 1;
+                    problema.nombre = "falta numero cuenta";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 13;
+                    problema.idFase = 2;
+                    problema.tiempoInicial = 2;
+                    problema.tiempoFinal = 5;
+                    listaProblemaDeposito.Add(problema);
+                    //numero cuenta incorrecto
+                    problema = new problema();
+                    problema.id = 2;
+                    problema.nombre = "numero cuenta incorrecto";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 25;
+                    problema.idFase = 2;
+                    problema.tiempoInicial = 2;
+                    problema.tiempoFinal = 4;
+                    listaProblemaDeposito.Add(problema);
+                    //monto incompleto
+                    problema = new problema();
+                    problema.id = 3;
+                    problema.nombre = "monto incompleto";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 27;
+                    problema.idFase = 2;
+                    problema.tiempoInicial = 2;
+                    problema.tiempoFinal = 7;
+                    listaProblemaDeposito.Add(problema);
+                    //dinero en mal estado
+                    problema = new problema();
+                    problema.id = 4;
+                    problema.nombre = "dinero mal estado";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 22;
+                    problema.idFase = 2;
+                    problema.tiempoInicial = 1;
+                    problema.tiempoFinal = 6;
+                    listaProblemaDeposito.Add(problema);
+                    //cheque mal ensosado
+                    problema = new problema();
+                    problema.id = 5;
+                    problema.nombre = "cheque mal endosado";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 17;
+                    problema.idFase = 2;
+                    problema.tiempoInicial = 1;
+                    problema.tiempoFinal = 5;
+                    listaProblemaDeposito.Add(problema);
+
+
+                    //fase proceso solicitud
+                    //saldo cuenta cliente es isuficiente
+                    problema = new problema();
+                    problema.id = 6;
+                    problema.nombre = "saldo cuenta cliente insuficiente";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 13;
+                    problema.idFase = 3;
+                    problema.tiempoInicial = 1;
+                    problema.tiempoFinal = 5;
+                    listaProblemaDeposito.Add(problema);
+                    #endregion
+
+                    //problemas retiro
+                    #region
+
+                    //fase cola espera
+                    //falla sistema
+                    problema = new problema();
+                    problema.id = 1;
+                    problema.nombre = "falla sistema";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 13;
+                    problema.idFase = 1;
+                    problema.tiempoInicial = 1;
+                    problema.tiempoFinal = 15;
+                    listaProblemaDeposito.Add(problema);
+                    //falla energia electrica
+                    problema = new problema();
+                    problema.id = 1;
+                    problema.nombre = "falla energia electrica";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 17;
+                    problema.idFase = 1;
+                    problema.tiempoInicial = 1;
+                    problema.tiempoFinal = 13;
+                    listaProblemaDeposito.Add(problema);
+                    //falla sistema
+                    problema = new problema();
+                    problema.id = 1;
+                    problema.nombre = "problema la computadora";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 15;
+                    problema.idFase = 1;
+                    problema.tiempoInicial = 1;
+                    problema.tiempoFinal = 10;
+                    listaProblemaDeposito.Add(problema);
+
+                    //fase entrega datos
+                    //falta cedula
+                    problema = new problema();
+                    problema.id = 1;
+                    problema.nombre = "falta cedula";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 21;
+                    problema.idFase = 2;
+                    problema.tiempoInicial = 1;
+                    problema.tiempoFinal = 5;
+                    listaProblemaRetiro.Add(problema);
+                    //cedula muy mal estado
+                    problema = new problema();
+                    problema.id = 2;
+                    problema.nombre = "cedula muy mal estado";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 15;
+                    problema.idFase = 2;
+                    problema.tiempoInicial = 2;
+                    problema.tiempoFinal = 4;
+                    listaProblemaRetiro.Add(problema);
+                    //numero de cuenta se olvido
+                    problema = new problema();
+                    problema.id = 3;
+                    problema.nombre = "numero cuenta olvido";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 18;
+                    problema.idFase = 2;
+                    problema.tiempoInicial = 3;
+                    problema.tiempoFinal = 4;
+                    listaProblemaRetiro.Add(problema);
+                    //numero cuenta incorrecto
+                    problema = new problema();
+                    problema.id = 4;
+                    problema.nombre = "numero cuenta incorrecto";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 30;
+                    problema.idFase = 2;
+                    problema.tiempoInicial = 2;
+                    problema.tiempoFinal = 6;
+                    listaProblemaRetiro.Add(problema);
+                    //monto a retirar excede el limite disponible 
+                    problema = new problema();
+                    problema.id = 5;
+                    problema.nombre = "monto excede limite disponible";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 16;
+                    problema.idFase = 2;
+                    problema.tiempoInicial = 1;
+                    problema.tiempoFinal = 4;
+                    listaProblemaRetiro.Add(problema);
+                    #endregion
+
+                    //problemas cambio moneda
+                    #region
+
+                    //fase cola espera
+                    //falla sistema
+                    problema = new problema();
+                    problema.id = 1;
+                    problema.nombre = "falla sistema";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 18;
+                    problema.idFase = 1;
+                    problema.tiempoInicial = 1;
+                    problema.tiempoFinal = 15;
+                    listaProblemaDeposito.Add(problema);
+                    //falla energia electrica
+                    problema = new problema();
+                    problema.id = 1;
+                    problema.nombre = "falla energia electrica";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 13;
+                    problema.idFase = 1;
+                    problema.tiempoInicial = 1;
+                    problema.tiempoFinal = 13;
+                    listaProblemaDeposito.Add(problema);
+                    //falla sistema
+                    problema = new problema();
+                    problema.id = 1;
+                    problema.nombre = "problema la computadora";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 20;
+                    problema.idFase = 1;
+                    problema.tiempoInicial = 1;
+                    problema.tiempoFinal = 10;
+                    listaProblemaDeposito.Add(problema);
+
+                    //fase entrega datos
+                    //monto que llevo el cliente no era el correcto (el cliente queria $100 y solo llevo $50)-13%
+                    problema = new problema();
+                    problema.id = 1;
+                    problema.nombre = "monto incompleto del cliente";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 13;
+                    problema.idFase = 2;
+                    problema.tiempoInicial = 1;
+                    problema.tiempoFinal = 7;
+                    listaProblemaCambio.Add(problema);
+                    //el dinero del cliente esta en muy mal estado.-35%
+                    problema = new problema();
+                    problema.id = 1;
+                    problema.nombre = "dinero mal estado";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 35;
+                    problema.idFase = 2;
+                    problema.tiempoInicial = 1;
+                    problema.tiempoFinal = 4;
+                    listaProblemaCambio.Add(problema);
+                    //el banco no tiene dollar.-3%
+                    problema = new problema();
+                    problema.id = 1;
+                    problema.nombre = "banco no tiene billete suficiente";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 3;
+                    problema.idFase = 2;
+                    problema.tiempoInicial = 1;
+                    problema.tiempoFinal = 7;
+                    listaProblemaCambio.Add(problema);
+                    //-el cajero dio dinero de menos-13%*/
+                    problema = new problema();
+                    problema.id = 1;
+                    problema.nombre = "cajero dio monto menor";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 13;
+                    problema.idFase = 2;
+                    problema.tiempoInicial = 1;
+                    problema.tiempoFinal = 6;
+                    listaProblemaCambio.Add(problema);
+                    #endregion
+
+                }
+                else if (id == 2)
+                {
+                    //problemas generales del sistema
+                    #region
+                    
+                    #endregion
+
+                    //problemas deposito
+                    #region
+                   
+                    #endregion
+
+                    //problemas retiro
+                    #region
+                    #endregion
+
+                    //problemas cambio moneda
+                    #region
+                    #endregion
+
+                }
+                else if (id == 3)
+                {
+
+                    //problemas generales del sistema
+                    #region
+                   
+                    #endregion
+
+                    //problemas deposito
+                    #region
+                    #endregion
+
+                    //problemas retiro
+                    #region
+                    #endregion
+
+                    //problemas cambio moneda
+                    #region
+                    #endregion
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaProblema.: " + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+            
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        //get lista fases por operacion
+        public void getListaFases()
+        {
+            try
+            {
+                //lista de fases
+                #region
+                listaFases = new List<fases>();
+                //cola de espera
+                fase = new fases();
+                fase.id = 1;
+                fase.nombre = "cola espera";
+                listaFases.Add(fase);
+
+                //entrega de datos
+                fase = new fases();
+                fase.id = 2;
+                fase.nombre = "entrega datos";
+                listaFases.Add(fase);
+                
+                //proceso de solicitud
+                fase = new fases();
+                fase.id = 3;
+                fase.nombre = "proceso solicitud";
+                listaFases.Add(fase);
+                #endregion
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getFases.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //get lista operaciones
+        public void getListaOperaciones()
+        {
+            try
+            {
+                //lista de operaciones
+                #region
+                listaOperaciones = new List<operacion>();
+                //deposito
+                operacion = new operacion();
+                operacion.id = 1;
+                operacion.nombre = "deposito";
+                listaOperaciones.Add(operacion);
+
+                //retiro
+                operacion = new operacion();
+                operacion.id = 2;
+                operacion.nombre = "retiro";
+                listaOperaciones.Add(operacion);
+                
+                //cambio moneda
+                operacion = new operacion();
+                operacion.id = 3;
+                operacion.nombre = "cambio moneda";
+                listaOperaciones.Add(operacion);
+                
+                #endregion
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaOperaciones.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                Int64 idCliente = Convert.ToInt64(dataGridView1.CurrentRow.Cells[0].Value);
+                //MessageBox.Show(idCliente.ToString());
+                visor_problemas ventana = new visor_problemas(idCliente, listaProblemaLogs);
+                ventana.Owner = this;
+                ventana.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error doble click.: " + ex.ToString());
+            }
+        }
     }
 }

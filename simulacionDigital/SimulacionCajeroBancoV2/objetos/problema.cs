@@ -12,5 +12,8 @@ namespace SimulacionCajeroBancoV2.objetos
         public string nombre { get; set; }
         public double intervalo_inicial { get; set; }
         public double intervalo_final { get; set; }
+        public int idFase { get; set; }
+        public int tiempoInicial { get; set; }
+        public int tiempoFinal { get; set; }
     }
 }

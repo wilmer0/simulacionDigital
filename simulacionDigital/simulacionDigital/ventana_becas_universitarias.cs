@@ -697,13 +697,13 @@ namespace simulacionDigital.problemas
                         cont++;
 
                     });
-                    
-                    ReportDataSource reporteF = new ReportDataSource("estudiante", ListaReporteEstudiante);
+
+                    Microsoft.Reporting.WinForms.ReportDataSource reporteF = new Microsoft.Reporting.WinForms.ReportDataSource("estudiante", ListaReporteEstudiante);
                     listaReportDataSource.Add(reporteF);
 
-                    List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
+                    List<Microsoft.Reporting.WinForms.ReportParameter> ListaReportParameter = new List<Microsoft.Reporting.WinForms.ReportParameter>();
 
-                    VisorReporteComun ventana=new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter, true, false, false);
+                    VisorReporteComun ventana=new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter);
                     ventana.ShowDialog();
                
             }

@@ -17,6 +17,11 @@ namespace _7ADMFIC_1._0.VentanasComunes
 
     public partial class VisorReporteComun : Form
     {
+        private string reporte;
+        private List<Microsoft.Reporting.WebForms.ReportDataSource> listaReportDataSource;
+        private List<Microsoft.Reporting.WebForms.ReportParameter> ListaReportParameter;
+        private bool p;
+
 
 
         //primters PrinterDefaul;
@@ -33,10 +38,9 @@ namespace _7ADMFIC_1._0.VentanasComunes
         //    lista.Add(usuarioDataSource);
         //    GetLoad(reporte, lista,null);
         //}
-        public VisorReporteComun(String reporte, List<ReportDataSource> lista, List<ReportParameter> ListaReportParameter, Boolean ExportarExel = false)
+        public VisorReporteComun(String reporte, List<ReportDataSource> lista, List<ReportParameter> ListaReportParameter)
         {
             InitializeComponent();
-            ExportarExel = ExportarExel;
             //List<empresa> listaempresa = new List<empresa>();
             //if (IncluirEmpresa)
             //{
@@ -63,6 +67,8 @@ namespace _7ADMFIC_1._0.VentanasComunes
             //}
             GetLoad(reporte, lista, ListaReportParameter);
         }
+
+        
         private void GetLoad(String reporte, List<ReportDataSource> lista, List<ReportParameter> ListaReportParameter)
         {
             Reporte.LocalReport.ReportEmbeddedResource = reporte;
