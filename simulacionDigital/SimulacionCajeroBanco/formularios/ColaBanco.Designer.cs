@@ -73,6 +73,7 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.faseColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiempoColum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiempo2Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProblemaColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -493,6 +494,7 @@
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
+            this.faseColumn,
             this.tiempoColum,
             this.tiempo2Column,
             this.ProblemaColumn,
@@ -527,6 +529,12 @@
             this.dataGridViewTextBoxColumn2.HeaderText = "Operacion";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // faseColumn
+            // 
+            this.faseColumn.HeaderText = "Fase";
+            this.faseColumn.Name = "faseColumn";
+            this.faseColumn.ReadOnly = true;
             // 
             // tiempoColum
             // 
@@ -613,6 +621,7 @@
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn faseColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiempoColum;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiempo2Column;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProblemaColumn;
