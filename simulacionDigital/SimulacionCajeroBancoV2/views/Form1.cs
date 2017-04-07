@@ -55,7 +55,8 @@ namespace SimulacionCajeroBancoV2
         private List<fases> listaFasesDeposito;
         private List<fases> listaFasesRetiro;
         private List<fases> listaFasesCambioMoneda;
-        private List<problema> listaProblemaSistema; 
+        private List<problema> listaProblemaSistema;
+        private List<problema> listaProblemas; 
 
         //variables
         public temporada temporadaSeleccionada;
@@ -309,7 +310,7 @@ namespace SimulacionCajeroBancoV2
                     return;
                 }
                 //get lista de problemas intervalos en base a la temporada
-                getListasProblema(temporadaSeleccionada.id);
+                getListasProblema();
 
 
                 //asignando los tiempos promedios esperado y finales bases cada fase de cada operacion en base a la temporada seleccionada
@@ -393,7 +394,7 @@ namespace SimulacionCajeroBancoV2
                 //instanciando la lista de los problemas log para el reporte
                 listaProblemaLogs = new List<problemasLogs>();
                 problemasLogs = new problemasLogs();
-
+                double tiempoTotal = 0;
                 for (int f = 1; f <= cantidadClientes; f++)
                 {
                     //llenando los primeros datos de cliente actual
@@ -555,7 +556,58 @@ namespace SimulacionCajeroBancoV2
                     
                     //simulando problemas
                     #region
-                    
+
+                    tiempoTotal = 0;
+                    foreach (var operacionActual in listaOperaciones.Where(x => x.id == cliente.idOperacion))
+                    {
+                       
+                        //operacion que selecciono el cliente
+                        foreach (var faseActual in listaFases)
+                        {
+                            
+                            //las fases de la operacion actual
+                            foreach (var problemaActual in listaProblemas.Where(p=> p.idFase==faseActual.id))
+                            {
+                                
+                                //los problemas de la fase y operacion actual
+                                if (getNumeroRandom(1, 100) <= problemaActual.intervalo_final && problemaActual.idFase==faseActual.id && problemaActual.idOperacion==operacionActual.id && cliente.abandono==false)
+                                {
+                                    //hay problema
+                                    cliente.listaProblema.Add(problemaActual);
+                                    problemasLogs =new problemasLogs();
+                                    problemasLogs.problema_encontrado = true;
+                                    problemasLogs.idcliente = cliente.id;
+                                    problemasLogs.operacion = operacionActual.nombre;
+                                    problemasLogs.fase = faseActual.nombre;
+                                    problemasLogs.nombreProblema = problemaActual.nombre;
+                                    problemasLogs.idCajero = cliente.idCajero;
+
+                                    //saber el tiempo antes del problema que era el esperado en que termine dicha fase
+                                    if (tiempoTotal == 0)
+                                    {
+                                        problemasLogs.tiempo_antes = (faseActual.id == 1)? operacionActual.tiempoEsperadoCola: operacionActual.tiempoEsperadoEntregaDatos;
+                                        problemasLogs.tiempo_antes = (faseActual.id == 2)? operacionActual.tiempoEsperadoEntregaDatos: operacionActual.tiempoEsperadoProcesoSolicitud;
+                                    }
+                                    else
+                                    {
+                                        problemasLogs.tiempo_antes += tiempoTotal;
+                                    }
+                                    tiempoTotal += problemasLogs.tiempo_antes;
+                                    
+                                    problemasLogs.tiempo_problema =(getNumeroRandom(problemaActual.tiempoInicial, problemaActual.tiempoFinal));
+                                    problemasLogs.tiempo_problema /= 100;
+                                    problemasLogs.tiempo_despues = tiempoTotal + problemasLogs.tiempo_problema;
+                                    problemasLogs.tiempo_despues = Math.Round(problemasLogs.tiempo_despues, 2);
+                                    tiempoTotal = problemasLogs.tiempo_despues;
+
+                                    listaProblemaLogs.Add(problemasLogs);
+
+                                }
+                            }
+
+                        }
+
+                    }
                     #endregion
                    
 
@@ -637,7 +689,7 @@ namespace SimulacionCajeroBancoV2
         }
 
         //get lista de problemas dependiendo del tipo de operacion
-        public void getListasProblema(int id)
+        public void getListasProblema()
         {
             try
             {
@@ -646,6 +698,7 @@ namespace SimulacionCajeroBancoV2
                 listaProblemaDeposito = new List<problema>();
                 listaProblemaRetiro = new List<problema>();
                 listaProblemaCambio = new List<problema>();
+                listaProblemas=new List<problema>();
                 
                 //0-cualquier fase
                 //1-cola espera
@@ -653,312 +706,133 @@ namespace SimulacionCajeroBancoV2
                 //3-proceso solicitud
 
                 //temporada ==1
-                if (id == 1)
+                if (temporadaSeleccionada.id == 1)
                 {
-                    //problemas generales del sistema
-                    #region
-                    //falla sistema 3%
-                    problema = new problema();
-                    problema.id = 6;
-                    problema.nombre = "falla sistema";
-                    problema.intervalo_inicial = 0;
-                    problema.intervalo_final = 10;
-                    problema.idFase = 0;
-                    problema.tiempoInicial = 4;
-                    problema.tiempoFinal = 10;
-                    listaProblemaSistema.Add(problema);
-                    //falla electricidad 5%
-                    problema = new problema();
-                    problema.id = 7;
-                    problema.nombre = "falla electricidad";
-                    problema.intervalo_inicial = 0;
-                    problema.intervalo_final = 15;
-                    problema.idFase = 0;
-                    problema.tiempoInicial = 2;
-                    problema.tiempoFinal = 7;
-                    listaProblemaSistema.Add(problema);
-                    //falla computadora o equipo 10%
-                    problema = new problema();
-                    problema.id = 8;
-                    problema.nombre = "falla computadora";
-                    problema.intervalo_inicial = 0;
-                    problema.intervalo_final = 13;
-                    problema.idFase = 0;
-                    problema.tiempoInicial = 1;
-                    problema.tiempoFinal = 5;
-                    listaProblemaSistema.Add(problema);
-                    #endregion
-
-                    //problemas deposito
+                    //deposito
                     #region
 
                     //fase cola espera
-                    //falla sistema
+                    #region
+                    //falla computadora 13% tiempo de 3-10 minutos
                     problema = new problema();
                     problema.id = 1;
-                    problema.nombre = "falla sistema";
-                    problema.intervalo_inicial = 0;
-                    problema.intervalo_final = 15;
-                    problema.idFase = 1;
-                    problema.tiempoInicial = 100;
-                    problema.tiempoFinal = 1500;
-                    listaProblemaDeposito.Add(problema);
-                    //falla energia electrica
-                    problema = new problema();
-                    problema.id = 1;
-                    problema.nombre = "falla energia electrica";
-                    problema.intervalo_inicial = 0;
-                    problema.intervalo_final = 10;
-                    problema.idFase = 1;
-                    problema.tiempoInicial = 100;
-                    problema.tiempoFinal = 1300;
-                    listaProblemaDeposito.Add(problema);
-                    //falla sistema
-                    problema = new problema();
-                    problema.id = 1;
-                    problema.nombre = "problema la computadora";
+                    problema.nombre = "falla computadora";
                     problema.intervalo_inicial = 0;
                     problema.intervalo_final = 13;
                     problema.idFase = 1;
-                    problema.tiempoInicial = 100;
-                    problema.tiempoFinal = 900;
-                    listaProblemaDeposito.Add(problema);
-
-
-                    //fase entrega datos
-                    //falta numero cuenta
+                    problema.idOperacion = 1;
+                    problema.tiempoInicial = 300;
+                    problema.tiempoFinal = 1000;
+                    listaProblemas.Add(problema);
+                    //falla sistema 12% tiempo de 5-30 minutos
                     problema = new problema();
-                    problema.id = 1;
+                    problema.id = 2;
+                    problema.nombre = "falla sistema";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 12;
+                    problema.idFase = 1;
+                    problema.idOperacion = 1;
+                    problema.tiempoInicial = 500;
+                    problema.tiempoFinal = 3000;
+                    listaProblemas.Add(problema);
+                    //falla energia electrica 15% tiempo de 3-8 minutos
+                    problema = new problema();
+                    problema.id = 3;
+                    problema.nombre = "falla energia electrica";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 15;
+                    problema.idFase = 1;
+                    problema.idOperacion = 1;
+                    problema.tiempoInicial = 300;
+                    problema.tiempoFinal = 800;
+                    listaProblemas.Add(problema);
+                    #endregion
+                    
+                    //entrega datos
+                    #region
+                    //-falto numero cuenta-13% tiempo de 1-4 minutos
+                    problema = new problema();
+                    problema.id = 4;
                     problema.nombre = "falta numero cuenta";
                     problema.intervalo_inicial = 0;
                     problema.intervalo_final = 13;
                     problema.idFase = 2;
-                    problema.tiempoInicial = 200;
-                    problema.tiempoFinal = 500;
-                    listaProblemaDeposito.Add(problema);
-                    //numero cuenta incorrecto
+                    problema.idOperacion = 1;
+                    problema.tiempoInicial = 100;
+                    problema.tiempoFinal = 400;
+                    listaProblemas.Add(problema);
+                    //-numero cuenta incorrecto -25% tiempo de 3-5 minutos
                     problema = new problema();
-                    problema.id = 2;
+                    problema.id = 5;
                     problema.nombre = "numero cuenta incorrecto";
                     problema.intervalo_inicial = 0;
                     problema.intervalo_final = 25;
                     problema.idFase = 2;
-                    problema.tiempoInicial = 200;
-                    problema.tiempoFinal = 400;
-                    listaProblemaDeposito.Add(problema);
-                    //monto incompleto
+                    problema.idOperacion = 1;
+                    problema.tiempoInicial = 300;
+                    problema.tiempoFinal = 500;
+                    listaProblemas.Add(problema);
+                    //-dinero en efectivo en mal estado -22% tiempo de 1-3 minutos
                     problema = new problema();
-                    problema.id = 3;
-                    problema.nombre = "monto incompleto";
-                    problema.intervalo_inicial = 0;
-                    problema.intervalo_final = 27;
-                    problema.idFase = 2;
-                    problema.tiempoInicial = 200;
-                    problema.tiempoFinal = 700;
-                    listaProblemaDeposito.Add(problema);
-                    //dinero en mal estado
-                    problema = new problema();
-                    problema.id = 4;
+                    problema.id = 6;
                     problema.nombre = "dinero mal estado";
                     problema.intervalo_inicial = 0;
                     problema.intervalo_final = 22;
                     problema.idFase = 2;
+                    problema.idOperacion = 1;
                     problema.tiempoInicial = 100;
-                    problema.tiempoFinal = 600;
-                    listaProblemaDeposito.Add(problema);
-                    //cheque mal ensosado
-                    problema = new problema();
-                    problema.id = 5;
-                    problema.nombre = "cheque mal endosado";
-                    problema.intervalo_inicial = 0;
-                    problema.intervalo_final = 17;
-                    problema.idFase = 2;
-                    problema.tiempoInicial = 100;
-                    problema.tiempoFinal = 500;
-                    listaProblemaDeposito.Add(problema);
+                    problema.tiempoFinal = 300;
+                    listaProblemas.Add(problema);
+                    #endregion
 
-
-                    //fase proceso solicitud
-                    //saldo cuenta cliente es isuficiente
+                    //proceso solicitud
+                    #region
+                    //-falla sistema -15% tiempo de 1-15 minutos
                     problema = new problema();
-                    problema.id = 6;
-                    problema.nombre = "saldo cuenta cliente insuficiente";
+                    problema.id = 7;
+                    problema.nombre = "falla sistema";
                     problema.intervalo_inicial = 0;
-                    problema.intervalo_final = 13;
+                    problema.intervalo_final = 15;
                     problema.idFase = 3;
+                    problema.idOperacion = 1;
                     problema.tiempoInicial = 100;
-                    problema.tiempoFinal = 500;
-                    listaProblemaDeposito.Add(problema);
-                    #endregion
-
-                    //problemas retiro
-                    #region
-
-                    //fase cola espera
-                    //falla sistema
+                    problema.tiempoFinal = 1500;
+                    listaProblemas.Add(problema);
+                    //-dinero en efectivo en mal estado -22% tiempo de 1-15 minutos
                     problema = new problema();
-                    problema.id = 1;
-                    problema.nombre = "falla sistema";
-                    problema.intervalo_inicial = 0;
-                    problema.intervalo_final = 13;
-                    problema.idFase = 1;
-                    problema.tiempoInicial = 100;
-                    problema.tiempoFinal = 800;
-                    listaProblemaDeposito.Add(problema);
-                    //falla energia electrica
-                    problema = new problema();
-                    problema.id = 1;
-                    problema.nombre = "falla energia electrica";
-                    problema.intervalo_inicial = 0;
-                    problema.intervalo_final = 17;
-                    problema.idFase = 1;
-                    problema.tiempoInicial = 100;
-                    problema.tiempoFinal = 1300;
-                    listaProblemaDeposito.Add(problema);
-                    //falla sistema
-                    problema = new problema();
-                    problema.id = 1;
-                    problema.nombre = "problema la computadora";
-                    problema.intervalo_inicial = 0;
-                    problema.intervalo_final = 15;
-                    problema.idFase = 1;
-                    problema.tiempoInicial = 100;
-                    problema.tiempoFinal = 1000;
-                    listaProblemaDeposito.Add(problema);
-
-                    //fase entrega datos
-                    //falta cedula
-                    problema = new problema();
-                    problema.id = 1;
-                    problema.nombre = "falta cedula";
-                    problema.intervalo_inicial = 0;
-                    problema.intervalo_final = 21;
-                    problema.idFase = 2;
-                    problema.tiempoInicial = 100;
-                    problema.tiempoFinal = 500;
-                    listaProblemaRetiro.Add(problema);
-                    //cedula muy mal estado
-                    problema = new problema();
-                    problema.id = 2;
-                    problema.nombre = "cedula muy mal estado";
-                    problema.intervalo_inicial = 0;
-                    problema.intervalo_final = 15;
-                    problema.idFase = 2;
-                    problema.tiempoInicial = 200;
-                    problema.tiempoFinal = 400;
-                    listaProblemaRetiro.Add(problema);
-                    //numero de cuenta se olvido
-                    problema = new problema();
-                    problema.id = 3;
-                    problema.nombre = "numero cuenta olvido";
-                    problema.intervalo_inicial = 0;
-                    problema.intervalo_final = 18;
-                    problema.idFase = 2;
-                    problema.tiempoInicial = 300;
-                    problema.tiempoFinal = 400;
-                    listaProblemaRetiro.Add(problema);
-                    //numero cuenta incorrecto
-                    problema = new problema();
-                    problema.id = 4;
-                    problema.nombre = "numero cuenta incorrecto";
-                    problema.intervalo_inicial = 0;
-                    problema.intervalo_final = 30;
-                    problema.idFase = 2;
-                    problema.tiempoInicial = 200;
-                    problema.tiempoFinal = 600;
-                    listaProblemaRetiro.Add(problema);
-                    //monto a retirar excede el limite disponible 
-                    problema = new problema();
-                    problema.id = 5;
-                    problema.nombre = "monto excede limite disponible";
-                    problema.intervalo_inicial = 0;
-                    problema.intervalo_final = 16;
-                    problema.idFase = 2;
-                    problema.tiempoInicial = 100;
-                    problema.tiempoFinal = 400;
-                    listaProblemaRetiro.Add(problema);
-                    #endregion
-
-                    //problemas cambio moneda
-                    #region
-
-                    //fase cola espera
-                    //falla sistema
-                    problema = new problema();
-                    problema.id = 1;
-                    problema.nombre = "falla sistema";
-                    problema.intervalo_inicial = 0;
-                    problema.intervalo_final = 18;
-                    problema.idFase = 1;
-                    problema.tiempoInicial = 1;
-                    problema.tiempoFinal = 15;
-                    listaProblemaDeposito.Add(problema);
-                    //falla energia electrica
-                    problema = new problema();
-                    problema.id = 1;
-                    problema.nombre = "falla energia electrica";
-                    problema.intervalo_inicial = 0;
-                    problema.intervalo_final = 13;
-                    problema.idFase = 1;
-                    problema.tiempoInicial = 100;
-                    problema.tiempoFinal = 1300;
-                    listaProblemaDeposito.Add(problema);
-                    //falla sistema
-                    problema = new problema();
-                    problema.id = 1;
-                    problema.nombre = "problema la computadora";
-                    problema.intervalo_inicial = 0;
-                    problema.intervalo_final = 20;
-                    problema.idFase = 1;
-                    problema.tiempoInicial = 100;
-                    problema.tiempoFinal = 1000;
-                    listaProblemaDeposito.Add(problema);
-
-                    //fase entrega datos
-                    //monto que llevo el cliente no era el correcto (el cliente queria $100 y solo llevo $50)-13%
-                    problema = new problema();
-                    problema.id = 1;
-                    problema.nombre = "monto incompleto del cliente";
-                    problema.intervalo_inicial = 0;
-                    problema.intervalo_final = 13;
-                    problema.idFase = 2;
-                    problema.tiempoInicial = 100;
-                    problema.tiempoFinal = 700;
-                    listaProblemaCambio.Add(problema);
-                    //el dinero del cliente esta en muy mal estado.-35%
-                    problema = new problema();
-                    problema.id = 1;
+                    problema.id = 7;
                     problema.nombre = "dinero mal estado";
                     problema.intervalo_inicial = 0;
-                    problema.intervalo_final = 35;
-                    problema.idFase = 2;
+                    problema.intervalo_final = 22;
+                    problema.idFase = 3;
+                    problema.idOperacion = 1;
                     problema.tiempoInicial = 100;
-                    problema.tiempoFinal = 400;
-                    listaProblemaCambio.Add(problema);
-                    //el banco no tiene dollar.-3%
+                    problema.tiempoFinal = 1500;
+                    listaProblemas.Add(problema);
+                    //-falla computadora -19% tiempo de 1-10 minutos
                     problema = new problema();
-                    problema.id = 1;
-                    problema.nombre = "banco no tiene billete suficiente";
+                    problema.id = 7;
+                    problema.nombre = "falla computadora";
                     problema.intervalo_inicial = 0;
-                    problema.intervalo_final = 3;
-                    problema.idFase = 2;
+                    problema.intervalo_final = 19;
+                    problema.idFase = 3;
+                    problema.idOperacion = 1;
                     problema.tiempoInicial = 100;
-                    problema.tiempoFinal = 700;
-                    listaProblemaCambio.Add(problema);
-                    //-el cajero dio dinero de menos-13%*/
-                    problema = new problema();
-                    problema.id = 1;
-                    problema.nombre = "cajero dio monto menor";
-                    problema.intervalo_inicial = 0;
-                    problema.intervalo_final = 13;
-                    problema.idFase = 2;
-                    problema.tiempoInicial = 100;
-                    problema.tiempoFinal = 600;
-                    listaProblemaCambio.Add(problema);
+                    problema.tiempoFinal = 10000;
+                    listaProblemas.Add(problema);
+
                     #endregion
 
+
+
+
+
+
+
+
+                    #endregion
                 }
-                else if (id == 2)
+                else if (temporadaSeleccionada.id == 2)
                 {
                     //problemas generales del sistema
                     #region
@@ -979,7 +853,7 @@ namespace SimulacionCajeroBancoV2
                     #endregion
 
                 }
-                else if (id == 3)
+                else if (temporadaSeleccionada.id == 3)
                 {
 
                     //problemas generales del sistema

@@ -13,6 +13,7 @@ namespace SimulacionCajeroBancoV2.objetos
         public string fase { get; set; }
         public double tiempo_antes { get; set; }
         public double tiempo_despues { get; set; }
+        public double tiempo_problema { get; set; }
         public string nombreProblema { get; set; }
         public int cantidad_intentos { get; set; }
         public string respuesta { get; set; }
