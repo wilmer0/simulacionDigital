@@ -10,18 +10,18 @@ namespace SimulacionCajeroBanco.clases_reportes
     public class reporte_grafico_cliente
     {
         private string reporte;
-        private List<Microsoft.Reporting.WinForms.ReportDataSource> listaReportDataSource;
+        //private List<Microsoft.Reporting.WinForms.ReportDataSource> listaReportDataSource;
 
-        public reporte_grafico_cliente()
-        {
-        }
+        //public reporte_grafico_cliente()
+        //{
+        //}
 
-        public reporte_grafico_cliente(string reporte, List<Microsoft.Reporting.WinForms.ReportDataSource> listaReportDataSource)
-        {
-            // TODO: Complete member initialization
-            this.reporte = reporte;
-            this.listaReportDataSource = listaReportDataSource;
-        }
+        //public reporte_grafico_cliente(string reporte, List<Microsoft.Reporting.WinForms.ReportDataSource> listaReportDataSource)
+        //{
+        //    // TODO: Complete member initialization
+        //    this.reporte = reporte;
+        //    this.listaReportDataSource = listaReportDataSource;
+        //}
         
 
 

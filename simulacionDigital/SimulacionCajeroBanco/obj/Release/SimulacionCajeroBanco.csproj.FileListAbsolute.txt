@@ -5,7 +5,6 @@ C:\Users\7Soft\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCa
 C:\Users\7Soft\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBanco\bin\Release\SimulacionCajeroBanco.pdb
 C:\Users\7Soft\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBanco\bin\Release\Microsoft.ReportViewer.Common.dll
 C:\Users\7Soft\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBanco\bin\Release\Microsoft.ReportViewer.ProcessingObjectModel.DLL
-C:\Users\7Soft\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBanco\bin\Release\Microsoft.ReportViewer.WinForms.DLL
 C:\Users\7Soft\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBanco\bin\Release\Microsoft.SqlServer.Types.dll
 C:\Users\7Soft\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBanco\obj\Release\SimulacionCajeroBanco.csprojResolveAssemblyReference.cache
 C:\Users\7Soft\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBanco\obj\Release\SimulacionCajeroBanco.ColaBanco.resources
@@ -32,3 +31,4 @@ C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionC
 C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBanco\obj\Release\SimulacionCajeroBanco.csprojResolveAssemblyReference.cache
 C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBanco\obj\Release\SimulacionCajeroBanco.exe
 C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBanco\obj\Release\SimulacionCajeroBanco.pdb
+C:\Users\7Soft\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBanco\bin\Release\Microsoft.ReportViewer.WebForms.DLL
