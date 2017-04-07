@@ -893,8 +893,8 @@ namespace SimulacionCajeroBancoV2
                     problema.intervalo_inicial = 0;
                     problema.intervalo_final = 13;
                     problema.idFase = 2;
-                    problema.tiempoInicial = 1;
-                    problema.tiempoFinal = 3;
+                    problema.tiempoInicial = 2;
+                    problema.tiempoFinal = 5;
                     listaProblemaDeposito.Add(problema);
                     //numero cuenta incorrecto
                     problema = new problema();
@@ -903,8 +903,8 @@ namespace SimulacionCajeroBancoV2
                     problema.intervalo_inicial = 0;
                     problema.intervalo_final = 25;
                     problema.idFase = 2;
-                    problema.tiempoInicial = 1;
-                    problema.tiempoFinal = 2;
+                    problema.tiempoInicial = 2;
+                    problema.tiempoFinal = 4;
                     listaProblemaDeposito.Add(problema);
                     //monto incompleto
                     problema = new problema();
@@ -913,8 +913,8 @@ namespace SimulacionCajeroBancoV2
                     problema.intervalo_inicial = 0;
                     problema.intervalo_final = 27;
                     problema.idFase = 2;
-                    problema.tiempoInicial = 1;
-                    problema.tiempoFinal = 3;
+                    problema.tiempoInicial = 2;
+                    problema.tiempoFinal = 7;
                     listaProblemaDeposito.Add(problema);
                     //dinero en mal estado
                     problema = new problema();
@@ -934,7 +934,7 @@ namespace SimulacionCajeroBancoV2
                     problema.intervalo_final = 17;
                     problema.idFase = 2;
                     problema.tiempoInicial = 1;
-                    problema.tiempoFinal = 2;
+                    problema.tiempoFinal = 5;
                     listaProblemaDeposito.Add(problema);
 
 
@@ -947,7 +947,7 @@ namespace SimulacionCajeroBancoV2
                     problema.intervalo_final = 13;
                     problema.idFase = 3;
                     problema.tiempoInicial = 1;
-                    problema.tiempoFinal = 4;
+                    problema.tiempoFinal = 5;
                     listaProblemaDeposito.Add(problema);
                     #endregion
 
@@ -995,7 +995,7 @@ namespace SimulacionCajeroBancoV2
                     problema.intervalo_final = 21;
                     problema.idFase = 2;
                     problema.tiempoInicial = 1;
-                    problema.tiempoFinal = 3;
+                    problema.tiempoFinal = 5;
                     listaProblemaRetiro.Add(problema);
                     //cedula muy mal estado
                     problema = new problema();
@@ -1004,8 +1004,8 @@ namespace SimulacionCajeroBancoV2
                     problema.intervalo_inicial = 0;
                     problema.intervalo_final = 15;
                     problema.idFase = 2;
-                    problema.tiempoInicial = 1;
-                    problema.tiempoFinal = 3;
+                    problema.tiempoInicial = 2;
+                    problema.tiempoFinal = 4;
                     listaProblemaRetiro.Add(problema);
                     //numero de cuenta se olvido
                     problema = new problema();
@@ -1014,7 +1014,7 @@ namespace SimulacionCajeroBancoV2
                     problema.intervalo_inicial = 0;
                     problema.intervalo_final = 18;
                     problema.idFase = 2;
-                    problema.tiempoInicial = 1;
+                    problema.tiempoInicial = 3;
                     problema.tiempoFinal = 4;
                     listaProblemaRetiro.Add(problema);
                     //numero cuenta incorrecto
@@ -1024,8 +1024,8 @@ namespace SimulacionCajeroBancoV2
                     problema.intervalo_inicial = 0;
                     problema.intervalo_final = 30;
                     problema.idFase = 2;
-                    problema.tiempoInicial = 1;
-                    problema.tiempoFinal = 3;
+                    problema.tiempoInicial = 2;
+                    problema.tiempoFinal = 6;
                     listaProblemaRetiro.Add(problema);
                     //monto a retirar excede el limite disponible 
                     problema = new problema();
@@ -1083,7 +1083,7 @@ namespace SimulacionCajeroBancoV2
                     problema.intervalo_final = 13;
                     problema.idFase = 2;
                     problema.tiempoInicial = 1;
-                    problema.tiempoFinal = 3;
+                    problema.tiempoFinal = 7;
                     listaProblemaCambio.Add(problema);
                     //el dinero del cliente esta en muy mal estado.-35%
                     problema = new problema();
@@ -1093,7 +1093,7 @@ namespace SimulacionCajeroBancoV2
                     problema.intervalo_final = 35;
                     problema.idFase = 2;
                     problema.tiempoInicial = 1;
-                    problema.tiempoFinal = 5;
+                    problema.tiempoFinal = 4;
                     listaProblemaCambio.Add(problema);
                     //el banco no tiene dollar.-3%
                     problema = new problema();
@@ -1113,7 +1113,7 @@ namespace SimulacionCajeroBancoV2
                     problema.intervalo_final = 13;
                     problema.idFase = 2;
                     problema.tiempoInicial = 1;
-                    problema.tiempoFinal = 4;
+                    problema.tiempoFinal = 6;
                     listaProblemaCambio.Add(problema);
                     #endregion
 
