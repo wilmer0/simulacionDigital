@@ -485,7 +485,7 @@ namespace SimulacionCajeroBancoV2
                         if (cliente.idOperacion == 1)
                         {
                             //deposito
-                            cliente.tiempoEsperadoCola = getNumeroRandom(200,250); //de 2.0 a 2.5
+                            cliente.tiempoEsperadoCola = getNumeroRandom(100,250); //de 1.0 a 2.5
                             cliente.tiempoEsperadoCola /= 100;
                             cliente.tiempoCola = cliente.tiempoEsperadoCola;
                             
@@ -493,7 +493,7 @@ namespace SimulacionCajeroBancoV2
                             cliente.tiempoEsperadoEntregaDatos /= 100;
                             cliente.tiempoEntregaDatos = cliente.tiempoEsperadoEntregaDatos;
                             
-                            cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(100, 150); //de 1.0 a 1.5
+                            cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(100, 190); //de 1.0 a 1.9
                             cliente.tiempoEsperadoProcesoSolicitud /= 100;
                             cliente.tiempoProcesoSolicitud = cliente.tiempoEsperadoProcesoSolicitud;
                             
@@ -502,15 +502,15 @@ namespace SimulacionCajeroBancoV2
                         else if (cliente.idOperacion == 2)
                         {
                             //retiro
-                            cliente.tiempoEsperadoCola = getNumeroRandom(200, 260); // 2.0 a 2.60
+                            cliente.tiempoEsperadoCola = getNumeroRandom(120, 260); // 1.2 a 2.60
                             cliente.tiempoEsperadoCola /= 100;
                             cliente.tiempoCola = cliente.tiempoEsperadoCola;
                             
-                            cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(180, 210); //de 1.8 a 2.1
+                            cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(180, 290); //de 1.8 a 2.9
                             cliente.tiempoEsperadoEntregaDatos /= 100;
                             cliente.tiempoEntregaDatos = cliente.tiempoEsperadoEntregaDatos;
                             
-                            cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(100, 130); //de 1.0 a 1.3
+                            cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(200, 340); //de 2 a 3.4
                             cliente.tiempoEsperadoProcesoSolicitud /= 100;
                             cliente.tiempoProcesoSolicitud = cliente.tiempoEsperadoProcesoSolicitud;
                             
@@ -523,7 +523,7 @@ namespace SimulacionCajeroBancoV2
                             cliente.tiempoEsperadoCola /= 100;
                             cliente.tiempoCola = cliente.tiempoEsperadoCola;
 
-                            cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(120, 150); // de 1.2 a 1.5
+                            cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(120, 350); // de 1.2 a 3.5
                             cliente.tiempoEsperadoEntregaDatos /= 100;
                             cliente.tiempoEntregaDatos = cliente.tiempoEsperadoEntregaDatos;
 
@@ -654,8 +654,6 @@ namespace SimulacionCajeroBancoV2
 
                     //simulando problemas
                     #region
-
-                    
                     //recorriendo las fases
                     foreach (var faseActual in listaFases)
                     {
@@ -668,45 +666,31 @@ namespace SimulacionCajeroBancoV2
                                 if (problemaActual.idFase == faseActual.id && cliente.idOperacion==operacionActual.id && cliente.abandono == false)
                                 {
                                     //el problema actual pertenece a la fase actual
-                                    if (getNumeroRandom(1, 100) <= problemaActual.intervalo_final && cliente.abandono == false)
+                                    if (getNumeroRandom(1, 100) <= problemaActual.intervalo_final &&
+                                        cliente.abandono == false)
                                     {
                                         //encontro problema en la operacion actual de la fase actual
-                                        
-                                            //agregandolo al cliente
-                                            cliente.listaProblema.Add(problemaActual);
-                                            //agregandolo al log
-                                            problemasLogs = new problemasLogs();
-                                            problemasLogs.problema_encontrado = true;
-                                            problemasLogs.cantidad_intentos = 0;
-                                            problemasLogs.fase = faseActual.nombre;
-                                            problemasLogs.nombreProblema = problemaActual.nombre;
-                                            problemasLogs.idcliente = cliente.id;
-                                            problemasLogs.operacion = operacionActual.nombre;
-                                            problemasLogs.tiempo_antes = cliente.tiempoTotalServicio;
-                                            if (faseActual.id == 1)
-                                            {
-                                                //problemasLogs.tiempo_antes = problemasLogs.tiempo_despues + cliente.tiempoCola;
-                                               
-                                            }
-                                            else if (faseActual.id == 2)
-                                            {
-                                                //problemasLogs.tiempo_antes = problemasLogs.tiempo_despues + cliente.tiempoEntregaDatos;
-                                                
-                                            }
-                                            else if (faseActual.id == 3)
-                                            {
-                                                //problemasLogs.tiempo_antes = problemasLogs.tiempo_despues + cliente.tiempoProcesoSolicitud;
-                                               
-                                            }
 
-                                            //saber si el cliente abandona o se queda
+                                        //agregandolo al cliente
+                                        cliente.listaProblema.Add(problemaActual);
+                                        //agregandolo al log
+                                        problemasLogs = new problemasLogs();
+                                        problemasLogs.problema_encontrado = true;
+                                        problemasLogs.cantidad_intentos = 0;
+                                        problemasLogs.fase = faseActual.nombre;
+                                        problemasLogs.nombreProblema = problemaActual.nombre;
+                                        problemasLogs.idcliente = cliente.id;
+                                        problemasLogs.operacion = operacionActual.nombre;
+                                        problemasLogs.tiempo_antes = cliente.tiempoTotalServicio;
+
+                                        //saber si el cliente abandona o se queda
                                         if (getNumeroRandom(1, 2) == 1)
                                         {
                                             problemasLogs.respuesta = "cliente espera solucion problema";
                                             //cliente espera lo intenta de nuevo
                                             problemasLogs.cantidad_intentos += 1;
                                             //aumenta el tiempo porque el cliente espero que se resuelva el problema
-                                            cliente.tiempoTotalServicio+=getNumeroRandom(problemaActual.tiempoInicial, problemaActual.tiempoFinal);
+                                            cliente.tiempoTotalServicio += getNumeroRandom(problemaActual.tiempoInicial, problemaActual.tiempoFinal);
                                             problemasLogs.tiempo_despues = cliente.tiempoTotalServicio;
 
                                         }
