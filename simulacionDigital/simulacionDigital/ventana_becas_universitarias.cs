@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Reporting.WinForms;
+//using Microsoft.Reporting.WinForms;
 using simulacionDigital.clases;
 using simulacionDigital.clases_reporte;
 using _7ADMFIC_1._0.VentanasComunes;

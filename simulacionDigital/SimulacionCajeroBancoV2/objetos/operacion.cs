@@ -12,5 +12,13 @@ namespace SimulacionCajeroBancoV2.objetos
         public string nombre { get; set; }
         public double intervalo_inicial { get; set; }
         public double intervalo_final { get; set; }
+
+        //para modificar dependiendo de la temporada escogida
+        public double tiempoEsperadoCola { get; set; }
+        public double tiempoEsperadoEntregaDatos { get; set; }
+        public double tiempoEsperadoProcesoSolicitud { get; set; }
+        public double tiempoEsperadoServicio { get; set; }
+        public double tiempoEsperadoTotal { get; set; }
+
     }
 }

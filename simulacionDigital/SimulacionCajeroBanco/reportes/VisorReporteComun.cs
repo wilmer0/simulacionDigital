@@ -8,7 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Microsoft.Reporting.WinForms;
+//using Microsoft.Reporting.WinForms;
 
 
 namespace _7ADMFIC_1._0.VentanasComunes
@@ -38,53 +38,53 @@ namespace _7ADMFIC_1._0.VentanasComunes
         //    lista.Add(usuarioDataSource);
         //    GetLoad(reporte, lista,null);
         //}
-        public VisorReporteComun(String reporte, List<ReportDataSource> lista, List<ReportParameter> ListaReportParameter)
-        {
-            InitializeComponent();
-            //List<empresa> listaempresa = new List<empresa>();
-            //if (IncluirEmpresa)
-            //{
-            //    listaempresa.Add(usuario.empresa1);
-            //    ReportDataSource empresaDataSource = new ReportDataSource("empresa", listaempresa);
-            //    lista.Add(empresaDataSource);
-            //}
-            //if (IncluirUsuario)
-            //{
-            //    List<usuario> listausuario = new List<usuario>();
-            //    listausuario.Add(usuario);
-            //    ReportDataSource usuarioDataSource = new ReportDataSource("usuario", listausuario);
-            //    lista.Add(usuarioDataSource);
-            //}
-            //if (IncluirFechaActual)
-            //{
-            //    if (ListaReportParameter == null)
-            //    {
-            //        ListaReportParameter = new List<ReportParameter>();
-            //    }
-            //    ReportParameter parameter = new ReportParameter("fecha", util.getFormaFechaNormal(DateTime.Now));
-            //    ListaReportParameter.Add(parameter);
-            //    GetLoad(reporte, lista, ListaReportParameter);
-            //}
-            GetLoad(reporte, lista, ListaReportParameter);
-        }
+        //public VisorReporteComun(String reporte, List<ReportDataSource> lista, List<ReportParameter> ListaReportParameter)
+        //{
+        //    InitializeComponent();
+        //    //List<empresa> listaempresa = new List<empresa>();
+        //    //if (IncluirEmpresa)
+        //    //{
+        //    //    listaempresa.Add(usuario.empresa1);
+        //    //    ReportDataSource empresaDataSource = new ReportDataSource("empresa", listaempresa);
+        //    //    lista.Add(empresaDataSource);
+        //    //}
+        //    //if (IncluirUsuario)
+        //    //{
+        //    //    List<usuario> listausuario = new List<usuario>();
+        //    //    listausuario.Add(usuario);
+        //    //    ReportDataSource usuarioDataSource = new ReportDataSource("usuario", listausuario);
+        //    //    lista.Add(usuarioDataSource);
+        //    //}
+        //    //if (IncluirFechaActual)
+        //    //{
+        //    //    if (ListaReportParameter == null)
+        //    //    {
+        //    //        ListaReportParameter = new List<ReportParameter>();
+        //    //    }
+        //    //    ReportParameter parameter = new ReportParameter("fecha", util.getFormaFechaNormal(DateTime.Now));
+        //    //    ListaReportParameter.Add(parameter);
+        //    //    GetLoad(reporte, lista, ListaReportParameter);
+        //    //}
+        //    GetLoad(reporte, lista, ListaReportParameter);
+        //}
 
         
-        private void GetLoad(String reporte, List<ReportDataSource> lista, List<ReportParameter> ListaReportParameter)
-        {
-            Reporte.LocalReport.ReportEmbeddedResource = reporte;
-            lista.ForEach(x =>
-            {
-                 Reporte.LocalReport.DataSources.Add(x);
-            });
-            if(ListaReportParameter!=null)
-            {
-                Reporte.LocalReport.SetParameters(ListaReportParameter);
-            }
-        }
-        private void visor_reporte_Load(object sender, EventArgs e)
-        {
-            Reporte.SetDisplayMode(DisplayMode.PrintLayout);
-            this.Reporte.RefreshReport();
-        }
+        //private void GetLoad(String reporte, List<ReportDataSource> lista, List<ReportParameter> ListaReportParameter)
+        //{
+        //    Reporte.LocalReport.ReportEmbeddedResource = reporte;
+        //    lista.ForEach(x =>
+        //    {
+        //         Reporte.LocalReport.DataSources.Add(x);
+        //    });
+        //    if(ListaReportParameter!=null)
+        //    {
+        //        Reporte.LocalReport.SetParameters(ListaReportParameter);
+        //    }
+        //}
+        //private void visor_reporte_Load(object sender, EventArgs e)
+        //{
+        //    Reporte.SetDisplayMode(DisplayMode.PrintLayout);
+        //    this.Reporte.RefreshReport();
+        //}
     }
 }
