@@ -369,19 +369,6 @@ namespace SimulacionCajeroBancoV2
                         }
                         #endregion
                     }
-                    else if (temporadaSeleccionada.id == 2)
-                    {
-                        //temporada 2
-                        #region
-                        #endregion
-
-                    }
-                    else if (temporadaSeleccionada.id == 3)
-                    {
-                        //temporada 3
-                        #region
-                        #endregion
-                    }
                 }
                 
            
@@ -406,10 +393,14 @@ namespace SimulacionCajeroBancoV2
                     //instanciando la lista de problemas del cliene
                     cliente.listaProblema = new List<problema>();
                     
+
+
                     //saber que cajero escogio el cliente
                     #region
                     cliente.idCajero = getIdCajeroByRandom(getNumeroRandom(1, 100));
                     #endregion
+
+
 
                     //obteniendo la tanda del cliente
                     #region
@@ -428,6 +419,8 @@ namespace SimulacionCajeroBancoV2
                         cliente.tanda = "vespertina";
                     }
                     #endregion
+
+
 
                     //obteniendo la operacion
                     #region
@@ -553,14 +546,18 @@ namespace SimulacionCajeroBancoV2
                     }
                     #endregion
 
-                    
+
+
                     //simulando problemas
                     #region
 
                     tiempoTotal = 0;
                     foreach (var operacionActual in listaOperaciones.Where(x => x.id == cliente.idOperacion))
                     {
-                       
+                        cliente.tiempoEsperadoCola = operacionActual.tiempoEsperadoCola;
+                        cliente.tiempoEsperadoEntregaDatos = operacionActual.tiempoEsperadoEntregaDatos;
+                        cliente.tiempoEsperadoProcesoSolicitud = operacionActual.tiempoEsperadoProcesoSolicitud;
+                        cliente.tiempoEsperadoServicio = operacionActual.tiempoEsperadoTotal;
                         //operacion que selecciono el cliente
                         foreach (var faseActual in listaFases)
                         {
@@ -581,12 +578,16 @@ namespace SimulacionCajeroBancoV2
                                     problemasLogs.fase = faseActual.nombre;
                                     problemasLogs.nombreProblema = problemaActual.nombre;
                                     problemasLogs.idCajero = cliente.idCajero;
-
                                     //saber el tiempo antes del problema que era el esperado en que termine dicha fase
                                     if (tiempoTotal == 0)
                                     {
-                                        problemasLogs.tiempo_antes = (faseActual.id == 1)? operacionActual.tiempoEsperadoCola: operacionActual.tiempoEsperadoEntregaDatos;
+
+                                        
+
+                                        problemasLogs.tiempo_antes = (faseActual.id == 1)? operacionActual.tiempoEsperadoCola : operacionActual.tiempoEsperadoEntregaDatos;
                                         problemasLogs.tiempo_antes = (faseActual.id == 2)? operacionActual.tiempoEsperadoEntregaDatos: operacionActual.tiempoEsperadoProcesoSolicitud;
+
+                                        
                                     }
                                     else
                                     {
