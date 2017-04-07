@@ -31,6 +31,7 @@ namespace SimulacionCajeroBancoV2
         private problema problema;// objeto con todos los atributos del problema
         private cajero cajero;// objeto con todos los atributos del cajero
         private fases fase;//objeto con todos los atributos de las fases
+        private operacion operacion;
 
         //listas
         private List<tanda> listaTanda; // lista de las tandas disponibles
@@ -38,6 +39,7 @@ namespace SimulacionCajeroBancoV2
         private List<temporada> listaTemporada;// lista de las temporadas disponibles
         private List<cajero> listaCajero;// lista de los cajeros disponibles
         private problemasLogs problemasLogs;// lista de los problemas con detalles encontrado en la corrida
+        private List<operacion> listaOperaciones; 
       
 
         //lista de problema
@@ -77,6 +79,7 @@ namespace SimulacionCajeroBancoV2
                 getCajeros();
                 getListaNumeros();
                 getListaFases();
+                getListaOperaciones();
 
             }
             catch (Exception ex)
@@ -317,6 +320,10 @@ namespace SimulacionCajeroBancoV2
                 //instanciando la lista de cliente
                 listaCliente=new List<cliente>();
 
+                //instanciando la lista de los problemas log para el reporte
+                listaProblemaLogs = new List<problemasLogs>();
+                problemasLogs = new problemasLogs();
+
                 for (int f = 1; f <= cantidadClientes; f++)
                 {
                     //llenando los primeros datos de cliente actual
@@ -324,6 +331,9 @@ namespace SimulacionCajeroBancoV2
                     cliente.id = f;
                     cliente.abandono = false;
                     cliente.idTemporada = temporadaSeleccionada.id;
+
+                    //instanciando la lista de problemas del cliene
+                    cliente.listaProblema = new List<problema>();
                     
                     //saber que cajero escogio el cliente
                     #region
@@ -492,7 +502,7 @@ namespace SimulacionCajeroBancoV2
                         else if (cliente.idOperacion == 2)
                         {
                             //retiro
-                            cliente.tiempoEsperadoCola = getNumeroRandom(200, 220); // 2.0 a 2.2
+                            cliente.tiempoEsperadoCola = getNumeroRandom(200, 260); // 2.0 a 2.60
                             cliente.tiempoEsperadoCola /= 100;
                             cliente.tiempoCola = cliente.tiempoEsperadoCola;
                             
@@ -509,7 +519,7 @@ namespace SimulacionCajeroBancoV2
                         else if (cliente.idOperacion == 3)
                         {
                             //cambio moneda
-                            cliente.tiempoEsperadoCola = getNumeroRandom(120, 150);  //de 1.2 a 1.5
+                            cliente.tiempoEsperadoCola = getNumeroRandom(120, 320);  //de 1.2 a 3.20
                             cliente.tiempoEsperadoCola /= 100;
                             cliente.tiempoCola = cliente.tiempoEsperadoCola;
 
@@ -517,7 +527,7 @@ namespace SimulacionCajeroBancoV2
                             cliente.tiempoEsperadoEntregaDatos /= 100;
                             cliente.tiempoEntregaDatos = cliente.tiempoEsperadoEntregaDatos;
 
-                            cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(180, 200); //de  1.8 a 2.0
+                            cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(180, 220); //de  1.8 a 2.2
                             cliente.tiempoEsperadoProcesoSolicitud /= 100;
                             cliente.tiempoProcesoSolicitud = cliente.tiempoEsperadoProcesoSolicitud;
                             
@@ -549,7 +559,7 @@ namespace SimulacionCajeroBancoV2
                         else if (cliente.idOperacion == 2)
                         {
                             //retiro
-                            cliente.tiempoEsperadoCola = getNumeroRandom(100, 130);  //de 1.0 a 1.3
+                            cliente.tiempoEsperadoCola = getNumeroRandom(100, 320);  //de 1.0 a 3.2
                             cliente.tiempoEsperadoCola /= 100;
                             cliente.tiempoCola = cliente.tiempoEsperadoCola;
 
@@ -566,7 +576,7 @@ namespace SimulacionCajeroBancoV2
                         else if (cliente.idOperacion == 3)
                         {
                             //cambio moneda
-                            cliente.tiempoEsperadoCola = getNumeroRandom(100, 140);  // de 1 a 1.4
+                            cliente.tiempoEsperadoCola = getNumeroRandom(100, 220);  // de 1 a 2.2
                             cliente.tiempoEsperadoCola /= 100;
                             cliente.tiempoCola = cliente.tiempoEsperadoCola;
 
@@ -645,172 +655,77 @@ namespace SimulacionCajeroBancoV2
                     //simulando problemas
                     #region
 
-                    //instanciando la lista de problemas del cliene
-                    cliente.listaProblema = new List<problema>();
-
-                    //instanciando la lista de los problemas log para el reporte
-                    listaProblemaLogs =new List<problemasLogs>();
-                    problemasLogs=new problemasLogs();
-
-                    if (cliente.idTemporada == 1)
+                    
+                    //recorriendo las fases
+                    foreach (var faseActual in listaFases)
                     {
-                        //temporada 1
                         #region
-                        if (cliente.idOperacion == 1)
+                        //recorriendo las operaciones
+                        foreach (var operacionActual in listaOperaciones)
                         {
-                            //deposito
-                            #region
-                            
-                            //problemas que pueden pasar en esta fase---recorriendo las fases buscando problemas
-                            foreach (var faseActual in listaFases)
+                            foreach (var problemaActual in listaProblemaDeposito)
                             {
-                                //problemas propio de la fase y operacion
-                                foreach (var problemaActual in listaProblemaDeposito)
+                                if (problemaActual.idFase == faseActual.id && cliente.idOperacion==operacionActual.id && cliente.abandono == false)
                                 {
-                                    if(getNumeroRandom(1, 100) <= problemaActual.intervalo_final && problemaActual.idFase==faseActual.id)
+                                    //el problema actual pertenece a la fase actual
+                                    if (getNumeroRandom(1, 100) <= problemaActual.intervalo_final && cliente.abandono == false)
                                     {
-                                        #region
-                                        problemasLogs = new problemasLogs();
-                                        problemasLogs.problema_encontrado = true;
-                                        problemasLogs.idcliente = cliente.id;
-                                        problemasLogs.operacion = cliente.operacion;
-                                        problemasLogs.fase = faseActual.nombre;
-                                        problemasLogs.cantidad_intentos = 0;
-                                        problemasLogs.nombreProblema = problemaActual.nombre;
-                                            //si hay problema ahora el cliente decide si se va o se queda
-                                            if (getNumeroRandom(1,2) == 1)
-                                            {
-                                                //se queda el cliente, lo intenta de nuevo
-                                                #region
-                                                problemasLogs.cantidad_intentos += 1;
-                                                cliente.abandono = false;
-                                                problemasLogs.desicion = "cliente espera";
-                                                //aumenta tiempo de espera en dicha fase
-                                                if (faseActual.id == 1)
-                                                {
-                                                    //cola espera
-                                                    //tiempo antes
-                                                    problemasLogs.tiempo_antes = cliente.tiempoCola;
-                                                    //aumenta tiempo
-                                                    cliente.tiempoCola += getNumeroRandom(problemaActual.tiempoInicial,problemaActual.tiempoFinal);
-                                                    //tiempo despues
-                                                    problemasLogs.tiempo_despues = cliente.tiempoCola;
-
-                                                }else if (faseActual.id == 2)
-                                                {
-                                                    //entrega de datos
-                                                    //tiempo antes
-                                                    problemasLogs.tiempo_antes = cliente.tiempoEntregaDatos;
-                                                    //aumenta tiempo
-                                                    cliente.tiempoEntregaDatos += getNumeroRandom(problemaActual.tiempoInicial, problemaActual.tiempoFinal);
-                                                    //tiempo despues
-                                                    problemasLogs.tiempo_despues = cliente.tiempoEntregaDatos;
-
-                                                }else if (faseActual.id==3)
-                                                {
-                                                    //proceso solicitud
-                                                    //tiempo antes
-                                                    problemasLogs.tiempo_antes = cliente.tiempoProcesoSolicitud;
-                                                    //aumenta tiempo
-                                                    cliente.tiempoProcesoSolicitud += getNumeroRandom(problemaActual.tiempoInicial, problemaActual.tiempoFinal);
-                                                    //tiempo despues
-                                                    problemasLogs.tiempo_despues = cliente.tiempoProcesoSolicitud;
-
-                                                }
-                                                #endregion
-                                            }
-                                            else
-                                            {
-                                                //cliente no espera se va
-                                                cliente.abandono = true;
-                                                problemasLogs.desicion = "cliente no espera";
-                                                #region
-                                                //el tiempo se queda igual
-                                                if (faseActual.id == 1)
-                                                {
-                                                    //cola espera
-                                                    //tiempo antes
-                                                    problemasLogs.tiempo_antes = cliente.tiempoCola;
-                                                    //tiempo despues
-                                                    problemasLogs.tiempo_despues = cliente.tiempoCola;
-                                                }
-                                                else if (faseActual.id == 2)
-                                                {
-                                                    //entrega de datos
-                                                    //tiempo antes
-                                                    problemasLogs.tiempo_antes = cliente.tiempoEntregaDatos;
-                                                    //tiempo despues
-                                                    problemasLogs.tiempo_despues = cliente.tiempoEntregaDatos;
-                                                }
-                                                else if (faseActual.id == 3)
-                                                {
-                                                    //proceso solicitud
-                                                    //tiempo antes
-                                                    problemasLogs.tiempo_antes = cliente.tiempoProcesoSolicitud;
-                                                    //tiempo despues
-                                                    problemasLogs.tiempo_despues = cliente.tiempoProcesoSolicitud;
-                                                }
-                                                #endregion
-                                            }
-                                            listaProblemaLogs.Add(problemasLogs);
-                                            cliente.listaProblema.Add(problemaActual);
+                                        //encontro problema en la operacion actual de la fase actual
                                         
-                                        #endregion
-                                    }
-                                    else
-                                    {
-                                        //no hay problema
+                                            //agregandolo al cliente
+                                            cliente.listaProblema.Add(problemaActual);
+                                            //agregandolo al log
+                                            problemasLogs = new problemasLogs();
+                                            problemasLogs.problema_encontrado = true;
+                                            problemasLogs.cantidad_intentos = 0;
+                                            problemasLogs.fase = faseActual.nombre;
+                                            problemasLogs.nombreProblema = problemaActual.nombre;
+                                            problemasLogs.idcliente = cliente.id;
+                                            problemasLogs.operacion = operacionActual.nombre;
+                                            problemasLogs.tiempo_antes = cliente.tiempoTotalServicio;
+                                            if (faseActual.id == 1)
+                                            {
+                                                //problemasLogs.tiempo_antes = problemasLogs.tiempo_despues + cliente.tiempoCola;
+                                               
+                                            }
+                                            else if (faseActual.id == 2)
+                                            {
+                                                //problemasLogs.tiempo_antes = problemasLogs.tiempo_despues + cliente.tiempoEntregaDatos;
+                                                
+                                            }
+                                            else if (faseActual.id == 3)
+                                            {
+                                                //problemasLogs.tiempo_antes = problemasLogs.tiempo_despues + cliente.tiempoProcesoSolicitud;
+                                               
+                                            }
+
+                                            //saber si el cliente abandona o se queda
+                                        if (getNumeroRandom(1, 2) == 1)
+                                        {
+                                            problemasLogs.respuesta = "cliente espera solucion problema";
+                                            //cliente espera lo intenta de nuevo
+                                            problemasLogs.cantidad_intentos += 1;
+                                            //aumenta el tiempo porque el cliente espero que se resuelva el problema
+                                            cliente.tiempoTotalServicio+=getNumeroRandom(problemaActual.tiempoInicial, problemaActual.tiempoFinal);
+                                            problemasLogs.tiempo_despues = cliente.tiempoTotalServicio;
+
+                                        }
+                                        else
+                                        {
+                                            //cliente no espera, se va
+                                            cliente.abandono = true;
+                                            //como se fue no aumenta el tiempo
+                                            problemasLogs.tiempo_despues = cliente.tiempoTotalServicio;
+                                            problemasLogs.respuesta = "cliente no espera";
+                                        }
+                                        listaProblemaLogs.Add(problemasLogs);
                                     }
                                 }
                             }
-                            
-
-
-
-                            
-                            #endregion
-
                         }
-                        else if (cliente.idOperacion == 2)
-                        {
-                            //retiro
-                            
-
-                        }
-                        else if (cliente.idOperacion == 3)
-                        {
-                            //cambio moneda
-                           
-
-                        }
-                        #endregion
-
-                    }else if (cliente.idTemporada == 2)
-                    {
-                        //temporada 2
-                        #region
                         #endregion
 
                     }
-                    else if (cliente.idTemporada == 3)
-                    {
-                        //temporada 3
-                        #region
-                        #endregion
-
-                    }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -818,6 +733,7 @@ namespace SimulacionCajeroBancoV2
 
 
                     #endregion
+                   
 
 
 
@@ -867,6 +783,7 @@ namespace SimulacionCajeroBancoV2
                     {
                         MessageBox.Show("cliente no tiene operacion-->" + x.id);
                     }
+                    cliente.tiempoTotalServicio = cliente.tiempoCola + cliente.tiempoEntregaDatos + cliente.tiempoProcesoSolicitud;
                     dataGridView1.Rows.Add(x.id,x.operacion+"-"+x.tipoOperacion,x.tanda,x.tiempoEsperadoServicio,x.montoTransaccion.ToString("N"),x.listaProblema.Count.ToString("N"),x.tiempoTotalServicio,x.abandono,x.idCajero);
                 }
 
@@ -875,7 +792,7 @@ namespace SimulacionCajeroBancoV2
                 listaProblemaLogs = listaProblemaLogs.FindAll(x => x.problema_encontrado == true);
                 foreach (var x in listaProblemaLogs)
                 {
-                    dataGridView2.Rows.Add(x.idcliente, x.operacion,x.fase,x.tiempo_antes,x.tiempo_despues,x.nombreProblema,x.desicion);
+                    dataGridView2.Rows.Add(x.idcliente, x.operacion,x.fase,x.tiempo_antes,x.tiempo_despues,x.nombreProblema,x.respuesta);
                 }
 
                 MessageBox.Show("Finalizó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -921,7 +838,7 @@ namespace SimulacionCajeroBancoV2
                     problema.id = 6;
                     problema.nombre = "falla sistema";
                     problema.intervalo_inicial = 0;
-                    problema.intervalo_final = 3;
+                    problema.intervalo_final = 10;
                     problema.idFase = 0;
                     problema.tiempoInicial = 4;
                     problema.tiempoFinal = 10;
@@ -931,7 +848,7 @@ namespace SimulacionCajeroBancoV2
                     problema.id = 7;
                     problema.nombre = "falla electricidad";
                     problema.intervalo_inicial = 0;
-                    problema.intervalo_final = 5;
+                    problema.intervalo_final = 15;
                     problema.idFase = 0;
                     problema.tiempoInicial = 2;
                     problema.tiempoFinal = 7;
@@ -941,7 +858,7 @@ namespace SimulacionCajeroBancoV2
                     problema.id = 8;
                     problema.nombre = "falla computadora";
                     problema.intervalo_inicial = 0;
-                    problema.intervalo_final = 10;
+                    problema.intervalo_final = 13;
                     problema.idFase = 0;
                     problema.tiempoInicial = 1;
                     problema.tiempoFinal = 5;
@@ -950,6 +867,41 @@ namespace SimulacionCajeroBancoV2
 
                     //problemas deposito
                     #region
+
+                    //fase cola espera
+                    //falla sistema
+                    problema = new problema();
+                    problema.id = 1;
+                    problema.nombre = "falla sistema";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 15;
+                    problema.idFase = 1;
+                    problema.tiempoInicial = 1;
+                    problema.tiempoFinal = 15;
+                    listaProblemaDeposito.Add(problema);
+                    //falla energia electrica
+                    problema = new problema();
+                    problema.id = 1;
+                    problema.nombre = "falla energia electrica";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 10;
+                    problema.idFase = 1;
+                    problema.tiempoInicial = 1;
+                    problema.tiempoFinal = 13;
+                    listaProblemaDeposito.Add(problema);
+                    //falla sistema
+                    problema = new problema();
+                    problema.id = 1;
+                    problema.nombre = "problema la computadora";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 13;
+                    problema.idFase = 1;
+                    problema.tiempoInicial = 1;
+                    problema.tiempoFinal = 10;
+                    listaProblemaDeposito.Add(problema);
+
+
+                    //fase entrega datos
                     //falta numero cuenta
                     problema = new problema();
                     problema.id = 1;
@@ -1000,6 +952,9 @@ namespace SimulacionCajeroBancoV2
                     problema.tiempoInicial = 1;
                     problema.tiempoFinal = 2;
                     listaProblemaDeposito.Add(problema);
+
+
+                    //fase proceso solicitud
                     //saldo cuenta cliente es isuficiente
                     problema = new problema();
                     problema.id = 6;
@@ -1014,12 +969,47 @@ namespace SimulacionCajeroBancoV2
 
                     //problemas retiro
                     #region
+
+                    //fase cola espera
+                    //falla sistema
+                    problema = new problema();
+                    problema.id = 1;
+                    problema.nombre = "falla sistema";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 13;
+                    problema.idFase = 1;
+                    problema.tiempoInicial = 1;
+                    problema.tiempoFinal = 15;
+                    listaProblemaDeposito.Add(problema);
+                    //falla energia electrica
+                    problema = new problema();
+                    problema.id = 1;
+                    problema.nombre = "falla energia electrica";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 17;
+                    problema.idFase = 1;
+                    problema.tiempoInicial = 1;
+                    problema.tiempoFinal = 13;
+                    listaProblemaDeposito.Add(problema);
+                    //falla sistema
+                    problema = new problema();
+                    problema.id = 1;
+                    problema.nombre = "problema la computadora";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 15;
+                    problema.idFase = 1;
+                    problema.tiempoInicial = 1;
+                    problema.tiempoFinal = 10;
+                    listaProblemaDeposito.Add(problema);
+
+                    //fase entrega datos
                     //falta cedula
                     problema = new problema();
                     problema.id = 1;
                     problema.nombre = "falta cedula";
                     problema.intervalo_inicial = 0;
                     problema.intervalo_final = 21;
+                    problema.idFase = 2;
                     problema.tiempoInicial = 1;
                     problema.tiempoFinal = 3;
                     listaProblemaRetiro.Add(problema);
@@ -1029,6 +1019,7 @@ namespace SimulacionCajeroBancoV2
                     problema.nombre = "cedula muy mal estado";
                     problema.intervalo_inicial = 0;
                     problema.intervalo_final = 15;
+                    problema.idFase = 2;
                     problema.tiempoInicial = 1;
                     problema.tiempoFinal = 3;
                     listaProblemaRetiro.Add(problema);
@@ -1038,6 +1029,7 @@ namespace SimulacionCajeroBancoV2
                     problema.nombre = "numero cuenta olvido";
                     problema.intervalo_inicial = 0;
                     problema.intervalo_final = 18;
+                    problema.idFase = 2;
                     problema.tiempoInicial = 1;
                     problema.tiempoFinal = 4;
                     listaProblemaRetiro.Add(problema);
@@ -1047,6 +1039,7 @@ namespace SimulacionCajeroBancoV2
                     problema.nombre = "numero cuenta incorrecto";
                     problema.intervalo_inicial = 0;
                     problema.intervalo_final = 30;
+                    problema.idFase = 2;
                     problema.tiempoInicial = 1;
                     problema.tiempoFinal = 3;
                     listaProblemaRetiro.Add(problema);
@@ -1056,6 +1049,7 @@ namespace SimulacionCajeroBancoV2
                     problema.nombre = "monto excede limite disponible";
                     problema.intervalo_inicial = 0;
                     problema.intervalo_final = 16;
+                    problema.idFase = 2;
                     problema.tiempoInicial = 1;
                     problema.tiempoFinal = 4;
                     listaProblemaRetiro.Add(problema);
@@ -1063,12 +1057,47 @@ namespace SimulacionCajeroBancoV2
 
                     //problemas cambio moneda
                     #region
+
+                    //fase cola espera
+                    //falla sistema
+                    problema = new problema();
+                    problema.id = 1;
+                    problema.nombre = "falla sistema";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 18;
+                    problema.idFase = 1;
+                    problema.tiempoInicial = 1;
+                    problema.tiempoFinal = 15;
+                    listaProblemaDeposito.Add(problema);
+                    //falla energia electrica
+                    problema = new problema();
+                    problema.id = 1;
+                    problema.nombre = "falla energia electrica";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 13;
+                    problema.idFase = 1;
+                    problema.tiempoInicial = 1;
+                    problema.tiempoFinal = 13;
+                    listaProblemaDeposito.Add(problema);
+                    //falla sistema
+                    problema = new problema();
+                    problema.id = 1;
+                    problema.nombre = "problema la computadora";
+                    problema.intervalo_inicial = 0;
+                    problema.intervalo_final = 20;
+                    problema.idFase = 1;
+                    problema.tiempoInicial = 1;
+                    problema.tiempoFinal = 10;
+                    listaProblemaDeposito.Add(problema);
+
+                    //fase entrega datos
                     //monto que llevo el cliente no era el correcto (el cliente queria $100 y solo llevo $50)-13%
                     problema = new problema();
                     problema.id = 1;
                     problema.nombre = "monto incompleto del cliente";
                     problema.intervalo_inicial = 0;
                     problema.intervalo_final = 13;
+                    problema.idFase = 2;
                     problema.tiempoInicial = 1;
                     problema.tiempoFinal = 3;
                     listaProblemaCambio.Add(problema);
@@ -1078,6 +1107,7 @@ namespace SimulacionCajeroBancoV2
                     problema.nombre = "dinero mal estado";
                     problema.intervalo_inicial = 0;
                     problema.intervalo_final = 35;
+                    problema.idFase = 2;
                     problema.tiempoInicial = 1;
                     problema.tiempoFinal = 5;
                     listaProblemaCambio.Add(problema);
@@ -1087,6 +1117,7 @@ namespace SimulacionCajeroBancoV2
                     problema.nombre = "banco no tiene billete suficiente";
                     problema.intervalo_inicial = 0;
                     problema.intervalo_final = 3;
+                    problema.idFase = 2;
                     problema.tiempoInicial = 1;
                     problema.tiempoFinal = 7;
                     listaProblemaCambio.Add(problema);
@@ -1096,6 +1127,7 @@ namespace SimulacionCajeroBancoV2
                     problema.nombre = "cajero dio monto menor";
                     problema.intervalo_inicial = 0;
                     problema.intervalo_final = 13;
+                    problema.idFase = 2;
                     problema.tiempoInicial = 1;
                     problema.tiempoFinal = 4;
                     listaProblemaCambio.Add(problema);
@@ -1106,34 +1138,12 @@ namespace SimulacionCajeroBancoV2
                 {
                     //problemas generales del sistema
                     #region
-                    //falla sistema 3%
-                    problema = new problema();
-                    problema.id = 6;
-                    problema.nombre = "falla sistema";
-                    problema.intervalo_inicial = 0;
-                    problema.intervalo_final = 3;
-                    problema.idFase = 0;
-                    listaProblemaSistema.Add(problema);
-                    //falla electricidad 5%
-                    problema = new problema();
-                    problema.id = 7;
-                    problema.nombre = "falla electricidad";
-                    problema.intervalo_inicial = 0;
-                    problema.intervalo_final = 5;
-                    problema.idFase = 0;
-                    listaProblemaSistema.Add(problema);
-                    //falla computadora o equipo 10%
-                    problema = new problema();
-                    problema.id = 8;
-                    problema.nombre = "falla computadora";
-                    problema.intervalo_inicial = 0;
-                    problema.intervalo_final = 10;
-                    problema.idFase = 0;
-                    listaProblemaSistema.Add(problema);
+                    
                     #endregion
 
                     //problemas deposito
                     #region
+                   
                     #endregion
 
                     //problemas retiro
@@ -1150,30 +1160,7 @@ namespace SimulacionCajeroBancoV2
 
                     //problemas generales del sistema
                     #region
-                    //falla sistema 3%
-                    problema = new problema();
-                    problema.id = 6;
-                    problema.nombre = "falla sistema";
-                    problema.intervalo_inicial = 0;
-                    problema.intervalo_final = 3;
-                    problema.idFase = 0;
-                    listaProblemaSistema.Add(problema);
-                    //falla electricidad 5%
-                    problema = new problema();
-                    problema.id = 7;
-                    problema.nombre = "falla electricidad";
-                    problema.intervalo_inicial = 0;
-                    problema.intervalo_final = 5;
-                    problema.idFase = 0;
-                    listaProblemaSistema.Add(problema);
-                    //falla computadora o equipo 10%
-                    problema = new problema();
-                    problema.id = 8;
-                    problema.nombre = "falla computadora";
-                    problema.intervalo_inicial = 0;
-                    problema.intervalo_final = 10;
-                    problema.idFase = 0;
-                    listaProblemaSistema.Add(problema);
+                   
                     #endregion
 
                     //problemas deposito
@@ -1236,6 +1223,42 @@ namespace SimulacionCajeroBancoV2
             catch (Exception ex)
             {
                 MessageBox.Show("Error getFases.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //get lista operaciones
+        public void getListaOperaciones()
+        {
+            try
+            {
+                //lista de operaciones
+                #region
+                listaOperaciones = new List<operacion>();
+                //deposito
+                operacion = new operacion();
+                operacion.id = 1;
+                operacion.nombre = "deposito";
+                listaOperaciones.Add(operacion);
+
+                //retiro
+                operacion = new operacion();
+                operacion.id = 2;
+                operacion.nombre = "retiro";
+                listaOperaciones.Add(operacion);
+                
+                //cambio moneda
+                operacion = new operacion();
+                operacion.id = 3;
+                operacion.nombre = "cambio moneda";
+                listaOperaciones.Add(operacion);
+                
+                #endregion
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaOperaciones.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

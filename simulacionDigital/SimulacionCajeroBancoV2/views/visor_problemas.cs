@@ -13,9 +13,29 @@ namespace SimulacionCajeroBancoV2.views
 {
     public partial class visor_problemas : Form
     {
+        //variables
+        private List<problemasLogs> lista;
+        private Int64 idCliente;
+
         public visor_problemas(Int64 idCliente, List<problemasLogs> lista)
         {
             InitializeComponent();
+            this.lista = lista;
+            this.idCliente = idCliente;
+            loadVentana();
+
         }
+
+        public void loadVentana()
+        {
+            dataGridView2.Rows.Clear();
+            lista = lista.FindAll(x => x.idcliente == this.idCliente);
+
+            foreach (var x in lista)
+            {
+                dataGridView2.Rows.Add(x.idcliente, x.operacion, x.fase, x.tiempo_antes, x.tiempo_despues, x.nombreProblema, x.respuesta);
+            }
+        }
+
     }
 }

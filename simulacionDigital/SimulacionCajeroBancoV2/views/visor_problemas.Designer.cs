@@ -69,7 +69,7 @@
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(892, 414);
+            this.dataGridView2.Size = new System.Drawing.Size(912, 444);
             this.dataGridView2.TabIndex = 14;
             // 
             // dataGridViewTextBoxColumn1
@@ -102,14 +102,14 @@
             // 
             // tiempoColum
             // 
-            this.tiempoColum.FillWeight = 60F;
+            this.tiempoColum.FillWeight = 46F;
             this.tiempoColum.HeaderText = "T. anterior";
             this.tiempoColum.Name = "tiempoColum";
             this.tiempoColum.ReadOnly = true;
             // 
             // tiempo2Column
             // 
-            this.tiempo2Column.FillWeight = 60F;
+            this.tiempo2Column.FillWeight = 46F;
             this.tiempo2Column.HeaderText = "T. Despues";
             this.tiempo2Column.Name = "tiempo2Column";
             this.tiempo2Column.ReadOnly = true;
@@ -132,9 +132,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(916, 438);
+            this.ClientSize = new System.Drawing.Size(936, 468);
             this.Controls.Add(this.dataGridView2);
             this.Name = "visor_problemas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "visor_problemas";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);

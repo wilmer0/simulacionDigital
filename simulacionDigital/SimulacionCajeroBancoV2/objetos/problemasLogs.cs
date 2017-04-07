@@ -17,6 +17,5 @@ namespace SimulacionCajeroBancoV2.objetos
         public int cantidad_intentos { get; set; }
         public string respuesta { get; set; }
         public bool problema_encontrado { get; set; }
-        public string desicion { get; set; }
     }
 }
