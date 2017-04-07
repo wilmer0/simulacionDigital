@@ -33,10 +33,9 @@ namespace _7ADMFIC_1._0.VentanasComunes
         //    lista.Add(usuarioDataSource);
         //    GetLoad(reporte, lista,null);
         //}
-        public VisorReporteComun(String reporte, List<ReportDataSource> lista, List<ReportParameter> ListaReportParameter,Boolean IncluirEmpresa, Boolean IncluirUsuario, Boolean IncluirFechaActual, Boolean ExportarExel = false)
+        public VisorReporteComun(String reporte, List<Microsoft.Reporting.WinForms.ReportDataSource> lista, List<Microsoft.Reporting.WinForms.ReportParameter> ListaReportParameter)
         {
             InitializeComponent();
-            ExportarExel = ExportarExel;
             //List<empresa> listaempresa = new List<empresa>();
             //if (IncluirEmpresa)
             //{
@@ -63,7 +62,7 @@ namespace _7ADMFIC_1._0.VentanasComunes
             //}
             GetLoad(reporte, lista, ListaReportParameter);
         }
-        private void GetLoad(String reporte, List<ReportDataSource> lista, List<ReportParameter> ListaReportParameter)
+        private void GetLoad(String reporte, List<Microsoft.Reporting.WinForms.ReportDataSource> lista, List<Microsoft.Reporting.WinForms.ReportParameter> ListaReportParameter)
         {
             //Reporte.LocalReport.ReportEmbeddedResource = reporte;
             //lista.ForEach(x =>
@@ -83,21 +82,6 @@ namespace _7ADMFIC_1._0.VentanasComunes
 
 
 
-        //public void ImprimirMedio(String Impresora)
-        //{
-        //    PageSettings _pageSettings = new PageSettings();
-        //    _pageSettings.PaperSize = new System.Drawing.Printing.PaperSize("MYNEWSIZE", 850, 550);
-        //    _pageSettings.PrinterSettings.PrinterName = Impresora;
-        //    _pageSettings.Margins.Left = 0;
-        //    _pageSettings.Margins.Right = 0;
-        //    _pageSettings.Margins.Bottom = 0;
-        //    _pageSettings.Margins.Top = 0;
-
-        //    _pageSettings.Landscape = false;
-
-        //    AutoPrintClsMedio2 autoprintme = new AutoPrintClsMedio2(Reporte.LocalReport, _pageSettings);
-
-        //    autoprintme.Print();
-        //}
+       
     }
 }
