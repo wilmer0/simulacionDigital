@@ -740,7 +740,7 @@ namespace SimulacionCajeroBancoV2
         public int getNumeroRandom(int inicio, int final)
         {
             random = new Random();
-            //Thread.Sleep(5);
+            Thread.Sleep(5);
             return random.Next(inicio, final +1);
         }
 

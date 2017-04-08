@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -56,6 +60,7 @@
     <Compile Include="objetos\problemasLogs.cs" />
     <Compile Include="objetos\tanda.cs" />
     <Compile Include="objetos\temporada.cs" />
+    <Compile Include="utilidades.cs" />
     <Compile Include="views\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +90,7 @@
     <EmbeddedResource Include="views\visor_problemas.resx">
       <DependentUpon>visor_problemas.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

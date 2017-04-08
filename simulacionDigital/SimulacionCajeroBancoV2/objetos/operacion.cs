@@ -21,7 +21,6 @@ namespace SimulacionCajeroBancoV2.objetos
         public double tiempoEsperadoCola { get; set; }
         public double tiempoEsperadoEntregaDatos { get; set; }
         public double tiempoEsperadoProcesoSolicitud { get; set; }
-        public double tiempoEsperadoServicio { get; set; }
         public double tiempoEsperadoTotal { get; set; }
 
     }

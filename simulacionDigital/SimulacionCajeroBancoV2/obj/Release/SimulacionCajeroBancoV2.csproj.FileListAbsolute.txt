@@ -18,3 +18,4 @@ C:\Users\7Soft\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCa
 C:\Users\7Soft\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBancoV2\obj\Release\SimulacionCajeroBancoV2.exe
 C:\Users\7Soft\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBancoV2\obj\Release\SimulacionCajeroBancoV2.pdb
 C:\Users\7Soft\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBancoV2\obj\Release\SimulacionCajeroBancoV2.csprojResolveAssemblyReference.cache
+C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBancoV2\bin\Release\MySql.Data.dll
