@@ -309,15 +309,16 @@ namespace SimulacionCajeroBancoV2
                 {
                     return;
                 }
+
                 //get lista de problemas intervalos en base a la temporada
                 getListasProblema();
 
 
                 //asignando los tiempos promedios esperado y finales bases cada fase de cada operacion en base a la temporada seleccionada
                 #region
-                operacionDeposito=new operacion();
-                operacionRetiro=new operacion();
-                operacionCambioMoneda=new operacion();
+                //operacionDeposito=new operacion();
+                //operacionRetiro=new operacion();
+                //operacionCambioMoneda=new operacion();
                 foreach (var operacionActual in listaOperaciones)
                 {
                     if (temporadaSeleccionada.id == 1)
@@ -327,45 +328,80 @@ namespace SimulacionCajeroBancoV2
                         if (operacionActual.id == 1)
                         {
                             //deposito
-                            operacionActual.tiempoEsperadoCola = getNumeroRandom(100, 250); //de 1.0 a 2.5
+                            //asignando tiempo intervalos
+                            operacionActual.tiempo_inicial_fase1 = 100;
+                            operacionActual.tiempo_final_fase1 = 300;
+
+                            operacionActual.tiempo_inicial_fase2 = 100;
+                            operacionActual.tiempo_final_fase2 = 200;
+
+                            operacionActual.tiempo_inicial_fase3 = 100;
+                            operacionActual.tiempo_final_fase3 = 300;
+
+
+
+                            operacionActual.tiempoEsperadoCola = getNumeroRandom(100, 290); //de 1.0 a 3.0
                             operacionActual.tiempoEsperadoCola /= 100;
 
-                            operacionActual.tiempoEsperadoEntregaDatos = getNumeroRandom(100, 180); //de 1 a 1.8
+                            operacionActual.tiempoEsperadoEntregaDatos = getNumeroRandom(100, 290); // de 1.0 a 2
                             operacionActual.tiempoEsperadoEntregaDatos /= 100;
 
-                            operacionActual.tiempoEsperadoProcesoSolicitud = getNumeroRandom(100, 190); //de 1.0 a 1.9
+                            operacionActual.tiempoEsperadoProcesoSolicitud = getNumeroRandom(100, 130); //de  1.0 a 3
                             operacionActual.tiempoEsperadoProcesoSolicitud /= 100;
 
                             operacionActual.tiempoEsperadoTotal = operacionActual.tiempoEsperadoCola + operacionActual.tiempoEsperadoEntregaDatos + operacionActual.tiempoEsperadoProcesoSolicitud;
                         
+                        
                         }else if (operacionActual.id == 2)
                         {
                             //retiro
-                            operacionActual.tiempoEsperadoCola = getNumeroRandom(120, 260); // 1.2 a 2.60
+                            //asignando tiempo intervalos
+                            operacionActual.tiempo_inicial_fase1 = 100;
+                            operacionActual.tiempo_final_fase1 = 290;
+
+                            operacionActual.tiempo_inicial_fase2 = 100;
+                            operacionActual.tiempo_final_fase2 = 290;
+
+                            operacionActual.tiempo_inicial_fase3 = 100;
+                            operacionActual.tiempo_final_fase3 = 130;
+
+                            operacionActual.tiempoEsperadoCola = getNumeroRandom(100, 290); //de 1.0 a 2.90
                             operacionActual.tiempoEsperadoCola /= 100;
 
-                            operacionActual.tiempoEsperadoEntregaDatos = getNumeroRandom(180, 290); //de 1.8 a 2.9
+                            operacionActual.tiempoEsperadoEntregaDatos = getNumeroRandom(100, 290); // de 1.0 a 2.9
                             operacionActual.tiempoEsperadoEntregaDatos /= 100;
 
-                            operacionActual.tiempoEsperadoProcesoSolicitud = getNumeroRandom(200, 340); //de 2 a 3.4
+                            operacionActual.tiempoEsperadoProcesoSolicitud = getNumeroRandom(100, 130); //de  1.0 a 1.3
                             operacionActual.tiempoEsperadoProcesoSolicitud /= 100;
 
                             operacionActual.tiempoEsperadoTotal = operacionActual.tiempoEsperadoCola + operacionActual.tiempoEsperadoEntregaDatos + operacionActual.tiempoEsperadoProcesoSolicitud;
-
+                        
                         }
                         else if (operacionActual.id == 3)
                         {
                             //cambio moneda
-                            operacionActual.tiempoEsperadoCola = getNumeroRandom(120, 320); //de 1.2 a 3.20
+                            //asignando tiempo intervalos
+                            operacionActual.tiempo_inicial_fase1 = 100;
+                            operacionActual.tiempo_final_fase1 = 320;
+
+                            operacionActual.tiempo_inicial_fase2 = 100;
+                            operacionActual.tiempo_final_fase2 = 350;
+
+                            operacionActual.tiempo_inicial_fase3 = 100;
+                            operacionActual.tiempo_final_fase3 = 220;
+
+
+                            operacionActual.tiempoEsperadoCola = getNumeroRandom(100, 320); //de 1.0 a 3.20
                             operacionActual.tiempoEsperadoCola /= 100;
 
-                            operacionActual.tiempoEsperadoEntregaDatos = getNumeroRandom(120, 350); // de 1.2 a 3.5
+                            operacionActual.tiempoEsperadoEntregaDatos = getNumeroRandom(100, 350); // de 1.0 a 3.5
                             operacionActual.tiempoEsperadoEntregaDatos /= 100;
 
-                            operacionActual.tiempoEsperadoProcesoSolicitud = getNumeroRandom(180, 220); //de  1.8 a 2.2
+                            operacionActual.tiempoEsperadoProcesoSolicitud = getNumeroRandom(100, 220); //de  1.0 a 2.2
                             operacionActual.tiempoEsperadoProcesoSolicitud /= 100;
 
                             operacionActual.tiempoEsperadoTotal = operacionActual.tiempoEsperadoCola + operacionActual.tiempoEsperadoEntregaDatos + operacionActual.tiempoEsperadoProcesoSolicitud;
+                        
                         }
                         #endregion
                     }
@@ -482,9 +518,7 @@ namespace SimulacionCajeroBancoV2
                         cliente.montoTransaccion = getNumeroRandom(10500, 122000);
                         #region
                         //existe un 34% de que lo quiera depositar en otra cuenta
-                        randomEntero = 0;
-                        randomEntero = getNumeroRandom(1, 100);
-                        if (randomEntero >= 1 && randomEntero <= 34)
+                        if (getNumeroRandom(1, 100) <= 34)
                         {
                             //elije depositar el retiro en una cuenta de banco aumenta tiempo de proceso de solicitud
                             cliente.tipoOperacion= "deposita cuenta de banco";
@@ -507,9 +541,7 @@ namespace SimulacionCajeroBancoV2
                         cliente.operacion = "cambio moneda";
                         #region
                         //saber si cambio pesos a dolares o dolares a pesos
-                        randomEntero = 0;
-                        randomEntero = getNumeroRandom(1, 100);
-                        if (randomEntero >= 1 && randomEntero <= 43)
+                        if (getNumeroRandom(1, 100) <= 43)
                         {
                             cliente.tipoOperacion = "DP";
                             //dolares a pesos
@@ -552,8 +584,17 @@ namespace SimulacionCajeroBancoV2
                     #region
 
                     tiempoTotal = 0;
-                    foreach (var operacionActual in listaOperaciones.Where(x => x.id == cliente.idOperacion))
+                    foreach (var operacionActual in listaOperaciones.ToList().Where(x => x.id == cliente.idOperacion))
                     {
+                        if (cliente.abandono == true)
+                        {
+                            break;
+                        }
+                        //cliente.tiempoEsperadoCola = getNumeroRandom(operacionActual.tiempo_inicial_fase1,operacionActual.tiempo_final_fase1);
+                        //cliente.tiempoEsperadoEntregaDatos = getNumeroRandom(operacionActual.tiempo_inicial_fase2,operacionActual.tiempo_final_fase2);
+                        //cliente.tiempoEsperadoProcesoSolicitud = getNumeroRandom(operacionActual.tiempo_inicial_fase3,operacionActual.tiempo_final_fase3);
+                        //cliente.tiempoEsperadoServicio = cliente.tiempoEsperadoCola + cliente.tiempoEsperadoEntregaDatos + cliente.tiempoEsperadoProcesoSolicitud;
+                        //cliente.tiempoEsperadoServicio = Math.Round(cliente.tiempoEsperadoServicio/100, 2);
                         cliente.tiempoEsperadoCola = operacionActual.tiempoEsperadoCola;
                         cliente.tiempoEsperadoEntregaDatos = operacionActual.tiempoEsperadoEntregaDatos;
                         cliente.tiempoEsperadoProcesoSolicitud = operacionActual.tiempoEsperadoProcesoSolicitud;
@@ -561,11 +602,17 @@ namespace SimulacionCajeroBancoV2
                         //operacion que selecciono el cliente
                         foreach (var faseActual in listaFases)
                         {
-                            
-                            //las fases de la operacion actual
-                            foreach (var problemaActual in listaProblemas.Where(p=> p.idFase==faseActual.id))
+                            if (cliente.abandono == true)
                             {
-                                
+                                break;
+                            }
+                            //las fases de la operacion actual
+                            foreach (var problemaActual in listaProblemas.ToList().Where(p=> p.idFase==faseActual.id))
+                            {
+                                if (cliente.abandono == true)
+                                {
+                                    break;
+                                }
                                 //los problemas de la fase y operacion actual
                                 if (cliente.abandono == false && getNumeroRandom(1, 100) <= problemaActual.intervalo_final && problemaActual.idFase == faseActual.id && problemaActual.idOperacion == operacionActual.id)
                                 {
@@ -578,26 +625,37 @@ namespace SimulacionCajeroBancoV2
                                     problemasLogs.fase = faseActual.nombre;
                                     problemasLogs.nombreProblema = problemaActual.nombre;
                                     problemasLogs.idCajero = cliente.idCajero;
-                                    //saber el tiempo antes del problema que era el esperado en que termine dicha fase
-                                    if (tiempoTotal == 0)
+
+                                    //el cliente decide si quedarse ante el problema o abandona la cola
+                                    if (getNumeroRandom(1, 2) == 1)
                                     {
-
-                                        
-
-                                        problemasLogs.tiempo_antes = (faseActual.id == 1)? operacionActual.tiempoEsperadoCola : operacionActual.tiempoEsperadoEntregaDatos;
-                                        problemasLogs.tiempo_antes = (faseActual.id == 2)? operacionActual.tiempoEsperadoEntregaDatos: operacionActual.tiempoEsperadoProcesoSolicitud;
-
-                                        
+                                        //el cliente se queda en la fila
+                                        cliente.abandono = false;
+                                        problemasLogs.respuesta = "cliente se queda esperando";
                                     }
                                     else
                                     {
+                                        //el cliente abandona la fila
+                                        cliente.abandono = true;
+                                        problemasLogs.respuesta = "cliente abandona";
+                                    }
+                                    //saber el tiempo antes del problema que era el esperado en que termine dicha fase
+                                    if (tiempoTotal == 0)
+                                    {
+                                        //es el primer problema, por lo tanto el tiempo hay que generarlo
+                                        problemasLogs.tiempo_antes = (faseActual.id == 1)? operacionActual.tiempoEsperadoCola : operacionActual.tiempoEsperadoEntregaDatos;
+                                        problemasLogs.tiempo_antes = (faseActual.id == 2)? operacionActual.tiempoEsperadoEntregaDatos: operacionActual.tiempoEsperadoProcesoSolicitud;
+                                    }
+                                    else
+                                    {
+                                        //ya existia un problema entonce se coje el tiempo anterior
                                         problemasLogs.tiempo_antes += tiempoTotal;
                                     }
                                     tiempoTotal += problemasLogs.tiempo_antes;
                                     
                                     problemasLogs.tiempo_problema =(getNumeroRandom(problemaActual.tiempoInicial, problemaActual.tiempoFinal));
                                     problemasLogs.tiempo_problema /= 100;
-                                    problemasLogs.tiempo_despues = tiempoTotal + problemasLogs.tiempo_problema;
+                                    problemasLogs.tiempo_despues = problemasLogs.tiempo_antes + problemasLogs.tiempo_problema;
                                     problemasLogs.tiempo_despues = Math.Round(problemasLogs.tiempo_despues, 2);
                                     tiempoTotal = problemasLogs.tiempo_despues;
 
@@ -682,7 +740,7 @@ namespace SimulacionCajeroBancoV2
         public int getNumeroRandom(int inicio, int final)
         {
             random = new Random();
-            Thread.Sleep(5);
+            //Thread.Sleep(5);
             return random.Next(inicio, final +1);
         }
 
@@ -744,22 +802,11 @@ namespace SimulacionCajeroBancoV2
                     problema.tiempoInicial = 300;
                     problema.tiempoFinal = 800;
                     listaProblemas.Add(problema);
-                    //cliente esta cansado de esperar 20% tiempo de 0-0 minutos
-                    problema = new problema();
-                    problema.id = listaProblemas.Count + 1;
-                    problema.nombre = "cliente cansado esperar";
-                    problema.intervalo_inicial = 0;
-                    problema.intervalo_final = 20;
-                    problema.idFase = 1;
-                    problema.idOperacion = 1;
-                    problema.tiempoInicial = 0;
-                    problema.tiempoFinal = 0;
-                    listaProblemas.Add(problema);
                     #endregion
                     
                     //entrega datos
                     #region
-                    //-falto numero cuenta-13% tiempo de 1-4 minutos
+                    //-falto numero cuenta-13% tiempo de 3-6 minutos
                     problema = new problema();
                     problema.id = listaProblemas.Count + 1;
                     problema.nombre = "falta numero cuenta";
@@ -767,8 +814,8 @@ namespace SimulacionCajeroBancoV2
                     problema.intervalo_final = 13;
                     problema.idFase = 2;
                     problema.idOperacion = 1;
-                    problema.tiempoInicial = 100;
-                    problema.tiempoFinal = 400;
+                    problema.tiempoInicial = 300;
+                    problema.tiempoFinal = 600;
                     listaProblemas.Add(problema);
                     //-numero cuenta incorrecto -25% tiempo de 3-5 minutos
                     problema = new problema();
@@ -781,7 +828,7 @@ namespace SimulacionCajeroBancoV2
                     problema.tiempoInicial = 300;
                     problema.tiempoFinal = 500;
                     listaProblemas.Add(problema);
-                    //-dinero en efectivo en mal estado -22% tiempo de 1-3 minutos
+                    //-dinero en efectivo en mal estado -22% tiempo de 2.5-4.5 minutos
                     problema = new problema();
                     problema.id = listaProblemas.Count + 1;
                     problema.nombre = "dinero mal estado";
@@ -789,8 +836,8 @@ namespace SimulacionCajeroBancoV2
                     problema.intervalo_final = 22;
                     problema.idFase = 2;
                     problema.idOperacion = 1;
-                    problema.tiempoInicial = 100;
-                    problema.tiempoFinal = 300;
+                    problema.tiempoInicial = 250;
+                    problema.tiempoFinal = 450;
                     listaProblemas.Add(problema);
                     #endregion
 
@@ -807,7 +854,7 @@ namespace SimulacionCajeroBancoV2
                     problema.tiempoInicial = 100;
                     problema.tiempoFinal = 1500;
                     listaProblemas.Add(problema);
-                    //-dinero en efectivo en mal estado -22% tiempo de 1-15 minutos
+                    //-dinero en efectivo en mal estado -22% tiempo de 3-15 minutos
                     problema = new problema();
                     problema.id = listaProblemas.Count + 1;
                     problema.nombre = "dinero mal estado";
@@ -815,10 +862,10 @@ namespace SimulacionCajeroBancoV2
                     problema.intervalo_final = 22;
                     problema.idFase = 3;
                     problema.idOperacion = 1;
-                    problema.tiempoInicial = 100;
+                    problema.tiempoInicial = 300;
                     problema.tiempoFinal = 1500;
                     listaProblemas.Add(problema);
-                    //-falla computadora -19% tiempo de 1-10 minutos
+                    //-falla computadora -19% tiempo de 4-10 minutos
                     problema = new problema();
                     problema.id = listaProblemas.Count + 1;
                     problema.nombre = "falla computadora";
@@ -826,7 +873,7 @@ namespace SimulacionCajeroBancoV2
                     problema.intervalo_final = 19;
                     problema.idFase = 3;
                     problema.idOperacion = 1;
-                    problema.tiempoInicial = 100;
+                    problema.tiempoInicial = 400;
                     problema.tiempoFinal = 10000;
                     listaProblemas.Add(problema);
 
@@ -892,7 +939,7 @@ namespace SimulacionCajeroBancoV2
 
                     //entrega datos
                     #region
-                    //-falta cedula -21% tiempo de 2-5 minutos
+                    //-falta cedula -21% tiempo de 3-5 minutos
                     problema = new problema();
                     problema.id = listaProblemas.Count + 1;
                     problema.nombre = "falta cedula";
@@ -900,10 +947,10 @@ namespace SimulacionCajeroBancoV2
                     problema.intervalo_final = 21;
                     problema.idFase = 2;
                     problema.idOperacion = 2;
-                    problema.tiempoInicial = 200;
+                    problema.tiempoInicial = 300;
                     problema.tiempoFinal = 500;
                     listaProblemas.Add(problema);
-                    //-cedula es muy mal estado -15% tiempo de 1-5 minutos
+                    //-cedula es muy mal estado -15% tiempo de 2.5-5 minutos
                     problema = new problema();
                     problema.id = listaProblemas.Count + 1;
                     problema.nombre = "cedula mal estado";
@@ -911,10 +958,10 @@ namespace SimulacionCajeroBancoV2
                     problema.intervalo_final = 15;
                     problema.idFase = 2;
                     problema.idOperacion = 2;
-                    problema.tiempoInicial = 100;
+                    problema.tiempoInicial = 250;
                     problema.tiempoFinal = 500;
                     listaProblemas.Add(problema);
-                    //-dinero en efectivo en mal estado -22% tiempo de 1-3 minutos
+                    //-dinero en efectivo en mal estado -22% tiempo de 4-7 minutos
                     problema = new problema();
                     problema.id = listaProblemas.Count + 1;
                     problema.nombre = "dinero mal estado";
@@ -922,14 +969,14 @@ namespace SimulacionCajeroBancoV2
                     problema.intervalo_final = 22;
                     problema.idFase = 2;
                     problema.idOperacion = 2;
-                    problema.tiempoInicial = 100;
-                    problema.tiempoFinal = 300;
+                    problema.tiempoInicial = 400;
+                    problema.tiempoFinal = 700;
                     listaProblemas.Add(problema);
                     #endregion
 
                     //proceso solicitud
                     #region
-                    //-falla sistema -15% tiempo de 1-15 minutos
+                    //-falla sistema -15% tiempo de 4-15 minutos
                     problema = new problema();
                     problema.id = listaProblemas.Count + 1;
                     problema.nombre = "falla sistema";
@@ -937,10 +984,10 @@ namespace SimulacionCajeroBancoV2
                     problema.intervalo_final = 15;
                     problema.idFase = 3;
                     problema.idOperacion = 2;
-                    problema.tiempoInicial = 100;
+                    problema.tiempoInicial = 400;
                     problema.tiempoFinal = 1500;
                     listaProblemas.Add(problema);
-                    //-dinero en efectivo en mal estado -22% tiempo de 1-15 minutos
+                    //-dinero en efectivo en mal estado -22% tiempo de 3-15 minutos
                     problema = new problema();
                     problema.id = listaProblemas.Count + 1;
                     problema.nombre = "dinero mal estado";
@@ -948,10 +995,10 @@ namespace SimulacionCajeroBancoV2
                     problema.intervalo_final = 22;
                     problema.idFase = 3;
                     problema.idOperacion = 2;
-                    problema.tiempoInicial = 100;
+                    problema.tiempoInicial = 300;
                     problema.tiempoFinal = 1500;
                     listaProblemas.Add(problema);
-                    //-falla computadora -19% tiempo de 1-10 minutos
+                    //-falla computadora -19% tiempo de 5-10 minutos
                     problema = new problema();
                     problema.id = listaProblemas.Count + 1;
                     problema.nombre = "falla computadora";
@@ -959,18 +1006,18 @@ namespace SimulacionCajeroBancoV2
                     problema.intervalo_final = 19;
                     problema.idFase = 3;
                     problema.idOperacion = 2;
-                    problema.tiempoInicial = 100;
+                    problema.tiempoInicial = 500;
                     problema.tiempoFinal = 10000;
                     listaProblemas.Add(problema);
-                    //-falla energia electrica -8% tiempo de 1-10 minutos
+                    //-falla energia electrica -8% tiempo de 7-10 minutos
                     problema = new problema();
                     problema.id = listaProblemas.Count + 1;
-                    problema.nombre = "falla computadora";
+                    problema.nombre = "falla energia electrica";
                     problema.intervalo_inicial = 0;
                     problema.intervalo_final = 8;
                     problema.idFase = 3;
                     problema.idOperacion = 2;
-                    problema.tiempoInicial = 100;
+                    problema.tiempoInicial = 700;
                     problema.tiempoFinal = 10000;
                     listaProblemas.Add(problema);
 
@@ -1038,7 +1085,7 @@ namespace SimulacionCajeroBancoV2
 
                     //entrega datos
                     #region
-                    //-falto numero cuenta-13% tiempo de 1-4 minutos
+                    //-falto numero cuenta-13% tiempo de 3-4 minutos
                     problema = new problema();
                     problema.id = listaProblemas.Count + 1;
                     problema.nombre = "dinero cliente mal estado";
@@ -1046,7 +1093,7 @@ namespace SimulacionCajeroBancoV2
                     problema.intervalo_final = 13;
                     problema.idFase = 2;
                     problema.idOperacion = 3;
-                    problema.tiempoInicial = 100;
+                    problema.tiempoInicial = 300;
                     problema.tiempoFinal = 400;
                     listaProblemas.Add(problema);
                     //-numero cuenta incorrecto -7% tiempo de 3-7 minutos
