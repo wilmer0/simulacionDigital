@@ -10,19 +10,19 @@ namespace SimulacionCajeroBanco.clases_reportes
     {
 
 
-        private string reporte;
-        private List<Microsoft.Reporting.WinForms.ReportDataSource> listaReportDataSource;
+        //private string reporte;
+        //private List<Microsoft.Reporting.WinForms.ReportDataSource> listaReportDataSource;
 
-        public reporte_por_cajero()
-        {
-        }
+        //public reporte_por_cajero()
+        //{
+        //}
 
-        public reporte_por_cajero(string reporte, List<Microsoft.Reporting.WinForms.ReportDataSource> listaReportDataSource)
-        {
-            // TODO: Complete member initialization
-            this.reporte = reporte;
-            this.listaReportDataSource = listaReportDataSource;
-        }
+        //public reporte_por_cajero(string reporte, List<Microsoft.Reporting.WinForms.ReportDataSource> listaReportDataSource)
+        //{
+        //    // TODO: Complete member initialization
+        //    this.reporte = reporte;
+        //    this.listaReportDataSource = listaReportDataSource;
+        //}
 
 
 
