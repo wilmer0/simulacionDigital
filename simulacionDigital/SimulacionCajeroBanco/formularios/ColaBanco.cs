@@ -2507,7 +2507,7 @@ namespace SimulacionCajeroBanco
 
                 //datos generales
                 String reporte = "SimulacionCajeroBanco.reportes.reporte_grafico_cliente.rdlc";
-                List<Microsoft.Reporting.WinForms.ReportDataSource> listaReportDataSource = new List<Microsoft.Reporting.WinForms.ReportDataSource>();
+                //List<Microsoft.Reporting.WinForms.ReportDataSource> listaReportDataSource = new List<Microsoft.Reporting.WinForms.ReportDataSource>();
 
                 listaReporteGraficoCliente=new List<reporte_grafico_cliente>();
                 //reporte estudiante
@@ -2534,17 +2534,17 @@ namespace SimulacionCajeroBanco
                     listaReporteGraficoCliente.Add(reporteGraficoCliente);
                 });
 
-                Microsoft.Reporting.WinForms.ReportDataSource reporteGrafico = new Microsoft.Reporting.WinForms.ReportDataSource("reporte_grafico_cliente", listaReporteGraficoCliente);
-                listaReportDataSource.Add(reporteGrafico);
+                //Microsoft.Reporting.WinForms.ReportDataSource reporteGrafico = new Microsoft.Reporting.WinForms.ReportDataSource("reporte_grafico_cliente", listaReporteGraficoCliente);
+                //listaReportDataSource.Add(reporteGrafico);
 
-                Microsoft.Reporting.WinForms.ReportDataSource reporteProblemas = new Microsoft.Reporting.WinForms.ReportDataSource("reporte_problemas_log", listaClienteProblemasLog);
-                listaReportDataSource.Add(reporteProblemas);
+                //Microsoft.Reporting.WinForms.ReportDataSource reporteProblemas = new Microsoft.Reporting.WinForms.ReportDataSource("reporte_problemas_log", listaClienteProblemasLog);
+                //listaReportDataSource.Add(reporteProblemas);
 
 
-                List<Microsoft.Reporting.WinForms.ReportParameter> ListaReportParameter = new List<Microsoft.Reporting.WinForms.ReportParameter>();
+                //List<Microsoft.Reporting.WinForms.ReportParameter> ListaReportParameter = new List<Microsoft.Reporting.WinForms.ReportParameter>();
 
-                VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter);
-                ventana.ShowDialog();
+                //VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter);
+                //ventana.ShowDialog();
 
                 #endregion
             }

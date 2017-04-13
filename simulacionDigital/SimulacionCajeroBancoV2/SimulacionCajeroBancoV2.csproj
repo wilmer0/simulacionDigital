@@ -33,8 +33,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,10 +59,21 @@
     <Compile Include="objetos\cliente.cs" />
     <Compile Include="objetos\fases.cs" />
     <Compile Include="objetos\operacion.cs" />
+    <Compile Include="objetos\operacion_tipo.cs" />
     <Compile Include="objetos\problema.cs" />
     <Compile Include="objetos\problemasLogs.cs" />
+    <Compile Include="objetos\problema_recomendacion.cs" />
+    <Compile Include="objetos\problema_tiempo.cs" />
+    <Compile Include="objetos\reporte_encabezado.cs" />
     <Compile Include="objetos\tanda.cs" />
     <Compile Include="objetos\temporada.cs" />
+    <Compile Include="reporte\VisorReporteComun.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="reporte\VisorReporteComun.Designer.cs">
+      <DependentUpon>VisorReporteComun.cs</DependentUpon>
+    </Compile>
+    <Compile Include="utilidades.cs" />
     <Compile Include="views\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +88,10 @@
     <Compile Include="views\visor_problemas.Designer.cs">
       <DependentUpon>visor_problemas.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="reporte\reporte1.rdlc" />
+    <EmbeddedResource Include="reporte\VisorReporteComun.resx">
+      <DependentUpon>VisorReporteComun.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="views\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -85,6 +107,11 @@
     <EmbeddedResource Include="views\visor_problemas.resx">
       <DependentUpon>visor_problemas.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\SimulacionCajeroBancoV2.objetos.cliente.datasource" />
+    <None Include="Properties\DataSources\SimulacionCajeroBancoV2.objetos.problemasLogs.datasource" />
+    <None Include="Properties\DataSources\SimulacionCajeroBancoV2.objetos.problema_tiempo.datasource" />
+    <None Include="Properties\DataSources\SimulacionCajeroBancoV2.objetos.reporte_encabezado.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
