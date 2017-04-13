@@ -19,7 +19,7 @@ namespace SimulacionCajeroBancoV2
                 {
                     return null;
                 }
-                MySqlConnection conn = new MySqlConnection("server=localhost;uid=root;" + "pwd=wilmerlomas1;database=simulacion;Allow Zero Datetime=false;");
+                MySqlConnection conn = new MySqlConnection("server=localhost;uid=root;pwd=wilmerlomas1;database=simulacion;");
                 //MySqlConnection conn = new MySqlConnection("server=153.92.11.223;uid=bc1;" + "pwd=wilmerlomas1;database=iris;");
                 MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
                 DataSet ds = new DataSet();

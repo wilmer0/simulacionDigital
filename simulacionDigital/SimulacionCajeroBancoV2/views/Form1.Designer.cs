@@ -50,11 +50,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.comboBoxTanda = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.cantidadCajerosLabel = new System.Windows.Forms.Label();
+            this.cantidadCajerosText = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
-            this.comboBoxTipoCaja = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -111,7 +110,7 @@
             // 
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Controls.Add(this.cantidadClienteText);
-            this.groupBox4.Location = new System.Drawing.Point(644, 11);
+            this.groupBox4.Location = new System.Drawing.Point(704, 10);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(152, 79);
             this.groupBox4.TabIndex = 19;
@@ -186,26 +185,22 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.cantidadCajerosLabel);
+            this.groupBox2.Controls.Add(this.cantidadCajerosText);
             this.groupBox2.Controls.Add(this.button4);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.button3);
-            this.groupBox2.Controls.Add(this.comboBoxTipoCaja);
             this.groupBox2.Location = new System.Drawing.Point(320, 11);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(318, 79);
+            this.groupBox2.Size = new System.Drawing.Size(378, 79);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             // 
-            // cantidadCajerosLabel
+            // cantidadCajerosText
             // 
-            this.cantidadCajerosLabel.AutoSize = true;
-            this.cantidadCajerosLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cantidadCajerosLabel.Location = new System.Drawing.Point(6, 53);
-            this.cantidadCajerosLabel.Name = "cantidadCajerosLabel";
-            this.cantidadCajerosLabel.Size = new System.Drawing.Size(66, 17);
-            this.cantidadCajerosLabel.TabIndex = 24;
-            this.cantidadCajerosLabel.Text = "cajeros:";
+            this.cantidadCajerosText.Location = new System.Drawing.Point(9, 31);
+            this.cantidadCajerosText.Name = "cantidadCajerosText";
+            this.cantidadCajerosText.Size = new System.Drawing.Size(132, 20);
+            this.cantidadCajerosText.TabIndex = 6;
             // 
             // button4
             // 
@@ -213,7 +208,7 @@
             this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
             this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(247, 17);
+            this.button4.Location = new System.Drawing.Point(309, 17);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(63, 47);
             this.button4.TabIndex = 23;
@@ -236,21 +231,12 @@
             this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(178, 17);
+            this.button3.Location = new System.Drawing.Point(240, 17);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(63, 47);
             this.button3.TabIndex = 22;
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // comboBoxTipoCaja
-            // 
-            this.comboBoxTipoCaja.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxTipoCaja.FormattingEnabled = true;
-            this.comboBoxTipoCaja.Location = new System.Drawing.Point(9, 30);
-            this.comboBoxTipoCaja.Name = "comboBoxTipoCaja";
-            this.comboBoxTipoCaja.Size = new System.Drawing.Size(163, 21);
-            this.comboBoxTipoCaja.TabIndex = 7;
             // 
             // panel1
             // 
@@ -275,6 +261,7 @@
             this.button2.Size = new System.Drawing.Size(78, 61);
             this.button2.TabIndex = 16;
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -596,7 +583,6 @@
         private System.Windows.Forms.ComboBox comboBoxTemporada;
         private System.Windows.Forms.TextBox cantidadClienteText;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBoxTipoCaja;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
@@ -607,7 +593,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label cantidadCajerosLabel;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
@@ -629,6 +614,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tiempoServicioFinalColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn abandonocolumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cajeroColumn;
+        private System.Windows.Forms.TextBox cantidadCajerosText;
     }
 }
 
