@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.faseColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiempoColum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tiempo2Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProblemaColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Respuestacolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,6 +60,7 @@
             this.dataGridViewTextBoxColumn2,
             this.faseColumn,
             this.tiempoColum,
+            this.Column1,
             this.tiempo2Column,
             this.ProblemaColumn,
             this.Respuestacolumn});
@@ -69,15 +71,16 @@
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(912, 444);
+            this.dataGridView2.Size = new System.Drawing.Size(1118, 515);
             this.dataGridView2.TabIndex = 14;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DarkBlue;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewTextBoxColumn1.FillWeight = 30F;
             this.dataGridViewTextBoxColumn1.HeaderText = "Cliente";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
@@ -85,17 +88,18 @@
             // 
             // dataGridViewTextBoxColumn2
             // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkBlue;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewTextBoxColumn2.FillWeight = 60F;
             this.dataGridViewTextBoxColumn2.HeaderText = "Operacion";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // faseColumn
             // 
-            this.faseColumn.FillWeight = 50F;
+            this.faseColumn.FillWeight = 70F;
             this.faseColumn.HeaderText = "Fase";
             this.faseColumn.Name = "faseColumn";
             this.faseColumn.ReadOnly = true;
@@ -106,6 +110,13 @@
             this.tiempoColum.HeaderText = "T. anterior";
             this.tiempoColum.Name = "tiempoColum";
             this.tiempoColum.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.FillWeight = 40F;
+            this.Column1.HeaderText = "T. problema";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // tiempo2Column
             // 
@@ -132,7 +143,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(936, 468);
+            this.ClientSize = new System.Drawing.Size(1142, 539);
             this.Controls.Add(this.dataGridView2);
             this.Name = "visor_problemas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -149,6 +160,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn faseColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiempoColum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiempo2Column;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProblemaColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Respuestacolumn;

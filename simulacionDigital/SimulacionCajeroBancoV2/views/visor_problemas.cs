@@ -33,8 +33,13 @@ namespace SimulacionCajeroBancoV2.views
 
             foreach (var x in lista)
             {
-                dataGridView2.Rows.Add(x.idcliente, x.operacion, x.fase, x.tiempo_antes, x.tiempo_despues, x.nombreProblema, x.respuesta);
+                dataGridView2.Rows.Add(x.idcliente, x.operacion, x.fase, x.tiempo_antes,x.tiempo_problema, x.tiempo_despues, x.nombreProblema, x.respuesta);
             }
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
     }
