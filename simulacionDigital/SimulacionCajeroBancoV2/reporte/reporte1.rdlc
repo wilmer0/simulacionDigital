@@ -4438,12 +4438,14 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value />
-                  <Style />
+                  <Value>=First(Fields!tiempoPromedioFase1Esperado.Value, "reporte_encabezado")/First(Fields!tiempoPromedioFase1.Value, "reporte_encabezado")</Value>
+                  <Style>
+                    <Format>0.00</Format>
+                  </Style>
                 </TextRun>
               </TextRuns>
               <Style>
-                <TextAlign>Left</TextAlign>
+                <TextAlign>Center</TextAlign>
               </Style>
             </Paragraph>
           </Paragraphs>
@@ -4470,12 +4472,14 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value />
-                  <Style />
+                  <Value>=First(Fields!tiempoPromedioFase2Esperado.Value, "reporte_encabezado")/First(Fields!tiempoPromedioFase2.Value, "reporte_encabezado")</Value>
+                  <Style>
+                    <Format>0.00;(0.00)</Format>
+                  </Style>
                 </TextRun>
               </TextRuns>
               <Style>
-                <TextAlign>Left</TextAlign>
+                <TextAlign>Center</TextAlign>
               </Style>
             </Paragraph>
           </Paragraphs>
@@ -4502,12 +4506,14 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value />
-                  <Style />
+                  <Value>=First(Fields!tiempoPromedioFase3Esperado.Value, "reporte_encabezado")/First(Fields!tiempoPromedioFase3.Value, "reporte_encabezado")</Value>
+                  <Style>
+                    <Format>0.00;(0.00)</Format>
+                  </Style>
                 </TextRun>
               </TextRuns>
               <Style>
-                <TextAlign>Left</TextAlign>
+                <TextAlign>Center</TextAlign>
               </Style>
             </Paragraph>
           </Paragraphs>
@@ -4549,6 +4555,40 @@
           <Height>0.25in</Height>
           <Width>0.64931in</Width>
           <ZIndex>48</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox61">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>%</Value>
+                  <Style>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox2</rd:DefaultName>
+          <Top>0.75in</Top>
+          <Left>3.92124in</Left>
+          <Height>0.25in</Height>
+          <Width>0.64931in</Width>
+          <ZIndex>49</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>

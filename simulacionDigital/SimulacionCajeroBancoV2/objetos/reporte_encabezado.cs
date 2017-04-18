@@ -39,10 +39,10 @@ namespace SimulacionCajeroBancoV2.objetos
         public decimal tiempoMinimoFase3 { get; set; }
 
         //tiempor porciento sobrepasado
-        public decimal tiempoFase1Porciento { get; set; }
-        public decimal tiempoFase2Porciento { get; set; }
-        public decimal tiempoFase3Porciento { get; set; }
-        public decimal tiempoFaseTotalPorciento { get; set; }
+        public decimal Fase1PorcientoSobrepasado { get; set; }
+        public decimal Fase2PorcientoSobrepasado { get; set; }
+        public decimal Fase3PorcientoSobrepasado { get; set; }
+        public decimal FaseTotalPorcientoSobrepasado { get; set; }
 
 
 
@@ -122,16 +122,11 @@ namespace SimulacionCajeroBancoV2.objetos
 
 
             //tiempo porciento sobresaliente
-            this.tiempoFase1Porciento = Math.Round(this.tiempoPromedioFase1Esperado/this.tiempoPromedioFase1,2);
-            this.tiempoFase2Porciento = Math.Round(this.tiempoPromedioFase2Esperado / this.tiempoPromedioFase2,2);
-            this.tiempoFase3Porciento = Math.Round(this.tiempoPromedioFase3Esperado / this.tiempoPromedioFase3,2);
-            this.tiempoFaseTotalPorciento = Math.Round(this.tiempoPromedioTotalEsperado / this.tiempoPromedioTotal, 2);
-
+            this.Fase1PorcientoSobrepasado = Math.Round(this.tiempoPromedioFase1Esperado/this.tiempoPromedioFase1,2);
+            this.Fase2PorcientoSobrepasado = Math.Round(this.tiempoPromedioFase2Esperado / this.tiempoPromedioFase2,2);
+            this.Fase3PorcientoSobrepasado = Math.Round(this.tiempoPromedioFase3Esperado / this.tiempoPromedioFase3,2);
+            this.FaseTotalPorcientoSobrepasado = Math.Round(this.tiempoPromedioTotalEsperado / this.tiempoPromedioTotal, 2);
 
         }
-
-
-
-
     }
 }
