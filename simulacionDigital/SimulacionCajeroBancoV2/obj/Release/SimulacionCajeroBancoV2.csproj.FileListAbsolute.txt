@@ -21,4 +21,3 @@ C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionC
 C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBancoV2\obj\Release\RdlCompile.compiled
 C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBancoV2\obj\Release\SimulacionCajeroBancoV2.exe
 C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBancoV2\obj\Release\SimulacionCajeroBancoV2.pdb
-C:\Users\wilmer\Documents\GitHub\simulacionDigital\simulacionDigital\SimulacionCajeroBancoV2\obj\Release\SimulacionCajeroBancoV2.csprojResolveAssemblyReference.cache

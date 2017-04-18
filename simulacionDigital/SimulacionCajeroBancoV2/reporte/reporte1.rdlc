@@ -836,7 +836,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>reporte_detalle</DataSetName>
-        <Top>11.53125in</Top>
+        <Top>14.53125in</Top>
         <Left>0.14571in</Left>
         <Height>0.60417in</Height>
         <Width>8.12152in</Width>
@@ -865,7 +865,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox64</rd:DefaultName>
-        <Top>11.23958in</Top>
+        <Top>14.23958in</Top>
         <Left>0.14571in</Left>
         <Height>0.25in</Height>
         <Width>8.12153in</Width>
@@ -2067,7 +2067,7 @@
         <RepeatRowHeaders>true</RepeatRowHeaders>
         <FixedRowHeaders>true</FixedRowHeaders>
         <DataSetName>reporte_detalle_problema_tiempo</DataSetName>
-        <Top>10.34028in</Top>
+        <Top>13.34028in</Top>
         <Left>0.1457in</Left>
         <Height>0.5in</Height>
         <Width>8.12153in</Width>
@@ -2097,7 +2097,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox64</rd:DefaultName>
-        <Top>9.96528in</Top>
+        <Top>12.96528in</Top>
         <Left>0.13764in</Left>
         <Height>0.25in</Height>
         <Width>8.12153in</Width>
@@ -2673,8 +2673,288 @@
           <BackgroundGradientType>None</BackgroundGradientType>
         </Style>
       </Chart>
+      <Chart Name="Chart4">
+        <ChartCategoryHierarchy>
+          <ChartMembers>
+            <ChartMember>
+              <Group Name="Chart4_CategoryGroup">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!operacion.Value</GroupExpression>
+                </GroupExpressions>
+              </Group>
+              <SortExpressions>
+                <SortExpression>
+                  <Value>=Fields!operacion.Value</Value>
+                </SortExpression>
+              </SortExpressions>
+              <Label>=Fields!operacion.Value</Label>
+            </ChartMember>
+          </ChartMembers>
+        </ChartCategoryHierarchy>
+        <ChartSeriesHierarchy>
+          <ChartMembers>
+            <ChartMember>
+              <Label>tiempo Promedio Total</Label>
+            </ChartMember>
+          </ChartMembers>
+        </ChartSeriesHierarchy>
+        <ChartData>
+          <ChartSeriesCollection>
+            <ChartSeries Name="tiempoPromedioTotal">
+              <ChartDataPoints>
+                <ChartDataPoint>
+                  <ChartDataPointValues>
+                    <Y>=Avg(Fields!tiempoPromedioTotal.Value)</Y>
+                  </ChartDataPointValues>
+                  <ChartDataLabel>
+                    <Style />
+                    <UseValueAsLabel>true</UseValueAsLabel>
+                    <Visible>true</Visible>
+                  </ChartDataLabel>
+                  <Style />
+                  <ChartMarker>
+                    <Style />
+                  </ChartMarker>
+                  <DataElementOutput>Output</DataElementOutput>
+                </ChartDataPoint>
+              </ChartDataPoints>
+              <Type>Shape</Type>
+              <Style />
+              <ChartEmptyPoints>
+                <Style />
+                <ChartMarker>
+                  <Style />
+                </ChartMarker>
+                <ChartDataLabel>
+                  <Style />
+                </ChartDataLabel>
+              </ChartEmptyPoints>
+              <ValueAxisName>Primary</ValueAxisName>
+              <CategoryAxisName>Primary</CategoryAxisName>
+              <ChartSmartLabel>
+                <CalloutLineColor>Black</CalloutLineColor>
+                <MinMovingDistance>0pt</MinMovingDistance>
+              </ChartSmartLabel>
+            </ChartSeries>
+          </ChartSeriesCollection>
+        </ChartData>
+        <ChartAreas>
+          <ChartArea Name="Default">
+            <ChartCategoryAxes>
+              <ChartAxis Name="Primary">
+                <Style>
+                  <FontSize>8pt</FontSize>
+                </Style>
+                <ChartAxisTitle>
+                  <Caption>Título del eje</Caption>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </ChartAxisTitle>
+                <ChartMajorGridLines>
+                  <Enabled>False</Enabled>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                    </Border>
+                  </Style>
+                </ChartMajorGridLines>
+                <ChartMinorGridLines>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                      <Style>Dotted</Style>
+                    </Border>
+                  </Style>
+                </ChartMinorGridLines>
+                <ChartMinorTickMarks>
+                  <Length>0.5</Length>
+                </ChartMinorTickMarks>
+                <CrossAt>NaN</CrossAt>
+                <Minimum>NaN</Minimum>
+                <Maximum>NaN</Maximum>
+                <ChartAxisScaleBreak>
+                  <Style />
+                </ChartAxisScaleBreak>
+              </ChartAxis>
+              <ChartAxis Name="Secondary">
+                <Style>
+                  <FontSize>8pt</FontSize>
+                </Style>
+                <ChartAxisTitle>
+                  <Caption>Título del eje</Caption>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </ChartAxisTitle>
+                <ChartMajorGridLines>
+                  <Enabled>False</Enabled>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                    </Border>
+                  </Style>
+                </ChartMajorGridLines>
+                <ChartMinorGridLines>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                      <Style>Dotted</Style>
+                    </Border>
+                  </Style>
+                </ChartMinorGridLines>
+                <ChartMinorTickMarks>
+                  <Length>0.5</Length>
+                </ChartMinorTickMarks>
+                <CrossAt>NaN</CrossAt>
+                <Location>Opposite</Location>
+                <Minimum>NaN</Minimum>
+                <Maximum>NaN</Maximum>
+                <ChartAxisScaleBreak>
+                  <Style />
+                </ChartAxisScaleBreak>
+              </ChartAxis>
+            </ChartCategoryAxes>
+            <ChartValueAxes>
+              <ChartAxis Name="Primary">
+                <Style>
+                  <FontSize>8pt</FontSize>
+                </Style>
+                <ChartAxisTitle>
+                  <Caption>Título del eje</Caption>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </ChartAxisTitle>
+                <ChartMajorGridLines>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                    </Border>
+                  </Style>
+                </ChartMajorGridLines>
+                <ChartMinorGridLines>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                      <Style>Dotted</Style>
+                    </Border>
+                  </Style>
+                </ChartMinorGridLines>
+                <ChartMinorTickMarks>
+                  <Length>0.5</Length>
+                </ChartMinorTickMarks>
+                <CrossAt>NaN</CrossAt>
+                <Minimum>NaN</Minimum>
+                <Maximum>NaN</Maximum>
+                <ChartAxisScaleBreak>
+                  <Style />
+                </ChartAxisScaleBreak>
+              </ChartAxis>
+              <ChartAxis Name="Secondary">
+                <Style>
+                  <FontSize>8pt</FontSize>
+                </Style>
+                <ChartAxisTitle>
+                  <Caption>Título del eje</Caption>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </ChartAxisTitle>
+                <ChartMajorGridLines>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                    </Border>
+                  </Style>
+                </ChartMajorGridLines>
+                <ChartMinorGridLines>
+                  <Style>
+                    <Border>
+                      <Color>Gainsboro</Color>
+                      <Style>Dotted</Style>
+                    </Border>
+                  </Style>
+                </ChartMinorGridLines>
+                <ChartMinorTickMarks>
+                  <Length>0.5</Length>
+                </ChartMinorTickMarks>
+                <CrossAt>NaN</CrossAt>
+                <Location>Opposite</Location>
+                <Minimum>NaN</Minimum>
+                <Maximum>NaN</Maximum>
+                <ChartAxisScaleBreak>
+                  <Style />
+                </ChartAxisScaleBreak>
+              </ChartAxis>
+            </ChartValueAxes>
+            <Style>
+              <BackgroundGradientType>None</BackgroundGradientType>
+            </Style>
+          </ChartArea>
+        </ChartAreas>
+        <ChartLegends>
+          <ChartLegend Name="Default">
+            <Style>
+              <BackgroundGradientType>None</BackgroundGradientType>
+              <FontSize>8pt</FontSize>
+            </Style>
+            <ChartLegendTitle>
+              <Caption />
+              <Style>
+                <FontSize>8pt</FontSize>
+                <FontWeight>Bold</FontWeight>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </ChartLegendTitle>
+            <HeaderSeparatorColor>Black</HeaderSeparatorColor>
+            <ColumnSeparatorColor>Black</ColumnSeparatorColor>
+          </ChartLegend>
+        </ChartLegends>
+        <ChartTitles>
+          <ChartTitle Name="Default">
+            <Caption>TIEMPO PROMEDIO OBTENIDO POR OPERACION</Caption>
+            <Style>
+              <BackgroundGradientType>None</BackgroundGradientType>
+              <FontWeight>Bold</FontWeight>
+              <TextAlign>General</TextAlign>
+              <VerticalAlign>Top</VerticalAlign>
+            </Style>
+          </ChartTitle>
+        </ChartTitles>
+        <Palette>BrightPastel</Palette>
+        <ChartBorderSkin>
+          <Style>
+            <BackgroundColor>Gray</BackgroundColor>
+            <BackgroundGradientType>None</BackgroundGradientType>
+            <Color>White</Color>
+          </Style>
+        </ChartBorderSkin>
+        <ChartNoDataMessage Name="NoDataMessage">
+          <Caption>Sin datos disponibles</Caption>
+          <Style>
+            <BackgroundGradientType>None</BackgroundGradientType>
+            <TextAlign>General</TextAlign>
+            <VerticalAlign>Top</VerticalAlign>
+          </Style>
+        </ChartNoDataMessage>
+        <DataSetName>reporte_detalle_cliente</DataSetName>
+        <Top>9.86459in</Top>
+        <Left>0.18513in</Left>
+        <Height>2in</Height>
+        <Width>4.00111in</Width>
+        <ZIndex>10</ZIndex>
+        <Style>
+          <Border>
+            <Color>LightGrey</Color>
+            <Style>Solid</Style>
+          </Border>
+          <BackgroundColor>White</BackgroundColor>
+          <BackgroundGradientType>None</BackgroundGradientType>
+        </Style>
+      </Chart>
     </ReportItems>
-    <Height>12.96876in</Height>
+    <Height>15.13542in</Height>
     <Style />
   </Body>
   <Width>8.4918in</Width>
@@ -2691,7 +2971,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>Reporte Simulació Digital</Value>
+                  <Value>Reporte Simulación Digital</Value>
                   <Style>
                     <FontSize>12pt</FontSize>
                     <FontWeight>Bold</FontWeight>
@@ -3211,7 +3491,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
           <Top>1.01389in</Top>
-          <Left>2.19667in</Left>
+          <Left>2.09027in</Left>
           <Height>0.25in</Height>
           <Width>1.09027in</Width>
           <ZIndex>16</ZIndex>
@@ -3243,7 +3523,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
           <Top>1.01389in</Top>
-          <Left>3.28694in</Left>
+          <Left>3.18054in</Left>
           <Height>0.25in</Height>
           <Width>0.64931in</Width>
           <ZIndex>17</ZIndex>
@@ -3277,7 +3557,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
           <Top>1.26389in</Top>
-          <Left>2.19667in</Left>
+          <Left>2.09027in</Left>
           <Height>0.25in</Height>
           <Width>1.09027in</Width>
           <ZIndex>18</ZIndex>
@@ -3309,7 +3589,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
           <Top>1.26389in</Top>
-          <Left>3.28694in</Left>
+          <Left>3.18054in</Left>
           <Height>0.25in</Height>
           <Width>0.64931in</Width>
           <ZIndex>19</ZIndex>
@@ -3343,7 +3623,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
           <Top>1.52778in</Top>
-          <Left>2.19667in</Left>
+          <Left>2.09027in</Left>
           <Height>0.25in</Height>
           <Width>1.09027in</Width>
           <ZIndex>20</ZIndex>
@@ -3375,7 +3655,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
           <Top>1.52778in</Top>
-          <Left>3.28694in</Left>
+          <Left>3.18054in</Left>
           <Height>0.25in</Height>
           <Width>0.64931in</Width>
           <ZIndex>21</ZIndex>
@@ -3409,7 +3689,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
           <Top>1.77778in</Top>
-          <Left>2.19667in</Left>
+          <Left>2.09027in</Left>
           <Height>0.25in</Height>
           <Width>1.09027in</Width>
           <ZIndex>22</ZIndex>
@@ -3441,7 +3721,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
           <Top>1.77778in</Top>
-          <Left>3.28694in</Left>
+          <Left>3.18054in</Left>
           <Height>0.25in</Height>
           <Width>0.64931in</Width>
           <ZIndex>23</ZIndex>
@@ -3475,7 +3755,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
           <Top>1.02778in</Top>
-          <Left>4.61794in</Left>
+          <Left>4.72904in</Left>
           <Height>0.25in</Height>
           <Width>1.11111in</Width>
           <ZIndex>24</ZIndex>
@@ -3507,7 +3787,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
           <Top>1.02778in</Top>
-          <Left>5.72904in</Left>
+          <Left>5.84014in</Left>
           <Height>0.25in</Height>
           <Width>0.61458in</Width>
           <ZIndex>25</ZIndex>
@@ -3541,7 +3821,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
           <Top>1.27778in</Top>
-          <Left>4.61794in</Left>
+          <Left>4.72904in</Left>
           <Height>0.25in</Height>
           <Width>1.11111in</Width>
           <ZIndex>26</ZIndex>
@@ -3573,7 +3853,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
           <Top>1.27778in</Top>
-          <Left>5.72904in</Left>
+          <Left>5.84014in</Left>
           <Height>0.25in</Height>
           <Width>0.61458in</Width>
           <ZIndex>27</ZIndex>
@@ -3607,7 +3887,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
           <Top>1.54167in</Top>
-          <Left>4.61794in</Left>
+          <Left>4.72904in</Left>
           <Height>0.25in</Height>
           <Width>1.11111in</Width>
           <ZIndex>28</ZIndex>
@@ -3639,7 +3919,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
           <Top>1.54167in</Top>
-          <Left>5.72904in</Left>
+          <Left>5.84014in</Left>
           <Height>0.25in</Height>
           <Width>0.61458in</Width>
           <ZIndex>29</ZIndex>
@@ -3673,7 +3953,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
           <Top>1.79167in</Top>
-          <Left>4.61794in</Left>
+          <Left>4.72904in</Left>
           <Height>0.25in</Height>
           <Width>1.11111in</Width>
           <ZIndex>30</ZIndex>
@@ -3705,7 +3985,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
           <Top>1.79167in</Top>
-          <Left>5.72904in</Left>
+          <Left>5.84014in</Left>
           <Height>0.25in</Height>
           <Width>0.61458in</Width>
           <ZIndex>31</ZIndex>
@@ -3778,7 +4058,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox49</rd:DefaultName>
           <Top>0.75in</Top>
-          <Left>2.19667in</Left>
+          <Left>2.09027in</Left>
           <Height>0.25in</Height>
           <Width>1.73958in</Width>
           <ZIndex>33</ZIndex>
@@ -3817,7 +4097,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox49</rd:DefaultName>
           <Top>0.75in</Top>
-          <Left>4.61794in</Left>
+          <Left>4.72904in</Left>
           <Height>0.25in</Height>
           <Width>1.72568in</Width>
           <ZIndex>34</ZIndex>
@@ -3856,7 +4136,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
           <Top>1.02778in</Top>
-          <Left>6.52418in</Left>
+          <Left>6.52416in</Left>
           <Height>0.25in</Height>
           <Width>1.11111in</Width>
           <ZIndex>35</ZIndex>
@@ -3888,7 +4168,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
           <Top>1.02778in</Top>
-          <Left>7.63528in</Left>
+          <Left>7.63526in</Left>
           <Height>0.25in</Height>
           <Width>0.5625in</Width>
           <ZIndex>36</ZIndex>
@@ -3922,7 +4202,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
           <Top>1.27778in</Top>
-          <Left>6.52418in</Left>
+          <Left>6.52416in</Left>
           <Height>0.25in</Height>
           <Width>1.11111in</Width>
           <ZIndex>37</ZIndex>
@@ -3954,7 +4234,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
           <Top>1.27778in</Top>
-          <Left>7.63528in</Left>
+          <Left>7.63526in</Left>
           <Height>0.25in</Height>
           <Width>0.5625in</Width>
           <ZIndex>38</ZIndex>
@@ -3988,7 +4268,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
           <Top>1.54167in</Top>
-          <Left>6.52418in</Left>
+          <Left>6.52416in</Left>
           <Height>0.25in</Height>
           <Width>1.11111in</Width>
           <ZIndex>39</ZIndex>
@@ -4020,7 +4300,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
           <Top>1.54167in</Top>
-          <Left>7.63528in</Left>
+          <Left>7.63526in</Left>
           <Height>0.25in</Height>
           <Width>0.5625in</Width>
           <ZIndex>40</ZIndex>
@@ -4054,7 +4334,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
           <Top>1.79167in</Top>
-          <Left>6.52418in</Left>
+          <Left>6.52416in</Left>
           <Height>0.25in</Height>
           <Width>1.11111in</Width>
           <ZIndex>41</ZIndex>
@@ -4086,7 +4366,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
           <Top>1.79167in</Top>
-          <Left>7.63528in</Left>
+          <Left>7.63526in</Left>
           <Height>0.25in</Height>
           <Width>0.5625in</Width>
           <ZIndex>42</ZIndex>
@@ -4120,7 +4400,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox49</rd:DefaultName>
           <Top>0.75in</Top>
-          <Left>6.52418in</Left>
+          <Left>6.52416in</Left>
           <Height>0.25in</Height>
           <Width>1.69209in</Width>
           <ZIndex>43</ZIndex>
@@ -4151,6 +4431,179 @@
             </Border>
           </Style>
         </Line>
+        <Textbox Name="Textbox56">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=First(Fields!tiempoPromedioFase1Esperado.Value, "reporte_encabezado")/First(Fields!tiempoPromedioFase1.Value, "reporte_encabezado")</Value>
+                  <Style>
+                    <Format>0.00</Format>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox2</rd:DefaultName>
+          <Top>1.01389in</Top>
+          <Left>3.81485in</Left>
+          <Height>0.25in</Height>
+          <Width>0.64931in</Width>
+          <ZIndex>45</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox58">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=First(Fields!tiempoPromedioFase2Esperado.Value, "reporte_encabezado")/First(Fields!tiempoPromedioFase2.Value, "reporte_encabezado")</Value>
+                  <Style>
+                    <Format>0.00;(0.00)</Format>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox2</rd:DefaultName>
+          <Top>1.26389in</Top>
+          <Left>3.81485in</Left>
+          <Height>0.25in</Height>
+          <Width>0.64931in</Width>
+          <ZIndex>46</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox59">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=First(Fields!tiempoPromedioFase3Esperado.Value, "reporte_encabezado")/First(Fields!tiempoPromedioFase3.Value, "reporte_encabezado")</Value>
+                  <Style>
+                    <Format>0.00;(0.00)</Format>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox2</rd:DefaultName>
+          <Top>1.52778in</Top>
+          <Left>3.81485in</Left>
+          <Height>0.25in</Height>
+          <Width>0.64931in</Width>
+          <ZIndex>47</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox60">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value />
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox2</rd:DefaultName>
+          <Top>1.77778in</Top>
+          <Left>3.81485in</Left>
+          <Height>0.25in</Height>
+          <Width>0.64931in</Width>
+          <ZIndex>48</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox61">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>%</Value>
+                  <Style>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox2</rd:DefaultName>
+          <Top>0.75in</Top>
+          <Left>3.82985in</Left>
+          <Height>0.25in</Height>
+          <Width>0.6343in</Width>
+          <ZIndex>49</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <BottomBorder>
+              <Color>Black</Color>
+              <Style>Solid</Style>
+              <Width>1pt</Width>
+            </BottomBorder>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
       </ReportItems>
       <Style>
         <Border>

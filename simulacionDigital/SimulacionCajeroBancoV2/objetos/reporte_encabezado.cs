@@ -38,6 +38,15 @@ namespace SimulacionCajeroBancoV2.objetos
         public decimal tiempoMinimoFase2 { get; set; }
         public decimal tiempoMinimoFase3 { get; set; }
 
+        //tiempor porciento sobrepasado
+        public decimal Fase1PorcientoSobrepasado { get; set; }
+        public decimal Fase2PorcientoSobrepasado { get; set; }
+        public decimal Fase3PorcientoSobrepasado { get; set; }
+        public decimal FaseTotalPorcientoSobrepasado { get; set; }
+
+
+
+
         public List<problema_tiempo> listaProblemaTiempo { get; set; } //para guardar el tiempo de problema por cada problema
 
 
@@ -112,11 +121,12 @@ namespace SimulacionCajeroBancoV2.objetos
             #endregion
 
 
+            //tiempo porciento sobresaliente
+            this.Fase1PorcientoSobrepasado = Math.Round(this.tiempoPromedioFase1Esperado/this.tiempoPromedioFase1,2);
+            this.Fase2PorcientoSobrepasado = Math.Round(this.tiempoPromedioFase2Esperado / this.tiempoPromedioFase2,2);
+            this.Fase3PorcientoSobrepasado = Math.Round(this.tiempoPromedioFase3Esperado / this.tiempoPromedioFase3,2);
+            this.FaseTotalPorcientoSobrepasado = Math.Round(this.tiempoPromedioTotalEsperado / this.tiempoPromedioTotal, 2);
 
         }
-
-
-
-
     }
 }
